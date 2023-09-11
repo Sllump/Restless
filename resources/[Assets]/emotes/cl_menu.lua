@@ -275,8 +275,8 @@ AddEventHandler("emote:setEmotesFromDB", function(emotesResult)
     currentKeys = emotesResult
 end)
 
-RegisterNetEvent("arp-admin:currentDevmode")
-AddEventHandler("arp-admin:currentDevmode", function(devmode)
+RegisterNetEvent("erp-admin:currentDevmode")
+AddEventHandler("erp-admin:currentDevmode", function(devmode)
     dToggle = devmode
 end)
 

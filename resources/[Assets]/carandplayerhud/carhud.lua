@@ -62,8 +62,8 @@ end
 
 exports('getArmorAndStressData', getArmorAndStressData)
 
-RegisterNetEvent("arp-spawn:characterSpawned")
-AddEventHandler("arp-spawn:characterSpawned", function()
+RegisterNetEvent("erp-spawn:characterSpawned")
+AddEventHandler("erp-spawn:characterSpawned", function()
     charSpawned = true
     Citizen.CreateThread(function()
         DisplayRadar(0)
@@ -93,10 +93,10 @@ AddEventHandler("cool-hud:initHud", function()
     local initialHudSettings = exports["cool-hud"]:GetPreferences()
     if initialHudSettings ~= "{}" then
       exports["cool-hud"]:sendAppEvent("preferences", initialHudSettings)
-      exports["arp-interface"]:sendAppEvent('preferences', initialHudSettings)
+      exports["erp-interface"]:sendAppEvent('preferences', initialHudSettings)
       TriggerEvent("cool-preferences:setPreferences", initialHudSettings)
     end
-    --TriggerEvent("arp-spawn:characterSpawned")
+    --TriggerEvent("erp-spawn:characterSpawned")
     exports["cool-hud"]:startHealthArmorUpdates()
     exports["cool-hud"]:sendAppEvent("hud", {
       display = true,
@@ -118,10 +118,10 @@ function initHud()
     local initialHudSettings = exports["cool-hud"]:GetPreferences()
     if initialHudSettings ~= "{}" then
       exports["cool-hud"]:sendAppEvent("preferences", initialHudSettings)
-      exports["arp-interface"]:sendAppEvent('preferences', initialHudSettings)
+      exports["erp-interface"]:sendAppEvent('preferences', initialHudSettings)
       TriggerEvent("cool-preferences:setPreferences", initialHudSettings)
     end
-    --TriggerEvent("arp-spawn:characterSpawned")
+    --TriggerEvent("erp-spawn:characterSpawned")
     exports["cool-hud"]:startHealthArmorUpdates()
     exports["cool-hud"]:sendAppEvent("hud", {
       display = true,
@@ -135,7 +135,7 @@ dstamina = 0
 
 AddEventHandler('onClientResourceStart', function(resourceName)
 
-  --TriggerEvent("arp-spawn:characterSpawned")
+  --TriggerEvent("erp-spawn:characterSpawned")
   if (GetCurrentResourceName() ~= resourceName) then
     return
   end
@@ -146,9 +146,9 @@ AddEventHandler('onClientResourceStart', function(resourceName)
   --   --Wait(100)
   --   local initialHudSettings = GetPreferences()
   --   sendAppEvent("preferences", initialHudSettings)
-  --   exports["arp-interface"]:sendAppEvent('preferences', initialHudSettings)
+  --   exports["erp-interface"]:sendAppEvent('preferences', initialHudSettings)
   --   TriggerEvent("cool-preferences:setPreferences", initialHudSettings)
-  --   TriggerEvent("arp-spawn:characterSpawned")
+  --   TriggerEvent("erp-spawn:characterSpawned")
   --   sendAppEvent("hud", {
   --     display = true,
   --   })
@@ -180,13 +180,13 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('arp-admin:maxstats')
-AddEventHandler('arp-admin:maxstats', function()
+RegisterNetEvent('erp-admin:maxstats')
+AddEventHandler('erp-admin:maxstats', function()
     currentValues["thirst"] = 100
     currentValues["hunger"] = 100 
     TriggerEvent("heal", PlayerPedId())
     TriggerEvent("Hospital:HealInjuries", PlayerPedId(),true) 
-    TriggerServerEvent("arp-death:reviveSV", source)
+    TriggerServerEvent("erp-death:reviveSV", source)
     TriggerServerEvent("reviveGranted", source)
     TriggerServerEvent("ems:healplayer", source)
     SetPlayerMaxArmour(PlayerPedId(), 100)
@@ -244,8 +244,8 @@ Citizen.CreateThread(function()
   end
 end)
 
-RegisterNetEvent("arp-admin:currentDevmode")
-AddEventHandler("arp-admin:currentDevmode", function(devmode)
+RegisterNetEvent("erp-admin:currentDevmode")
+AddEventHandler("erp-admin:currentDevmode", function(devmode)
   isBlocked = devmode
 end)
 

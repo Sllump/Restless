@@ -60,19 +60,19 @@ local function handleConnectionEvent(pChannel)
 
   if newChannel < 1.0 then
     pRadioChannel = false
-    exports['arp-voice']:removePlayerFromRadio()
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", false)
+    exports['erp-voice']:removePlayerFromRadio()
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", false)
   else
     pRadioChannel = true
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
-    exports['arp-voice']:addPlayerToRadio(newChannel)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(newChannel)
   end
 end
 local radioVolume = 0.5
 
 
 function hasRadio()
-    if exports["arp-inventory"]:hasEnoughOfItem("radio",1,false) or exports["arp-inventory"]:hasEnoughOfItem("civradio",1,false) or exports["arp-inventory"]:hasEnoughOfItem("emsradio",1,false) then
+    if exports["erp-inventory"]:hasEnoughOfItem("radio",1,false) or exports["erp-inventory"]:hasEnoughOfItem("civradio",1,false) or exports["erp-inventory"]:hasEnoughOfItem("emsradio",1,false) then
       return true
     else
       return false
@@ -88,8 +88,8 @@ RegisterNUICallback('volumeUp', function(data, cb)
   if radioVolume >= 1.0 then
     radioVolume = 1.0
   end
-  exports['arp-voice']:setRadioVolume(radioVolume)
-  exports['arp-voice']:getRadioVolume()
+  exports['erp-voice']:setRadioVolume(radioVolume)
+  exports['erp-voice']:getRadioVolume()
   TriggerEvent('DoLongHudText', "New volume + "..radioVolume, 1)
 end)
 
@@ -98,8 +98,8 @@ RegisterNUICallback('volumeDown', function(data, cb)
   if radioVolume < 0.1 then
     radioVolume = 0.0
   end
-  exports['arp-voice']:setRadioVolume(radioVolume)
-  exports['arp-voice']:getRadioVolume()
+  exports['erp-voice']:setRadioVolume(radioVolume)
+  exports['erp-voice']:getRadioVolume()
   TriggerEvent('DoLongHudText', "New volume - "..radioVolume, 2)
 end)
 
@@ -117,8 +117,8 @@ end)
 
 RegisterNUICallback('poweredOff', function(data, cb)
   pRadioChannel = false
-  exports['arp-voice']:removePlayerFromRadio()
-  exports["arp-voice"]:setVoiceProperty("radioEnabled", false)
+  exports['erp-voice']:removePlayerFromRadio()
+  exports["erp-voice"]:setVoiceProperty("radioEnabled", false)
 end)
 
 function closeGui()
@@ -129,8 +129,8 @@ function closeGui()
   TriggerEvent("animation:radio",GuiOpened)
 end
 
-RegisterNetEvent('arp-radio:ResetUI')
-AddEventHandler('arp-radio:ResetUI', function()
+RegisterNetEvent('erp-radio:ResetUI')
+AddEventHandler('erp-radio:ResetUI', function()
     GuiOpened = false
     SetNuiFocus(false,false)
     SendNUIMessage({open = false})
@@ -162,7 +162,7 @@ AddEventHandler('animation:radio', function(enable)
     Citizen.Wait(150)
     while inPhone do
 
-      local dead = exports['arp-death']:GetDeathStatus()
+      local dead = exports['erp-death']:GetDeathStatus()
       if dead then
         closeGui()
         inPhone = false
@@ -219,17 +219,17 @@ RegisterCommand('+RadioVolumeUp', function()
   if radioVolume >= 1.0 then
     radioVolume = 1.0
   end
-  exports['arp-voice']:setRadioVolume(radioVolume)
-  exports['arp-voice']:getRadioVolume()
+  exports['erp-voice']:setRadioVolume(radioVolume)
+  exports['erp-voice']:getRadioVolume()
   TriggerEvent('DoLongHudText', "New volume + "..radioVolume, 1)
 end, false)
 
 RegisterCommand('-RadioVolumeDown', function() end, false)
 
 Citizen.CreateThread(function()
-  exports["arp-binds"]:registerKeyMapping("", "Radio", "Radio Volume Up", "+RadioVolumeUp", "-RadioVolumeDown", "PAGEUP")
+  exports["erp-binds"]:registerKeyMapping("", "Radio", "Radio Volume Up", "+RadioVolumeUp", "-RadioVolumeDown", "PAGEUP")
 
-  exports["arp-binds"]:registerKeyMapping("", "Radio", "Radio Volume Down", "+RadioVolumeDown", "-RadiopVolumeDown", "PAGEDOWN")
+  exports["erp-binds"]:registerKeyMapping("", "Radio", "Radio Volume Down", "+RadioVolumeDown", "-RadiopVolumeDown", "PAGEDOWN")
 end)
 
 RegisterCommand('+RadioVolumeDown', function()
@@ -237,67 +237,67 @@ RegisterCommand('+RadioVolumeDown', function()
   if radioVolume < 0.1 then
     radioVolume = 0.0
   end
-  exports['arp-voice']:setRadioVolume(radioVolume)
-  exports['arp-voice']:getRadioVolume()
+  exports['erp-voice']:setRadioVolume(radioVolume)
+  exports['erp-voice']:getRadioVolume()
   TriggerEvent('DoLongHudText', "New volume - "..radioVolume, 2)
 end, false)
 
 RegisterCommand('-RadiopVolumeDown', function() end, false)
 
-RegisterNetEvent('arp-radio:set_chan_1')
-AddEventHandler('arp-radio:set_chan_1', function()
+RegisterNetEvent('erp-radio:set_chan_1')
+AddEventHandler('erp-radio:set_chan_1', function()
   local job = exports["isPed"]:isPed("myJob")
   if job == "police" or job == "sheriff" or job == "state" or job == "ranger" then
     pRadioChannel = true
     SendNUIMessage({set = true, setChannel = chan})
-    exports['arp-voice']:addPlayerToRadio(1)
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(1)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
     PlaySound(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     TriggerEvent('DoLongHudText', 'New Frequency: 1')
   end
 end)
 
-RegisterNetEvent('arp-radio:set_chan_2')
-AddEventHandler('arp-radio:set_chan_2', function()
+RegisterNetEvent('erp-radio:set_chan_2')
+AddEventHandler('erp-radio:set_chan_2', function()
   local job = exports["isPed"]:isPed("myJob")
   if job == "police" or job == "sheriff" or job == "state" or job == "ranger" then
     pRadioChannel = true
     SendNUIMessage({set = true, setChannel = chan})
-    exports['arp-voice']:addPlayerToRadio(2)
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(2)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
     PlaySound(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     TriggerEvent('DoLongHudText', 'New Frequency: 2')
   end
 end)
 
-RegisterNetEvent('arp-radio:set_chan_3')
-AddEventHandler('arp-radio:set_chan_3', function()
+RegisterNetEvent('erp-radio:set_chan_3')
+AddEventHandler('erp-radio:set_chan_3', function()
   local job = exports["isPed"]:isPed("myJob")
   if job == "police" or job == "sheriff" or job == "state" or job == "ranger" then
-    exports['arp-voice']:addPlayerToRadio(3)
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(3)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
     PlaySound(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     TriggerEvent('DoLongHudText', 'New Frequency: 3')
   end
 end)
 
-RegisterNetEvent('arp-radio:set_chan_4')
-AddEventHandler('arp-radio:set_chan_4', function()
+RegisterNetEvent('erp-radio:set_chan_4')
+AddEventHandler('erp-radio:set_chan_4', function()
   local job = exports["isPed"]:isPed("myJob")
   if job == "police" or job == "sheriff" or job == "state" or job == "ranger" then
-    exports['arp-voice']:addPlayerToRadio(4)
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(4)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
     PlaySound(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     TriggerEvent('DoLongHudText', 'New Frequency: 4')
   end
 end)
 
-RegisterNetEvent('arp-radio:set_chan_5')
-AddEventHandler('arp-radio:set_chan_5', function()
+RegisterNetEvent('erp-radio:set_chan_5')
+AddEventHandler('erp-radio:set_chan_5', function()
   local job = exports["isPed"]:isPed("myJob")
   if job == "police" or job == "sheriff" or job == "state" or job == "ranger" then
-    exports['arp-voice']:addPlayerToRadio(5)
-    exports["arp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['erp-voice']:addPlayerToRadio(5)
+    exports["erp-voice"]:setVoiceProperty("radioEnabled", true)
     PlaySound(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
     TriggerEvent('DoLongHudText', 'New Frequency: 5')
   end

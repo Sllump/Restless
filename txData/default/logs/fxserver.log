@@ -1,0 +1,1004 @@
+
+================================================================
+======== FXServer Starting - 9/11/2023, 5:35:18 PM              
+================================================================
+[    c-scripting-core] Creating script environments for _cfx_internal
+[ citizen-server-impl] Scanning resources.
+[ citizen-server-impl] Found 62 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for sessionmanager
+[ citizen-server-impl] Started resource sessionmanager
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdminClient] Version 4.17.1 starting...
+[ citizen-server-impl] Started resource monitor
+[ citizen-server-impl] Couldn't find resource apx.[0m
+[    c-scripting-core] Creating script environments for mapmanager
+[ citizen-server-impl] Started resource mapmanager
+[    c-scripting-core] [0mCreating script environments for arp-chat
+[ citizen-server-impl] Started resource arp-chat
+[ citizen-server-impl] Started resource spawnmanager
+[   script:mapmanager] Started gametype Freeroam
+[ citizen-server-impl] Started resource basic-gamemode
+[ citizen-server-impl] Started resource fivem
+[    c-scripting-core] Creating script environments for hardcap
+[ citizen-server-impl] Started resource hardcap
+[    c-scripting-core] Creating script environments for rconlog
+[ citizen-server-impl] Started resource rconlog
+[    c-scripting-core] Creating script environments for nui_blocker
+[ citizen-server-impl] Started resource nui_blocker
+[    c-scripting-core] Creating script environments for baseevents
+[ citizen-server-impl] Started resource baseevents
+[    c-scripting-core] Creating script environments for yarn
+[ citizen-server-impl] Started resource yarn
+[    c-scripting-core] Creating script environments for webpack
+[      script:webpack] Error loading script webpack_builder.js in resource webpack: Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack] stack:
+[      script:webpack] Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack]     at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+[      script:webpack]     at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+[      script:webpack]     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[      script:webpack]     at require (node:internal/modules/cjs/helpers:94:18)
+[      script:webpack]     at @webpack/webpack_builder.js:3:20
+[    c-scripting-core] Failed to load script webpack_builder.js.
+[ citizen-server-impl] Started resource webpack
+[ citizen-server-impl] Started resource screenshot-basic
+[    c-scripting-core] Creating script environments for oxmysql
+[ citizen-server-impl] Started resource oxmysql
+[    c-scripting-core] Creating script environments for arp-base
+[ citizen-server-impl] Started resource arp-base
+[ citizen-server-impl] Couldn't find resource arp-ui.
+[ citizen-server-impl] Couldn't find resource arp-interface.
+[ citizen-server-impl] Couldn't find resource arp-infinity.
+[    c-scripting-core] Creating script environments for arp-spawn
+[ citizen-server-impl] Started resource arp-spawn
+[ citizen-server-impl] Couldn't find resource spawnstation.
+[ citizen-server-impl] Couldn't find resource arp-config.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ottos.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mapdata.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-scenarios.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-catcafe.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-davispd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-esbltd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-harmony.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-haters.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hayes.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hub.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-import.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark1.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark2.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mrpd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paleto247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ponsonbys.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-suburban.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletoliquor.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletopd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-parkranger.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pdprops.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pillbox.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pinkcage.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pizzeria.
+[ citizen-server-impl] Couldn't find resource arp-prison.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-records.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-tuners.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-vu.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ammunation.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-carmeet.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[ citizen-server-impl] Couldn't find resource assets_maps.
+[ citizen-server-impl] Could not make hard link for D:/Fivem Shtuff/CustomFW/resources//[Assets]/assets_animations/stream//clear@custom_anim.ycd <-> D:/Fivem Shtuff\CustomFW/cache/files/assets_animations/stream_cache/zdb1dc9bb4211bf1b32cd77c89f1af39c5f167883.
+[ citizen-server-impl] Started resource assets_animations
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource bzzz_vagos.
+[ citizen-server-impl] Couldn't find resource VagosHideout.
+[ citizen-server-impl] Couldn't find resource assets_maps2.
+[ citizen-server-impl] Couldn't find resource housingshells.
+[ citizen-server-impl] Couldn't find resource arp-showroomsmlo.
+[ citizen-server-impl] [0mCouldn't find resource bobcat.
+[ citizen-server-impl] Couldn't find resource arp-townhall.
+[ citizen-server-impl] Couldn't find resource arp-huntingstore.
+[ citizen-server-impl] Couldn't find resource arp-misc.
+[ citizen-server-impl] Couldn't find resource arp-casinomisc.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletobank.
+[ citizen-server-impl] Couldn't find resource arp-minigame.
+[ citizen-server-impl] Couldn't find resource brofx_mansion_10.
+[ citizen-server-impl] Couldn't find resource vagos.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[    c-scripting-core] Creating script environments for mka-lasers
+[ citizen-server-impl] Started resource mka-lasers
+[ citizen-server-impl] Couldn't find resource arp-admin.
+[ citizen-server-impl] Couldn't find resource arp-adminUI.
+[ citizen-server-impl] Couldn't find resource arp-selector.
+[ citizen-server-impl] Couldn't find resource arp-apartments.
+[ citizen-server-impl] Couldn't find resource arp-banking.
+[ citizen-server-impl] Started resource arp-keyboard
+[ citizen-server-impl] Couldn't find resource arp-bennys.
+[ citizen-server-impl] Couldn't find resource arp-hacking.
+[ citizen-server-impl] Couldn't find resource arp-banking-ui.
+[ citizen-server-impl] Started resource arp-binds
+[ citizen-server-impl] Couldn't find resource heli.
+[ citizen-server-impl] Couldn't find resource arp-bugreport.
+[ citizen-server-impl] Couldn't find resource arp-build.
+[ citizen-server-impl] Couldn't find resource arp-camera.
+[ citizen-server-impl] Couldn't find resource arp-commands.
+[ citizen-server-impl] Couldn't find resource arp-context.
+[ citizen-server-impl] Couldn't find resource arp-death.
+[ citizen-server-impl] Couldn't find resource arp-density.
+[ citizen-server-impl] Couldn't find resource arp-dispatch.
+[ citizen-server-impl] Couldn't find resource arp-doors.
+[ citizen-server-impl] Couldn't find resource arp-drugs.
+[ citizen-server-impl] Couldn't find resource arp-duty.
+[ citizen-server-impl] Started resource wk_wrs
+[ citizen-server-impl] Couldn't find resource arp-phone.
+[ citizen-server-impl] Couldn't find resource arp-evidence.
+[ citizen-server-impl] Couldn't find resource arp-eblips.
+[ citizen-server-impl] Couldn't find resource arp-errorlog.
+[ citizen-server-impl] Couldn't find resource arp-flags.
+[ citizen-server-impl] Couldn't find resource arp-fx.
+[ citizen-server-impl] Couldn't find resource arp-flames.
+[ citizen-server-impl] Couldn't find resource arp-hospital.
+[ citizen-server-impl] Couldn't find resource cool-hud.
+[ citizen-server-impl] Couldn't find resource cool-buffs.
+[    c-scripting-core] Creating script environments for carandplayerhud
+[    c-scripting-core] Failed to load script @arp-lib/shared/sh_cacheable.lua.
+[ citizen-server-impl] Started resource carandplayerhud
+[ citizen-server-impl] Couldn't find resource arp-notepad.
+[ citizen-server-impl] Couldn't find resource arp-inventory.
+[ citizen-server-impl] Couldn't find resource arp-shops.
+[ citizen-server-impl] Couldn't find resource arp-jobmanager.
+[ citizen-server-impl] Couldn't find resource arp-lockpicking.
+[    c-scripting-core] Creating script environments for arp-lib
+[      script:arp-lib] Error parsing script @arp-lib/server/sv_asyncExports.js in resource arp-lib: SyntaxError: Unexpected token 'export'
+[    c-scripting-core] Failed to load script server/sv_asyncExports.js.
+[ citizen-server-impl] Started resource arp-lib
+[ citizen-server-impl] Started resource arp-loading
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-mapdata.
+[ citizen-server-impl] Couldn't find resource arp-mdw.
+[ citizen-server-impl] Couldn't find resource rahe-racing.
+[ citizen-server-impl] Couldn't find resource arp-menu.
+[ citizen-server-impl] Couldn't find resource arp-vehicledespawn.
+[    c-scripting-core] Creating script environments for arp-objects
+[ citizen-server-impl] Started resource arp-objects
+[ citizen-server-impl] Couldn't find resource arp-paintball.
+[    c-scripting-core] Creating script environments for arp-npcs
+[ citizen-server-impl] Started resource arp-npcs
+[ citizen-server-impl] Started resource arp-oPlayerNumbers
+[    c-scripting-core] Creating script environments for arp-pdm
+[ citizen-server-impl] Started resource arp-pdm
+[ citizen-server-impl] Couldn't find resource arp-pedspawner.
+[ citizen-server-impl] Couldn't find resource arp-police.
+[ citizen-server-impl] Couldn't find resource arp-copcount.
+[ citizen-server-impl] Couldn't find resource arp-gov.
+[ citizen-server-impl] Couldn't find resource arp-polytarget.
+[ citizen-server-impl] Couldn't find resource arp-polyzone.
+[ citizen-server-impl] Couldn't find resource arp-interact.
+[ citizen-server-impl] Couldn't find resource arp-jail.
+[ citizen-server-impl] Couldn't find resource arp-propattach.
+[ citizen-server-impl] Couldn't find resource arp-scenes.
+[    c-scripting-core] Creating script environments for arp-scoreboard
+[ citizen-server-impl] Started resource arp-scoreboard
+[ citizen-server-impl] Couldn't find resource arp-targetinteract.
+[ citizen-server-impl] Couldn't find resource arp-taskbar.
+[ citizen-server-impl] Couldn't find resource arp-taskbarthreat.
+[ citizen-server-impl] Couldn't find resource arp-tasknotify.
+[ citizen-server-impl] Couldn't find resource arp-jobs.
+[ citizen-server-impl] Couldn't find resource arp-fishing.
+[ citizen-server-impl] Couldn't find resource arp-vehicles.
+[ citizen-server-impl] Couldn't find resource arp-voice.
+[ citizen-server-impl] [93mCouldn't find resource arp-votesystem.
+[ citizen-server-impl] Couldn't find resource arp-weapons.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-xhair.
+[ citizen-server-impl] Couldn't find resource arp-ytypparser.
+[ citizen-server-impl] Couldn't find resource arp-heists.
+[ citizen-server-impl] Couldn't find resource arp-illegalactivities.
+[ citizen-server-impl] Couldn't find resource arp-business.
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-vault.
+[ citizen-server-impl] Couldn't find resource arp-pokemon.
+[ citizen-server-impl] Couldn't find resource arp-musicplayer.
+[ citizen-server-impl] Couldn't find resource arp-gangs.
+[ citizen-server-impl] Couldn't find resource arp-gameplay.
+[ citizen-server-impl] Started resource watermark
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-storageunits.
+[ citizen-server-impl] Couldn't find resource arp-pool.
+[ citizen-server-impl] Couldn't find resource arp-brand.
+[ citizen-server-impl] Couldn't find resource arp-casino.
+[    c-scripting-core] Creating script environments for assets_portals
+[ citizen-server-impl] Started resource assets_portals
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource assets_event_peds.
+[    c-scripting-core] Creating script environments for connectqueue
+[ script:connectqueue] QUEUE:  [connectqueue] Disabling hardcap 
+[ citizen-server-impl] Stopping resource hardcap
+[ citizen-server-impl] Started resource connectqueue
+[ citizen-server-impl] Started resource emotes
+[ citizen-server-impl] Couldn't find resource heli.
+[    c-scripting-core] Creating script environments for InteractSound
+[ citizen-server-impl] Started resource InteractSound
+[ citizen-server-impl] Started resource isPed
+[ citizen-server-impl] Couldn't find resource arp-vehiclesync.
+[ citizen-server-impl] Started resource mka-array
+[    c-scripting-core] Creating script environments for PolyZone
+[ citizen-server-impl] Started resource PolyZone
+[ citizen-server-impl] Started resource radio
+[ citizen-server-impl] Started resource raid_carmenu
+[    c-scripting-core] Creating script environments for raid_clothes
+[ citizen-server-impl] Started resource raid_clothes
+[ citizen-server-impl] Couldn't find resource weathersync.
+[ citizen-server-impl] Started resource storage
+[ citizen-server-impl] Started resource warmenu
+[ citizen-server-impl] Couldn't find resource milispawns.
+[ citizen-server-impl] Couldn't find resource arp-gunmetas.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_melee.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_old.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_thrown.
+[ citizen-server-impl] Couldn't find resource arp_clothes.
+[ citizen-server-impl] Couldn't find resource arp_clothes_new.
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource arp-vehicleconfig.
+[ citizen-server-impl] Couldn't find resource arp-vehicleaudio.
+[ citizen-server-impl] Couldn't find resource assets_vehicles.
+[ citizen-server-impl] Couldn't find resource temp_vh.
+[ citizen-server-impl] Couldn't find resource sultan2.
+[ citizen-server-impl] Couldn't find resource underglow.
+[ citizen-server-impl] Couldn't find resource 20ramambo.
+[ citizen-server-impl] Couldn't find resource ambucara.
+[ citizen-server-impl] Couldn't find resource gallerybison.
+[ citizen-server-impl] Couldn't find resource emshoe.
+[ citizen-server-impl] Couldn't find resource pigeonp.
+[ citizen-server-impl] Couldn't find resource assets_vehicles2.
+[ citizen-server-impl] Couldn't find resource arp-clothes.
+[ citizen-server-impl] Couldn't find resource asset_peds.
+[ citizen-server-impl] Couldn't find resource asset_peds_other.
+[ citizen-server-impl] Couldn't find resource ig_dt.
+[ citizen-server-impl] Couldn't find resource slump.
+[ citizen-server-impl] Couldn't find resource nad_rockstar.
+[ citizen-server-impl] Couldn't find resource menuv.
+[    c-scripting-core] Creating script environments for JD_logs
+[ citizen-server-impl] Started resource JD_logs
+[ citizen-server-impl] Couldn't find resource arp-houserobberies.
+[ citizen-server-impl] Couldn't find resource arp-sandypd.
+[ citizen-server-impl] Couldn't find resource arp-weed.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-cocaine.
+[ citizen-server-impl] Couldn't find resource aspect-gangs.
+[ citizen-server-impl] Couldn't find resource aspect-hacking.
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-bulletclub.
+[ citizen-server-impl] Couldn't find resource ps-books.
+[ citizen-server-impl] Couldn't find resource arp-tunershop.
+[ citizen-server-impl] The file logo.png must be a 96x96 PNG image to be used as icon.
+[      script:oxmysql] Error: Ignoring invalid configuration option passed to Connection: . This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration option to a Connection
+[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
+[   script:mapmanager] Started map fivem-map-skater
+[ citizen-server-impl] Started resource fivem-map-skater
+[     script:arp-base] -------------------------------------------------------
+[     script:arp-base] UPDATE: 1.0
+[     script:arp-base] Collaborators: Potato
+[     script:arp-base] -------------------------------------------------------
+[ citizen-server-impl] server thread hitch warning: timer interval of 205 milliseconds
+[     script:arp-base] Warning: 'Commands' module is being overridden
+[      script:oxmysql] Error: Unable to establish a connection to the database!
+[      script:oxmysql] [Error: Unknown database 'npbase']
+[38;5;173m[      script:JD_logs] Warn: JD_logs webhook. Possible invalid webhook for "resources" webhook. Status code: 404
+[      script:oxmysql] There is an update available for oxmysql - please update to the latest release (current version: 2.3.4)
+[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.7.4
+[      script:JD_logs] Warn: JD_logs webhook. Possible invalid webhook for "all" webhook. Status code: 404
+[      script:JD_logs] Warn: JD_logs webhook. Possible invalid webhook for "resources" webhook. Status code: 404
+[      script:JD_logs] Warn: JD_logs webhook. Possible invalid webhook for "all" webhook. Status code: 404
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://yourlocalnimrod-9epb5e.users.cfx.re/
+[      script:JD_logs] [JD_logs]: JD_logs unable to check version
+[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[ citizen-server-main] -> Quitting: SIGHUP received
+
+================================================================
+======== FXServer Starting - 9/11/2023, 5:37:25 PM              
+================================================================
+[    c-scripting-core] Creating script environments for _cfx_internal
+[ citizen-server-impl] Scanning resources.
+[ citizen-server-impl] Found 61 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for sessionmanager
+[ citizen-server-impl] Started resource sessionmanager
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdminClient] Version 4.17.1 starting...
+[ citizen-server-impl] Started resource monitor
+[ citizen-server-impl] Couldn't find resource apx.
+[    c-scripting-core] Creating script environments for mapmanager
+[ citizen-server-impl] Started resource mapmanager
+[    c-scripting-core] [0mCreating script environments for arp-chat
+[ citizen-server-impl] Started resource arp-chat
+[ citizen-server-impl] Started resource spawnmanager
+[   script:mapmanager] Started gametype Freeroam
+[ citizen-server-impl] Started resource basic-gamemode
+[ citizen-server-impl] Started resource fivem
+[    c-scripting-core] Creating script environments for hardcap
+[ citizen-server-impl] Started resource hardcap
+[    c-scripting-core] Creating script environments for rconlog
+[ citizen-server-impl] Started resource rconlog
+[    c-scripting-core] Creating script environments for nui_blocker
+[ citizen-server-impl] Started resource nui_blocker
+[    c-scripting-core] Creating script environments for baseevents
+[ citizen-server-impl] Started resource baseevents
+[    c-scripting-core] Creating script environments for yarn
+[ citizen-server-impl] Started resource yarn
+[    c-scripting-core] Creating script environments for webpack
+[      script:webpack] Error loading script webpack_builder.js in resource webpack: Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack] stack:
+[      script:webpack] Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack]     at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+[      script:webpack]     at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+[      script:webpack]     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[      script:webpack]     at require (node:internal/modules/cjs/helpers:94:18)
+[      script:webpack]     at @webpack/webpack_builder.js:3:20
+[    c-scripting-core] Failed to load script webpack_builder.js.
+[ citizen-server-impl] Started resource webpack
+[ citizen-server-impl] Started resource screenshot-basic
+[    c-scripting-core] Creating script environments for oxmysql
+[ citizen-server-impl] Started resource oxmysql
+[    c-scripting-core] Creating script environments for arp-base
+[ citizen-server-impl] Started resource arp-base
+[ citizen-server-impl] Couldn't find resource arp-ui.
+[ citizen-server-impl] Couldn't find resource arp-interface.
+[ citizen-server-impl] Couldn't find resource arp-infinity.
+[    c-scripting-core] Creating script environments for arp-spawn
+[ citizen-server-impl] Started resource arp-spawn
+[ citizen-server-impl] Couldn't find resource spawnstation.
+[ citizen-server-impl] Couldn't find resource arp-config.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ottos.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mapdata.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-scenarios.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-catcafe.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-davispd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-esbltd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-harmony.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-haters.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hayes.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hub.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-import.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark1.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark2.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mrpd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paleto247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ponsonbys.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-suburban.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletoliquor.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletopd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-parkranger.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pdprops.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pillbox.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pinkcage.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pizzeria.
+[ citizen-server-impl] Couldn't find resource arp-prison.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-records.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-tuners.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-vu.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ammunation.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-carmeet.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[ citizen-server-impl] Couldn't find resource assets_maps.
+[ citizen-server-impl] Could not make hard link for D:/Fivem Shtuff/CustomFW/resources//[Assets]/assets_animations/stream//clear@custom_anim.ycd <-> D:/Fivem Shtuff\CustomFW/cache/files/assets_animations/stream_cache/zdb1dc9bb4211bf1b32cd77c89f1af39c5f167883.
+[ citizen-server-impl] Started resource assets_animations
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource bzzz_vagos.
+[ citizen-server-impl] Couldn't find resource VagosHideout.
+[ citizen-server-impl] Couldn't find resource assets_maps2.
+[ citizen-server-impl] Couldn't find resource housingshells.
+[ citizen-server-impl] Couldn't find resource arp-showroomsmlo.
+[ citizen-server-impl] Couldn't find resource bobcat.
+[ citizen-server-impl] Couldn't find resource arp-townhall.
+[ citizen-server-impl] Couldn't find resource arp-huntingstore.
+[ citizen-server-impl] Couldn't find resource arp-misc.
+[ citizen-server-impl] Couldn't find resource arp-casinomisc.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletobank.
+[ citizen-server-impl] Couldn't find resource arp-minigame.
+[ citizen-server-impl] Couldn't find resource brofx_mansion_10.
+[ citizen-server-impl] Couldn't find resource vagos.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[    c-scripting-core] Creating script environments for mka-lasers
+[ citizen-server-impl] Started resource mka-lasers
+[ citizen-server-impl] Couldn't find resource arp-admin.
+[ citizen-server-impl] Couldn't find resource arp-adminUI.
+[ citizen-server-impl] Couldn't find resource arp-selector.
+[ citizen-server-impl] Couldn't find resource arp-apartments.
+[ citizen-server-impl] Couldn't find resource arp-banking.
+[ citizen-server-impl] Started resource arp-keyboard
+[ citizen-server-impl] Couldn't find resource arp-bennys.
+[ citizen-server-impl] Couldn't find resource arp-hacking.
+[ citizen-server-impl] Couldn't find resource arp-banking-ui.
+[ citizen-server-impl] Started resource arp-binds
+[ citizen-server-impl] Couldn't find resource heli.
+[ citizen-server-impl] Couldn't find resource arp-bugreport.
+[ citizen-server-impl] Couldn't find resource arp-build.
+[ citizen-server-impl] Couldn't find resource arp-camera.
+[ citizen-server-impl] Couldn't find resource arp-commands.
+[ citizen-server-impl] Couldn't find resource arp-context.
+[ citizen-server-impl] Couldn't find resource arp-death.
+[ citizen-server-impl] Couldn't find resource arp-density.
+[ citizen-server-impl] Couldn't find resource arp-dispatch.
+[ citizen-server-impl] Couldn't find resource arp-doors.
+[ citizen-server-impl] Couldn't find resource arp-drugs.
+[ citizen-server-impl] Couldn't find resource arp-duty.
+[ citizen-server-impl] Started resource wk_wrs
+[ citizen-server-impl] Couldn't find resource arp-phone.
+[ citizen-server-impl] Couldn't find resource arp-evidence.
+[ citizen-server-impl] Couldn't find resource arp-eblips.
+[ citizen-server-impl] Couldn't find resource arp-errorlog.
+[ citizen-server-impl] Couldn't find resource arp-flags.
+[ citizen-server-impl] Couldn't find resource arp-fx.
+[ citizen-server-impl] Couldn't find resource arp-flames.
+[ citizen-server-impl] Couldn't find resource arp-hospital.
+[ citizen-server-impl] Couldn't find resource cool-hud.
+[ citizen-server-impl] Couldn't find resource cool-buffs.
+[    c-scripting-core] Creating script environments for carandplayerhud
+[    c-scripting-core] Failed to load script @arp-lib/shared/sh_cacheable.lua.
+[ citizen-server-impl] Started resource carandplayerhud
+[ citizen-server-impl] Couldn't find resource arp-notepad.
+[ citizen-server-impl] Couldn't find resource arp-inventory.
+[ citizen-server-impl] Couldn't find resource arp-shops.
+[ citizen-server-impl] Couldn't find resource arp-jobmanager.
+[ citizen-server-impl] Couldn't find resource arp-lockpicking.
+[    c-scripting-core] Creating script environments for arp-lib
+[      script:arp-lib] Error parsing script @arp-lib/server/sv_asyncExports.js in resource arp-lib: SyntaxError: Unexpected token 'export'
+[    c-scripting-core] Failed to load script server/sv_asyncExports.js.
+[ citizen-server-impl] Started resource arp-lib
+[ citizen-server-impl] Started resource arp-loading
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-mapdata.
+[ citizen-server-impl] Couldn't find resource arp-mdw.
+[ citizen-server-impl] Couldn't find resource rahe-racing.
+[ citizen-server-impl] Couldn't find resource arp-menu.
+[ citizen-server-impl] Couldn't find resource arp-vehicledespawn.
+[    c-scripting-core] Creating script environments for arp-objects
+[ citizen-server-impl] Started resource arp-objects
+[ citizen-server-impl] Couldn't find resource arp-paintball.
+[    c-scripting-core] Creating script environments for arp-npcs
+[ citizen-server-impl] Started resource arp-npcs
+[ citizen-server-impl] Started resource arp-oPlayerNumbers
+[    c-scripting-core] Creating script environments for arp-pdm
+[ citizen-server-impl] Started resource arp-pdm
+[ citizen-server-impl] Couldn't find resource arp-pedspawner.
+[ citizen-server-impl] Couldn't find resource arp-police.
+[ citizen-server-impl] Couldn't find resource arp-copcount.
+[ citizen-server-impl] Couldn't find resource arp-gov.
+[ citizen-server-impl] Couldn't find resource arp-polytarget.
+[ citizen-server-impl] Couldn't find resource arp-polyzone.
+[ citizen-server-impl] Couldn't find resource arp-interact.
+[ citizen-server-impl] Couldn't find resource arp-jail.
+[ citizen-server-impl] Couldn't find resource arp-propattach.
+[ citizen-server-impl] Couldn't find resource arp-scenes.
+[    c-scripting-core] Creating script environments for arp-scoreboard
+[ citizen-server-impl] Started resource arp-scoreboard
+[ citizen-server-impl] Couldn't find resource arp-targetinteract.
+[ citizen-server-impl] Couldn't find resource arp-taskbar.
+[ citizen-server-impl] Couldn't find resource arp-taskbarthreat.
+[ citizen-server-impl] Couldn't find resource arp-tasknotify.
+[ citizen-server-impl] Couldn't find resource arp-jobs.
+[ citizen-server-impl] Couldn't find resource arp-fishing.
+[ citizen-server-impl] Couldn't find resource arp-vehicles.
+[ citizen-server-impl] Couldn't find resource arp-voice.
+[ citizen-server-impl] Couldn't find resource arp-votesystem.
+[ citizen-server-impl] Couldn't find resource arp-weapons.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-xhair.
+[ citizen-server-impl] Couldn't find resource arp-ytypparser.
+[ citizen-server-impl] Couldn't find resource arp-heists.
+[ citizen-server-impl] Couldn't find resource arp-illegalactivities.
+[ citizen-server-impl] Couldn't find resource arp-business.
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-vault.
+[ citizen-server-impl] Couldn't find resource arp-pokemon.
+[ citizen-server-impl] Couldn't find resource arp-musicplayer.
+[ citizen-server-impl] Couldn't find resource arp-gangs.
+[ citizen-server-impl] Couldn't find resource arp-gameplay.
+[ citizen-server-impl] Started resource watermark
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-storageunits.
+[ citizen-server-impl] Couldn't find resource arp-pool.
+[ citizen-server-impl] Couldn't find resource arp-brand.
+[ citizen-server-impl] Couldn't find resource arp-casino.
+[    c-scripting-core] Creating script environments for assets_portals
+[ citizen-server-impl] Started resource assets_portals
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource assets_event_peds.
+[    c-scripting-core] Creating script environments for connectqueue
+[ script:connectqueue] QUEUE:  [connectqueue] Disabling hardcap 
+[ citizen-server-impl] Stopping resource hardcap
+[ citizen-server-impl] Started resource connectqueue
+[ citizen-server-impl] Started resource emotes
+[ citizen-server-impl] Couldn't find resource heli.
+[    c-scripting-core] Creating script environments for InteractSound
+[ citizen-server-impl] Started resource InteractSound
+[ citizen-server-impl] Started resource isPed
+[ citizen-server-impl] Couldn't find resource arp-vehiclesync.
+[ citizen-server-impl] Started resource mka-array
+[    c-scripting-core] Creating script environments for PolyZone
+[ citizen-server-impl] Started resource PolyZone
+[ citizen-server-impl] Started resource radio
+[ citizen-server-impl] Started resource raid_carmenu
+[    c-scripting-core] Creating script environments for raid_clothes
+[ citizen-server-impl] Started resource raid_clothes
+[ citizen-server-impl] Couldn't find resource weathersync.
+[ citizen-server-impl] Started resource storage
+[ citizen-server-impl] Started resource warmenu
+[ citizen-server-impl] Couldn't find resource milispawns.
+[ citizen-server-impl] Couldn't find resource arp-gunmetas.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_melee.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_old.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_thrown.
+[ citizen-server-impl] Couldn't find resource arp_clothes.
+[ citizen-server-impl] Couldn't find resource arp_clothes_new.
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource arp-vehicleconfig.
+[ citizen-server-impl] Couldn't find resource arp-vehicleaudio.
+[ citizen-server-impl] Couldn't find resource assets_vehicles.
+[ citizen-server-impl] Couldn't find resource temp_vh.
+[ citizen-server-impl] Couldn't find resource sultan2.
+[ citizen-server-impl] Couldn't find resource underglow.
+[ citizen-server-impl] Couldn't find resource 20ramambo.
+[ citizen-server-impl] Couldn't find resource ambucara.
+[ citizen-server-impl] Couldn't find resource gallerybison.
+[ citizen-server-impl] Couldn't find resource emshoe.
+[ citizen-server-impl] Couldn't find resource pigeonp.
+[ citizen-server-impl] Couldn't find resource assets_vehicles2.
+[ citizen-server-impl] Couldn't find resource arp-clothes.
+[ citizen-server-impl] Couldn't find resource asset_peds.
+[ citizen-server-impl] Couldn't find resource asset_peds_other.
+[ citizen-server-impl] Couldn't find resource ig_dt.
+[ citizen-server-impl] Couldn't find resource slump.
+[ citizen-server-impl] Couldn't find resource nad_rockstar.
+[ citizen-server-impl] Couldn't find resource menuv.
+[ citizen-server-impl] Couldn't find resource JD_logs.
+[ citizen-server-impl] Couldn't find resource arp-houserobberies.
+[ citizen-server-impl] Couldn't find resource arp-sandypd.
+[ citizen-server-impl] Couldn't find resource arp-weed.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-cocaine.
+[ citizen-server-impl] Couldn't find resource aspect-gangs.
+[ citizen-server-impl] Couldn't find resource aspect-hacking.
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-bulletclub.
+[ citizen-server-impl] Couldn't find resource ps-books.
+[ citizen-server-impl] Couldn't find resource arp-tunershop.
+[ citizen-server-impl] The file logo.png must be a 96x96 PNG image to be used as icon.
+[      script:oxmysql] Error: Ignoring invalid configuration option passed to Connection: . This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration option to a Connection
+[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
+[   script:mapmanager] Started map fivem-map-skater
+[ citizen-server-impl] Started resource fivem-map-skater
+[     script:arp-base] -------------------------------------------------------
+[     script:arp-base] UPDATE: 1.0
+[     script:arp-base] Collaborators: Potato
+[     script:arp-base] -------------------------------------------------------
+[ citizen-server-impl] server thread hitch warning: timer interval of 318 milliseconds
+[     script:arp-base] Warning: 'Commands' module is being overridden
+[      script:oxmysql] Error: Unable to establish a connection to the database!
+[      script:oxmysql] [Error: Unknown database 'npbase']
+[      script:oxmysql] There is an update available for oxmysql - please update to the latest release (current version: 2.3.4)
+[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.7.4
+[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://yourlocalnimrod-9epb5e.users.cfx.re/
+[ citizen-server-main] -> Quitting: SIGHUP received
+
+================================================================
+======== FXServer Starting - 9/11/2023, 5:40:27 PM              
+================================================================
+[    c-scripting-core] Creating script environments for _cfx_internal
+[ citizen-server-impl] Scanning resources.
+[ citizen-server-impl] Found 61 resources.
+[          svadhesive] Authenticating server license key...
+[          svadhesive] Server license key authentication succeeded. Welcome!
+[    c-scripting-core] Creating script environments for sessionmanager
+[ citizen-server-impl] Started resource sessionmanager
+[    c-scripting-core] Creating script environments for monitor
+[      script:monitor] [txAdminClient] Version 4.17.1 starting...
+[ citizen-server-impl] Started resource monitor
+[ citizen-server-impl] Couldn't find resource apx.
+[    c-scripting-core] Creating script environments for mapmanager
+[ citizen-server-impl] Started resource mapmanager
+[    c-scripting-core] Creating script environments for arp-chat
+[ citizen-server-impl] Started resource arp-chat
+[ citizen-server-impl] Started resource spawnmanager
+[   script:mapmanager] Started gametype Freeroam
+[ citizen-server-impl] Started resource basic-gamemode
+[ citizen-server-impl] Started resource fivem
+[    c-scripting-core] Creating script environments for hardcap
+[ citizen-server-impl] Started resource hardcap
+[    c-scripting-core] Creating script environments for rconlog
+[ citizen-server-impl] Started resource rconlog
+[    c-scripting-core] Creating script environments for nui_blocker
+[ citizen-server-impl] Started resource nui_blocker
+[    c-scripting-core] Creating script environments for baseevents
+[ citizen-server-impl] Started resource baseevents
+[    c-scripting-core] Creating script environments for yarn
+[38;5;73m[ citizen-server-impl] Started resource yarn
+[    c-scripting-core] Creating script environments for webpack
+[      script:webpack] Error loading script webpack_builder.js in resource webpack: Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack] stack:
+[      script:webpack] Error: Cannot find module 'worker-farm'
+[      script:webpack] Require stack:
+[      script:webpack] - D:/Fivem Shtuff/CustomFW/resources//[Core]/[fivem]/[system]/[builders]/webpack/dummy.js
+[      script:webpack]     at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+[      script:webpack]     at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+[      script:webpack]     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[      script:webpack]     at require (node:internal/modules/cjs/helpers:94:18)
+[      script:webpack]     at @webpack/webpack_builder.js:3:20
+[    c-scripting-core] Failed to load script webpack_builder.js.
+[ citizen-server-impl] Started resource webpack
+[ citizen-server-impl] Started resource screenshot-basic
+[    c-scripting-core] Creating script environments for oxmysql
+[ citizen-server-impl] Started resource oxmysql
+[    c-scripting-core] Creating script environments for arp-base
+[ citizen-server-impl] Started resource arp-base
+[ citizen-server-impl] Couldn't find resource arp-ui.
+[ citizen-server-impl] Couldn't find resource arp-interface.
+[ citizen-server-impl] Couldn't find resource arp-infinity.
+[    c-scripting-core] Creating script environments for arp-spawn
+[ citizen-server-impl] Started resource arp-spawn
+[ citizen-server-impl] Couldn't find resource spawnstation.
+[ citizen-server-impl] Couldn't find resource arp-config.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ottos.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mapdata.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-scenarios.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-catcafe.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-davispd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-esbltd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-harmony.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-haters.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hayes.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-hub.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-import.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark1.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mirrorpark2.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-mrpd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paleto247.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ponsonbys.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-suburban.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletoliquor.
+[ citizen-server-impl] [0mCouldn't find resource cfx-gabz-paletopd.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-parkranger.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pdprops.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pillbox.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pinkcage.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-pizzeria.
+[ citizen-server-impl] Couldn't find resource arp-prison.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-records.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-tuners.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-vu.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-ammunation.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-carmeet.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[ citizen-server-impl] Couldn't find resource assets_maps.
+[ citizen-server-impl] Could not make hard link for D:/Fivem Shtuff/CustomFW/resources//[Assets]/assets_animations/stream//clear@custom_anim.ycd <-> D:/Fivem Shtuff\CustomFW/cache/files/assets_animations/stream_cache/zdb1dc9bb4211bf1b32cd77c89f1af39c5f167883.
+[ citizen-server-impl] Started resource assets_animations
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource bzzz_vagos.
+[ citizen-server-impl] Couldn't find resource VagosHideout.
+[ citizen-server-impl] Couldn't find resource assets_maps2.
+[ citizen-server-impl] Couldn't find resource housingshells.
+[ citizen-server-impl] Couldn't find resource arp-showroomsmlo.
+[ citizen-server-impl] Couldn't find resource bobcat.
+[ citizen-server-impl] Couldn't find resource arp-townhall.
+[ citizen-server-impl] Couldn't find resource arp-huntingstore.
+[ citizen-server-impl] Couldn't find resource arp-misc.
+[ citizen-server-impl] Couldn't find resource arp-casinomisc.
+[ citizen-server-impl] Couldn't find resource cfx-gabz-paletobank.
+[ citizen-server-impl] Couldn't find resource arp-minigame.
+[ citizen-server-impl] Couldn't find resource brofx_mansion_10.
+[ citizen-server-impl] Couldn't find resource vagos.
+[ citizen-server-impl] Couldn't find resource arp-digitalden.
+[    c-scripting-core] Creating script environments for mka-lasers
+[ citizen-server-impl] Started resource mka-lasers
+[ citizen-server-impl] Couldn't find resource arp-admin.
+[ citizen-server-impl] Couldn't find resource arp-adminUI.
+[ citizen-server-impl] Couldn't find resource arp-selector.
+[ citizen-server-impl] Couldn't find resource arp-apartments.
+[ citizen-server-impl] Couldn't find resource arp-banking.
+[ citizen-server-impl] Started resource arp-keyboard
+[ citizen-server-impl] Couldn't find resource arp-bennys.
+[ citizen-server-impl] Couldn't find resource arp-hacking.
+[ citizen-server-impl] Couldn't find resource arp-banking-ui.
+[ citizen-server-impl] Started resource arp-binds
+[ citizen-server-impl] Couldn't find resource heli.
+[ citizen-server-impl] Couldn't find resource arp-bugreport.
+[ citizen-server-impl] Couldn't find resource arp-build.
+[ citizen-server-impl] Couldn't find resource arp-camera.
+[ citizen-server-impl] Couldn't find resource arp-commands.
+[ citizen-server-impl] Couldn't find resource arp-context.
+[ citizen-server-impl] Couldn't find resource arp-death.
+[ citizen-server-impl] Couldn't find resource arp-density.
+[ citizen-server-impl] Couldn't find resource arp-dispatch.
+[ citizen-server-impl] Couldn't find resource arp-doors.
+[ citizen-server-impl] Couldn't find resource arp-drugs.
+[ citizen-server-impl] Couldn't find resource arp-duty.
+[ citizen-server-impl] Started resource wk_wrs
+[ citizen-server-impl] Couldn't find resource arp-phone.
+[ citizen-server-impl] Couldn't find resource arp-evidence.
+[ citizen-server-impl] Couldn't find resource arp-eblips.
+[ citizen-server-impl] Couldn't find resource arp-errorlog.
+[ citizen-server-impl] Couldn't find resource arp-flags.
+[ citizen-server-impl] Couldn't find resource arp-fx.
+[ citizen-server-impl] Couldn't find resource arp-flames.
+[ citizen-server-impl] Couldn't find resource arp-hospital.
+[ citizen-server-impl] Couldn't find resource cool-hud.
+[ citizen-server-impl] Couldn't find resource cool-buffs.
+[    c-scripting-core] Creating script environments for carandplayerhud
+[    c-scripting-core] Failed to load script @arp-lib/shared/sh_cacheable.lua.
+[ citizen-server-impl] Started resource carandplayerhud
+[ citizen-server-impl] Couldn't find resource arp-notepad.
+[ citizen-server-impl] Couldn't find resource arp-inventory.
+[ citizen-server-impl] Couldn't find resource arp-shops.
+[ citizen-server-impl] Couldn't find resource arp-jobmanager.
+[ citizen-server-impl] Couldn't find resource arp-lockpicking.
+[    c-scripting-core] Creating script environments for arp-lib
+[      script:arp-lib] Error parsing script @arp-lib/server/sv_asyncExports.js in resource arp-lib: SyntaxError: Unexpected token 'export'
+[    c-scripting-core] Failed to load script server/sv_asyncExports.js.
+[ citizen-server-impl] Started resource arp-lib
+[ citizen-server-impl] Started resource arp-loading
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-mapdata.
+[ citizen-server-impl] Couldn't find resource arp-mdw.
+[ citizen-server-impl] Couldn't find resource rahe-racing.
+[ citizen-server-impl] Couldn't find resource arp-menu.
+[ citizen-server-impl] Couldn't find resource arp-vehicledespawn.
+[    c-scripting-core] Creating script environments for arp-objects
+[ citizen-server-impl] Started resource arp-objects
+[ citizen-server-impl] Couldn't find resource arp-paintball.
+[    c-scripting-core] Creating script environments for arp-npcs
+[ citizen-server-impl] Started resource arp-npcs
+[ citizen-server-impl] Started resource arp-oPlayerNumbers
+[    c-scripting-core] Creating script environments for arp-pdm
+[ citizen-server-impl] Started resource arp-pdm
+[ citizen-server-impl] Couldn't find resource arp-pedspawner.
+[ citizen-server-impl] Couldn't find resource arp-police.
+[ citizen-server-impl] Couldn't find resource arp-copcount.
+[ citizen-server-impl] Couldn't find resource arp-gov.
+[ citizen-server-impl] Couldn't find resource arp-polytarget.
+[ citizen-server-impl] Couldn't find resource arp-polyzone.
+[ citizen-server-impl] Couldn't find resource arp-interact.
+[ citizen-server-impl] Couldn't find resource arp-jail.
+[ citizen-server-impl] Couldn't find resource arp-propattach.
+[ citizen-server-impl] Couldn't find resource arp-scenes.
+[    c-scripting-core] Creating script environments for arp-scoreboard
+[ citizen-server-impl] Started resource arp-scoreboard
+[ citizen-server-impl] Couldn't find resource arp-targetinteract.
+[ citizen-server-impl] Couldn't find resource arp-taskbar.
+[ citizen-server-impl] Couldn't find resource arp-taskbarthreat.
+[ citizen-server-impl] Couldn't find resource arp-tasknotify.
+[ citizen-server-impl] Couldn't find resource arp-jobs.
+[ citizen-server-impl] Couldn't find resource arp-fishing.
+[ citizen-server-impl] Couldn't find resource arp-vehicles.
+[ citizen-server-impl] Couldn't find resource arp-voice.
+[ citizen-server-impl] Couldn't find resource arp-votesystem.
+[ citizen-server-impl] Couldn't find resource arp-weapons.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-xhair.
+[ citizen-server-impl] Couldn't find resource arp-ytypparser.
+[ citizen-server-impl] Couldn't find resource arp-heists.
+[ citizen-server-impl] Couldn't find resource arp-illegalactivities.
+[ citizen-server-impl] Couldn't find resource arp-business.
+[ citizen-server-impl] Couldn't find resource arp-thermite.
+[ citizen-server-impl] Couldn't find resource arp-vault.
+[ citizen-server-impl] Couldn't find resource arp-pokemon.
+[ citizen-server-impl] Couldn't find resource arp-musicplayer.
+[ citizen-server-impl] Couldn't find resource arp-gangs.
+[ citizen-server-impl] Couldn't find resource arp-gameplay.
+[ citizen-server-impl] Started resource watermark
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-storageunits.
+[ citizen-server-impl] Couldn't find resource arp-pool.
+[ citizen-server-impl] Couldn't find resource arp-brand.
+[ citizen-server-impl] Couldn't find resource arp-casino.
+[    c-scripting-core] [0mCreating script environments for assets_portals
+[ citizen-server-impl] Started resource assets_portals
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource assets_event_peds.
+[    c-scripting-core] Creating script environments for connectqueue
+[ script:connectqueue] QUEUE:  [connectqueue] Disabling hardcap 
+[ citizen-server-impl] Stopping resource hardcap
+[ citizen-server-impl] Started resource connectqueue
+[ citizen-server-impl] Started resource emotes
+[ citizen-server-impl] Couldn't find resource heli.
+[    c-scripting-core] Creating script environments for InteractSound
+[ citizen-server-impl] Started resource InteractSound
+[ citizen-server-impl] Started resource isPed
+[ citizen-server-impl] Couldn't find resource arp-vehiclesync.
+[ citizen-server-impl] Started resource mka-array
+[    c-scripting-core] Creating script environments for PolyZone
+[ citizen-server-impl] Started resource PolyZone
+[ citizen-server-impl] Started resource radio
+[ citizen-server-impl] Started resource raid_carmenu
+[    c-scripting-core] Creating script environments for raid_clothes
+[ citizen-server-impl] Started resource raid_clothes
+[ citizen-server-impl] Couldn't find resource weathersync.
+[ citizen-server-impl] Started resource storage
+[ citizen-server-impl] Started resource warmenu
+[ citizen-server-impl] Couldn't find resource milispawns.
+[ citizen-server-impl] Couldn't find resource arp-gunmetas.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_melee.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_old.
+[ citizen-server-impl] Couldn't find resource arp-custom_weapons_thrown.
+[ citizen-server-impl] Couldn't find resource arp_clothes.
+[ citizen-server-impl] Couldn't find resource arp_clothes_new.
+[ citizen-server-impl] Couldn't find resource assets_peds.
+[ citizen-server-impl] Couldn't find resource nspeedo.
+[ citizen-server-impl] Couldn't find resource arp-vehicleconfig.
+[ citizen-server-impl] Couldn't find resource arp-vehicleaudio.
+[ citizen-server-impl] Couldn't find resource assets_vehicles.
+[ citizen-server-impl] Couldn't find resource temp_vh.
+[ citizen-server-impl] Couldn't find resource sultan2.
+[ citizen-server-impl] Couldn't find resource underglow.
+[ citizen-server-impl] Couldn't find resource 20ramambo.
+[ citizen-server-impl] Couldn't find resource ambucara.
+[ citizen-server-impl] Couldn't find resource gallerybison.
+[ citizen-server-impl] Couldn't find resource emshoe.
+[ citizen-server-impl] Couldn't find resource pigeonp.
+[ citizen-server-impl] Couldn't find resource assets_vehicles2.
+[ citizen-server-impl] Couldn't find resource arp-clothes.
+[ citizen-server-impl] Couldn't find resource asset_peds.
+[ citizen-server-impl] Couldn't find resource asset_peds_other.
+[ citizen-server-impl] Couldn't find resource ig_dt.
+[ citizen-server-impl] Couldn't find resource slump.
+[ citizen-server-impl] Couldn't find resource nad_rockstar.
+[ citizen-server-impl] Couldn't find resource menuv.
+[ citizen-server-impl] Couldn't find resource JD_logs.
+[ citizen-server-impl] Couldn't find resource arp-houserobberies.
+[ citizen-server-impl] Couldn't find resource arp-sandypd.
+[ citizen-server-impl] [93mCouldn't find resource arp-weed.
+[ citizen-server-impl] Couldn't find resource arp-wheelfitment.
+[ citizen-server-impl] Couldn't find resource arp-cocaine.
+[ citizen-server-impl] Couldn't find resource aspect-gangs.
+[ citizen-server-impl] Couldn't find resource aspect-hacking.
+[ citizen-server-impl] Couldn't find resource npas-HUB-bclub.
+[ citizen-server-impl] Couldn't find resource arp-bulletclub.
+[ citizen-server-impl] Couldn't find resource ps-books.
+[ citizen-server-impl] Couldn't find resource arp-tunershop.
+[      script:oxmysql] Error: Ignoring invalid configuration option passed to Connection: . This is currently a warning, but in future versions of MySQL2, an error will be thrown if you pass an invalid configuration option to a Connection
+[      script:monitor] [txAdminClient] Threads and commands set up. All Ready.
+[   script:mapmanager] Started map fivem-map-skater
+[ citizen-server-impl] Started resource fivem-map-skater
+[     script:arp-base] -------------------------------------------------------
+[     script:arp-base] UPDATE: 1.0
+[     script:arp-base] Collaborators: Potato
+[     script:arp-base] -------------------------------------------------------
+[ citizen-server-impl] server thread hitch warning: timer interval of 257 milliseconds
+[     script:arp-base] Warning: 'Commands' module is being overridden
+[      script:oxmysql] Database server connection established!
+[38;5;73m[ citizen-server-impl]         fff                          
+[ citizen-server-impl]   cccc ff   xx  xx     rr rr    eee  
+[ citizen-server-impl] cc     ffff   xx       rrr  r ee   e 
+[ citizen-server-impl] cc     ff     xx   ... rr     eeeee  
+[ citizen-server-impl]  ccccc ff   xx  xx ... rr      eeeee 
+[ citizen-server-impl]                                      [0m
+[ citizen-server-impl] Authenticated with cfx.re Nucleus: https://yourlocalnimrod-9epb5e.users.cfx.re/
+[      script:oxmysql] There is an update available for oxmysql - please update to the latest release (current version: 2.3.4)
+[      script:oxmysql] https://github.com/overextended/oxmysql/releases/tag/v2.7.4
+[ citizen-server-impl] sync thread hitch warning: timer interval of 170 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 200 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 256 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 105 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 164 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 152 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 183 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 157 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
+[ script:connectqueue] QUEUE: Kevin[steam:110000143bd35ff] was placed 1/1 in queue
+[ script:connectqueue] QUEUE: Kevin[steam:110000143bd35ff] is loading into the server
+[ citizen-server-impl] server thread hitch warning: timer interval of 178 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 102 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 187 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 158 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 263 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 229 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 117 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 332 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 159 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 223 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 195 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 192 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 170 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 156 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 166 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 235 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 187 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 183 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 247 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 259 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 209 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 191 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 166 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 154 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 212 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 241 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 356 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 217 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 212 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 199 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 155 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 132 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 124 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 208 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 153 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 190 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 108 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 217 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 166 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 185 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 243 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 157 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 189 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 190 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 151 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 101 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 110 milliseconds
+[38;5;73m[ citizen-server-impl] sync thread hitch warning: timer interval of 170 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 273 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 153 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 207 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 171 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 221 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 158 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 220 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 194 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 151 milliseconds
+[      script:oxmysql] SCRIPT ERROR in promise (unhandled rejection): Error: arp-objects was unable to execute a query!
+[      script:oxmysql] Table 'runnit.__objects' doesn't exist
+[      script:oxmysql] SELECT * FROM __objects []
+[      script:oxmysql] > <unknown> (@oxmysql/dist/build.js:21766)
+[      script:oxmysql] > processTicksAndRejections (node:internal/process/task_queues:96)
+[      script:oxmysql] > async rawQuery (@oxmysql/dist/build.js:21735)
+[      script:oxmysql] 
+[      script:oxmysql] SCRIPT ERROR in promise (unhandled rejection): Error: arp-spawn was unable to execute a query!
+[      script:oxmysql] Table 'runnit.playerstattoos' doesn't exist
+[      script:oxmysql] SELECT cc.*, cf.*, ct.* FROM character_face cf LEFT JOIN character_current cc on cc.cid = cf.cid LEFT JOIN playerstattoos ct on ct.identifier = cf.cid WHERE cf.cid IN (1334,1336) []
+[      script:oxmysql] > <unknown> (@oxmysql/dist/build.js:21766)
+[      script:oxmysql] > processTicksAndRejections (node:internal/process/task_queues:96)
+[      script:oxmysql] > async rawQuery (@oxmysql/dist/build.js:21735)
+[      script:oxmysql] 
+[ script:raid_clothes] RPC [Timeout]	carandplayerhud	police:getMeta
+[      script:arp-pdm] RPC [Timeout]	carandplayerhud	police:getMeta
+[     script:arp-npcs] RPC [Timeout]	carandplayerhud	police:getMeta
+[      script:arp-lib] RPC [Timeout]	carandplayerhud	police:getMeta
+[ citizen-server-impl] server thread hitch warning: timer interval of 160 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 305 milliseconds
+[ citizen-server-impl] sync thread hitch warning: timer interval of 107 milliseconds
+[ citizen-server-impl] server thread hitch warning: timer interval of 236 milliseconds
+[38;5;73m[ citizen-server-impl] server thread hitch warning: timer interval of 222 milliseconds

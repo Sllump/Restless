@@ -340,7 +340,7 @@ end)
 RegisterNetEvent("ped:intrunk")
 AddEventHandler("ped:intrunk", function(trunksent)
   intrunk = trunksent
-  --exports['arp-flags']:SetPedFlag(PlayerPedId(), 'isInTrunk', intrunk)
+  --exports['erp-flags']:SetPedFlag(PlayerPedId(), 'isInTrunk', intrunk)
 end)
 
 
@@ -467,7 +467,7 @@ end)
 RegisterNetEvent('robbing')
 AddEventHandler("robbing",function(passedR)
     robbing = passedR
-    exports['arp-flags']:SetPedFlag(PlayerPedId(), 'isRobbing', intrunk)
+    exports['erp-flags']:SetPedFlag(PlayerPedId(), 'isRobbing', intrunk)
 end)
 
 RegisterNetEvent("SecondaryJobUpdate")
@@ -515,7 +515,7 @@ end)
 RegisterNetEvent('pd:deathcheck')
 AddEventHandler('pd:deathcheck', function()
 	dead = not dead
-  exports['arp-flags']:SetPedFlag(PlayerPedId(), 'isDead', dead)
+  exports['erp-flags']:SetPedFlag(PlayerPedId(), 'isDead', dead)
 end)
 
 -- local handcuffed = exports["isPed"]:isPed("handcuffed")
@@ -523,7 +523,7 @@ RegisterNetEvent('police:currentHandCuffedState')
 AddEventHandler('police:currentHandCuffedState', function(handCuffed,handCuffedWalking)
 	handcuffed = handCuffed
   handcuffedwalking = handCuffedWalking
-  exports['arp-flags']:SetPedFlag(PlayerPedId(), 'isCuffed', handCuffed or handCuffedWalking)
+  exports['erp-flags']:SetPedFlag(PlayerPedId(), 'isCuffed', handCuffed or handCuffedWalking)
 end)
 
 RegisterNetEvent('pagerStatus')
@@ -532,8 +532,8 @@ AddEventHandler('pagerStatus', function(PassedPagerStatus)
 end)
 
 --local myJob = exports["isPed"]:isPed("myJob")
-RegisterNetEvent("arp-jobmanager:playerBecameJob")
-AddEventHandler("arp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+RegisterNetEvent("erp-jobmanager:playerBecameJob")
+AddEventHandler("erp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"
@@ -557,13 +557,13 @@ AddEventHandler('isPed:UpdateCash', function(newCash)
   cash = newCash
 end)
 
-RegisterNetEvent('arp-base:addedMoney')
-AddEventHandler('arp-base:addedMoney', function(blah,amount)
+RegisterNetEvent('erp-base:addedMoney')
+AddEventHandler('erp-base:addedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 
-RegisterNetEvent('arp-base:removedMoney')
-AddEventHandler('arp-base:removedMoney', function(blah,amount)
+RegisterNetEvent('erp-base:removedMoney')
+AddEventHandler('erp-base:removedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 
@@ -1209,7 +1209,7 @@ maleclothes = {
 'a_m_y_hippy_01'
 }
 
-RegisterNetEvent('arp-phone:fix-dead')
-AddEventHandler('arp-phone:fix-dead', function()
+RegisterNetEvent('erp-phone:fix-dead')
+AddEventHandler('erp-phone:fix-dead', function()
   dead = false
 end)

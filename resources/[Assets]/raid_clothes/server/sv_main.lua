@@ -1,13 +1,13 @@
 RPC.register("getCurrentCashPlayer",function(pSource)
     local src = pSource
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local cash = user:getCash()
     return cash
 end)
 
 RPC.register("clothing:purchase",function(pSource,pPrice)
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(pSource)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(pSource)
     if user:getCash() >= pPrice.param then
         user:removeMoney(pPrice.param)
     else
@@ -19,7 +19,7 @@ end)
 
 RPC.register("clothing:purchasebank",function(pSource,pPrice)
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(pSource)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(pSource)
     local character = user:getCurrentCharacter()
     if user:getBank() >= pPrice.param then
         user:removeBank(pPrice.param)
@@ -56,7 +56,7 @@ RegisterServerEvent("raid_clothes:insert_character_current")
 AddEventHandler("raid_clothes:insert_character_current",function(data)
     if not data then return end
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
     if not characterId then return end
     checkExistenceClothes(characterId, function(exists)
@@ -88,7 +88,7 @@ AddEventHandler("raid_clothes:insert_character_face",function(data)
     if not data then return end
     local src = source
 
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -124,7 +124,7 @@ end)
 RegisterServerEvent("raid_clothes:get_character_face")
 AddEventHandler("raid_clothes:get_character_face",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -150,7 +150,7 @@ end)
 RegisterServerEvent("raid_clothes:get_character_current")
 AddEventHandler("raid_clothes:get_character_current",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -170,7 +170,7 @@ end)
 RegisterServerEvent("raid_clothes:retrieve_tats")
 AddEventHandler("raid_clothes:retrieve_tats", function(pSrc)
     local src = (not pSrc and source or pSrc)
-	local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+	local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.oxmysql:execute("SELECT * FROM character_tattoos WHERE cid = @identifier", {['identifier'] = char.id}, function(result)
         if(#result == 1) then
@@ -186,7 +186,7 @@ end)
 RegisterServerEvent("raid_clothes:set_tats")
 AddEventHandler("raid_clothes:set_tats", function(tattoosList)
 	local src = source
-	local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+	local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.oxmysql:execute("UPDATE character_tattoos SET tattoos = @tattoos WHERE cid = @identifier", {['tattoos'] = json.encode(tattoosList), ['identifier'] = char.id})
 end)
@@ -197,7 +197,7 @@ AddEventHandler("raid_clothes:get_outfit",function(slot)
     if not slot then return end
     local src = source
 
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -245,7 +245,7 @@ RegisterServerEvent("raid_clothes:set_outfit")
 AddEventHandler("raid_clothes:set_outfit",function(slot, name, data)
     if not slot then return end
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -297,7 +297,7 @@ RegisterServerEvent("raid_clothes:remove_outfit")
 AddEventHandler("raid_clothes:remove_outfit",function(slot)
 
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
 
@@ -310,7 +310,7 @@ end)
 RegisterServerEvent("raid_clothes:list_outfits")
 AddEventHandler("raid_clothes:list_outfits",function()
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
     local name = name
@@ -326,7 +326,7 @@ end)
 RegisterServerEvent("clothing:checkIfNew")
 AddEventHandler("clothing:checkIfNew", function()
     local src = source
-    local user = exports["arp-base"]:getModule("Player"):GetUser(src)
+    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local dateCreated = user:getCurrentCharacter()
 

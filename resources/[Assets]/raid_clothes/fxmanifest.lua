@@ -2,7 +2,7 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 --[[ dependencies {
-  "arp-lib"
+  "erp-lib"
 } ]]--
 
 ui_page 'client/html/index.html'
@@ -20,21 +20,21 @@ files {
 }
 
 client_scripts {
-  '@arp-lib/client/cl_interface.lua',
-  '@arp-errorlog/client/cl_errorlog.lua',
-  '@arp-lib/client/cl_rpc.lua',
-  '@arp-lib/client/cl_ui.lua',
+  '@erp-lib/client/cl_interface.lua',
+  '@erp-errorlog/client/cl_errorlog.lua',
+  '@erp-lib/client/cl_rpc.lua',
+  '@erp-lib/client/cl_ui.lua',
   'client/cl_tattooshop.lua',
   'client/cl_*.lua',
 }
 
 shared_script {
-  '@arp-lib/shared/sh_util.lua',
+  '@erp-lib/shared/sh_util.lua',
   'shared/sh_*.*',
 }
 
 server_scripts {
-  '@arp-lib/server/sv_rpc.lua',
+  '@erp-lib/server/sv_rpc.lua',
   'server/sv_*.lua',
 }
 

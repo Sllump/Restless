@@ -206,7 +206,7 @@ textarea::placeholder {
 .license {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
-  background-image: url("nui://arp-chat/html/vendor/image/CID.png");
+  background-image: url("nui://erp-chat/html/vendor/image/CID.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top-left;
@@ -239,11 +239,11 @@ textarea::placeholder {
 }
 
 .license__photo--M {
-  background-image: url("nui://arp-chat/html/vendor/image/M.png");
+  background-image: url("nui://erp-chat/html/vendor/image/M.png");
 }
 
 .license__photo--F {
-  background-image: url("nui://arp-chat/html/vendor/image/F.png");
+  background-image: url("nui://erp-chat/html/vendor/image/F.png");
 }
 
 .license__state {

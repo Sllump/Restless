@@ -15,7 +15,7 @@ end)
 HydraChair1 = false
 
 Citizen.CreateThread(function()
-    exports["arp-polyzone"]:AddBoxZone("chair_1", vector3(-717.54, 264.65, 84.1), 1, 1.4, {
+    exports["erp-polyzone"]:AddBoxZone("chair_1", vector3(-717.54, 264.65, 84.1), 1, 1.4, {
         name="chair_1",
         heading=285,
         minZ=82.1,
@@ -23,20 +23,20 @@ Citizen.CreateThread(function()
     })
 end)
 
-RegisterNetEvent('arp-polyzone:enter')
-AddEventHandler('arp-polyzone:enter', function(name)
+RegisterNetEvent('erp-polyzone:enter')
+AddEventHandler('erp-polyzone:enter', function(name)
     if name == "chair_1" then
         HydraChair1 = true     
-        exports['arp-interface']:showInteraction("[E] Sit Down")
+        exports['erp-interface']:showInteraction("[E] Sit Down")
         Chair1()
     end
 end)
 
-RegisterNetEvent('arp-polyzone:exit')
-AddEventHandler('arp-polyzone:exit', function(name)
+RegisterNetEvent('erp-polyzone:exit')
+AddEventHandler('erp-polyzone:exit', function(name)
     if name == "chair_1" then
         HydraChair1 = false
-        exports['arp-interface']:hideInteraction()
+        exports['erp-interface']:hideInteraction()
     end
 end)
 
@@ -46,7 +46,7 @@ function Chair1()
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
                 TriggerEvent('emotes:hydra_incorporation:chair1')
-                exports['arp-interface']:hideInteraction()
+                exports['erp-interface']:hideInteraction()
 			end
 		end
 	end)
@@ -64,7 +64,7 @@ end)
 HydraChair2 = false
 
 Citizen.CreateThread(function()
-    exports["arp-polyzone"]:AddBoxZone("chair_2", vector3(-718.07, 266.23, 84.1), 1, 1.4, {
+    exports["erp-polyzone"]:AddBoxZone("chair_2", vector3(-718.07, 266.23, 84.1), 1, 1.4, {
         name="chair_2",
         heading=285,
         minZ=81.5,
@@ -72,20 +72,20 @@ Citizen.CreateThread(function()
     })
 end)
 
-RegisterNetEvent('arp-polyzone:enter')
-AddEventHandler('arp-polyzone:enter', function(name)
+RegisterNetEvent('erp-polyzone:enter')
+AddEventHandler('erp-polyzone:enter', function(name)
     if name == "chair_2" then
         HydraChair2 = true     
-        exports['arp-interface']:showInteraction("[E] Sit Down")
+        exports['erp-interface']:showInteraction("[E] Sit Down")
         Chair2()
     end
 end)
 
-RegisterNetEvent('arp-polyzone:exit')
-AddEventHandler('arp-polyzone:exit', function(name)
+RegisterNetEvent('erp-polyzone:exit')
+AddEventHandler('erp-polyzone:exit', function(name)
     if name == "chair_2" then
         HydraChair2 = false
-        exports['arp-interface']:hideInteraction()
+        exports['erp-interface']:hideInteraction()
     end
 end)
 
@@ -95,7 +95,7 @@ function Chair2()
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
                 TriggerEvent('emotes:hydra_incorporation:chair2')
-                exports['arp-interface']:hideInteraction()
+                exports['erp-interface']:hideInteraction()
 			end
 		end
 	end)
@@ -113,7 +113,7 @@ end)
 HydraChair3 = false
 
 Citizen.CreateThread(function()
-    exports["arp-polyzone"]:AddBoxZone("chair_3", vector3(-720.47, 265.3, 84.13), 1, 1.4, {
+    exports["erp-polyzone"]:AddBoxZone("chair_3", vector3(-720.47, 265.3, 84.13), 1, 1.4, {
         name="chair_3",
         heading=295,
         minZ=81.53,
@@ -121,20 +121,20 @@ Citizen.CreateThread(function()
     })
 end)
 
-RegisterNetEvent('arp-polyzone:enter')
-AddEventHandler('arp-polyzone:enter', function(name)
+RegisterNetEvent('erp-polyzone:enter')
+AddEventHandler('erp-polyzone:enter', function(name)
     if name == "chair_3" then
         HydraChair3 = true     
-        exports['arp-interface']:showInteraction("[E] Sit Down")
+        exports['erp-interface']:showInteraction("[E] Sit Down")
         Chair3()
     end
 end)
 
-RegisterNetEvent('arp-polyzone:exit')
-AddEventHandler('arp-polyzone:exit', function(name)
+RegisterNetEvent('erp-polyzone:exit')
+AddEventHandler('erp-polyzone:exit', function(name)
     if name == "chair_3" then
         HydraChair3 = false
-        exports['arp-interface']:hideInteraction()
+        exports['erp-interface']:hideInteraction()
     end
 end)
 
@@ -144,7 +144,7 @@ function Chair3()
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
                 TriggerEvent('emotes:hydra_incorporation:chair3')
-                exports['arp-interface']:hideInteraction()
+                exports['erp-interface']:hideInteraction()
 			end
 		end
 	end)
@@ -162,7 +162,7 @@ end)
 HydraChair4 = false
 
 Citizen.CreateThread(function()
-    exports["arp-polyzone"]:AddBoxZone("chair_4", vector3(-719.74, 263.5, 84.13), 1.4, 1, {
+    exports["erp-polyzone"]:AddBoxZone("chair_4", vector3(-719.74, 263.5, 84.13), 1.4, 1, {
         name="chair_4",
         heading=25,
         minZ=81.53,
@@ -170,20 +170,20 @@ Citizen.CreateThread(function()
     })
 end)
 
-RegisterNetEvent('arp-polyzone:enter')
-AddEventHandler('arp-polyzone:enter', function(name)
+RegisterNetEvent('erp-polyzone:enter')
+AddEventHandler('erp-polyzone:enter', function(name)
     if name == "chair_4" then
         HydraChair4 = true     
-        exports['arp-interface']:showInteraction("[E] Sit Down")
+        exports['erp-interface']:showInteraction("[E] Sit Down")
         Chair4()
     end
 end)
 
-RegisterNetEvent('arp-polyzone:exit')
-AddEventHandler('arp-polyzone:exit', function(name)
+RegisterNetEvent('erp-polyzone:exit')
+AddEventHandler('erp-polyzone:exit', function(name)
     if name == "chair_4" then
         HydraChair4 = false
-        exports['arp-interface']:hideInteraction()
+        exports['erp-interface']:hideInteraction()
     end
 end)
 
@@ -193,7 +193,7 @@ function Chair4()
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
                 TriggerEvent('emotes:hydra_incorporation:chair4')
-                exports['arp-interface']:hideInteraction()
+                exports['erp-interface']:hideInteraction()
 			end
 		end
 	end)

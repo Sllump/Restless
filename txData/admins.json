@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Sllump",
+    "master": true,
+    "password_hash": "$2a$11$Ev8sWox041ANi/GnwSP6YOtbS8hLyQ3JnnRzW5VTuaFkiDy4nYw6u",
+    "providers": {
+      "citizenfx": {
+        "id": "Sllump",
+        "identifier": "fivem:416166",
+        "data": {
+          "sub": "a8a8fd369aa23a49063a26e375f5e5fe",
+          "nameid": "https://forum.cfx.re/internal/user/416166",
+          "name": "Sllump",
+          "picture": "https://forum.cfx.re/user_avatar/forum.cfx.re/sllump/256/2858405_2.png",
+          "profile": "https://forum.cfx.re/u/Sllump"
+        }
+      }
+    },
+    "permissions": []
+  }
+]

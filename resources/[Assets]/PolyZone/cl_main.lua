@@ -1,19 +1,19 @@
 local comboZones = {}
 
-RegisterNetEvent('arp-base:PolyZoneUpdate')
-AddEventHandler('arp-base:PolyZoneUpdate', function()
-    local combo = ComboZone:Create({}, {name = "arp-polyzone", debugPoly = false})
+RegisterNetEvent('erp-base:PolyZoneUpdate')
+AddEventHandler('erp-base:PolyZoneUpdate', function()
+    local combo = ComboZone:Create({}, {name = "erp-polyzone", debugPoly = false})
     combo:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
         if enteredZones then
             for i = 1, #enteredZones do
-                TriggerEvent('arp-polyzone:entered:'.. enteredZones[i].data.cComboZone, enteredZones[i].name, enteredZones[i].data)
-                -- print('arp-polyzone:ssadasdsadsda2')
+                TriggerEvent('erp-polyzone:entered:'.. enteredZones[i].data.cComboZone, enteredZones[i].name, enteredZones[i].data)
+                -- print('erp-polyzone:ssadasdsadsda2')
             end
         end
         if leftZones then
             for i = 1, #leftZones do
-                TriggerEvent('arp-polyzone:exited:'.. leftZones[i].data.cComboZone, leftZones[i].name)
-                -- print('arp-polyzone:stop2')
+                TriggerEvent('erp-polyzone:exited:'.. leftZones[i].data.cComboZone, leftZones[i].name)
+                -- print('erp-polyzone:stop2')
             end
         end
     end)
@@ -54,18 +54,18 @@ end)
 AddEventHandler("onResourceStart", function(resourceName)
     if resourceName ~= GetCurrentResourceName() then return end
 
-    local combo = ComboZone:Create({}, {name = "arp-polyzone", debugPoly = false})
+    local combo = ComboZone:Create({}, {name = "erp-polyzone", debugPoly = false})
     combo:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
         if enteredZones then
             for i = 1, #enteredZones do
-                TriggerEvent('arp-polyzone:entered:'.. enteredZones[i].data.cComboZone, enteredZones[i].name, enteredZones[i].data)
-                -- print('arp-polyzone:wedasdsadasdsadsadsa')
+                TriggerEvent('erp-polyzone:entered:'.. enteredZones[i].data.cComboZone, enteredZones[i].name, enteredZones[i].data)
+                -- print('erp-polyzone:wedasdsadasdsadsadsa')
             end
         end
         if leftZones then
             for i = 1, #leftZones do
-                TriggerEvent('arp-polyzone:exited:'.. leftZones[i].data.cComboZone, leftZones[i].name)
-                -- print('arp-polyzone:stop')
+                TriggerEvent('erp-polyzone:exited:'.. leftZones[i].data.cComboZone, leftZones[i].name)
+                -- print('erp-polyzone:stop')
             end
         end
 

@@ -876,7 +876,7 @@ function Save(save, close)
             
             TriggerServerEvent("raid_clothes:insert_character_face", data)
             TriggerServerEvent("raid_clothes:set_tats", currentTats)
-            TriggerEvent("arp-spawn:finishedClothing","Finished")
+            TriggerEvent("erp-spawn:finishedClothing","Finished")
         elseif not passedClothing then 
             passedClothing = true
             Wait(2000)
@@ -885,7 +885,7 @@ function Save(save, close)
         end
         
     else
-        TriggerEvent("arp-spawn:finishedClothing","Old")
+        TriggerEvent("erp-spawn:finishedClothing","Old")
         LoadPed(oldPed)
     end
 
@@ -897,7 +897,7 @@ function Save(save, close)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('arp-weapons:getAmmo')
+    TriggerEvent('erp-weapons:getAmmo')
     CustomCamera('torso',true)
     TriggerEvent("e-blips:updateAfterPedChange",exports["isPed"]:isPed("myjob"))
     startingMenu = false
@@ -999,7 +999,7 @@ end)
 
 RegisterNetEvent("raid_clothes:defaultReset")
 AddEventHandler("raid_clothes:defaultReset", function()
-    local LocalPlayer = exports["arp-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["erp-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     Citizen.Wait(1000)
     if gender ~= 0 then
@@ -1067,11 +1067,11 @@ AddEventHandler('raid_clothes:outfits', function(pAction, pId, pName)
     end
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:addOutfitPrompt", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:addOutfitPrompt", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = '' } })
     Wait(1) --wait to fix ui bug?
-    exports['arp-interface']:openApplication('textbox', {
-        callbackUrl = 'arp-ui:raid_clothes:addOutfit',
+    exports['erp-interface']:openApplication('textbox', {
+        callbackUrl = 'erp-ui:raid_clothes:addOutfit',
         key = 1,
         items = {
             {
@@ -1089,7 +1089,7 @@ RegisterInterfaceCallback("arp-ui:raid_clothes:addOutfitPrompt", function(data, 
     })
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:addOutfit", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:addOutfit", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = '' } })
     local outfitSlot = data.values.outfitSlot
     local outfitName = data.values.outfitName
@@ -1098,16 +1098,16 @@ RegisterInterfaceCallback("arp-ui:raid_clothes:addOutfit", function(data, cb)
     TriggerServerEvent("raid_clothes:set_outfit", outfitSlot, outfitName, GetCurrentPed())
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:changeOutfit", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:changeOutfit", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = 'done' } })
     TriggerEvent('hotel:outfit', { true, data.key }, 3)
-    exports["arp-ui"]:hideContextMenu()
+    exports["erp-ui"]:hideContextMenu()
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:deleteOutfit", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:deleteOutfit", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = 'done' } })
     TriggerEvent('hotel:outfit', { true, data.key }, 2)
-    exports["arp-ui"]:hideContextMenu()
+    exports["erp-ui"]:hideContextMenu()
 end)
 
 RegisterNetEvent('raid_clothes:ListOutfits')
@@ -1122,8 +1122,8 @@ AddEventHandler('raid_clothes:ListOutfits', function(skincheck)
             description = '',
             key = slot,
             children = {
-                { title = "Change Outfit", action = "arp-ui:raid_clothes:changeOutfit", key = slot},
-                { title = "Delete Outfit", action = "arp-ui:raid_clothes:deleteOutfit", key = slot},
+                { title = "Change Outfit", action = "erp-ui:raid_clothes:changeOutfit", key = slot},
+                { title = "Delete Outfit", action = "erp-ui:raid_clothes:deleteOutfit", key = slot},
             }
         }
     end
@@ -1140,10 +1140,10 @@ AddEventHandler('raid_clothes:ListOutfits', function(skincheck)
                 title = "Save Current Outfit",
                 description = '',
                 key = emptySlot,
-                action = "arp-ui:raid_clothes:addOutfitPrompt"
+                action = "erp-ui:raid_clothes:addOutfitPrompt"
             }
         end
-        exports['arp-interface']:showContextMenu(menuData)
+        exports['erp-interface']:showContextMenu(menuData)
     else
         TriggerEvent("DoLongHudText", "No saved outfits", 2)
     end
@@ -1157,7 +1157,7 @@ function SetCustomNuiFocus(hasKeyboard, hasMouse)
   SetNuiFocus(hasKeyboard, hasMouse)
   --SetNuiFocusKeepInput(HasNuiFocus)
 
-  -- TriggerEvent("arp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse)
+  -- TriggerEvent("erp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse)
 end
 
 
@@ -1202,7 +1202,7 @@ local function listenForKeypress(zoneName, zoneData, isFree)
                 OpenMenu(zoneName, priceWithTax.text, currentPrice)
                 TriggerEvent('attachedItems:block', true)
 
-                exports['arp-interface']:hideInteraction()
+                exports['erp-interface']:hideInteraction()
             end
             Wait(0)
         end
@@ -1230,20 +1230,20 @@ AddEventHandler('raid_clothes:openClothing', function(pDontShowBarber, pShouldCo
     passedClothing = pDontShowBarber or false
 end)
 
-AddEventHandler("arp-polyzone:enter", function(zone, data)
+AddEventHandler("erp-polyzone:enter", function(zone, data)
     local currentZone = MenuData[zone]
     if currentZone then
-        exports['arp-interface']:showInteraction(("[M] %s"):format(currentZone.text))
+        exports['erp-interface']:showInteraction(("[M] %s"):format(currentZone.text))
         listenForKeypress(zone, currentZone, ((data and data.isFree) and true or false))
         inStore = true
     end
 end)
 
-AddEventHandler("arp-polyzone:exit", function(zone)
+AddEventHandler("erp-polyzone:exit", function(zone)
     local currentZone = MenuData[zone]
     if currentZone then
         listening = false
-        exports['arp-interface']:hideInteraction()
+        exports['erp-interface']:hideInteraction()
         inStore = false
     end
 end)
@@ -1254,7 +1254,7 @@ local supportedModels = {
   [`mp_f_freemode_01`] = 4,
   [`mp_m_freemode_01`] = 2,
 }
-AddEventHandler("arp-inventory:itemUsed", function(item)
+AddEventHandler("erp-inventory:itemUsed", function(item)
     if item ~= "hairtie" then return end
     local hairValue = supportedModels[GetEntityModel(PlayerPedId())]
     if hairValue == nil then return end
@@ -1330,8 +1330,8 @@ AddEventHandler("raid_clothes:bought_customs", function(id)
     RPC.execute("raid_clothes:bought_customs",id)
 end)
 
-RegisterNetEvent("arp-context:closeglobal")
-AddEventHandler("arp-context:closeglobal", function()
+RegisterNetEvent("erp-context:closeglobal")
+AddEventHandler("erp-context:closeglobal", function()
     if inmenucustom then
         inmenucustom = false
         TriggerServerEvent("raid_clothes:get_character_current_for_customs")
@@ -1345,18 +1345,18 @@ AddEventHandler("raid_clothes:save_customs", function()
             title = "Put Outfit For Sale",
             description = "",
             key = true,
-            action = "arp-ui:raid_clothes:CustomaddOutfitPrompt"
+            action = "erp-ui:raid_clothes:CustomaddOutfitPrompt"
         },
     }
 
-    exports["arp-interface"]:showContextMenu(data)
+    exports["erp-interface"]:showContextMenu(data)
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:CustomaddOutfitPrompt", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:CustomaddOutfitPrompt", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = 'done' } })
     Wait(1) --wait to fix ui bug?
-    exports['arp-ui']:openApplication('textbox', {
-        callbackUrl = 'arp-ui:raid_clothes:addCustomOutfit',
+    exports['erp-ui']:openApplication('textbox', {
+        callbackUrl = 'erp-ui:raid_clothes:addCustomOutfit',
         key = data.key,
         items = {
             {
@@ -1374,14 +1374,14 @@ RegisterInterfaceCallback("arp-ui:raid_clothes:CustomaddOutfitPrompt", function(
     })
 end)
 
-RegisterInterfaceCallback("arp-ui:raid_clothes:addCustomOutfit", function(data, cb)
+RegisterInterfaceCallback("erp-ui:raid_clothes:addCustomOutfit", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = '' } })
-    exports['arp-ui']:closeApplication('textbox')
+    exports['erp-ui']:closeApplication('textbox')
     local Name = data[1].value
     local Price = data[2].value
     -- if outfitName == nil then outfitName = "" end
     SetNuiFocus(false, false)
-    exports["arp-ui"]:hideContextMenu()
+    exports["erp-ui"]:hideContextMenu()
     --TriggerServerEvent("raid_clothes:set_outfit", outfitSlot, outfitName, GetCurrentPed())
     TriggerEvent("raid_clothes:set_sale_outfit",Name,Price)
     SetNuiFocus(false, false)
@@ -1404,8 +1404,8 @@ end)
 
   -- chains start
 
-  RegisterNetEvent("arp-togglechain") -- hoodlums
-  AddEventHandler("arp-togglechain", function()
+  RegisterNetEvent("erp-togglechain") -- hoodlums
+  AddEventHandler("erp-togglechain", function()
     local playerPed = PlayerPedId()
     local allowedmodels = AllowedPeds[GetEntityModel(PlayerPedId())]
     if allowedmodels then
@@ -1423,8 +1423,8 @@ end)
   end
 end)
 
-RegisterNetEvent("arp-togglechain2") -- hoodlums
-AddEventHandler("arp-togglechain2", function()
+RegisterNetEvent("erp-togglechain2") -- hoodlums
+AddEventHandler("erp-togglechain2", function()
   local playerPed = PlayerPedId()
   local allowedmodels = AllowedPeds[GetEntityModel(PlayerPedId())]
   if allowedmodels then
@@ -1442,7 +1442,7 @@ AddEventHandler("arp-togglechain2", function()
 end
 end)
 
-RegisterNetEvent('arp-clothing:admin', function()
+RegisterNetEvent('erp-clothing:admin', function()
     OpenMenu("clothing_shop")
 end)
 
@@ -1618,7 +1618,7 @@ end, false)
 --// Hat Commands
 
 RegisterCommand("h1", function(source, args, rawCommand)
-    if exports['arp-inventory']:hasEnoughOfItem('hat', 1) then
+    if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
         TriggerEvent("facewear:adjust",6,false)
         TriggerEvent('inventory:removeItem', 'hat', 1)
     else
@@ -1627,7 +1627,7 @@ RegisterCommand("h1", function(source, args, rawCommand)
 end, false)
 
 RegisterCommand("h0", function(source, args, rawCommand)
-    if exports['arp-inventory']:hasEnoughOfItem('hat', 1) then
+    if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
         TriggerEvent("facewear:adjust",6,true)
     else
         TriggerEvent('player:receiveItem', "hat", 1)
@@ -1638,7 +1638,7 @@ end, false)
 --// Mask Commands
 
 RegisterCommand("m1", function(source, args, rawCommand)
-    if exports['arp-inventory']:hasEnoughOfItem('mask', 1) then
+    if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
         TriggerEvent("facewear:adjust",4,false)   
         TriggerEvent('inventory:removeItem', 'mask', 1)
     else
@@ -1647,7 +1647,7 @@ RegisterCommand("m1", function(source, args, rawCommand)
 end, false)
 
 RegisterCommand("m0", function(source, args, rawCommand)
-    if exports['arp-inventory']:hasEnoughOfItem('mask', 1) then
+    if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
         TriggerEvent("facewear:adjust",4,true)
     else
         TriggerEvent('player:receiveItem', "mask", 1)
@@ -1681,7 +1681,7 @@ local chainModels = {
 local storedpItem = false
 local storedpInfo = false
 
-AddEventHandler("arp-inventory:itemUsed", function(pItem, pInfo)
+AddEventHandler("erp-inventory:itemUsed", function(pItem, pInfo)
   storedpItem = pItem
   storedpInfo = pInfo
   local model = chainModels[pItem]

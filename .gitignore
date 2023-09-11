@@ -1,3 +1,4 @@
 cache
 Artifacts/*
 db/*
+txData/*

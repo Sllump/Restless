@@ -201,18 +201,18 @@ function Login.SelectedChar(data)
 	TriggerEvent("character:PlayerSelectedCharacter")
 	local events = exports["erp-base"]:getModule("Events")
 	events:Trigger("erp-base:selectCharacter", data.actionData, function(returnData)
-       
+
         if not returnData.loggedin or not returnData.chardata then sendMessage({err = {err = true, msg = "There was a problem logging in as that character, if the problem persists, contact an administrator <br/> Cid: " .. tostring(data.selectcharacter)}}) return end
 
         local LocalPlayer = exports["erp-base"]:getModule("LocalPlayer")
         LocalPlayer:setCurrentCharacter(returnData.chardata)
-       	
+
         if Login.CurrentClothing[data.actionData] == nil then
-        	Login.setClothingForChar()
+            Login.setClothingForChar()
         else
-	        SetPlayerInvincible(PlayerPedId(), true)
-	        TriggerEvent("erp-base:firstSpawn")
-	    end
+            SetPlayerInvincible(PlayerPedId(), true)
+            TriggerEvent("erp-base:firstSpawn")
+        end
     end)
 end
 
@@ -275,12 +275,6 @@ function spawnChar()
     Login.CurrentPed = nil
     Login.CreatedPeds = {}
 end
-
-
-RegisterNetEvent("character:finishedLoadingChar")
-AddEventHandler("character:finishedLoadingChar", function()
-    Login.characterLoaded()
-end)
 
 RegisterNetEvent("spawn:destroycams")
 AddEventHandler("spawn:destroycams", function()

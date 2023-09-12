@@ -51,8 +51,8 @@ function Void.DB.CreateNewCharacter(self, src, data2, hexid, ph, callback)
         end
     end
 
-    local q = [[INSERT INTO characters (owner, first_name, last_name, dob, gender, phone_number, story)
-                VALUES(@owner, @first_name, @last_name, @dob, @gender, @phone_number, @story);]]
+    local q = [[INSERT INTO characters (owner, first_name, last_name, dob, gender, phone_number)
+                VALUES(@owner, @first_name, @last_name, @dob, @gender, @phone_number);]]
     local v = {
         ["owner"] = hexid,
         ["first_name"] = data.firstname,
@@ -60,7 +60,6 @@ function Void.DB.CreateNewCharacter(self, src, data2, hexid, ph, callback)
         ["dob"] = data.dob,
         ["gender"] = data.gender,
         ["phone_number"] = ph,
-        ["story"] = data.story
     }
 
     exports.oxmysql:execute(q, v, function(rowsChanged)
@@ -155,7 +154,7 @@ function Void.DB.FetchCharacterData(self, user, callback)
 
     if not hexId or hexid == "" then callback(false, true) return end
 
-    local q = [[SELECT id, owner, first_name, last_name, date_created, cash, bank, phone_number, dob, story, gender, new, deleted, jail_time, stress_level FROM characters WHERE owner = @owner]]
+    local q = [[SELECT id, owner, first_name, last_name, date_created, cash, bank, phone_number, dob, gender, new, deleted FROM characters WHERE owner = @owner]]
     local v = {["owner"] = hexId}
 
     exports.oxmysql:execute(q,v, function(results)

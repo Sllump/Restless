@@ -223,50 +223,39 @@ function Login.NUICallback(data)
 	end
 
 	if data.action == "newCharacter" then
+		print('WERE CREATING A NEW CHARACTER ')
 		Login.actionsBlocked = true
 		local cData = data.actionData
 		local events = exports["erp-base"]:getModule("Events")
 		if cData.gender == "F" then cData.gender = 1 end
 		if cData.gender == "M" then cData.gender = 0 end
+
 		local chardata = {
 			firstname = cData.first_name,
 			lastname = cData.last_name,
 			dob = cData.dob,
-			gender = cData.gender,
-			story = "Default story - new char system"
+			gender = cData.gender
 		}
 		
         if not chardata then return end
 
-		events:Trigger("erp-base:createCharacter", chardata, function(created)
-			print('this is created ', json.encode(created, {indent = true}))
-            -- if created then
-			-- 	TriggerEvent("DoLongHudText","There was an error while creating your character, value returned nil or false. Contact an administrator if this persists.",2) 
-			-- 	Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
-            --     return
-            -- end
+		local CharacterExists = RPC.execute('erp-spawn:checkCharacterExistence', chardata)
 
-			-- if type(created) == "table" and created.err then
-			-- 	TriggerEvent("DoLongHudText",created.msg,2) 
-			-- 	Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
-            --     return
-			-- end
+		if CharacterExists == 'This name is already in use, pick another.' then
+			TriggerEvent('DoLongHudText', CharacterExists)
+		end
 
-			if not created then
-				Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
-				if chardata.gender == 0 then
-					chardata.gender = 'Male'
-				elseif chardata.gender == 1 then
-					chardata.gender = 'Female'
-				end
-
-				TriggerServerEvent('erp-base:charactercreate', chardata.firstname, chardata.lastname, chardata.dob, pGender)
-				
-				Login.getCharacters(true)
-			else
-				TriggerEvent("DoLongHudText",created.msg,2) 
+		if CharacterExists ~= 'This name is already in use, pick another.' then
+			Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
+			if chardata.gender == 0 then
+				chardata.gender = 'Male'
+			elseif chardata.gender == 1 then
+				chardata.gender = 'Female'
 			end
-		end)
+
+			RPC.execute('erp-spawn:createCharacter', chardata)
+			Login.getCharacters(true)
+		end
 	end
 	
 	if data.action == "refreshCharacters" then

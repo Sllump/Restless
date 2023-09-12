@@ -21,5 +21,9 @@ client_scripts {
 	'@PolyZone/CircleZone.lua',
 	'@PolyZone/ComboZone.lua',
 }
+
 shared_script "shared/sh_spawn.lua" 
-server_script "server/*"
+server_scripts {
+	"@erp-lib/server/sv_rpc.lua",
+	"server/*"
+}

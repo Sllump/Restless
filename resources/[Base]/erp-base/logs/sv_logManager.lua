@@ -44,19 +44,6 @@ Void.Logs.ExitLog = function(self, dReason, pName, pSteam, pDiscord)
     PerformHttpRequest(Void.Logs.Webhooks['Leave'], function(err, text, headers) end, 'POST', json.encode({username = 'Connection Logs', embeds = embed}), { ['Content-Type'] = 'application/json' })
 end
 
-Void.Logs.UserCreate = function(self, uId, pName, pSteam, pDiscord, firstname, lastname, dob, gender)
-    local embed = {
-        {
-            ['description'] = string.format("`User Profile Created.`\n\n`• User Id: %s`\n\n━━━━━━━━━━━━━━━━━━\n\n`• Steam: %s`\n\n`• Discord: %s`\n\n━━━━━━━━━━━━━━━━━━\n\n`• First Name: %s`\n\n`• Last Name: %s`\n\n`• Date of Birth: %s`\n\n`• Gender: %s`\n━━━━━━━━━━━━━━━━━━", uId, pSteam, pDiscord, firstname, lastname, dob, gender),
-            ['color'] = 2317994,
-            ['author'] = {
-                ['name'] = pName
-            }
-        }
-    }
-    PerformHttpRequest(Void.Logs.Webhooks['Character'], function(err, text, headers) end, 'POST', json.encode({username = 'User Logs', embeds = embed}), { ['Content-Type'] = 'application/json' })
-end
-
 Void.Logs.DeathLogs = function(self, uId, message)
     local embed = {
         {
@@ -209,20 +196,6 @@ Void.Logs.ChickenLog = function(self, uId, pName, pSteam, pDiscord, amount)
     }
     PerformHttpRequest(Void.Logs.Webhooks['Chicken'], function(err, text, headers) end, 'POST', json.encode({username = 'Chicken Logs', embeds = embed}), { ['Content-Type'] = 'application/json' })
 end
-
-RegisterServerEvent('erp-base:charactercreate')
-AddEventHandler('erp-base:charactercreate',function(firstname, lastname, dob, gender)
-    local pSteam = 'None'
-    local pDiscord = 'None'
-    local pName = GetPlayerName(source)
-    local pIdentifiers = GetPlayerIdentifiers(source)
-    for k, v in pairs(pIdentifiers) do
-        if string.find(v, 'steam') then pSteam = v end
-        if string.find(v, 'discord') then pDiscord = v end
-    end
-    Void.Logs:UserCreate(source, pName, pSteam, pDiscord, firstname, lastname, dob, gender)
-end)
-
 
 RegisterServerEvent('erp-base:bankwidthdraw')
 AddEventHandler('erp-base:bankwidthdraw',function(source, pulled, cashleft, bankleft)

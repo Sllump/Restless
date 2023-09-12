@@ -1,9 +1,5 @@
 function Login.playerLoaded() end
 
-function Login.characterLoaded()
-  return
-end
-
 function Login.characterSpawned()
   return
     if Spawn.isNew then

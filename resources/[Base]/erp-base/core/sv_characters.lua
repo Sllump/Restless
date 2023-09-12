@@ -84,90 +84,9 @@ function Void.Core.FetchPlayerCharacters(self, args, src, callback)
 		callback(data)
 	end)
 end
+
 Void.Events:AddEvent(Void.Core, Void.Core.FetchPlayerCharacters, "erp-base:fetchPlayerCharacters")
 
--- function Void.Core.CreatePhoneNumber(self, src, callback)
--- 	Citizen.CreateThread(function()
--- 		while true do 
--- 			Citizen.Wait(1000)
--- 			math.randomseed(GetGameTimer())
-
--- 			local areaCode = math.random(50) > 25 and 415 or 628
--- 			local phonenumber = {}
--- 			phoneNumber = math.random(0000000000, 9999999999)
--- 			local querying = true
--- 			local success = false
-		
-
--- 			if phoneNumber then 
--- 				phoneNumber = tostring(phoneNumber)
--- 				if phoneNumber then
--- 					Void.DB:PhoneNumberExists(src, phoneNumber, function(exists, err)
--- 						if err then callback(false, true) success = true querying = false return end
--- 						if not exists then callback(phoneNumber) success = true end
--- 						querying = false
--- 					end)
--- 				end
--- 			end
-
--- 			while querying do Citizen.Wait(0) end
-
--- 			if success then return end
--- 		end 
--- 	end)
--- end
-
-function Void.Core.CreateCharacter(self, charData, src, callback)
-	local user = Void.Player:GetUser(src)
-
-	if not user or not user:getVar("charactersLoaded") then return end
-	if user:getNumCharacters() >= 8 then return end
-
-	local fn = charData.firstname
-	local ln = charData.lastname
-
-
-	exports.oxmysql:execute("SELECT first_name FROM characters WHERE first_name = @fn AND last_name = @ln", 
-	{
-	["fn"] = fn, 
-	["ln"] = ln
-	}, function(result)
-		if result[1] ~= nil then 
-			created = {
-				err = true,
-				msg = "This name is already in use, pick another."
-			}
-			callback(created)
-			return
-		else
-			-- self:CreatePhoneNumber(src, function(phoneNumber, err)
-			-- 	if err then
-			-- 		created = {
-			-- 			err = true,
-			-- 			msg = "There was an error when trying to create a phone number"
-			-- 		}
-
-			-- 		callback(created)
-			-- 		return
-			-- 	end
-			-- 	local hexId = user:getVar("hexid")
-			-- 	charData.phonenumber = phoneNumber
-			-- 	print(json.encode(charData))
-			-- 	Void.DB:CreateNewCharacter(user, charData, hexId, phoneNumber, function(created, err)
-			-- 		if not created or err then
-			-- 			created = {
-			-- 				err = true,
-			-- 				msg = "There was a problem creating your character, contact an administrator if this persists"
-			-- 			}
-			-- 		end
-
-			-- 		callback(false)
-			-- 	end)
-			-- end)
-		end
-	end)
-end
-Void.Events:AddEvent(Void.Core, Void.Core.CreateCharacter, "erp-base:createCharacter")
 
 function Void.Core.DeleteCharacter(self, id, src, callback)
 	local user = Void.Player:GetUser(src)

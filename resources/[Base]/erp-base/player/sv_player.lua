@@ -291,17 +291,6 @@ AddEventHandler("retreive:licenes:server", function()
     end)
 end)
 
-
-RegisterServerEvent("retreive:jail")
-AddEventHandler("retreive:jail", function(cid)
-    local src = source
-    exports.oxmysql:execute("SELECT `jail_time` FROM `characters` WHERE id = ?", {cid}, function(result)
-        if result[1].jail_time >= 1 then
-            TriggerClientEvent("beginJail2", src, result[1].jail_time, true)
-        end
-    end)
-end)
-
 AddEventHandler("playerDropped", function(reason)
     local src = source
     if reason == nil then reason = "Unknown" end

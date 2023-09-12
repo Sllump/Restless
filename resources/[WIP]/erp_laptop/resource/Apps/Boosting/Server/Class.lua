@@ -52,7 +52,7 @@ local Classes = {
 
 RPC.register('erp_laptop:boosting:fetchClass', function(source)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     local Data = MySQL.query.await('SELECT * FROM characters WHERE id = @Id', {
         ['@Id'] = user['PlayerData']['id']

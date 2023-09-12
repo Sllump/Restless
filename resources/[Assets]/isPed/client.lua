@@ -497,7 +497,7 @@ end)
 
 RegisterNetEvent("phoneEnabled")
 AddEventHandler("phoneEnabled", function(phoneopensent)
- phoneopen = phoneopensent
+  phoneopen = phoneopensent
 end)
 
 RegisterNetEvent("updateNameClient")

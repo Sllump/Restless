@@ -1,6 +1,6 @@
 Logs = {
     CreateGangLog = function(src, Action)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Gang = Gangs.FetchGang(src)
 
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name', {

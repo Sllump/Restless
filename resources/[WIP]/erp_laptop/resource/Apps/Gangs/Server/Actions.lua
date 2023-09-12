@@ -1,6 +1,6 @@
 Actions = {
     AddMember = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name', {
             ['@Name'] = data.GangName
@@ -28,7 +28,7 @@ Actions = {
     end,
 
     KickMember = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name', {
             ['@Name'] = data.GangName
@@ -53,7 +53,7 @@ Actions = {
     end,
 
     SetRank = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         
         if user['PlayerData']['id'] == data.StateId then return end
         
@@ -121,7 +121,7 @@ end)
 
 RPC.register('erp_laptop:gangs:leaveGang', function(source, data)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     Actions.LeaveGang(src, user['PlayerData']['id'], data.Gang)
 end)

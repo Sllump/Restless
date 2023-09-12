@@ -124,12 +124,9 @@ end)
 RegisterServerEvent("raid_clothes:get_character_face")
 AddEventHandler("raid_clothes:get_character_face",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
-    local characterId = user:getCurrentCharacter().id
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
-    if not characterId then return end
-
-    exports.oxmysql:execute("SELECT cc.model, cf.hairColor, cf.headBlend, cf.headOverlay, cf.headStructure FROM character_face cf INNER JOIN character_current cc on cc.cid = cf.cid WHERE cf.cid = @cid", {['cid'] = characterId}, function(result)
+    exports.oxmysql:execute("SELECT cc.model, cf.hairColor, cf.headBlend, cf.headOverlay, cf.headStructure FROM character_face cf INNER JOIN character_current cc on cc.cid = cf.cid WHERE cf.cid = @cid", {['cid'] = user['PlayerData']['id']}, function(result)
         if (result ~= nil and result[1] ~= nil) then
             local temp_data = {
                 hairColor = json.decode(result[1].hairColor),
@@ -150,12 +147,9 @@ end)
 RegisterServerEvent("raid_clothes:get_character_current")
 AddEventHandler("raid_clothes:get_character_current",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["erp-base"]:getModule("Player"):GetUser(src)
-    local characterId = user:getCurrentCharacter().id
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
-    if not characterId then return end
-
-    exports.oxmysql:execute("SELECT * FROM character_current WHERE cid = @cid", {['cid'] = characterId}, function(result)
+    exports.oxmysql:execute("SELECT * FROM character_current WHERE cid = @cid", {['cid'] = user['PlayerData']['id']}, function(result)
         local temp_data = {
             model = result[1].model,
             drawables = json.decode(result[1].drawables),

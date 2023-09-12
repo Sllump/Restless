@@ -2,7 +2,7 @@ Contracts = {}
 
 RPC.register('erp_laptop:boosting:getContracts', function(source)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     local Data = MySQL.query.await('SELECT * FROM boosting_contracts WHERE stateId = @StateId', {
         ['@StateId'] = user['PlayerData']['id']
@@ -24,7 +24,7 @@ end)
 
 RPC.register('erp_laptop:boosting:createContract', function(source, data)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     exports.oxmysql:execute('INSERT INTO boosting_contracts (stateId, model, cost, class) VALUES (@StateId, @Model, @Cost, @Class)', {
         ['@StateId'] = user['PlayerData']['id'],

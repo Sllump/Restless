@@ -1,6 +1,6 @@
 Ranks = {
     CreateRank = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name',  {
             ['@Name'] = data.GangName
         })
@@ -22,7 +22,7 @@ Ranks = {
     end,
 
     DeleteRank = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name',  {
             ['@Name'] = data.GangName
         })
@@ -48,7 +48,7 @@ Ranks = {
     end,
 
     UpdateRank = function(src, data)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name',  {
             ['@Name'] = data.GangName
         })

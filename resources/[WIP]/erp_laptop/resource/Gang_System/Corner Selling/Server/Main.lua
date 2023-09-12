@@ -1,7 +1,7 @@
 
 Drugs = {
     CreateLog = function(src, Gang, Amount, Drug, Price)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         
         local Select = MySQL.query.await('SELECT * FROM gangs WHERE name = @Name', {
             ['@Name'] = Gang

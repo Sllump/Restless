@@ -1,6 +1,6 @@
 RPC.register('erp_laptop:settings:setBackground', function(source, data)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     local Select = MySQL.query.await('SELECT * FROM characters WHERE id = @Id', {
         ['@Id'] = user['PlayerData']['id']
@@ -18,7 +18,7 @@ end)
 
 RPC.register('erp_laptop:settings:setDarkMode', function(source, data)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
 
     local Select = MySQL.query.await('SELECT * FROM characters WHERE id = @Id', {
         ['@Id'] = user['PlayerData']['id']
@@ -36,7 +36,7 @@ end)
 
 RPC.register('erp_laptop:getSettings', function(source)
     local src = source
-    local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+    local user = exports['erp_base']:GetModule('GetPlayer')(src)
     local Query = MySQL.query.await('SELECT * FROM characters WHERE id = @STATE_ID', {
         ['@STATE_ID'] = user['PlayerData']['id']
     })

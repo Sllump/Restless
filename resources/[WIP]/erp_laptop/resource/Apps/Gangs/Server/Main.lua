@@ -1,6 +1,6 @@
 Gangs = {
     FetchGang = function(src)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Select = MySQL.query.await('SELECT * FROM gangs')
         data = nil
 
@@ -16,7 +16,7 @@ Gangs = {
     end,
 
     CheckInGang = function(src, stateId)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Select = MySQL.query.await('SELECT * FROM gangs')
         data = false
 
@@ -44,7 +44,7 @@ Gangs = {
     RankCheck = function(src)
         local Gang = Gangs.FetchGang(src)
 
-        local user = exports['erp_framework']:GetModule('GetPlayer')(src)
+        local user = exports['erp_base']:GetModule('GetPlayer')(src)
         local Rank = nil
 
         for k, v in pairs(json.decode(Gang.members)) do

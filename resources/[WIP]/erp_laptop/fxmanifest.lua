@@ -13,7 +13,7 @@ files {
 }
 
 client_scripts {
-    '@erp_framework/client/lib/cl_rpc.lua',
+    '@erp_base/client/lib/cl_rpc.lua',
 
     'resource/Apps/Boosting/Client/*.lua',
 
@@ -26,7 +26,7 @@ client_scripts {
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    '@erp_framework/server/lib/sv_rpc.lua',
+    '@erp_base/server/lib/sv_rpc.lua',
 
     'resource/Apps/Boosting/Server/*.lua',
 
@@ -39,7 +39,7 @@ server_scripts {
 }
 
 shared_scripts {
-    '@erp_framework/shared/lib/sh_util.lua',
+    '@erp_base/shared/lib/sh_util.lua',
 
     'resource/Apps/Boosting/Configurations/*.lua',
 

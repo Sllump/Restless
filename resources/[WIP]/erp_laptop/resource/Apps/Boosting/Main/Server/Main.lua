@@ -8,7 +8,7 @@ Boosting = {
     end,
 
     checkCrypto = function(source)
-        local user = exports['erp_framework']:GetModule('GetPlayer')(source)
+        local user = exports['erp_base']:GetModule('GetPlayer')(source)
 
         local Select = MySQL.query.await('SELECT * FROM characters WHERE id = @Id', {
             ['@Id'] = user['PlayerData']['id']
@@ -23,7 +23,7 @@ RPC.register('erp_laptop:boosting:fetchContractData', function(source, data)
 end)
 
 RPC.register('erp_laptop:boosting:payCrypto', function(source, CryptoAmount)
-    local user = exports['erp_framework']:GetModule('GetPlayer')(source)
+    local user = exports['erp_base']:GetModule('GetPlayer')(source)
     local Crypto = Boosting.checkCrypto(source)
 
     if Crypto >= tonumber(CryptoAmount) then

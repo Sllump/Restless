@@ -214,7 +214,7 @@ AddEventHandler('erp_charselect:initiateCharSelect', function()
 end)
 
 AddEventHandler('onResourceStart', function(resource)
-    if GetCurrentResourceName() == "erp_framework" then
+    if GetCurrentResourceName() == "erp_base" then
         for k, v in ipairs(Sprays.Active) do
             if DoesEntityExist(v.EntityId) then
                 DeleteEntity(v.EntityId)

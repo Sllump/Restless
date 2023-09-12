@@ -442,11 +442,11 @@ Citizen.CreateThread( function()
     end
 end )
 
-RegisterCommand('radar', function()
-    if ( GetVehicleClass(GetVehiclePedIsIn(PlayerPedId(false))) == 18 ) then
-        TriggerEvent( 'wk:radarRC' )
-    end
-end)
+-- RegisterCommand('radar', function()
+--     if ( GetVehicleClass(GetVehiclePedIsIn(PlayerPedId(false))) == 18 ) then
+--         TriggerEvent( 'wk:radarRC' )
+--     end
+-- end)
 
 Citizen.CreateThread( function()
     while true do 

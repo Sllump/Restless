@@ -102,18 +102,18 @@ AddEventHandler('money:requestDisplay', function()
     end
 end)
 
-RegisterCommand('earn', function(source, args)
-    local type = args[1]
-    local amount = tonumber(args[2])
+-- RegisterCommand('earn', function(source, args)
+--     local type = args[1]
+--     local amount = tonumber(args[2])
 
-    exports['money']:addMoney(source, type, amount)
-end, true)
+--     exports['money']:addMoney(source, type, amount)
+-- end, true)
 
-RegisterCommand('spend', function(source, args)
-    local type = args[1]
-    local amount = tonumber(args[2])
+-- RegisterCommand('spend', function(source, args)
+--     local type = args[1]
+--     local amount = tonumber(args[2])
 
-    if not exports['money']:removeMoney(source, type, amount) then
-        print('you are broke??')
-    end
-end, true)
+--     if not exports['money']:removeMoney(source, type, amount) then
+--         print('you are broke??')
+--     end
+-- end, true)

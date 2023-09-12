@@ -453,15 +453,15 @@ Citizen.CreateThread( function()
     end
 end)
 
-RegisterCommand('me', function(source, args)
-    local Coords = GetEntityCoords(PlayerPedId())
-    local text = '' -- edit here if you want to change the language : EN: the person / FR: la personne
-    for i = 1,#args do
-        text = text .. ' ' .. args[i]
-    end
-    text = text .. ''
-    TriggerServerEvent('3dme:shareDisplay', text, Coords)
-end)
+-- RegisterCommand('me', function(source, args)
+--     local Coords = GetEntityCoords(PlayerPedId())
+--     local text = '' -- edit here if you want to change the language : EN: the person / FR: la personne
+--     for i = 1,#args do
+--         text = text .. ' ' .. args[i]
+--     end
+--     text = text .. ''
+--     TriggerServerEvent('3dme:shareDisplay', text, Coords)
+-- end)
 
 RegisterNetEvent('Do3DText')
 AddEventHandler("Do3DText", function(text, source, Coords)

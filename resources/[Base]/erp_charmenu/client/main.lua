@@ -353,9 +353,9 @@ RegisterNetEvent('erp_charmenu:server:CloseNUI', function()
     --exports['erp_spawn']:SpawnLocation(Config.ApartCoords.x, Config.ApartCoords.y, Config.ApartCoords.z)
 end)
 
-RegisterCommand('OpenCharMenu', function(source, args)
-    OpenCharacterMenu(true)
-end)
+-- RegisterCommand('OpenCharMenu', function(source, args)
+--     OpenCharacterMenu(true)
+-- end)
 
 gameplayFunction = false
 

@@ -1338,31 +1338,31 @@ AddEventHandler('pdmvehshop:spawnVehicle', function(v)
 	end
 end)
 
-RegisterCommand('commission', function(source, args, raw)
-	if exports["erp-business"]:IsEmployedAt("pdm") then
-		local amount = args[1]
-		if tonumber(amount) > 0 and tonumber(amount) <= 60 then
-			TriggerEvent('erp-pdm:PDMCommission', amount)
-		else
-			TriggerEvent('DoLongHudText', 'Invalid amount "/commision [amount]', 2)
-		end
-	else
-		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
-	end
-end)
+-- RegisterCommand('commission', function(source, args, raw)
+-- 	if exports["erp-business"]:IsEmployedAt("pdm") then
+-- 		local amount = args[1]
+-- 		if tonumber(amount) > 0 and tonumber(amount) <= 60 then
+-- 			TriggerEvent('erp-pdm:PDMCommission', amount)
+-- 		else
+-- 			TriggerEvent('DoLongHudText', 'Invalid amount "/commision [amount]', 2)
+-- 		end
+-- 	else
+-- 		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
+-- 	end
+-- end)
 
-RegisterCommand('testdrive', function(source, args, raw)
-	if exports["erp-business"]:IsEmployedAt("pdm") then
-		TriggerEvent('erp-pdm:testdrive')
-	else
-		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
-	end
-end)
+-- RegisterCommand('testdrive', function(source, args, raw)
+-- 	if exports["erp-business"]:IsEmployedAt("pdm") then
+-- 		TriggerEvent('erp-pdm:testdrive')
+-- 	else
+-- 		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
+-- 	end
+-- end)
 
-RegisterCommand('enableBuy', function(source, args, raw)
-	if exports["erp-business"]:IsEmployedAt("pdm") then
-		TriggerEvent('erp-pdm:EnableBuy')
-	else
-		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
-	end
-end)
+-- RegisterCommand('enableBuy', function(source, args, raw)
+-- 	if exports["erp-business"]:IsEmployedAt("pdm") then
+-- 		TriggerEvent('erp-pdm:EnableBuy')
+-- 	else
+-- 		TriggerEvent('DoLongHudText', 'You dont have permissions for this!', 2)
+-- 	end
+-- end)

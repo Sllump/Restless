@@ -161,33 +161,33 @@ for _, player in ipairs(GetPlayers()) do
 end
 
 -- also a quick command to get the current state
-RegisterCommand('playerData', function(source, args)
-    if not args[1] then
-        print('Usage:')
-        print('\tplayerData getId <dbId>: gets identifiers for ID')
-        print('\tplayerData getIdentifier <identifier>: gets ID for identifier')
+-- RegisterCommand('playerData', function(source, args)
+--     if not args[1] then
+--         print('Usage:')
+--         print('\tplayerData getId <dbId>: gets identifiers for ID')
+--         print('\tplayerData getIdentifier <identifier>: gets ID for identifier')
 
-        return
-    end
+--         return
+--     end
 
-    if args[1] == 'getId' then
-        local prefix = ('player:%s:identifier:'):format(args[2])
-        local handle = StartFindKvp(prefix)
-        local key
+--     if args[1] == 'getId' then
+--         local prefix = ('player:%s:identifier:'):format(args[2])
+--         local handle = StartFindKvp(prefix)
+--         local key
 
-        repeat
-            key = FindKvp(handle)
+--         repeat
+--             key = FindKvp(handle)
 
-            if key then
-                print('result:', key:sub(#prefix + 1))
-            end
-        until not key
+--             if key then
+--                 print('result:', key:sub(#prefix + 1))
+--             end
+--         until not key
 
-        EndFindKvp(handle)
-    elseif args[1] == 'getIdentifier' then
-        print('result:', getPlayerIdFromIdentifier(args[2]))
-    end
-end, true)
+--         EndFindKvp(handle)
+--     elseif args[1] == 'getIdentifier' then
+--         print('result:', getPlayerIdFromIdentifier(args[2]))
+--     end
+-- end, true)
 
 -- COMPATIBILITY for server versions that don't export provide
 local function getExportEventName(resource, name)

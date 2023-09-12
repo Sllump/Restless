@@ -7830,13 +7830,13 @@ function EndAnim(dict, anim)
                  0, 0)
 end
 
-RegisterCommand('e', function(source, args, raw) 
-    TriggerEvent('animation:PlayAnimation', args[1]) 
-end)
+-- RegisterCommand('e', function(source, args, raw) 
+--     TriggerEvent('animation:PlayAnimation', args[1]) 
+-- end)
 
-RegisterCommand('em', function()
-    TriggerEvent('emotes:OpenMenu')
-end)
+-- RegisterCommand('em', function()
+--     TriggerEvent('emotes:OpenMenu')
+-- end)
 
 AddEventHandler("animation:PlayAnimation", function(anim)
     if imdead == 0 and not stuckincar and not IsPedInAnyVehicle(PlayerPedId(), true) then
@@ -8035,189 +8035,189 @@ AddEventHandler("expressions:clear",
                 
                 
                 
-                RegisterCommand("hump",function(source, args)
+                -- RegisterCommand("hump",function(source, args)
                 
-                    local ad = "creatures@rottweiler@amb@"
-                    local anim = "hump_loop_chop" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@amb@"
+                --     local anim = "hump_loop_chop" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                            Wait(900)
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --             Wait(900)
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
                 
-                RegisterCommand("sit",function(source, args)
+                -- RegisterCommand("sit",function(source, args)
                 
-                    local ad = "creatures@retriever@amb@world_dog_sitting@idle_a"
-                    local anim = "idle_b" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@retriever@amb@world_dog_sitting@idle_a"
+                --     local anim = "idle_b" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
                 
                 
-                RegisterCommand("bark",function(source, args)
+                -- RegisterCommand("bark",function(source, args)
                 
-                    local ad = "creatures@retriever@amb@world_dog_barking@idle_a"
-                    local anim = "idle_a" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@retriever@amb@world_dog_barking@idle_a"
+                --     local anim = "idle_a" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
-                RegisterCommand("shit",function(source, args)
+                -- RegisterCommand("shit",function(source, args)
                 
-                    local ad = "creatures@rottweiler@move"
-                    local anim = "dump_loop" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@move"
+                --     local anim = "dump_loop" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
                 
-                RegisterCommand("sleep",function(source, args)
+                -- RegisterCommand("sleep",function(source, args)
                 
-                    local ad = "creatures@rottweiler@amb@sleep_in_kennel@"
-                    local anim = "sleep_in_kennel" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@amb@sleep_in_kennel@"
+                --     local anim = "sleep_in_kennel" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
-                RegisterCommand("pissright",function(source, args)
+                -- RegisterCommand("pissright",function(source, args)
                 
-                    local ad = "creatures@rottweiler@move"
-                    local anim = "pee_right_idle" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@move"
+                --     local anim = "pee_right_idle" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
-                RegisterCommand("pissleft",function(source, args)
+                -- RegisterCommand("pissleft",function(source, args)
                 
-                    local ad = "creatures@rottweiler@move"
-                    local anim = "pee_left_idle" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@move"
+                --     local anim = "pee_left_idle" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
-                RegisterCommand("carsit",function(source, args)
+                -- RegisterCommand("carsit",function(source, args)
                 
-                    local ad = "creatures@rottweiler@incar@"
-                    local anim = "sit" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@incar@"
+                --     local anim = "sit" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
-                RegisterCommand("playdead",function(source, args)
+                -- RegisterCommand("playdead",function(source, args)
                 
-                    local ad = "creatures@rottweiler@move"
-                    local anim = "dead_right" 
-                    local player = PlayerPedId()
+                --     local ad = "creatures@rottweiler@move"
+                --     local anim = "dead_right" 
+                --     local player = PlayerPedId()
                     
                 
-                    if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
-                        loadAnimDict( ad )
-                        if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
-                            TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --     if ( DoesEntityExist( player ) and not IsEntityDead( player )) then
+                --         loadAnimDict( ad )
+                --         if ( IsEntityPlayingAnim( player, ad, anim, 3 ) ) then 
+                --             TaskPlayAnim( player, ad, "exit", 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
                             
-                            ClearPedTask(player)
-                        else
-                            TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
-                        end       
-                    end
+                --             ClearPedTask(player)
+                --         else
+                --             TaskPlayAnim( player, ad, anim, 3.0, 1.0, -1, 01, 0, 0, 0, 0 )
+                --         end       
+                --     end
                 
-                end, false)
+                -- end, false)
                 
                 
                 

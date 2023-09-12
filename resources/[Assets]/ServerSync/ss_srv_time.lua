@@ -56,32 +56,32 @@ Citizen.CreateThread( function()
 	end
 end)
 
-RegisterCommand('time', function(source,args,rawCommand)
+-- RegisterCommand('time', function(source,args,rawCommand)
     
-    if source == 0 then
-        if tonumber(args[1]) ~= nil and tonumber(args[2]) ~= nil then
-            ProcessTimeCommand(args[1],args[2])
-            h = math.floor( secondOfDay / 3600 )
-	        m = math.floor( (secondOfDay - (h * 3600)) / 60 )
-            TraceMsg("CONSOLE has changed time to " ..string.format("%02d", h)..":"..string.format("%02d",m))
-        else
-            TraceMsg("Invalid syntax, correct syntax is: time <hour> <minute>.",true)
-        end
-    else
-        if IsPlayerAceAllowed(source, "changeTime") then
-            if tonumber(args[1]) ~= nil and tonumber(args[2]) ~= nil then
-                ProcessTimeCommand(args[1],args[2])
-                h = math.floor( secondOfDay / 3600 )
-	            m = math.floor( (secondOfDay - (h * 3600)) / 60 )
-                TraceMsg(GetPlayerName(source).." has changed time to " ..string.format("%02d", h)..":"..string.format("%02d",m))
-            else
-                TraceMsg("Invalid syntax, correct syntax is: time <hour> <minute>.",true)
-            end
-        else
-            TraceMsg('Access for command /time denied for player: '.. GetPlayerName(source),true)
-		end
-    end
-end, true)
+--     if source == 0 then
+--         if tonumber(args[1]) ~= nil and tonumber(args[2]) ~= nil then
+--             ProcessTimeCommand(args[1],args[2])
+--             h = math.floor( secondOfDay / 3600 )
+-- 	        m = math.floor( (secondOfDay - (h * 3600)) / 60 )
+--             TraceMsg("CONSOLE has changed time to " ..string.format("%02d", h)..":"..string.format("%02d",m))
+--         else
+--             TraceMsg("Invalid syntax, correct syntax is: time <hour> <minute>.",true)
+--         end
+--     else
+--         if IsPlayerAceAllowed(source, "changeTime") then
+--             if tonumber(args[1]) ~= nil and tonumber(args[2]) ~= nil then
+--                 ProcessTimeCommand(args[1],args[2])
+--                 h = math.floor( secondOfDay / 3600 )
+-- 	            m = math.floor( (secondOfDay - (h * 3600)) / 60 )
+--                 TraceMsg(GetPlayerName(source).." has changed time to " ..string.format("%02d", h)..":"..string.format("%02d",m))
+--             else
+--                 TraceMsg("Invalid syntax, correct syntax is: time <hour> <minute>.",true)
+--             end
+--         else
+--             TraceMsg('Access for command /time denied for player: '.. GetPlayerName(source),true)
+-- 		end
+--     end
+-- end, true)
 
 RegisterCommand('freezetime', function(source,args,rawCommand)
     h = math.floor( secondOfDay / 3600 )

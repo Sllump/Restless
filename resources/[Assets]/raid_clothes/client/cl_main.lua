@@ -1603,100 +1603,100 @@ end)
 
 --// Vest Command
 
-RegisterCommand("v0", function(source, args, rawCommand)
-    if GetPedDrawableVariation(PlayerPedId(), 9) ~= 0 then
-        TriggerEvent("facewear:adjust",7,true)
-    end
-end, false)
+-- RegisterCommand("v0", function(source, args, rawCommand)
+--     if GetPedDrawableVariation(PlayerPedId(), 9) ~= 0 then
+--         TriggerEvent("facewear:adjust",7,true)
+--     end
+-- end, false)
 
-RegisterCommand("v1", function(source, args, rawCommand)
-if GetPedDrawableVariation(PlayerPedId(), 9) == 0 or GetPedDrawableVariation(PlayerPedId(), 9) == -1 then
-    TriggerEvent("facewear:adjust",7,false)
-end
-end, false)
+-- RegisterCommand("v1", function(source, args, rawCommand)
+--     if GetPedDrawableVariation(PlayerPedId(), 9) == 0 or GetPedDrawableVariation(PlayerPedId(), 9) == -1 then
+--         TriggerEvent("facewear:adjust",7,false)
+--     end
+-- end, false)
 
---// Hat Commands
+-- --// Hat Commands
 
-RegisterCommand("h1", function(source, args, rawCommand)
-    if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
-        TriggerEvent("facewear:adjust",6,false)
-        TriggerEvent('inventory:removeItem', 'hat', 1)
-    else
-        TriggerEvent('DoLongHudText', 'You need a hat, get one from the clothing store', 2)
-    end
-end, false)
+-- RegisterCommand("h1", function(source, args, rawCommand)
+--     if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
+--         TriggerEvent("facewear:adjust",6,false)
+--         TriggerEvent('inventory:removeItem', 'hat', 1)
+--     else
+--         TriggerEvent('DoLongHudText', 'You need a hat, get one from the clothing store', 2)
+--     end
+-- end, false)
 
-RegisterCommand("h0", function(source, args, rawCommand)
-    if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
-        TriggerEvent("facewear:adjust",6,true)
-    else
-        TriggerEvent('player:receiveItem', "hat", 1)
-        TriggerEvent("facewear:adjust",6,true)
-    end
-end, false)
+-- RegisterCommand("h0", function(source, args, rawCommand)
+--     if exports['erp-inventory']:hasEnoughOfItem('hat', 1) then
+--         TriggerEvent("facewear:adjust",6,true)
+--     else
+--         TriggerEvent('player:receiveItem', "hat", 1)
+--         TriggerEvent("facewear:adjust",6,true)
+--     end
+-- end, false)
 
---// Mask Commands
+-- --// Mask Commands
 
-RegisterCommand("m1", function(source, args, rawCommand)
-    if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
-        TriggerEvent("facewear:adjust",4,false)   
-        TriggerEvent('inventory:removeItem', 'mask', 1)
-    else
-        TriggerEvent('DoLongHudText', 'You need a mask, buy one at the clothing store', 2)
-    end
-end, false)
+-- RegisterCommand("m1", function(source, args, rawCommand)
+--     if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
+--         TriggerEvent("facewear:adjust",4,false)   
+--         TriggerEvent('inventory:removeItem', 'mask', 1)
+--     else
+--         TriggerEvent('DoLongHudText', 'You need a mask, buy one at the clothing store', 2)
+--     end
+-- end, false)
 
-RegisterCommand("m0", function(source, args, rawCommand)
-    if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
-        TriggerEvent("facewear:adjust",4,true)
-    else
-        TriggerEvent('player:receiveItem', "mask", 1)
-        TriggerEvent("facewear:adjust",4,true)
-    end
-end, false)
+-- RegisterCommand("m0", function(source, args, rawCommand)
+--     if exports['erp-inventory']:hasEnoughOfItem('mask', 1) then
+--         TriggerEvent("facewear:adjust",4,true)
+--     else
+--         TriggerEvent('player:receiveItem', "mask", 1)
+--         TriggerEvent("facewear:adjust",4,true)
+--     end
+-- end, false)
 
---// Glasses Commands
+-- --// Glasses Commands
 
-RegisterCommand("g1", function(source, args, rawCommand)
-    TriggerEvent("facewear:adjust",2,false)
-end, false)
+-- RegisterCommand("g1", function(source, args, rawCommand)
+--     TriggerEvent("facewear:adjust",2,false)
+-- end, false)
 
-RegisterCommand("g0", function(source, args, rawCommand)
-    TriggerEvent("facewear:adjust",2,true)
-end, false)
+-- RegisterCommand("g0", function(source, args, rawCommand)
+--     TriggerEvent("facewear:adjust",2,true)
+-- end, false)
 
 -- // Chains // --
 
-local hasChainEquip = false
-local equippingChain = false
-local chainModels = {
-    ["cgchain"] = "cg_chain",
-    ["gsfchain"] = "gsf_chain",
-    ["cerberuschain"] = "cerberus_chain",
-    ["mdmchain"] = "mdm_chain",
-    ["vagoschain"] = "esv_chain",
-    ["koilchain"] = "koil_chain",
-    ["mtfchain"] = "mtf_chain",
-}
-local storedpItem = false
-local storedpInfo = false
+-- local hasChainEquip = false
+-- local equippingChain = false
+-- local chainModels = {
+--     ["cgchain"] = "cg_chain",
+--     ["gsfchain"] = "gsf_chain",
+--     ["cerberuschain"] = "cerberus_chain",
+--     ["mdmchain"] = "mdm_chain",
+--     ["vagoschain"] = "esv_chain",
+--     ["koilchain"] = "koil_chain",
+--     ["mtfchain"] = "mtf_chain",
+-- }
+-- local storedpItem = false
+-- local storedpInfo = false
 
-AddEventHandler("erp-inventory:itemUsed", function(pItem, pInfo)
-  storedpItem = pItem
-  storedpInfo = pInfo
-  local model = chainModels[pItem]
-  print(model)
-  if not model then return end
-  if equippingChain then return end
-  local info = json.decode(pInfo)
-  equippingChain = true
-  ClearPedTasks(PlayerPedId())
-  if not hasChainEquip then
-    hasChainEquip = true
-    TriggerEvent("attachPropPerm", model, 10706, -0.02, 0.02, -0.06, -366.0, 19.0, -163.0, true, true)
-  else
-    hasChainEquip = false
-    TriggerEvent("destroyPropPerm")
-  end
-  equippingChain = false
-end)
+-- AddEventHandler("erp-inventory:itemUsed", function(pItem, pInfo)
+--   storedpItem = pItem
+--   storedpInfo = pInfo
+--   local model = chainModels[pItem]
+--   print(model)
+--   if not model then return end
+--   if equippingChain then return end
+--   local info = json.decode(pInfo)
+--   equippingChain = true
+--   ClearPedTasks(PlayerPedId())
+--   if not hasChainEquip then
+--     hasChainEquip = true
+--     TriggerEvent("attachPropPerm", model, 10706, -0.02, 0.02, -0.06, -366.0, 19.0, -163.0, true, true)
+--   else
+--     hasChainEquip = false
+--     TriggerEvent("destroyPropPerm")
+--   end
+--   equippingChain = false
+-- end)

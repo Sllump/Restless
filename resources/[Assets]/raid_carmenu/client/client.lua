@@ -266,10 +266,10 @@ local function switchSeat(_, args)
     end
 end
 
-RegisterCommand("seat", switchSeat)
+-- RegisterCommand("seat", switchSeat)
 
-TriggerEvent('chat:addSuggestion', '/seat', 'Switch seats in the current vehicle',
-  { { name = 'seat', help = "Switch seats in the current vehicle. 0 = driver, 1 = passenger, 2-3 = back seats" } })
+-- TriggerEvent('chat:addSuggestion', '/seat', 'Switch seats in the current vehicle',
+--   { { name = 'seat', help = "Switch seats in the current vehicle. 0 = driver, 1 = passenger, 2-3 = back seats" } })
 
 AddEventHandler('onClientResourceStop', function(name)
     if name == 'raid_carmenu' then

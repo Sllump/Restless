@@ -46,24 +46,24 @@ GangSystem = {
 --     end
 -- end)
 
-RegisterCommand('testanim', function()
-    MainFuncs.LoadAnim('switch@franklin@lamar_tagging_wall')
-    -- DoingAnim = true
+-- RegisterCommand('testanim', function()
+--     MainFuncs.LoadAnim('switch@franklin@lamar_tagging_wall')
+--     -- DoingAnim = true
 
-    -- Citizen.CreateThread(function()
-    --     while DoingAnim do
-    --         Wait(1)
-    --         if not IsEntityPlayingAnim(PlayerPedId(), "switch@franklin@lamar_tagging_wall", "lamar_tagging_wall_loop_lamar", 3) then
-    --             TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_wall_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
-    --         end
-    --     end
+--     -- Citizen.CreateThread(function()
+--     --     while DoingAnim do
+--     --         Wait(1)
+--     --         if not IsEntityPlayingAnim(PlayerPedId(), "switch@franklin@lamar_tagging_wall", "lamar_tagging_wall_loop_lamar", 3) then
+--     --             TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_wall_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
+--     --         end
+--     --     end
 
-    -- end)
+--     -- end)
 
-    -- Citizen.Wait(10000)
-    -- DoingAnim = false
+--     -- Citizen.Wait(10000)
+--     -- DoingAnim = false
     
-    TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_wall_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
-    Citizen.Wait(5000)
-    TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_exit_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
-end)
+--     TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_wall_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
+--     Citizen.Wait(5000)
+--     TaskPlayAnim(PlayerPedId(), 'switch@franklin@lamar_tagging_wall', 'lamar_tagging_exit_loop_lamar', 15.0, 2.0, -1, 16, 0, 0, 0, 0)
+-- end)

@@ -233,55 +233,55 @@ function Spawn.getDevSpawn()
 	return spawn
 end
 
-function Spawn.getBusinessSpawn(pBusinessCode, pBusinessName)
-	local spawn = nil
+-- function Spawn.getBusinessSpawn(pBusinessCode, pBusinessName)
+-- 	local spawn = nil
 
-	local hasPermission = RPC.execute("erp-business:hasPermission", pBusinessCode, "key_access")
-	if not hasPermission then
-		return spawn	
-	end
+-- 	local hasPermission = RPC.execute("erp-business:hasPermission", pBusinessCode, "key_access")
+-- 	if not hasPermission then
+-- 		return spawn	
+-- 	end
 
-	local success, businessSpawn = RPC.execute("GetBusinessSpawnByCode", pBusinessCode)
+-- 	local success, businessSpawn = RPC.execute("GetBusinessSpawnByCode", pBusinessCode)
 
-	if businessSpawn ~= nil then
-		print("business spawn not nil", pBusinessCode, pBusinessName)
-		local spawnInfo = { 
-			["pos"] = vector4(businessSpawn.coords.x, businessSpawn.coords.y, businessSpawn.coords.z, 0.0), 
-			['info'] = "Business " .. pBusinessName
-		}
-		Spawn.businessSpawnsInfo["Business " .. pBusinessName] = spawnInfo
-		spawn = spawnInfo
-	end
+-- 	if businessSpawn ~= nil then
+-- 		print("business spawn not nil", pBusinessCode, pBusinessName)
+-- 		local spawnInfo = { 
+-- 			["pos"] = vector4(businessSpawn.coords.x, businessSpawn.coords.y, businessSpawn.coords.z, 0.0), 
+-- 			['info'] = "Business " .. pBusinessName
+-- 		}
+-- 		Spawn.businessSpawnsInfo["Business " .. pBusinessName] = spawnInfo
+-- 		spawn = spawnInfo
+-- 	end
 
-	return spawn
-end
+-- 	return spawn
+-- end
 
-function Spawn.getBusinesses()
-	local cid = exports["isPed"]:isPed("cid")
-	local employment = RPC.execute("GetEmploymentInformation", cid)
-	return employment
-end
+-- function Spawn.getBusinesses()
+-- 	local cid = exports["isPed"]:isPed("cid")
+-- 	local employment = RPC.execute("GetEmploymentInformation", cid)
+-- 	return employment
+-- end
 
-function Spawn.getRoosterSpawn()
-	local spawn = nil
-	local rooster = exports["isPed"]:GroupRank("rooster_academy")
-	if rooster >= 1 then
-		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' Rooster Cab'}
-	end
-	return spawn
-end
+-- function Spawn.getRoosterSpawn()
+-- 	local spawn = nil
+-- 	local rooster = exports["isPed"]:GroupRank("rooster_academy")
+-- 	if rooster >= 1 then
+-- 		spawn = { ["pos"] = vector4(-172.83,331.17,93.76,266.08), ['info'] = ' Rooster Cab'}
+-- 	end
+-- 	return spawn
+-- end
 
-function Spawn.createDefaultData(housing_id)
-	local defaultData = nil
+-- function Spawn.createDefaultData(housing_id)
+-- 	local defaultData = nil
 
-	if Spawn.housingCoords == nil or Spawn.housingCoords[housing_id] == nil then return end
-	if Spawn.housingCoords[housing_id].assigned then return end
+-- 	if Spawn.housingCoords == nil or Spawn.housingCoords[housing_id] == nil then return end
+-- 	if Spawn.housingCoords[housing_id].assigned then return end
 
-	local housing = Spawn.housingCoords[housing_id]
-	defaultData = {["pos"] = vector4(housing[1]),["info"] = housing.Street}
+-- 	local housing = Spawn.housingCoords[housing_id]
+-- 	defaultData = {["pos"] = vector4(housing[1]),["info"] = housing.Street}
 
-	return defaultData
-end
+-- 	return defaultData
+-- end
 
 
 

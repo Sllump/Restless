@@ -67,16 +67,6 @@ RegisterNetEvent('erp_charmenu:server:PlayCharacter', function(citizenid)
     TriggerClientEvent('erp_spawn:runSpawn:cl', src)
 end)
 
-RegisterNetEvent('erp_charmenu:server:CreateCharacter', function(data)
-    local src = source
-    local newData = {}
-    newData.cid = data.cid
-    newData.charinfo = data
-    local randbucket = (GetPlayerPed(src) .. math.random(1,999))
-    SetPlayerRoutingBucket(src, randbucket)
-    TriggerClientEvent("erp_charmenu:server:CloseNUI", src)
-end)
-
 RegisterNetEvent('erp_charmenu:server:DeleteCharacter', function(citizenid)
     local src = source
     local steam = GetPlayerIdentifiers(src)[1]
@@ -93,4 +83,25 @@ RegisterServerEvent('erp_charmenu:getCid', function(firstname, lastname)
 	local characterId = denceResult[1].id
 
     TriggerClientEvent('erp_charmenu:sendCid', src, characterId)
+end)
+
+RPC.register('erp_charmenu:createCharacter', function(source, data)
+    local Identifiers = GetPlayerIdentifiers(source)
+    local Data = MySQL.query.await('SELECT * FROM characters WHERE first_name = @FirstName AND last_name = @LastName AND deleted = @Deleted', {
+        ['@FirstName'] = data.firstname,
+        ['@LastName'] = data.lastname,
+        ['@Deleted'] = 0
+    })
+
+    if Data[1] then return end
+
+    MySQL.query.await('INSERT INTO characters (owner, first_name, last_name, dob, gender, phone_number, new) VALUES (@Owner, @FirstName, @LastName, @DOB, @Gender, @PhoneNumber, @New)', {
+        ['@Owner'] = Identifiers[1],
+        ['@FirstName'] = data.firstname,
+        ['@LastName'] = data.lastname,
+        ['@DOB'] = "07-04-1994",
+        ['@Gender'] = "Male",
+        ['@PhoneNumber'] = 123123,
+        ['@New'] = 1,
+    })
 end)

@@ -10,7 +10,8 @@ client_scripts {
 server_scripts {
     "@erp_base/server/lib/sv_rpc.lua",
     '@oxmysql/lib/MySQL.lua',
-    'server/main.lua'
+    'server/main.lua',
+    'server/Functions.lua'
 }
 
 shared_scripts {
@@ -26,4 +27,8 @@ files {
     'web/ui.html',
     'web/css/style.css',
     'web/js/script.js',
+}
+
+exports {
+    'OpenCharacterMenu'
 }

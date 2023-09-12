@@ -223,7 +223,7 @@ local function CharMenuCams(new, old)
     end
 end
 
-local function OpenCharacterMenu(bool)
+OpenCharacterMenu = function(bool)
     if bool then
         local TVHash = GetHashKey('prop_tv_flat_01_screen')
         RequestModel(TVHash)
@@ -285,7 +285,6 @@ RegisterNUICallback('PlayCharacter', function(data, cb)
         TriggerEvent('erp_charmenu:SpawnPlayer')
         TriggerServerEvent('erp_charmenu:setRoutingBucket', false)
         TriggerServerEvent('erp_charmenu:server:PlayCharacter', data.citizenid)
-        ExecuteCommand('hotreload')
         Wait(100)
         SetNuiFocus(false, false)
         SetCamActive(otherCam)
@@ -295,13 +294,14 @@ RegisterNUICallback('PlayCharacter', function(data, cb)
 end)
 
 RegisterNUICallback('CreateCharacter', function(data, cb)
-    TriggerEvent('erp_charmenu:playCharacter2', data)
-    TriggerServerEvent('erp_charmenu:server:CreateCharacter', data)
-    DestroyAllCams(true)
-    RenderScriptCams(false, true, 1, true, true)
-    TriggerEvent('erp_charmenu:playCharacter', data.firstname, data.lastname)
-    Citizen.Wait(2000)
-    TriggerServerEvent('erp_appearence:newPlayer', data.firstname, data.lastname) 
+    RPC.execute('erp_charmenu:createCharacter', data)
+
+    DoScreenFadeOut(1)
+    Wait(1500)
+    OpenCharacterMenu(true)
+    DoScreenFadeIn(1)
+
+    -- Add new character shit here [clothing menu ect.].
     cb("ok")
 end)
 
@@ -317,12 +317,6 @@ RegisterNetEvent('erp_charmenu:playCharacter', function(firstname, lastname)
     Citizen.Wait(500)
     Events = exports['erp_base']:GetModule('Events')
         Events.Trigger("erp_base:selectCharacter", myCid, function(returnData)
-    end)
-end)
-
-RegisterNetEvent('erp_charmenu:playCharacter2', function(data5)
-    Events = exports['erp_base']:GetModule('Events')
-        Events.Trigger("erp_base:createCharacter", data5, function(returnData)
     end)
 end)
 
@@ -342,19 +336,11 @@ RegisterNetEvent('erp_charmenu:client:CharMenuCams', function()
     DestroyAll()
 end)
 
-RegisterNetEvent('erp_charmenu:client:OpenCharmenu', function()
-    OpenCharacterMenu(true)
-end)
-
 RegisterNetEvent('erp_charmenu:server:CloseNUI', function()
     CreateCharacters(false, false)
     SetNuiFocus(false, false)
     DestroyAll()
     --exports['erp_spawn']:SpawnLocation(Config.ApartCoords.x, Config.ApartCoords.y, Config.ApartCoords.z)
-end)
-
-RegisterCommand('OpenCharMenu', function(source, args)
-    OpenCharacterMenu(true)
 end)
 
 gameplayFunction = false

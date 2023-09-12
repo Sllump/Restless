@@ -26,7 +26,8 @@ AddEventHandler("erp_base:playerSessionStarted", function()
         SetCanAttackFriendly(GetPlayerPed(-1), true, false)
         NetworkSetFriendlyFireOption(true)
         TriggerEvent("erp_base:spawnInitialized:cl")
-        exports['erp_charmenu']:OpenCharacterMenu(true)
+        -- exports['erp_charmenu']:OpenCharacterMenu(true)
+        TriggerEvent('erp_charmenu:client:OpenCharmenu')
         TriggerEvent("erp_weathersync:spawned")
 
         while IsScreenFadingIn() do

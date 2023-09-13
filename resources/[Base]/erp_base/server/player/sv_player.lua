@@ -277,10 +277,12 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
         return
     end
 
+    print('---------------------------------------------------------------------------')
     print('^2 Steam Name: ' .. GetPlayerName(src) .. ' is connecting to the server ^7')
     print('^3 Steam ID: ' .. steam .. '^7')
     print('^4 Discord: ' .. discord .. '^7')
-
+    print('---------------------------------------------------------------------------')
+    
     local isauser = Ethereal.Database.Execute(true, "SELECT * FROM `users` WHERE `hex_id` = '" .. steam .. "'")
     if not isauser[1] then 
         local hexid = Ethereal.Shared:GetHexId(src)
@@ -331,9 +333,8 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
         end
 
         Wait(2000)
-
-    TriggerEvent("erp_base:connectQueue", src, playerName, setKickReason, deferrals)
-    processing = false
+        TriggerEvent("erp_base:connectQueue", src, playerName, setKickReason, deferrals)
+        processing = false
     end
 end)
 

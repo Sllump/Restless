@@ -196,17 +196,6 @@ Ethereal.RemoveCash = function(target, amt)
     end)
 end
 
-RegisterServerEvent("erp_base:updatePlayerLocation")
-AddEventHandler("erp_base:updatePlayerLocation", function(coords)
-    local src = source
-    local user = Ethereal.GetPlayer(src)
-
-    if user then
-        local PlayerData = user['PlayerData']
-        Ethereal.Database.Execute(true, "UPDATE `characters` SET `location`='" .. json.encode(coords) .. "' WHERE `steam` = '" .. PlayerData['steam'] .. "' AND `index` = '" .. PlayerData['index'] .. "'")
-    end
-end)
-
 AddEventHandler('playerConnecting', function(playerName, setKickReason, deferrals)
     local src = source
     local error = nil

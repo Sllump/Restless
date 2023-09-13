@@ -23,5 +23,27 @@ Character = {
         end
     
         return number
+    end,
+
+    Decode = function(tableString)
+        if tableString == nil or tableString =="" then
+            return {}
+        else
+            return json.decode(tableString)
+        end
+    end,
+
+    setRoutingBucket = function(src, bool)
+        if bool then 
+            SetPlayerRoutingBucket(src, src)
+        end
+
+        if not not bool then
+            SetPlayerRoutingBucket(src, 0)
+        end
     end
 }
+
+RPC.register('erp_charmenu:setRoutingBucket', function(source, bool)
+    Character.setRoutingBucket(source, bool)
+end)

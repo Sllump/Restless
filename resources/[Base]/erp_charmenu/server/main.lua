@@ -1,12 +1,3 @@
-RegisterNetEvent('erp_charmenu:setRoutingBucket', function(bool)
-    local src = source
-    if bool then 
-        SetPlayerRoutingBucket(src, src)
-    elseif not bool then 
-        SetPlayerRoutingBucket(src, 0)
-    end
-end)
-
 RPC.register('erp_charmenu:server:GetUserCharacters', function()
     local src = source
     local steam = GetPlayerIdentifiers(src)[1]
@@ -17,14 +8,6 @@ RPC.register('erp_charmenu:server:GetUserCharacters', function()
     Wait(5)
     return result
 end)
-
-function decode(tableString)
-    if tableString == nil or tableString =="" then
-        return {}
-    else
-        return json.decode(tableString)
-    end
-end
 
 RPC.register("erp_charmenu:server:GetPlayerClothing", function()
     local src = source
@@ -41,48 +24,30 @@ RPC.register("erp_charmenu:server:GetPlayerClothing", function()
                             slotpos = 0,
                             result = result,
                             model = charData.model,
-                            drawables = decode(charData.drawables),
-                            props = decode(charData.props),
-                            drawtextures = decode(charData.drawtextures),
-                            proptextures = decode(charData.proptextures),
-                            hairColor = decode(charData.hairColor),
-                            headBlend = decode(charData.headBlend),
-                            headOverlay = decode(charData.headOverlay),
-                            headStructure = decode(charData.headStructure),
-                            tattoos = decode(charData.tattoos),
+                            drawables = Character.Decode(charData.drawables),
+                            props = Character.Decode(charData.props),
+                            drawtextures = Character.Decode(charData.drawtextures),
+                            proptextures = Character.Decode(charData.proptextures),
+                            hairColor = Character.Decode(charData.hairColor),
+                            headBlend = Character.Decode(charData.headBlend),
+                            headOverlay = Character.Decode(charData.headOverlay),
+                            headStructure = Character.Decode(charData.headStructure),
+                            tattoos = Character.Decode(charData.tattoos),
                         }
-                        end
                     end
-                end)
-            end
+                end
+            end)
+        end
         Wait(400)
     return temp_data
 end)
 
-RegisterNetEvent('erp_charmenu:server:PlayCharacter', function(citizenid)
-    local src = source
-    local cData = {}
-    cData.citizenid = citizenid
-    local result = exports["oxmysql"]:executeSync("SELECT * FROM characters WHERE id = @id", {['@id'] = citizenid})
-    TriggerClientEvent('erp_spawn:runSpawn:cl', src)
-end)
-
-RegisterNetEvent('erp_charmenu:server:DeleteCharacter', function(citizenid)
+RPC.register('erp_charmenu:server:DeleteCharacter', function(source, citizenid)
     local src = source
     local steam = GetPlayerIdentifiers(src)[1]
     local result = exports["oxmysql"]:executeSync("SELECT * FROM characters WHERE id = @id", {['@id'] = citizenid})
+
     exports.oxmysql:execute("UPDATE characters SET Deleted = :Deleted WHERE id = @id",{Deleted = 1, id = tonumber(citizenid)})
-    Wait(500)
-    TriggerClientEvent('erp_charmenu:client:OpenCharmenu', src)
-end)
-
-RegisterServerEvent('erp_charmenu:getCid', function(firstname, lastname)
-    local src = source
-    local steam = GetPlayerIdentifiers(src)[1]
-    local denceResult = exports["oxmysql"]:executeSync("SELECT * FROM characters WHERE owner = @owner AND first_name = @first_name AND last_name = @last_name", {['@owner'] = steam, ['first_name'] = firstname, ['last_name'] = lastname})
-	local characterId = denceResult[1].id
-
-    TriggerClientEvent('erp_charmenu:sendCid', src, characterId)
 end)
 
 RPC.register('erp_charmenu:createCharacter', function(source, data)

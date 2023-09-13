@@ -4,14 +4,13 @@ game 'gta5'
 client_scripts {
     "@erp_base/client/lib/cl_rpc.lua",
     'client/eventswitch.lua',
-    'client/main.lua'
+    'client/*.lua'
 }
 
 server_scripts {
     "@erp_base/server/lib/sv_rpc.lua",
     '@oxmysql/lib/MySQL.lua',
-    'server/main.lua',
-    'server/Functions.lua'
+    'server/*.lua'
 }
 
 shared_scripts {

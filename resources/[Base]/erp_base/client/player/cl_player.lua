@@ -1,6 +1,5 @@
 Ethereal.Player = Ethereal.Player or {}
 Ethereal.LocalPlayer = {}
-Ethereal.DiscordData = {}
 
 Citizen.CreateThread(function()
     while true do
@@ -47,22 +46,6 @@ Ethereal.Player.PlayerLoop = function()
         end
     end)
 end
-
-RegisterNetEvent("erp_base:networkDiscord")
-AddEventHandler("erp_base:networkDiscord", function(data)
-    Ethereal.DiscordData = data
-end)
-
-Ethereal.GetPlayerName = function(source, discriminator)
-    local src = source ~= source and source or PlayerId()
-
-    if GetPlayerServerId(source) and Ethereal.DiscordData[GetPlayerServerId(source)] then
-        return discriminator == true and (Ethereal.DiscordData[GetPlayerServerId(source)].user.username .. '#' .. Ethereal.DiscordData[GetPlayerServerId(source)].user.discriminator) or (Ethereal.DiscordData[GetPlayerServerId(source)].user.username)
-    end
-    return nil
-end
-
-exports("GetPlayerName", Ethereal.GetPlayerName)
 
 blacklists = {
     "APC",
@@ -204,7 +187,6 @@ blacklists = {
     "TANKERCAR",
 }
 
-
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1)
@@ -212,14 +194,13 @@ Citizen.CreateThread(function()
         if DoesEntityExist(ped) and not IsEntityDead(ped) then
             local ped = PlayerPedId()
             veh = nil
-        
+
             if IsPedInAnyVehicle(ped, false) then
                 veh = GetVehiclePedIsUsing(ped)
             else
                 veh = GetVehiclePedIsTryingToEnter(ped)
             end
-            
-            
+
             if veh and DoesEntityExist(veh) then
                 local model = GetEntityModel(veh)
                 local driver = GetPedInVehicleSeat(veh, -1)
@@ -227,7 +208,7 @@ Citizen.CreateThread(function()
                     for i = 1, #blacklists do
                         local rmodel1 = GetHashKey(blacklists[i])
                         if (model == rmodel1) or (GetVehicleClass(veh) == 19) then -- Military
-                            DeleteE(veh)
+                            Citizen.InvokeNative(0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized(veh))
                             ClearPedTasksImmediately(ped)
                         end
                     end
@@ -236,7 +217,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-function DeleteE(entity)
-	Citizen.InvokeNative(0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized(entity))
-end

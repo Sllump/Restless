@@ -1,6 +1,5 @@
 Ethereal.Player = Ethereal.Player or {}
 Ethereal.Players = {}
-Ethereal.DiscordData = {}
 
 Ethereal.Player.SelectCharacter = function(source, index)
     local src = source
@@ -24,17 +23,12 @@ Ethereal.Player.CreateCharacterObject = function(source, result)
     local self = {}
     local data = result
 
-    -- General
     self["PlayerData"] = {}
     self["PlayerData"]["source"] = src
     self["PlayerData"]["name"] = GetPlayerName(src)
-    -- Verify player steam
     self["PlayerData"]["owner"] = data["owner"] ~= nil and data["owner"] or GetPlayerIdentifiers(src)[1]
-    -- Charcter ID
     self["PlayerData"]["id"] = data["id"]
-    -- Player Rank
-    self["PlayerData"]["rank"] = data['rank'] ~= nil and data['rank'] or 'user'
-    -- Player Character
+
     self["PlayerData"]['job'] = data['job'] or "None"
     self["PlayerData"]['dob'] = data['dob'] and data['dob'] or "None"
     self["PlayerData"]['gender'] = data['gender'] and data['gender'] or "None"
@@ -60,19 +54,6 @@ Ethereal.Player.CreateCharacterObject = function(source, result)
     Ethereal.Players[self["PlayerData"]["source"]] = self
 
     return Ethereal.Players[self['PlayerData']['source']]
-end
-
-Ethereal.Player.SetPlayerRank = function(source, rank)
-    local src = source
-    local user = Ethereal.GetPlayer(src)
-    local steam = GetPlayerIdentifiers(src)[1]
-    local admin = Ethereal.Database.Execute(true, "SELECT * FROM `admins` WHERE `steam` = '" .. steam .. "'")
-
-    if admin[1] then
-        Ethereal.Database.Execute(true, "UPDATE `admins` SET `rank`='" .. rank .. "' WHERE `steam` = '" .. steam .. "'")
-    else
-        Ethereal.Database.Execute(true, "INSERT INTO `admins` (`steam`, `rank`) VALUES ('" .. steam .. "', '" .. rank .. "')")
-    end
 end
 
 Ethereal.GetPlayer = function(source)
@@ -119,21 +100,6 @@ Ethereal.AddBank = function(target, amt)
             UpdateClient()
             TriggerClientEvent("erp_banking:addCash", user["PlayerData"]["source"], amt)
             TriggerClientEvent("erp_banking:updateBalance", user["PlayerData"]["source"], Ethereal.GetBalance(tonumber(target)), amt)
-        end
-    end)
-end
-
-Ethereal.SetJob = function(target, job)
-    local q = [[UPDATE characters SET job = @JOB WHERE id = @characterId;]]
-    local v = {
-        ["JOB"] = job,
-        ["characterId"] = target
-    }
-
-    exports.oxmysql:execute(q, v, function(rowsChanged)
-        if not rowsChanged.changedRows then return end
-        if rowsChanged.changedRows then
-            UpdateJob(job)
         end
     end)
 end
@@ -228,27 +194,6 @@ Ethereal.RemoveCash = function(target, amt)
             TriggerClientEvent("erp_banking:updateCash", user["PlayerData"]["source"], Ethereal.GetCash(tonumber(target)), amt)
         end
     end)
-end
-
-Ethereal.GetCID = function(source)
-    local src = source
-    local user = Ethereal.GetPlayer(src)
-    local PlayerData = user['PlayerData']
-    return PlayerData['id']
-end
-
-Ethereal.GetFirstName = function(source)
-    local src = source
-    local user = Ethereal.GetPlayer(src)
-    local PlayerData = user['PlayerData']
-    return PlayerData['first_name']
-end
-
-Ethereal.GetLastName = function(source)
-    local src = source
-    local user = Ethereal.GetPlayer(src)
-    local PlayerData = user['PlayerData']
-    return PlayerData['last_name']
 end
 
 RegisterServerEvent("erp_base:updatePlayerLocation")
@@ -347,22 +292,7 @@ AddEventHandler('playerDropped', function(reason)
     end
 end)
 
-Ethereal.GetPlayerName = function(source, discriminator)
-    local src = source
-    
-    if Ethereal.DiscordData[source] then
-        return discriminator == true and (Ethereal.DiscordData[source].user.username .. '#' .. Ethereal.DiscordData[source].user.discriminator) or (Ethereal.DiscordData[source].user.username)
-    end
-
-    return nil
-end
-
-exports('GetPlayerName', Ethereal.GetPlayerName)
-exports('GetCID', Ethereal.GetCID)
-exports('GetFirstName', Ethereal.GetFirstName)
-exports('GetLastName', Ethereal.GetLastName)
 exports('AddBank', Ethereal.AddBank)
-exports('SetJob', Ethereal.SetJob)
 exports('RemoveBank', Ethereal.RemoveBank)
 exports('AddCash', Ethereal.AddCash)
 exports('RemoveCash', Ethereal.RemoveCash)

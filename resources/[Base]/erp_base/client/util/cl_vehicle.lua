@@ -1,5 +1,3 @@
---functions
-
 function GetVehicles()
 	local vehicles = {}
 
@@ -9,7 +7,6 @@ function GetVehicles()
 
 	return vehicles
 end
-
 
 function FetchVehProps(vehicle)	
     local color1, color2 = GetVehicleColours(vehicle)	

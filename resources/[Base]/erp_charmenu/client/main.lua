@@ -29,7 +29,6 @@ RegisterNUICallback('PlayCharacter', function(data, cb)
     Events = exports['erp_base']:GetModule('Events')
     Events.Trigger("erp_base:selectCharacter", data.citizenid, function(returnData)
         if not returnData then print('[ERROR] [erp_charmenu] Could not select character...') return end
-        TriggerEvent('erp_charmenu:SetEverything')
 
         RPC.execute('erp_charmenu:setRoutingBucket', false)
 
@@ -40,6 +39,10 @@ RegisterNUICallback('PlayCharacter', function(data, cb)
         DestroyCam(Main.OtherCamera)
 
         Main.OtherCamera = nil
+
+        Wait(750)
+
+        exports['erp_spawn']:RunSpawn()
     end)
 end)
 

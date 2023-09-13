@@ -8,15 +8,14 @@ $(document).ready(function(){
         let eData = event.data;
         switch(eData.action) {
             case 'OpenSpawnMenu':
-                if(eData.toggle) {
+                if (eData.toggle) {
                     OpenSpawnMenu(eData.Spawns)
-                }else {
-                    CloseSpawnMenu();
                 }
                 break;
             
         }
     })
+
     $('.spawn-select-last-loc').hover(function(){
         $('.tooltip').html(`
             <div class="inner-tooltip">
@@ -24,7 +23,7 @@ $(document).ready(function(){
                 <div class="tooltip-name">Last Location</div>
             </div>`
         ).show();
-           
+
     }, function() {
         $('.tooltip').html('').hide();
     }).mousemove(function(e) {

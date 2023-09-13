@@ -20,10 +20,8 @@ files {
 }
 
 client_scripts {
-  '@erp-lib/client/cl_interface.lua',
   '@erp-errorlog/client/cl_errorlog.lua',
-  '@erp-lib/client/cl_rpc.lua',
-  '@erp-lib/client/cl_ui.lua',
+  '@erp_base/client/lib/cl_rpc.lua',
   'client/cl_tattooshop.lua',
   'client/cl_*.lua',
 }
@@ -34,7 +32,7 @@ shared_script {
 }
 
 server_scripts {
-  '@erp-lib/server/sv_rpc.lua',
+  '@erp_base/server/lib/sv_rpc.lua',
   'server/sv_*.lua',
 }
 

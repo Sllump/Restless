@@ -78,10 +78,8 @@ AddEventHandler('erp_spawnselect:SetEverything', function()
 	-- TriggerEvent('erp_base:PolyZoneUpdate')
 	-- TriggerEvent("erp_housing:loadHousingClient")
 	-- RPC.execute('erp_housing:fetchPropertyGarages')
-    -- spawnedThread()
     TriggerServerEvent('raid_clothes:get_character_current')
 end)
-
 
 RegisterNUICallback('SpawnLocation', function(data, cb)
     if MainFunctions.SpawnTable[data.SpawnIndex].label == "Alta St Apartments" then 
@@ -137,14 +135,9 @@ RegisterNUICallback('SpawnLocation', function(data, cb)
         local coords = MainFunctions.SpawnTable[data.SpawnIndex].hasSubSpawn[data.SubSpawnIndex].coords
         MainFunctions.DoCamera(coords.x, coords.y, coords.z)
     end
+
     cb('ok')
 end)
-
--- RegisterNUICallback('SpawnLastLocation', function(data, cb)
---     local coords = vector3(x5, y5, z5)
---     MainFunctions.DoCamera(coords.x, coords.y, coords.z)
---     cb('ok')
--- end)
 
 exports('SpawnLocation', function(x, y, z)
     MainFunctions.DoCamera(x, y , z)

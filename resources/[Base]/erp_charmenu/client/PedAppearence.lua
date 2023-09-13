@@ -7,14 +7,14 @@ CharMenuFunctions = {
     LoadPed = function(ped, data, model)
         CharMenuFunctions.SetClothing(ped, data.drawables, data.props, data.drawtextures, data.proptextures)
         Citizen.Wait(500)
-    
+
         if (model == `mp_f_freemode_01` or model == `mp_m_freemode_01`) then
             CharMenuFunctions.SetPedHeadBlend(ped, data.headBlend)
             CharMenuFunctions.SetHeadStructure(ped, data.headStructure)
             CharMenuFunctions.SetHeadOverlayData(ped, data.headOverlay)
             SetPedHairColor(ped, tonumber(data.hairColor[1]), tonumber(data.hairColor[2]))
         end
-    
+
         return
     end,
 
@@ -34,7 +34,7 @@ CharMenuFunctions = {
                 end
             end
         end
-    
+
         for i = 1, #ClothingLabels.PropNames do
             local propZ = (drawables[0] == nil and props[tostring(i-1)][2] or props[i-1][2])
             ClearPedProp(ped, i-1)
@@ -56,9 +56,8 @@ CharMenuFunctions = {
         if json.encode(data) ~= "[]" then
             for i = 1, #ClothingLabels.HeadOverlays do
                 SetPedHeadOverlay(ped,  i-1, tonumber(data[i].overlayValue),  tonumber(data[i].overlayOpacity))
-                -- SetPedHeadOverlayColor(ped, i-1, data[i].colourType, data[i].firstColour, data[i].secondColour)
             end
-    
+
             SetPedHeadOverlayColor(ped, 0, 0, tonumber(data[1].firstColour), tonumber(data[1].secondColour))
             SetPedHeadOverlayColor(ped, 1, 1, tonumber(data[2].firstColour), tonumber(data[2].secondColour))
             SetPedHeadOverlayColor(ped, 2, 1, tonumber(data[3].firstColour), tonumber(data[3].secondColour))
@@ -74,51 +73,15 @@ CharMenuFunctions = {
         end
     end,
 
-    -- SetSkin = function(model, setDefault)
-    --     SetEntityInvincible(PlayerPedId(),true)
-    --     if IsModelInCdimage(model) and IsModelValid(model) then
-    --         RequestModel(model)
-    --         while (not HasModelLoaded(model)) do
-    --             Citizen.Wait(0)
-    --         end
-    
-    --         SetPlayerModel(PlayerId(), model)
-    --         SetModelAsNoLongerNeeded(model)
-    --         player = GetPlayerPed(-1)
-    --         FreezePedCameraRotation(player, true)
-            
-    --         if (model ~= `mp_f_freemode_01` and model ~= `mp_m_freemode_01`) then
-    --             SetPedRandomComponentVariation(GetPlayerPed(-1), true)
-    --         else
-    --             SetPedHeadBlendData(player, 0, 0, 0, 15, 0, 0, 0, 1.0, 0, false)
-    --             SetPedComponentVariation(player, 11, 0, 11, 0)
-    --             SetPedComponentVariation(player, 8, 0, 1, 0)
-    --             SetPedComponentVariation(player, 6, 1, 2, 0)
-    --             SetPedHeadOverlayColor(player, 1, 1, 0, 0)
-    --             SetPedHeadOverlayColor(player, 2, 1, 0, 0)
-    --             SetPedHeadOverlayColor(player, 4, 2, 0, 0)
-    --             SetPedHeadOverlayColor(player, 5, 2, 0, 0)
-    --             SetPedHeadOverlayColor(player, 8, 2, 0, 0)
-    --             SetPedHeadOverlayColor(player, 10, 1, 0, 0)
-    --             SetPedHeadOverlay(player, 1, 0, 0.0)
-    --             SetPedHairColor(player, 1, 1)
-    --         end
-            
-    --     end
-    --     SetEntityInvincible(PlayerPedId(),false)
-    -- end,
-
     FindAvailableSlot = function()
         local nextSlot = 1
-        
-    
+
         local sortedCharacters = {}
         for _, data in pairs(CharMenuFunctions.Characters) do
             table.insert(sortedCharacters, data)
         end
         table.sort(sortedCharacters, function(a, b) return a.id < b.id end)
-        
-    
+
         for _, data in ipairs(sortedCharacters) do
             data.slotpos = nextSlot
             nextSlot = nextSlot + 1

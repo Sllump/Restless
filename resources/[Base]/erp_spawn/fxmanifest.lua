@@ -1,9 +1,18 @@
 fx_version 'cerulean'
 game 'gta5'
 
+ui_page 'web/ui.html'
+
+files {
+    'web/assets/***',
+    'web/ui.html',
+    'web/css/*.css',
+    'web/js/*.js'
+}
+
 client_scripts {
     '@erp_base/client/lib/cl_rpc.lua',
-    'client/main.lua'
+    'client/*.lua',
 }
 
 server_scripts {
@@ -12,17 +21,7 @@ server_scripts {
     'server/*.lua'
 }
 
-shared_script '@erp_base/shared/lib/sh_util.lua'
-
 shared_scripts {
+    '@erp_base/shared/lib/sh_util.lua',
     'config.lua'
-}
-
-ui_page 'web/ui.html'
-
-files {
-    'web/assets/***',
-    'web/ui.html',
-    'web/css/*.css',
-    'web/js/*.js'
 }

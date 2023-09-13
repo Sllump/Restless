@@ -86,7 +86,7 @@ Config.JobSpawns = {
         coords = vector4(1854.65, 3684.91, 34.26, 31.75),
         hasSubSpawn = {
             {
-                header = 'Blaine County Sheriff DepartMent',
+                header = 'Blaine County Sheriff Department',
                 label = 'Entrance',
                 coords = vector4(1854.65, 3684.91, 34.26, 31.75),
             },

@@ -10,8 +10,6 @@ client_scripts {
     "client/player/*.lua",
     "client/util/*.lua",
     "blips/*.lua",
-    "client/licenses/*.lua",
-
 }
 
 server_scripts {

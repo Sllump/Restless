@@ -34,19 +34,6 @@ AddEventHandler("erp_base:playerSessionStarted", function()
     end)
 end)
 
-Ethereal.Player.PlayerLoop = function()
-    SetNuiFocus(false, false)
-    Citizen.CreateThread(function()
-        while true do
-            Citizen.Wait(15000)
-            ped = PlayerPedId()
-            coords = GetEntityCoords(ped)
-            heading = GetEntityHeading(ped)
-            TriggerServerEvent("erp_base:updatePlayerLocation", { x = coords.x, y = coords.y, z = coords.z, h = heading })
-        end
-    end)
-end
-
 blacklists = {
     "APC",
     "BALLER5",

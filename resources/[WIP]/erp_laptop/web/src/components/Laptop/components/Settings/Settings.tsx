@@ -186,7 +186,7 @@ export const Settings: React.FC<{
                     open={wallpaperDialog}
                 >
                     <FormControl
-                        variant="standard"
+                        variant="outlined"
                         sx={{
                             m: 1,
                             minWidth: 250
@@ -233,7 +233,7 @@ export const Settings: React.FC<{
 
                         {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}

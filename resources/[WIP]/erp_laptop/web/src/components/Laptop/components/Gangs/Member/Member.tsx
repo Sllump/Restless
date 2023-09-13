@@ -158,7 +158,7 @@ export const Member: React.FC<{
 
                     {modalLoading &&
                         <FormControl
-                            variant="standard"
+                            variant="outlined"
                             style={{
                                 alignItems: 'center'
                             }}
@@ -283,7 +283,7 @@ export const Member: React.FC<{
 
                     {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}

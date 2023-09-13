@@ -131,7 +131,7 @@ export const Management: React.FC<{
                     open={createRankOpen}
                 >
                     <FormControl
-                        variant="standard"
+                        variant="outlined"
                         sx={{
                             m: 1,
                             minWidth: 250
@@ -151,7 +151,7 @@ export const Management: React.FC<{
                         {!modalLoading &&
                             <>
                                 <FormControl
-                                    variant="standard"
+                                    variant="outlined"
                                     sx={{
                                         m: 1,
                                         minWidth: 250
@@ -193,7 +193,7 @@ export const Management: React.FC<{
 
                         {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}
@@ -253,7 +253,7 @@ export const Management: React.FC<{
                     open={editRankOpen}
                 >
                     <FormControl
-                        variant="standard"
+                        variant="outlined"
                         sx={{
                             m: 1,
                             minWidth: 250
@@ -273,7 +273,7 @@ export const Management: React.FC<{
                         {!modalLoading &&
                             <>
                                 <FormControl
-                                    variant="standard"
+                                    variant="outlined"
                                     sx={{
                                         m: 1,
                                         minWidth: 250
@@ -330,7 +330,7 @@ export const Management: React.FC<{
 
                         {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}
@@ -390,7 +390,7 @@ export const Management: React.FC<{
                     open={manageRanksOpen}
                 >
                     <FormControl
-                        variant="standard"
+                        variant="outlined"
                         sx={{
                             m: 1,
                             minWidth: 250
@@ -410,7 +410,7 @@ export const Management: React.FC<{
                         {!modalLoading &&
                             <>
                                 <FormControl
-                                    variant="standard"
+                                    variant="outlined"
                                     sx={{
                                         m: 1,
                                         minWidth: 250
@@ -449,7 +449,7 @@ export const Management: React.FC<{
 
                         {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}

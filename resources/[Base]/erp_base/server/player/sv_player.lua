@@ -296,11 +296,11 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
         if not steam then
             error = '\n[ERROR] Your steam is currently offline!'
         end
-    
+
         if not discord then
             error = '\n[ERROR] Your discord is currently offline!'
         end
-    
+
         if error then
             processing = false
             setKickReason(error)
@@ -308,11 +308,11 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
             CancelEvent()
             return
         end
-    
+
         Wait(2000)
-    
-       TriggerEvent("erp_base:connectQueue", src, playerName, setKickReason, deferrals)
-       processing = false
+
+        TriggerEvent("erp_base:connectQueue", src, playerName, setKickReason, deferrals)
+        processing = false
     elseif isauser[1] then
         if not steam then
             error = '\n[ERROR] Your steam is currently offline!'
@@ -336,8 +336,6 @@ AddEventHandler('playerConnecting', function(playerName, setKickReason, deferral
     processing = false
     end
 end)
-
-
 
 AddEventHandler('playerDropped', function(reason)
 	local src = source

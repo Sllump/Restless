@@ -175,10 +175,12 @@ CharMenuFunctions = {
             FreezeEntityPosition(PlayerPedId(), true)
             SetEntityCoords(PlayerPedId(), Config.PedHiddenCoords.x, Config.PedHiddenCoords.y, Config.PedHiddenCoords.z, false, false, false, false)
         end
-        local clothes = RPC.execute('erp_charmenu:server:GetPlayerClothing')
-        CharMenuFunctions.CreateCharacters(bool, clothes)
+
+        local Clothes = RPC.execute('erp_charmenu:server:GetPlayerClothing')
+        CharMenuFunctions.CreateCharacters(bool, Clothes)
         CharMenuFunctions.CharMenuCams(bool)
         SetNuiFocus(bool, bool)
+
         local characters = RPC.execute('erp_charmenu:server:GetUserCharacters')
         RPC.execute('erp_charmenu:setRoutingBucket', true)
         DoScreenFadeIn(1)

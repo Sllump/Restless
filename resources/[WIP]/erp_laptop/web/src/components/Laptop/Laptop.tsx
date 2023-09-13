@@ -34,13 +34,13 @@ const Apps = [
 ]
 
 export const Laptop: React.FC = () => {
-    const [Open, setOpen] = useState(false);
+    const [Open, setOpen] = useState(true);
     const [navigationState, setNavigationState] = useNavigationState()
     const [laptopData, setLaptopData] = useState({
         Wallpaper: 'https://cdn.discordapp.com/attachments/1144648749122076793/1144667642658050078/image.png',
         DarkMode: false
     })
-    const [isInGang, setInGang] = useState(false);
+    const [isInGang, setInGang] = useState(true);
 
     const fetchData = async () => {
         if (!Open) { return; }

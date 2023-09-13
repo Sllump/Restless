@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { useNavigationState } from "../../../atoms/navigation"
 import styles from "./Progression.module.scss";
-import { fetchNui } from '../../../../../hooks/fetchNui';
 
-import { Slide, Grid, Card, CardContent, Typography, Paper, Box } from "@mui/material";
+import { Slide, Grid, CardContent, Typography, Paper, Box } from "@mui/material";
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
 
@@ -25,11 +23,11 @@ export const Progression: React.FC<{
         height: 10,
         borderRadius: 5,
         [`&.${linearProgressClasses.colorPrimary}`]: {
-            backgroundColor: '#ff003749',
+            backgroundColor: '#008cff5b',
         },
         [`& .${linearProgressClasses.bar}`]: {
             borderRadius: 5,
-            backgroundColor: '#ff0039',
+            backgroundColor: theme.palette.primary.main,
         },
     }));
 

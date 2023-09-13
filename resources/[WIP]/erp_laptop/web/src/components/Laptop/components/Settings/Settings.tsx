@@ -205,23 +205,23 @@ export const Settings: React.FC<{
 
                         {!modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 sx={{
                                     m: 1,
                                     minWidth: 250
                                 }}
                             >
                                 <FormControl
-                                    variant="filled"
+                                    variant="outlined"
                                     sx={{
                                         m: 1,
                                         minWidth: 120
                                     }}
                                 >
                                     <TextField
-                                        id="filled-basic"
+                                        id="outlined-basic"
                                         label="Background URL"
-                                        variant="filled"
+                                        variant="outlined"
                                         value={backgroundURL}
                                         onChange={(e) => {
                                             setBackgroundURL(e.target.value)

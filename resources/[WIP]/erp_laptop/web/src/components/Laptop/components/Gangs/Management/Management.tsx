@@ -158,16 +158,16 @@ export const Management: React.FC<{
                                     }}
                                 >
                                     <FormControl
-                                        variant="filled"
+                                        variant="outlined"
                                         sx={{
                                             m: 1,
                                             minWidth: 120
                                         }}
                                     >
                                         <TextField
-                                            id="filled-basic"
+                                            id="outlined-basic"
                                             label="Rank Name"
-                                            variant="filled"
+                                            variant="outlined"
                                             value={createRankName}
                                             onChange={(e) => {
                                                 setCreateRankName(e.target.value)

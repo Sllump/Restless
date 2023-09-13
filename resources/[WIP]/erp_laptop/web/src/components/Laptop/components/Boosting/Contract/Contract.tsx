@@ -345,7 +345,7 @@ export const Contract: React.FC = () => {
                 >
                     {modalLoading &&
                         <FormControl
-                            variant="standard"
+                            variant="outlined"
                             style={{
                                 alignItems: 'center'
                             }}
@@ -374,7 +374,7 @@ export const Contract: React.FC = () => {
                                 label="State ID"
                                 type="number"
                                 fullWidth
-                                variant="standard"
+                                variant="outlined"
                                 placeholder="1"
                                 value={stateId}
                                 sx={{
@@ -441,7 +441,7 @@ export const Contract: React.FC = () => {
                 >
                     {modalLoading &&
                         <FormControl
-                            variant="standard"
+                            variant="outlined"
                             style={{
                                 alignItems: 'center'
                             }}

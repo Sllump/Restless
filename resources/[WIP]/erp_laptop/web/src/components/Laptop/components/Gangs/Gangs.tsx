@@ -66,7 +66,7 @@ function Item(index: number) {
 export const Gangs: React.FC = () => {
     const [navigationState, setNavigationState] = useNavigationState();
     const [activeTab, setActiveTab] = useState();
-    const [permissions, setManagePermissions] = useState(false);
+    const [permissions, setManagePermissions] = useState(true);
 
     const [addMemberDialogOpen, setAddMemberDialogOpen] = useState(false);
 
@@ -461,7 +461,7 @@ export const Gangs: React.FC = () => {
                     open={addMemberDialogOpen}
                 >
                     <FormControl
-                        variant="standard"
+                        variant="outlined"
                         sx={{
                             m: 1,
                             minWidth: 250
@@ -469,7 +469,7 @@ export const Gangs: React.FC = () => {
                     >
                         {modalLoading &&
                             <FormControl
-                                variant="standard"
+                                variant="outlined"
                                 style={{
                                     alignItems: 'center'
                                 }}
@@ -495,14 +495,14 @@ export const Gangs: React.FC = () => {
                                     Add Member
                                 </DialogTitle>
 
-                                <FormControl variant="standard" sx={{ m: 1, minWidth: 250 }}>
+                                <FormControl variant="outlined" sx={{ m: 1, minWidth: 250 }}>
                                     <TextField
                                         margin="dense"
                                         id="number"
                                         label="State ID"
                                         type="number"
                                         fullWidth
-                                        variant="standard"
+                                        variant="outlined"
                                         placeholder="1"
                                         value={stateId}
                                         onChange={(e) => {
@@ -511,11 +511,11 @@ export const Gangs: React.FC = () => {
                                     />
                                 </FormControl>
 
-                                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                                    <InputLabel id="demo-simple-select-filled-label">Rank</InputLabel>
-                                        <Select
-                                        labelId="demo-simple-select-filled-label"
-                                        id="demo-simple-select-filled"
+                                <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
+                                    <InputLabel id="demo-simple-select-outlined-label">Rank</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-outlined-label"
+                                        id="demo-simple-select-outlined"
                                         value={rank}
                                         onChange={(e) => {
                                             setRank(e.target.value)

@@ -236,33 +236,33 @@ export const Member: React.FC<{
                     {!modalLoading &&
                         <>
                             <FormControl
-                                variant="filled"
+                                variant="outlined"
                                 sx={{
                                     m: 1,
                                     minWidth: 120
                                 }}
                             >
                                 <TextField
-                                    id="filled-basic"
+                                    id="outlined-basic"
                                     label="Name"
-                                    variant="filled"
+                                    variant="outlined"
                                     value={selectedMember.Name}
                                     disabled
                                 />
                             </FormControl>
 
                             <FormControl
-                                variant="filled"
+                                variant="outlined"
                                 sx={{
                                     m: 1,
                                     minWidth: 120
                                 }}
                             >
-                                <InputLabel id="demo-simple-select-filled-label">Rank</InputLabel>
+                                <InputLabel id="demo-simple-select-label">Rank</InputLabel>
 
                                 <Select
-                                    labelId="demo-simple-select-filled-label"
-                                    id="demo-simple-select-filled"
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
                                     value={selectedRank}
                                 >
                                     {props.ranks.map((Aspect) => (

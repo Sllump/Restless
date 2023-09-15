@@ -38,7 +38,7 @@ Character = {
             SetPlayerRoutingBucket(src, src)
         end
 
-        if not not bool then
+        if not bool then
             SetPlayerRoutingBucket(src, 0)
         end
     end

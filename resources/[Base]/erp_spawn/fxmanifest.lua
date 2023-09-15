@@ -23,5 +23,5 @@ server_scripts {
 
 shared_scripts {
     '@erp_base/shared/lib/sh_util.lua',
-    'Config.lua'
+    'config.lua'
 }

@@ -74,10 +74,10 @@ Config.ShowTemp = false
 -- simple localization
 Config.Language = {
     joining = "\xF0\x9F\x8E\x89Joining...",
-    connecting = "🚀 Connecting to Astral RP...",
+    connecting = "🚀 Connecting to EtherealRP...",
     idrr = "\xE2\x9D\x97[Queue] Error: Couldn't retrieve any of your id's, try restarting.",
     err = "\xE2\x9D\x97[Queue] There was an error",
-    pos = "[astral-queue] You are %d/%d in queue \xF0\x9F\x95\x9C%s!",
+    pos = "[Queue] You are %d/%d in queue \xF0\x9F\x95\x9C%s!",
     connectingerr = "\xE2\x9D\x97[Queue] Error: Error adding you to connecting list",
     timedout = "\xE2\x9D\x97[Queue] Error: Timed out?",
     wlonly = "\xE2\x9D\x97[Queue] You must be part of the discord to join this server. To apply, head to : https://discord.gg/astralrp",

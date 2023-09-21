@@ -54,7 +54,7 @@ AddEventHandler("np-base:characterLoaded", function(user, char)
 				["cid"] = char.id
 			}
 
-			exports.ghmattimysql.execute(q, v, function()
+			exports.oxmysql.execute(q, v, function()
 				char.phone_number = math.floor(char.phone_number)
 				user:setCharacter(char)
 			end)

@@ -18,7 +18,7 @@ setInterval(clean, 20000)
 
 
 function db(string) {
-    exports.ghmattimysql.execute(string, {}, function(result) {});
+    exports.oxmysql.execute(string, {}, function(result) {});
 }
 
 RegisterServerEvent("server-update-item")
@@ -27,7 +27,7 @@ onNet("server-update-item", async(player, itemidsent, slot, data) => {
     let playerinvname = 'ply-' + player;
     let string = `UPDATE user_inventory2 SET information='${data}' WHERE item_id='${itemidsent}' and name='${playerinvname}' and slot='${slot}'`
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
 
     });
@@ -38,7 +38,7 @@ function functionRemoveAny(player, itemidsent, amount, openedInv) {
     let playerinvname = 'ply-' + player
     let string = `DELETE FROM user_inventory2 WHERE name='${playerinvname}' and item_id='${itemidsent}' LIMIT ${amount}`
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
     });
 
@@ -55,7 +55,7 @@ onNet("server-request-update", async(player) => {
     let src = source
     let playerinvname = 'ply-' + player
     let string = `SELECT count(item_id) as amount, item_id, id, name, information, slot, dropped, MIN(creationDate) as creationDate FROM user_inventory2 WHERE name = 'ply-${player}' group by item_id, slot`;
-    exports.ghmattimysql.execute(string, {}, function(inventory) {
+    exports.oxmysql.execute(string, {}, function(inventory) {
         emitNet("inventory-update-player", src, [inventory, 0, playerinvname]);
     });
 });
@@ -63,8 +63,8 @@ onNet("server-request-update", async(player) => {
 RegisterServerEvent("inventory:degItem")
 onNet("inventory:degItem", async(itemID, percent, item, cid) => {
     let amount = percent * 100000000 / 2 / 2;
-    exports.ghmattimysql.execute(`UPDATE user_inventory2 set quality = quality - ${percent} WHERE id = ${itemID}`, {}, function() {});
-    exports.ghmattimysql.execute(`UPDATE user_inventory2 set creationDate = creationDate - ${amount} WHERE id = ${itemID}`, {}, function() {});
+    exports.oxmysql.execute(`UPDATE user_inventory2 set quality = quality - ${percent} WHERE id = ${itemID}`, {}, function() {});
+    exports.oxmysql.execute(`UPDATE user_inventory2 set creationDate = creationDate - ${amount} WHERE id = ${itemID}`, {}, function() {});
 });
 
 
@@ -73,7 +73,7 @@ onNet("server-request-update-src", async(player, src) => {
 
     let playerinvname = 'ply-' + player
     let string = `SELECT count(item_id) as amount, item_id, id, name, information, slot, dropped, MIN(creationDate) as creationDate FROM user_inventory2 WHERE name = 'ply-${player}' group by item_id, slot`;
-    exports.ghmattimysql.execute(string, {}, function(inventory) {
+    exports.oxmysql.execute(string, {}, function(inventory) {
         emitNet("inventory-update-player", src, [inventory, 0, playerinvname]);
     });
 });
@@ -127,7 +127,7 @@ function functionRemoveAny(player, itemidsent, amount, openedInv) {
     let playerinvname = 'ply-' + player
     let string = `DELETE FROM user_inventory2 WHERE name='${playerinvname}' and item_id='${itemidsent}' LIMIT ${amount}`
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
     });
 }
@@ -137,7 +137,7 @@ function functionRemoveByMetaKV(player, itemidsent, amount, metaKey, metaValue) 
     let playerinvname = 'ply-' + player
     let string = `DELETE FROM user_inventory2 WHERE name='${playerinvname}' and item_id='${itemidsent}' AND (information LIKE '${metaKey}' OR information LIKE '${metaValue}') LIMIT ${amount}`;
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
     });
 }
@@ -216,7 +216,7 @@ function GenerateInformation(src, player, itemid, itemdata, returnData = '{}') {
                         return resolve(returnInfo);
                     } else {
                         let string = `SELECT first_name,last_name,gender,dob FROM characters WHERE id = '${player}'`;
-                        exports.ghmattimysql.execute(string, {}, function(result) {
+                        exports.oxmysql.execute(string, {}, function(result) {
                             let dateOfBirth = '';
                             try {
                                 dateOfBirth = new Date(result[0].dob).toISOString().split('T')[0];
@@ -326,7 +326,7 @@ function GenerateInformation(src, player, itemid, itemdata, returnData = '{}') {
                 case "drivingtest":
                     if (data.id) {
                         let string = `SELECT * FROM driving_tests WHERE id = '${data.id}'`;
-                        exports.ghmattimysql.execute(string, {}, function(result) {
+                        exports.oxmysql.execute(string, {}, function(result) {
                             if (result[0]) {
                                 let ts = new Date(parseInt(result[0].timestamp) * 1000);
                                 let testDate =
@@ -428,7 +428,7 @@ onNet("server-inventory-give", async(player, itemid, slot, amount, generateInfor
     }
 
     let query = `INSERT INTO user_inventory2 (name,item_id,information,slot,creationDate) VALUES ${values};`
-    exports.ghmattimysql.execute(query, {}, function() {
+    exports.oxmysql.execute(query, {}, function() {
         emit("server-request-update-src", player, src)
     });
 
@@ -449,7 +449,7 @@ onNet("server-item-quality-update", async(cid, data) => {
 //     }
 
 //     let string = `SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped, quality, creationDate FROM user_inventory2 where name= 'ply-${player}' group by slot`;
-//     exports.ghmattimysql.execute(string, {}, function(inventory) {
+//     exports.oxmysql.execute(string, {}, function(inventory) {
 //         if (!inventory) {} else {
 //             var invArray = inventory;
 //             var arrayCount = 0;
@@ -490,7 +490,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
     }
     let string = `SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped,  quality, creationDate FROM user_inventory2 where name= 'ply-${player}'  group by slot`;
 
-    exports.ghmattimysql.execute(string, {}, function(inventory) {
+    exports.oxmysql.execute(string, {}, function(inventory) {
 
         var invArray = inventory;
         var i;
@@ -505,7 +505,7 @@ onNet("server-inventory-open", async(coords, player, secondInventory, targetName
             var targetinvname = targetName
 
             let string = `SELECT count(item_id) as amount, id, name, item_id, information, slot, dropped, creationDate FROM user_inventory2 WHERE name = '${targetinvname}' group by slot`;
-            exports.ghmattimysql.execute(string, {}, function(inventory2) {
+            exports.oxmysql.execute(string, {}, function(inventory2) {
                 emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, inventory2, 0, targetinvname, 500, true]);
 
                 InUseInventories[targetinvname] = player
@@ -838,7 +838,7 @@ function functionRemoveAny(player, itemidsent, amount, openedInv) {
     let playerinvname = 'ply-' + player
     let string = `DELETE FROM user_inventory2 WHERE name='${playerinvname}' and item_id='${itemidsent}' LIMIT ${amount}`
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
     });
 }
@@ -848,7 +848,7 @@ function functionRemoveByMetaKV(player, itemidsent, amount, metaKey, metaValue) 
     let playerinvname = 'ply-' + player
     let string = `DELETE FROM user_inventory2 WHERE name='${playerinvname}' and item_id='${itemidsent}' AND (information LIKE '${metaKey}' OR information LIKE '${metaValue}') LIMIT ${amount}`;
 
-    exports.ghmattimysql.execute(string, {}, function() {
+    exports.oxmysql.execute(string, {}, function() {
         emit("server-request-update-src", player, src)
     });
 }
@@ -866,7 +866,7 @@ onNet("server-inventory-close", async(player, targetInventoryName) => {
             delete DroppedInventories[targetInventoryName];
         } else {
             let string = `SELECT count(item_id) as amount, item_id, name, information, slot, dropped FROM user_inventory2 WHERE name='${targetInventoryName}' group by item_id `;
-            exports.ghmattimysql.execute(string, {}, function(result) {
+            exports.oxmysql.execute(string, {}, function(result) {
                 if (result.length == 0 && DroppedInventories[targetInventoryName]) {
                     delete DroppedInventories[targetInventoryName];
                     emitNet("Inventory-Dropped-Remove", -1, [targetInventoryName])
@@ -1138,7 +1138,7 @@ onNet("server-inventory-stack", async(player, data, coords) => {
     } else {
         let string = `SELECT item_id, id FROM user_inventory2 WHERE slot='${originSlot}' and name='${originInventory}' LIMIT ${moveAmount}`;
 
-        exports.ghmattimysql.execute(string, {}, function(result) {
+        exports.oxmysql.execute(string, {}, function(result) {
 
             var itemids = "0"
             for (let i = 0; i < result.length; i++) {
@@ -1164,7 +1164,7 @@ onNet("server-inventory-swap", (player, data, coords) => {
 
     let string = `SELECT id FROM user_inventory2 WHERE slot='${targetslot}' AND name='${targetname}'`;
 
-    exports.ghmattimysql.execute(string, {}, function(startid) {
+    exports.oxmysql.execute(string, {}, function(startid) {
         var itemids = "0"
         for (let i = 0; i < startid.length; i++) {
             itemids = itemids + "," + startid[i].id
@@ -1178,7 +1178,7 @@ onNet("server-inventory-swap", (player, data, coords) => {
             string = `UPDATE user_inventory2 SET slot='${targetslot}', name ='${targetname}', dropped = 0 WHERE slot='${startslot}' AND name='${startname}'`;
         }
 
-        exports.ghmattimysql.execute(string, {}, function(inventory) {
+        exports.oxmysql.execute(string, {}, function(inventory) {
             if (startname.indexOf("Drop") > -1 || startname.indexOf("hidden") > -1) {
                 db(`UPDATE user_inventory2 SET slot='${startslot}', name='${startname}', dropped = 1 WHERE id IN (${itemids})`);
             } else {

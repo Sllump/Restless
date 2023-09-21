@@ -1,7 +1,7 @@
 RegisterServerEvent("server-item-quality-update")
 AddEventHandler("server-item-quality-update", function(player, data)
     if data.quality < 1 then
-        exports.ghmattimysql:execute("UPDATE user_inventory2 SET `quality` = @quality WHERE name = @name AND slot = @slot AND item_id = @item_id", {
+        exports.oxmysql:execute("UPDATE user_inventory2 SET `quality` = @quality WHERE name = @name AND slot = @slot AND item_id = @item_id", {
             ['quality'] = "0", 
             ['name'] = 'ply-' ..player, 
             ['slot'] = data.slot,
@@ -13,7 +13,7 @@ end)
 RegisterServerEvent("server-item-update-metadata")
 AddEventHandler("server-item-update-metadata", function(inventoryName, slot, itemid, information)
     print("server-item-update-metadata", inventoryName, slot, itemid, information)
-    exports.ghmattimysql:execute("UPDATE user_inventory2 SET `information` = @information WHERE name = @name AND slot = @slot AND item_id = @item_id", {
+    exports.oxmysql:execute("UPDATE user_inventory2 SET `information` = @information WHERE name = @name AND slot = @slot AND item_id = @item_id", {
         ['information'] = information, 
         ['name'] = inventoryName, 
         ['slot'] = slot,
@@ -70,7 +70,7 @@ function getQuantity(pServerId, pItemId)
             end
         end
 
-        exports.ghmattimysql:scalar(query, { ['inventory'] = invId, ['item'] = pItemId, ['decayDate'] = decayDate}, function(data)
+        exports.oxmysql:scalar(query, { ['inventory'] = invId, ['item'] = pItemId, ['decayDate'] = decayDate}, function(data)
             p:resolve(data and data or 0)
         end)
 

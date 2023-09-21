@@ -22,7 +22,7 @@ files {
 ui_page 'ui/build/index.html'
 
 provide 'mysql-async'
-provide 'ghmattimysql'
+provide 'oxmysql'
 
 convar_category 'OxMySQL' {
 	'Configuration',

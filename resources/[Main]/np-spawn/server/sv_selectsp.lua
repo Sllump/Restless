@@ -43,10 +43,10 @@ AddEventHandler("character:loadspawns", function()
     local char = user:getCurrentCharacter()
     local cid = tonumber(char.id)
     local name = GetPlayerName(src)
-    exports.ghmattimysql:execute("SELECT cm.cid, cm.building_type FROM character_motel cm WHERE cm.cid = @cid ",{
+    exports.oxmysql:execute("SELECT cm.cid, cm.building_type FROM character_motel cm WHERE cm.cid = @cid ",{
         ["@cid"] = cid
     },function(housingMotels)
-        -- exports.ghmattimysql:execute('SELECT * FROM __housedata WHERE `cid` = @id', {
+        -- exports.oxmysql:execute('SELECT * FROM __housedata WHERE `cid` = @id', {
         --     ['@id'] = cid
         -- },function(housing_keys)
             if housingMotels[1] then
@@ -86,7 +86,7 @@ AddEventHandler("character:loadspawns", function()
                 TriggerClientEvent("spawn:clientSpawnData",src,spawnData)
             end
             else
-                exports.ghmattimysql:execute("INSERT INTO character_motel (cid) VALUES (@cid)",{
+                exports.oxmysql:execute("INSERT INTO character_motel (cid) VALUES (@cid)",{
                     ["cid"] = cid
                 })
                 local spawnData = {
@@ -120,10 +120,10 @@ end)
 --     local cid = tonumber(char.id)
 --     local name = GetPlayerName(src)
 
---     exports.ghmattimysql:execute("SELECT ho.*, cm.cid, cm.building_type, hp.level, hp.illness, hp.time FROM character_motel cm LEFT JOIN houses ho on ho.cid = cm.cid LEFT JOIN hospital_patients hp on hp.cid = cm.cid WHERE cm.cid = @cid ",{
+--     exports.oxmysql:execute("SELECT ho.*, cm.cid, cm.building_type, hp.level, hp.illness, hp.time FROM character_motel cm LEFT JOIN houses ho on ho.cid = cm.cid LEFT JOIN hospital_patients hp on hp.cid = cm.cid WHERE cm.cid = @cid ",{
 --         ["@cid"] = cid
 --     },function(housingMotels)
---         exports.ghmattimysql:execute('SELECT * FROM houses WHERE `cid` = @id', {
+--         exports.oxmysql:execute('SELECT * FROM houses WHERE `cid` = @id', {
 --             ['@id'] = cid
 --         },function(housing_keys)
 --             if housingMotels[1] then
@@ -161,10 +161,10 @@ end)
 --             end
 --             else
 --                 --This assumes a New Character
---                 exports.ghmattimysql:execute("INSERT INTO character_motel (cid) VALUES (@cid)",{
+--                 exports.oxmysql:execute("INSERT INTO character_motel (cid) VALUES (@cid)",{
 --                     ["cid"] = cid
 --                 })
---                 exports.ghmattimysql:execute("INSERT INTO hospital_patients (cid,level,illness,time) VALUES (@cid,@level,@illness,@time)",{
+--                 exports.oxmysql:execute("INSERT INTO hospital_patients (cid,level,illness,time) VALUES (@cid,@level,@illness,@time)",{
 --                     ["cid"] = cid,
 --                     ["level"] = 0,
 --                     ["illness"] = "none",

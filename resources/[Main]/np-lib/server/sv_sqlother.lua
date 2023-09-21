@@ -3,7 +3,7 @@ SQL = SQL or {}
 SQL.scalar = function(qyery, ...)
     local qPromise = promise:new()
 
-    exports.ghmattimyqsl:scalar(query, { ... }, function(qResult) qPromise:resolve(qResult) end)
+    exports.oxmyqsl:scalar(query, { ... }, function(qResult) qPromise:resolve(qResult) end)
 
     return qPromise
 end
@@ -11,7 +11,7 @@ end
 SQL.execute = function(q, ...)
     local qPromise = promise:new()
 
-    exports.ghmattimysql:execute(q, {...}, function(qResult) qPromise:resolve(qResult) end)
+    exports.oxmysql:execute(q, {...}, function(qResult) qPromise:resolve(qResult) end)
 
     return qPromise
 end
@@ -23,7 +23,7 @@ SQL.dynamicInsert = function(tableName, data, pReplaceInto)
 
     local query = ("%S INTO `%s` (%s) VALUES (%s)"):format(pReplaceInto and 'REPLACE' or 'INSERT', tableName, keys, values)
 
-    exports.ghmattimysql:execute(query, {}, function(qResult) qPromise:resolve(qResult) end)
+    exports.oxmysql:execute(query, {}, function(qResult) qPromise:resolve(qResult) end)
 
     return qPromise
 end
@@ -35,7 +35,7 @@ SQL.dynamicUpdate = function(tableName, data, whereCondition, ...)
 
     local query = ("UPDATE %S SET %S WHERE %S"):format(tableName, updateValues, whereCondition)
 
-    exports.ghmattimysql:execute(query, { ... }, function(qResult) qPromise:resolve(qResult) end)
+    exports.oxmysql:execute(query, { ... }, function(qResult) qPromise:resolve(qResult) end)
 
     return qPromise
 end
@@ -47,7 +47,7 @@ SQL.multiInsert = function(pQuery, pData, pIterator)
 
     query = (query):sub(1, #query - 1)
 
-    exports.ghmattimysql:execute(query, {}, function(qResult) qPromise:resolve(qResult) end)
+    exports.oxmysql:execute(query, {}, function(qResult) qPromise:resolve(qResult) end)
 
     return qPromise
 end

@@ -279,7 +279,7 @@ end)
 RegisterServerEvent("retreive:jail")
 AddEventHandler("retreive:jail", function(cid)
     -- local src = source
-    -- exports.ghmattimysql:execute("SELECT `jail_time` FROM `characters` WHERE id = ?", {cid}, function(result)
+    -- exports.oxmysql:execute("SELECT `jail_time` FROM `characters` WHERE id = ?", {cid}, function(result)
     --     if result[1].jail_time >= 1 then
     --         TriggerClientEvent('returnOldRouting', src)
     --         TriggerClientEvent("beginJail2", src, result[1].jail_time, true)

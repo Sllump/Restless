@@ -25,7 +25,7 @@ AddEventHandler("login:getCharModels", function(charlist,isReset)
         return
     end
 
-    exports.ghmattimysql:execute("SELECT cc.*, cf.* FROM character_face cf LEFT JOIN character_current cc on cc.cid = cf.cid WHERE cf.cid IN ("..list..")",{},function(result)
+    exports.oxmysql:execute("SELECT cc.*, cf.* FROM character_face cf LEFT JOIN character_current cc on cc.cid = cf.cid WHERE cf.cid IN ("..list..")",{},function(result)
         if result then
             local temp_data = {}
 

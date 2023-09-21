@@ -1,0 +1,124 @@
+{
+   "blips":[
+      {
+         "label":"Police Station 1",
+         "sprite":60,
+         "coords":{
+            "x":425.13,
+            "y":-979.558,
+            "z":30.711
+         },
+         "enabled":true
+      },
+      {
+         "label":"Police Station 2",
+         "sprite":60,
+         "coords":{
+            "x":850.156,
+            "y":-1283.92,
+            "z":28.004
+         },
+         "enabled":true
+      },
+      {
+         "label":"Police Station 3",
+         "sprite":60,
+         "coords":{
+            "x":1856.913,
+            "y":3689.5,
+            "z":34.267
+         },
+         "enabled":true
+      },
+      {
+         "label":"Police Station 4",
+         "sprite":60,
+         "coords":{
+            "x":-450.063,
+            "y":6016.575,
+            "z":31.716
+         },
+         "enabled":true
+      },
+      {
+         "label":"Police Station 5",
+         "sprite":60,
+         "coords":{
+            "x":400.85,
+            "y":-1632.37,
+            "z":29.3
+         },
+         "enabled":true
+      },
+      {
+         "label":"Park Ranger Station",
+         "sprite":60,
+         "coords":{
+            "x":384.4,
+            "y":797.34,
+            "z":187.47
+         },
+         "enabled":true
+      },
+      {
+         "label":"Forensic HQ",
+         "sprite":60,
+         "coords":{
+            "x":638.846,
+            "y":1.449,
+            "z":82.786
+         },
+         "enabled":true
+      },
+      {
+         "label":"Police Air HQ",
+         "sprite":43,
+         "coords":{
+            "x":449.359,
+            "y":-980.727,
+            "z":42.6
+         },
+         "enabled":true
+      },
+      {
+         "label":"Prison",
+         "sprite":60,
+         "coords":{
+            "x":1679.049,
+            "y":2513.711,
+            "z":45.565
+         },
+         "enabled":true
+      },
+      {
+         "label":"Hospital",
+         "sprite":61,
+         "coords":{
+            "x":357.43,
+            "y":-593.36,
+            "z":28.79
+         },
+         "enabled":true
+      },
+      {
+         "label":"Vespucci PD",
+         "sprite":60,
+         "coords":{
+            "x":-1097.14,
+            "y":-829.4,
+            "z":37.68
+         },
+         "enabled":true
+      },
+      {
+         "label":"Vespucci Hospital",
+         "sprite":61,
+         "coords":{
+            "x":-817.48,
+            "y":-1227.66,
+            "z":17.18
+         },
+         "enabled":true
+      }
+   ]
+}

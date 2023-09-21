@@ -1,5 +1,0 @@
-- Make it so when in queue you can get contracts lower than you're class.
-- Notifications when u contest a graffiti or scrub a graffiti.
-- Check how many members of the other gang are online before scrubbing spray
-- Code overhaul, getting a few hitches. Bad
-- Vin scratch cooldowns

@@ -145,14 +145,14 @@ function SetDefaultValues()
     SetWeaponDamageModifierThisFrame(`WEAPON_UNARMED`, 1.0)
 end
 
-RegisterNetEvent("np-inventory:itemCheck", function(item, hasItem, quantity)
+RegisterNetEvent("rlrp-inventory:itemCheck", function(item, hasItem, quantity)
     local buffs = ActiveBuffsItem[item]
     if buffs == nil then return end
 
     if not hasItem then
         if item == "boxinggloves" then
             HasBoxingGloves = false
-            TriggerEvent("np-inventory:boxingGlovesEquipped", false)
+            TriggerEvent("rlrp-inventory:boxingGlovesEquipped", false)
         end
         SetDefaultValues()
         return
@@ -175,7 +175,7 @@ RegisterNetEvent("np-inventory:itemCheck", function(item, hasItem, quantity)
             SetWeaponDamageModifierThisFrame(`WEAPON_UNARMED`, value)
             if item == "boxinggloves" then
                 HasBoxingGloves = true
-                TriggerEvent("np-inventory:boxingGlovesEquipped", true)
+                TriggerEvent("rlrp-inventory:boxingGlovesEquipped", true)
                 Citizen.CreateThread(function()
                     while HasBoxingGloves do
                         Wait(0)
@@ -189,10 +189,10 @@ RegisterNetEvent("np-inventory:itemCheck", function(item, hasItem, quantity)
 end)
 
 Citizen.CreateThread(function()
-    while not exports['np-config']:IsConfigReady() do
+    while not exports['rlrp-config']:IsConfigReady() do
         Wait(100)
     end
-    local buffsEnabled = exports["np-config"]:GetMiscConfig("buffs.enabled")
+    local buffsEnabled = exports["rlrp-config"]:GetMiscConfig("buffs.enabled")
     while true and buffsEnabled do
         local characterId = exports["isPed"]:isPed("cid")
         local player = PlayerPedId()

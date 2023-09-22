@@ -2,13 +2,13 @@ fx_version 'cerulean'
 games {'gta5'}
 
 
-client_script "@np-errorlog/client/cl_errorlog.lua"
+client_script "@rlrp-errorlog/client/cl_errorlog.lua"
 
 shared_script "@mka-array/Array.lua"
-shared_script "@np-lib/shared/sh_cacheable.lua"
+shared_script "@rlrp-lib/shared/sh_cacheable.lua"
 
-client_script "@np-lib/client/cl_infinity.lua"
-server_script "@np-lib/server/sv_infinity.lua"
+client_script "@rlrp-lib/client/cl_infinity.lua"
+server_script "@rlrp-lib/server/sv_infinity.lua"
 
 client_script 'carhud.lua'
 client_script 'cl_playerbuffs.lua'

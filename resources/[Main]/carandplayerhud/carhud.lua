@@ -895,7 +895,7 @@ toggleFaceWear = function(pWearType, pShouldRemove)
   end
 
   if pWearType == 6 then
-    local LocalPlayer = exports["np-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["rlrp-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     local bareFootIndex = 34
     if not IsPedMale(PlayerPedId()) or gender ~= 0 or GetEntityModel(PlayerPedId()) == `mp_f_freemode_01` then
@@ -911,7 +911,7 @@ toggleFaceWear = function(pWearType, pShouldRemove)
   local currentProp = GetPedPropIndex(PlayerPedId(), tonumber(PropIndex))
 
   if pWearType == 1 and not pShouldRemove and removedHatManually then
-    local hasHat = exports["np-inventory"]:hasEnoughOfItem("hat", 1, false, true, {hat = facialWear[PropIndex+1]["Prop"]})
+    local hasHat = exports["rlrp-inventory"]:hasEnoughOfItem("hat", 1, false, true, {hat = facialWear[PropIndex+1]["Prop"]})
     if not hasHat then
       TriggerEvent("DoLongHudText", "You don't have your current hat with you.")
       return
@@ -919,7 +919,7 @@ toggleFaceWear = function(pWearType, pShouldRemove)
   end
 
   if pWearType == 4 and not pShouldRemove and removedMaskManually then
-    local hasMask = exports["np-inventory"]:hasEnoughOfItem("mask", 1, false, true, {mask = facialWear[pWearType]["Prop"]})
+    local hasMask = exports["rlrp-inventory"]:hasEnoughOfItem("mask", 1, false, true, {mask = facialWear[pWearType]["Prop"]})
     if not hasMask then
       TriggerEvent("DoLongHudText", "You don't have your current mask with you.")
       return
@@ -939,10 +939,10 @@ toggleFaceWear = function(pWearType, pShouldRemove)
         SetPedComponentVariation(PlayerPedId(), PropIndex, -1, -1, -1)
         if currentDrawable ~= -1 then
           local itemMeta = { mask = currentDrawable, txd = texture, palette = pal }
-          local hasPropItem = exports["np-inventory"]:hasEnoughOfItem("mask", 1, false, true, itemMeta)
+          local hasPropItem = exports["rlrp-inventory"]:hasEnoughOfItem("mask", 1, false, true, itemMeta)
           if not hasPropItem then
             TriggerEvent("player:receiveItem", "mask", 1, false, itemMeta)
-            exports['np-clothing']:SaveCurrentClothing(PlayerPedId())
+            exports['rlrp-clothing']:SaveCurrentClothing(PlayerPedId())
           end
           removedMaskManually = true
         end
@@ -952,10 +952,10 @@ toggleFaceWear = function(pWearType, pShouldRemove)
           ClearPedProp(PlayerPedId(), tonumber(PropIndex))
           if pWearType == 1 and currentProp ~= -1 then
             local itemMeta = { hat = currentProp, txd = txdIndex }
-            local hasPropItem = exports["np-inventory"]:hasEnoughOfItem("hat", 1, false, true, itemMeta)
+            local hasPropItem = exports["rlrp-inventory"]:hasEnoughOfItem("hat", 1, false, true, itemMeta)
             if not hasPropItem then
               TriggerEvent("player:receiveItem", "hat", 1, false, itemMeta)
-              exports['np-clothing']:SaveCurrentClothing(PlayerPedId())
+              exports['rlrp-clothing']:SaveCurrentClothing(PlayerPedId())
             end
             removedHatManually = true
           end
@@ -970,7 +970,7 @@ toggleFaceWear = function(pWearType, pShouldRemove)
         SetPedComponentVariation(PlayerPedId(), PropIndex, facialWear[pWearType]["Prop"], facialWear[pWearType]["Texture"], facialWear[pWearType]["Palette"])
         if (currentDrawable == -1 or currentDrawable ~= facialWear[pWearType]["Prop"]) and removedMaskManually then
           TriggerEvent("inventory:removeItemByMetaKV", "mask", 1, "mask", facialWear[pWearType]["Prop"])
-          exports['np-clothing']:SaveCurrentClothing(PlayerPedId())
+          exports['rlrp-clothing']:SaveCurrentClothing(PlayerPedId())
           removedMaskManually = false
         end
       elseif pWearType == 7 then
@@ -980,7 +980,7 @@ toggleFaceWear = function(pWearType, pShouldRemove)
         if pWearType == 1 and currentProp == -1 and removedHatManually then
 
           TriggerEvent("inventory:removeItemByMetaKV", "hat", 1, "hat", facialWear[PropIndex+1]["Prop"])
-          exports['np-clothing']:SaveCurrentClothing(PlayerPedId())
+          exports['rlrp-clothing']:SaveCurrentClothing(PlayerPedId())
           removedHatManually = false
         end
       end
@@ -1141,8 +1141,8 @@ AddEventHandler("disableHUD", function(passedinfo)
   HudStage = passedinfo
 end)
 
-RegisterNetEvent("np-jobmanager:playerBecameJob")
-AddEventHandler("np-jobmanager:playerBecameJob", function(job, name)
+RegisterNetEvent("rlrp-jobmanager:playerBecameJob")
+AddEventHandler("rlrp-jobmanager:playerBecameJob", function(job, name)
   if job ~= "police" then isCop = false else isCop = true end
 end)
 
@@ -1676,7 +1676,7 @@ AddEventHandler("client:bed",function(disableKeys)
       sleeping = true
       if not disableKeys then
         showInteraction = true
-        exports["np-ui"]:showInteraction("[E] Leave Bed; [F] Dismiss")
+        exports["rlrp-ui"]:showInteraction("[E] Leave Bed; [F] Dismiss")
       end
 
     local bedOffset = vector3(-0.2, 0.1, 1.4)
@@ -1698,7 +1698,7 @@ AddEventHandler("client:bed",function(disableKeys)
         AttachEntityToEntity(ped, objFound, 1, bedOffset.x, bedOffset.y, bedOffset.z, 0.0, 0.0, rot, true, true, true, true, 1, true)
         -- camOn()
         if not showInteraction and not disableKeys then
-          exports["np-ui"]:hideInteraction()
+          exports["rlrp-ui"]:hideInteraction()
         end
         Citizen.Wait(1000)
         -- SetCamCoord(cam, GetOffsetFromEntityInWorldCoords(objFound, 0.0, 1.0, bedOffset.z + 0.8))
@@ -1711,7 +1711,7 @@ AddEventHandler("client:bed",function(disableKeys)
       return
     end
 
-    exports["np-ui"]:hideInteraction()
+    exports["rlrp-ui"]:hideInteraction()
 
     local counter = 0
       SetEntityHeading(GetEntityHeading(PlayerPedId()-90))
@@ -1804,7 +1804,7 @@ end)
 local wasSitting = false
 Citizen.CreateThread(function()
   while true do
-    local isSitting = exports["np-flags"]:HasPedFlag(PlayerPedId(), "isSittingOnChair")
+    local isSitting = exports["rlrp-flags"]:HasPedFlag(PlayerPedId(), "isSittingOnChair")
     if isSitting and (not wasSitting) then
       wasSitting = true
       TriggerEvent("player:sittingOnChair", true)
@@ -1867,8 +1867,8 @@ end)
 
 HasNuiFocus, IsFocusThreadRunning = false, false
 
-RegisterNetEvent('np-voice:focus:set')
-AddEventHandler('np-voice:focus:set', function(hasFocus, hasKeyboard, hasMouse)
+RegisterNetEvent('rlrp-voice:focus:set')
+AddEventHandler('rlrp-voice:focus:set', function(hasFocus, hasKeyboard, hasMouse)
 	HasNuiFocus = hasFocus
 
 	if HasNuiFocus and not IsFocusThreadRunning then
@@ -2198,8 +2198,8 @@ Citizen.CreateThread(function()
         end
       end
       if valueChanged then
-        -- TriggerEvent("np-ui:hud:values", currentValues)
-        exports["np-ui"]:sendAppEvent("hud", {
+        -- TriggerEvent("rlrp-ui:hud:values", currentValues)
+        exports["rlrp-ui"]:sendAppEvent("hud", {
             food = currentValues["hunger"],
             oxygen = currentValues["oxy"],
             oxygenShow = currentValues["oxy"] and currentValues["oxy"] ~= 25,
@@ -2283,7 +2283,7 @@ Citizen.CreateThread(function()
     end
     if hadCrosshair ~= hasCrosshair then
       hadCrosshair = hasCrosshair
-      exports["np-ui"]:sendAppEvent("hud", {
+      exports["rlrp-ui"]:sendAppEvent("hud", {
         crosshairShow = hasCrosshair,
       })
     end
@@ -2304,11 +2304,11 @@ AddEventHandler("buffs:triggerBuff", function(item)
   if not buffItems[item] then return end
   if buffStartTime ~= 0 then return end
   buffStartTime = GetGameTimer()
-  TriggerEvent("np-buffs:addUIBuff", { buffedHunger = true, buffedThirst = true })
+  TriggerEvent("rlrp-buffs:addUIBuff", { buffedHunger = true, buffedThirst = true })
   Citizen.CreateThread(function()
     Citizen.Wait(60000 * 60 * 6) -- 6hr
     buffStartTime = 0
-    TriggerEvent("np-buffs:addUIBuff", { buffedHunger = false, buffedThirst = false })
+    TriggerEvent("rlrp-buffs:addUIBuff", { buffedHunger = false, buffedThirst = false })
   end)
 end)
 
@@ -2325,11 +2325,11 @@ AddEventHandler("buffs:triggerBuff", function(item)
   if not citrineBuffItems[item] then return end
   if citrineStartTime ~= 0 then return end
   citrineStartTime = GetGameTimer()
-  TriggerEvent("np-buffs:addUIBuff", { buffedHealth = true, buffedArmor = true })
+  TriggerEvent("rlrp-buffs:addUIBuff", { buffedHealth = true, buffedArmor = true })
   Citizen.CreateThread(function()
     Citizen.Wait(60000 * 60 * 6) -- 3hr
     citrineStartTime = 0
-    TriggerEvent("np-buffs:addUIBuff", { buffedHealth = false, buffedArmor = false })
+    TriggerEvent("rlrp-buffs:addUIBuff", { buffedHealth = false, buffedArmor = false })
   end)
 end)
 Citizen.CreateThread(function()
@@ -2360,7 +2360,7 @@ end
 local itemCooldownExpiresAt = 0
 local chapReductionTime = 60000 * 60 * 2 -- Two hours
 
-AddEventHandler("np-inventory:itemUsed", function(item)
+AddEventHandler("rlrp-inventory:itemUsed", function(item)
   if item ~= "bobmulet_chapstick" then return end
 
   if GetGameTimer() < itemCooldownExpiresAt then
@@ -2368,7 +2368,7 @@ AddEventHandler("np-inventory:itemUsed", function(item)
     return
   end
 
-  local finished = exports["np-taskbar"]:taskBar(4000, "Using Chapstick")
+  local finished = exports["rlrp-taskbar"]:taskBar(4000, "Using Chapstick")
   if finished ~= 100 then
     ClearPedTasks(PlayerPedId())
     TriggerEvent("DoLongHudText", "Chapstick Cancelled", 2)
@@ -2486,12 +2486,12 @@ AddEventHandler("shoes:steal", function(pArgs, pEntity)
   TaskPlayAnim(PlayerPedId(),'random@domestic', 'pickup_low',5.0, 1.0, 1.0, 48, 0.0, 0, 0, 0)
   Citizen.Wait(1600)
   ClearPedTasks(PlayerPedId())
-  TriggerServerEvent("np-clothing:removeShoes", GetPlayerServerId(NetworkGetPlayerIndexFromPed(pEntity)))
+  TriggerServerEvent("rlrp-clothing:removeShoes", GetPlayerServerId(NetworkGetPlayerIndexFromPed(pEntity)))
   TriggerEvent("player:receiveItem", "-828058162", 2)
 end)
 
-RegisterNetEvent("np-police:cuffs:state")
-AddEventHandler("np-police:cuffs:state", function(pIsHandcuffed, pIsHandcuffedAndWalking)
+RegisterNetEvent("rlrp-police:cuffs:state")
+AddEventHandler("rlrp-police:cuffs:state", function(pIsHandcuffed, pIsHandcuffedAndWalking)
     isHandcuffedAndWalking = pIsHandcuffedAndWalking
     isHandcuffed = pIsHandcuffed
 end)
@@ -2514,7 +2514,7 @@ AddEventHandler("baseevents:enteredVehicle", function(pVehicle)
     return
   end
 
-  local hasLicense = exports["np-gov"]:HasLicense("pilot_license")
+  local hasLicense = exports["rlrp-gov"]:HasLicense("pilot_license")
   if hasLicense then
     return
   end
@@ -2566,8 +2566,8 @@ RegisterCommand("togglefattyres", function()
   isFatEnabled = not isFatEnabled
 end)
 
-AddEventHandler("np-spawn:characterSpawned", function()
-  local serverCode = exports["np-config"]:GetServerCode()
+AddEventHandler("rlrp-spawn:characterSpawned", function()
+  local serverCode = exports["rlrp-config"]:GetServerCode()
   if serverCode ~= "wl" then return end
   local cid = exports["isPed"]:isPed("cid")
   playerCid = cid
@@ -2655,8 +2655,8 @@ exports('GetHunger', function()
 end)
 
 local dToggle = false
-RegisterNetEvent("np-admin:currentDevmode")
-AddEventHandler("np-admin:currentDevmode", function(devmode)
+RegisterNetEvent("rlrp-admin:currentDevmode")
+AddEventHandler("rlrp-admin:currentDevmode", function(devmode)
     dToggle = devmode
 end)
 local BLOCKING_LOOP = false
@@ -2677,7 +2677,7 @@ AddEventHandler("baseevents:enteredVehicle", function(pVehicle)
     while BLOCKING_LOOP and not dToggle do
       if IsEntityInWater(pVehicle) then
         if GetPedInVehicleSeat(pVehicle, -1) == PlayerPedId() then
-          TriggerServerEvent("np:vehicles:reduceFuel", NetworkGetNetworkIdFromEntity(pVehicle), 1)
+          TriggerServerEvent("rlrp:vehicles:reduceFuel", NetworkGetNetworkIdFromEntity(pVehicle), 1)
         end
       end
       Wait(4000)

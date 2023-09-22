@@ -2,12 +2,12 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 --[[ dependencies {
-  "np-lib",
-  "np-ui"
+  "rlrp-lib",
+  "rlrp-ui"
 } ]]--
 
-client_script "@np-lib/client/cl_ui.lua"
-client_script "@np-errorlog/client/cl_errorlog.lua"
+client_script "@rlrp-lib/client/cl_ui.lua"
+client_script "@rlrp-errorlog/client/cl_errorlog.lua"
 
 client_scripts {
   'client/cl_*.lua'

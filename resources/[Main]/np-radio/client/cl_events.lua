@@ -2,7 +2,7 @@ local isRadioOpen = false
 
 RegisterNetEvent('ChannelSet')
 AddEventHandler('ChannelSet', function(chan)
-    exports["np-ui"]:sendAppEvent("radio", { value = chan })
+    exports["rlrp-ui"]:sendAppEvent("radio", { value = chan })
 end)
 
 RegisterNetEvent('radioGui')
@@ -21,64 +21,64 @@ AddEventHandler('radioGui', function()
     end
 
     if not isRadioOpen then
-        exports["np-ui"]:openApplication("radio", {
+        exports["rlrp-ui"]:openApplication("radio", {
             emergency = (currentJob == "police" or currentJob == "ems" or currentJob == "doc")
         })
-        local _, isAnimalModel = pcall(function () return exports["np-misc-code"]:isAnimalModel(GetEntityModel(PlayerPedId())) end)
+        local _, isAnimalModel = pcall(function () return exports["rlrp-misc-code"]:isAnimalModel(GetEntityModel(PlayerPedId())) end)
         if not isAnimalModel then toggleRadioAnimation(true) end
     else
-        exports["np-ui"]:closeApplication("radio")
+        exports["rlrp-ui"]:closeApplication("radio")
         closeEvent()
     end
 
     isRadioOpen = not isRadioOpen
 end)
 
-RegisterUICallback('np-ui:radioVolumeUp', function(data, cb)
-    exports["np-voice"]:IncreaseRadioVolume()
+RegisterUICallback('rlrp-ui:radioVolumeUp', function(data, cb)
+    exports["rlrp-voice"]:IncreaseRadioVolume()
     cb({ data = {}, meta = { ok = true, message = '' } })
 end)
 
-RegisterUICallback('np-ui:radioVolumeDown', function(data, cb)
-    exports["np-voice"]:DecreaseRadioVolume()
+RegisterUICallback('rlrp-ui:radioVolumeDown', function(data, cb)
+    exports["rlrp-voice"]:DecreaseRadioVolume()
     cb({ data = {}, meta = { ok = true, message = '' } })
 end)
 
-RegisterUICallback('np-ui:toggleRadioOn', function(data, cb)
-    exports["np-voice"]:SetRadioPowerState(true)
+RegisterUICallback('rlrp-ui:toggleRadioOn', function(data, cb)
+    exports["rlrp-voice"]:SetRadioPowerState(true)
     cb({ data = {}, meta = { ok = true, message = '' } })
 end)
 
-RegisterUICallback('np-ui:toggleRadioOff', function(data, cb)
-    exports["np-voice"]:SetRadioPowerState(false)
+RegisterUICallback('rlrp-ui:toggleRadioOff', function(data, cb)
+    exports["rlrp-voice"]:SetRadioPowerState(false)
     cb({ data = {}, meta = { ok = true, message = '' } })
 end)
 
-RegisterUICallback('np-ui:setRadioChannel', function(data, cb)
+RegisterUICallback('rlrp-ui:setRadioChannel', function(data, cb)
     local success = handleConnectionEvent(data.channel)
     cb({ data = success, meta = { ok = true, message = '' } })
 end)
 
-AddEventHandler('np-radio:setChannel', function(params)
+AddEventHandler('rlrp-radio:setChannel', function(params)
     handleConnectionEvent(params[1])
-    exports["np-ui"]:sendAppEvent("radio", { value = params[1] })
+    exports["rlrp-ui"]:sendAppEvent("radio", { value = params[1] })
 end)
 
-AddEventHandler('np-radio:updateRadioState', function (frequency, powered)
-    exports["np-ui"]:sendAppEvent("radio", { value = frequency, state = powered })
+AddEventHandler('rlrp-radio:updateRadioState', function (frequency, powered)
+    exports["rlrp-ui"]:sendAppEvent("radio", { value = frequency, state = powered })
 end)
 
-AddEventHandler("np-ui:application-closed", function (name, data)
+AddEventHandler("rlrp-ui:application-closed", function (name, data)
     if name ~= "radio" then return end
     isRadioOpen = false
     closeEvent()
 end)
 
-RegisterNetEvent('np-inventory:itemCheck')
-AddEventHandler('np-inventory:itemCheck', function (item, state, quantity)
+RegisterNetEvent('rlrp-inventory:itemCheck')
+AddEventHandler('rlrp-inventory:itemCheck', function (item, state, quantity)
     if item ~= "civradio" and item ~= "radio" then return end
     if state or quantity > 0 then return end
-    exports["np-voice"]:SetRadioPowerState(false)
-    exports["np-ui"]:sendAppEvent("radio", { value = 0, state = false })
+    exports["rlrp-voice"]:SetRadioPowerState(false)
+    exports["rlrp-ui"]:sendAppEvent("radio", { value = 0, state = false })
     TriggerEvent("DoLongHudText", "You have been disconnected from the radio.")
 end)

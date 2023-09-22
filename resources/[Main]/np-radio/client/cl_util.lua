@@ -1,5 +1,5 @@
 function hasRadio()
-    return exports["np-inventory"]:hasEnoughOfItem("radio", 1, false, true) or exports["np-inventory"]:hasEnoughOfItem("civradio", 1, false, true)
+    return exports["rlrp-inventory"]:hasEnoughOfItem("radio", 1, false, true) or exports["rlrp-inventory"]:hasEnoughOfItem("civradio", 1, false, true)
 end
 
 local function formattedChannelNumber(number)
@@ -12,7 +12,7 @@ function handleConnectionEvent(pChannel)
 
     if type(newChannel) ~= 'number' then return end
 
-    local result = exports['np-voice']:SetRadioFrequency(newChannel)
+    local result = exports['rlrp-voice']:SetRadioFrequency(newChannel)
     return result
 end
 

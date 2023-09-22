@@ -39,7 +39,7 @@ end)
 RegisterServerEvent("character:loadspawns")
 AddEventHandler("character:loadspawns", function()
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = tonumber(char.id)
     local name = GetPlayerName(src)
@@ -65,8 +65,8 @@ AddEventHandler("character:loadspawns", function()
                     ["keys"] = {},
                 }
 
-                -- spawnData["houses"] = exports["np-housing"]:getCurrentOwned(src)
-                -- spawnData["keys"] = exports["np-housing"]:currentKeys(src)
+                -- spawnData["houses"] = exports["rlrp-housing"]:getCurrentOwned(src)
+                -- spawnData["keys"] = exports["rlrp-housing"]:currentKeys(src)
 
                 if crashReports[name] ~= nil then  
                     if (os.time() - crashReports[name].timedOut) < 600 then
@@ -115,7 +115,7 @@ end)
 -- RegisterServerEvent("character:loadspawns")
 -- AddEventHandler("character:loadspawns", function()
 --     local src = source
---     local user = exports["np-base"]:getModule("Player"):GetUser(src)
+--     local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
 --     local char = user:getCurrentCharacter()
 --     local cid = tonumber(char.id)
 --     local name = GetPlayerName(src)

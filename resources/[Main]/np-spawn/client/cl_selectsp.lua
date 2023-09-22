@@ -46,7 +46,7 @@ AddEventHandler('spawn:clientSpawnData', function(spawnData, heheData)
 				Spawn.isNew = true 
 				Spawn.selectedSpawn(' Apartments 1')
 				-- Spawn.selectedSpawn(' Vinewood Blvd Taxi Stand')
-				-- TriggerEvent("np-spawn:firstspawnyo")
+				-- TriggerEvent("rlrp-spawn:firstspawnyo")
 			end
 			return
 		end
@@ -57,7 +57,7 @@ AddEventHandler('spawn:clientSpawnData', function(spawnData, heheData)
 		})
 
 		-- if Spawn.housingCoords == nil then
-		-- 	Spawn.housingCoords = exports["np-housing"]:retriveHousingTable()
+		-- 	Spawn.housingCoords = exports["rlrp-housing"]:retriveHousingTable()
 		-- end
 
 		-- Spawn.businessSpawns = Spawn.getBusinesses()
@@ -149,17 +149,17 @@ function Spawn.getCrash(exitData)
 end
 
 
-RegisterNetEvent("np-spawn:firstspawnyo")
-AddEventHandler("np-spawn:firstspawnyo", function()
+RegisterNetEvent("rlrp-spawn:firstspawnyo")
+AddEventHandler("rlrp-spawn:firstspawnyo", function()
     if GetEntityModel(PlayerPedId()) == GetHashKey("mp_f_freemode_01") then
-        TriggerEvent("np-spawn:finishedClothingstuffbish")
+        TriggerEvent("rlrp-spawn:finishedClothingstuffbish")
     else
-        TriggerEvent("np-spawn:finishedClothingstuff")
+        TriggerEvent("rlrp-spawn:finishedClothingstuff")
     end
 end)
 
-RegisterNetEvent('np-spawn:finishedClothingstuff')
-AddEventHandler('np-spawn:finishedClothingstuff', function()
+RegisterNetEvent('rlrp-spawn:finishedClothingstuff')
+AddEventHandler('rlrp-spawn:finishedClothingstuff', function()
 	RequestCutsceneWithPlaybackList('mp_intro_concat',31,8)
 
 	SetEntityCoords(GetPlayerPed(-1), -1146.89, -1655.06, 4.38)
@@ -188,10 +188,10 @@ AddEventHandler('np-spawn:finishedClothingstuff', function()
 				FreezeEntityPosition(GetPlayerPed(-1), true)
 				Wait(3000)
 				FreezeEntityPosition(GetPlayerPed(-1), false)
-				if not exports["np-inventory"]:hasEnoughOfItem("idcard",1,false) then
+				if not exports["rlrp-inventory"]:hasEnoughOfItem("idcard",1,false) then
 					TriggerEvent("player:receiveItem","idcard",1,true)
 				end
-				if not exports["np-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
+				if not exports["rlrp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
 					TriggerEvent("player:receiveItem","mobilephone",1)
 				end
 				break
@@ -203,8 +203,8 @@ AddEventHandler('np-spawn:finishedClothingstuff', function()
 --	RemoveCutscene()
 end)
 
-RegisterNetEvent('np-spawn:finishedClothingstuffbish')
-AddEventHandler('np-spawn:finishedClothingstuffbish', function()
+RegisterNetEvent('rlrp-spawn:finishedClothingstuffbish')
+AddEventHandler('rlrp-spawn:finishedClothingstuffbish', function()
 	RequestCutsceneWithPlaybackList('mp_intro_concat',103,8)
 
 	SetEntityCoords(GetPlayerPed(-1), -1146.89, -1655.06, 4.38)
@@ -233,10 +233,10 @@ AddEventHandler('np-spawn:finishedClothingstuffbish', function()
 				FreezeEntityPosition(GetPlayerPed(-1), true)
 				Wait(5000)
 				FreezeEntityPosition(GetPlayerPed(-1), false)
-				if not exports["np-inventory"]:hasEnoughOfItem("idcard",1,false) then
+				if not exports["rlrp-inventory"]:hasEnoughOfItem("idcard",1,false) then
 					TriggerEvent("player:receiveItem","idcard",1,true)
 				end
-				if not exports["np-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
+				if not exports["rlrp-inventory"]:hasEnoughOfItem("mobilephone",1,false)then
 					TriggerEvent("player:receiveItem","mobilephone",1)
 				end
 				break
@@ -280,7 +280,7 @@ end
 function Spawn.getBusinessSpawn(pBusinessCode, pBusinessName)
 	local spawn = nil
 
-	local hasPermission = RPC.execute("np-business:hasPermission", pBusinessCode, "key_access")
+	local hasPermission = RPC.execute("rlrp-business:hasPermission", pBusinessCode, "key_access")
 	if not hasPermission then
 		return spawn	
 	end
@@ -378,7 +378,7 @@ function Spawn.selectedSpawn(spawnInfo)
 				spawnInApart = true
 			end
 		else
-			TriggerEvent("np-spawn:characterSpawned", cid)
+			TriggerEvent("rlrp-spawn:characterSpawned", cid)
 		end
 		TriggerServerEvent("apartment:serverApartmentSpawn", Spawn.defaultApartmentSpawn.roomType, false, nil, spawnInApart)
 		Spawn.tempHousing  = {}
@@ -402,8 +402,8 @@ function Spawn.selectedSpawn(spawnInfo)
 			
 			TriggerServerEvent("apartment:serverApartmentSpawn",Spawn.defaultApartmentSpawn.roomType,Spawn.isNew,nil,false)
 			DoScreenFadeIn(2500)
-			TriggerEvent("np-spawn:characterSpawned")
-			TriggerEvent("np-spawn:characterSpawned")
+			TriggerEvent("rlrp-spawn:characterSpawned")
+			TriggerEvent("rlrp-spawn:characterSpawned")
 		else 
 			local pos = Spawn.obtainHousingPos(spawnInfo)
 			if pos then

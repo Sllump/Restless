@@ -1,7 +1,7 @@
 local playerHolding = {}
 local isNear = false
 Citizen.CreateThread(function()
-	exports["np-polyzone"]:AddBoxZone("spawnZone", vector3(-3962.55, 2014.91, 500.91), 31.2, 20.2,  {
+	exports["rlrp-polyzone"]:AddBoxZone("spawnZone", vector3(-3962.55, 2014.91, 500.91), 31.2, 20.2,  {
 		name="spawn",
         heading=340,
         minZ=498.51,
@@ -55,11 +55,11 @@ function checkPlayers()
     end)
 end
 
-AddEventHandler("np-polyzone:enter", function(name)
+AddEventHandler("rlrp-polyzone:enter", function(name)
     if name ~= "spawnZone" then return end
     checkPlayers()
 end)
-AddEventHandler("np-polyzone:exit", function(name)
+AddEventHandler("rlrp-polyzone:exit", function(name)
     if name ~= "spawnZone" then return end
     listening = false
 end)

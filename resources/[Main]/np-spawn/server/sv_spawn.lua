@@ -55,18 +55,18 @@ AddEventHandler("login:getCharModels", function(charlist,isReset)
     end)
 end)
 
-RegisterServerEvent("np-login:disconnectPlayer")
-AddEventHandler("np-login:disconnectPlayer", function()
+RegisterServerEvent("rlrp-login:disconnectPlayer")
+AddEventHandler("rlrp-login:disconnectPlayer", function()
     local src = source
     DropPlayer(src, "You DisConnected")
 end)
 
-RegisterServerEvent("np-base:playerSessionStarted")
-AddEventHandler("np-base:playerSessionStarted", function()
+RegisterServerEvent("rlrp-base:playerSessionStarted")
+AddEventHandler("rlrp-base:playerSessionStarted", function()
     local src = source
     Citizen.CreateThread(function()
         Citizen.Wait(600000 * 3)
-        local user = exports["np-base"]:getModule("Player"):GetUser(src)
+        local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
         if not user or not user:getVar("characterLoaded") then
             DropPlayer(src, "You timed out while choosing a character")
             return
@@ -76,7 +76,7 @@ end)
 
 -- RPC.register("playercoords",function(coords)
 --     local src = source
---     local user = exports["np-base"]:getModule("Player"):GetUser(src)
+--     local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
 --     local cid = user:getCurrentCharacter()
 --     local sql = SQL('SELECT `coords` FROM characters WHERE id = @id', {['id'] = cid})
 --     if sql[1] then
@@ -84,10 +84,10 @@ end)
 --     end
 -- end)
 
-RegisterServerEvent("np-spawn:licenses")
-AddEventHandler("np-spawn:licenses", function()
+RegisterServerEvent("rlrp-spawn:licenses")
+AddEventHandler("rlrp-spawn:licenses", function()
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getVar("character")
     exports.oxmysql:execute("INSERT INTO user_licenses (type, cid) VALUES (@type, @cid)", {['@type'] = "Weapon",['@cid'] = char.id})
     exports.oxmysql:execute("INSERT INTO user_licenses (type, cid, status) VALUES (@type, @cid, @status)", {['@type'] = "Driver", ['@cid'] = char.id, ['@status'] = "1"})
@@ -98,10 +98,10 @@ AddEventHandler("np-spawn:licenses", function()
     exports.oxmysql:execute("INSERT INTO user_licenses (type, cid) VALUES (@type, @cid)", {['@type'] = "Bar",['@cid'] = char.id})
 end)
 
-RegisterServerEvent("np-spawn:initBoosting")
-AddEventHandler("np-spawn:initBoosting", function()
+RegisterServerEvent("rlrp-spawn:initBoosting")
+AddEventHandler("rlrp-spawn:initBoosting", function()
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getVar("character")
     exports.oxmysql:execute("INSERT INTO boosting_users (identifier, level, gne, cooldown) VALUES (@identifier, @level, @gne, @cooldown)",
     {
@@ -114,21 +114,21 @@ end)
 
 -- Instanced Creating Char First Time --
 
-RegisterServerEvent('np-spawn:SetNewRouting')
-AddEventHandler('np-spawn:SetNewRouting', function(pRoutingNum)
+RegisterServerEvent('rlrp-spawn:SetNewRouting')
+AddEventHandler('rlrp-spawn:SetNewRouting', function(pRoutingNum)
     local src = source
     SetPlayerRoutingBucket(src, pRoutingNum)
     print('Spawn routing bucket: '..pRoutingNum)
 end)
 
-RegisterServerEvent('np-spawn:GetRouting')
-AddEventHandler('np-spawn:GetRouting', function()
+RegisterServerEvent('rlrp-spawn:GetRouting')
+AddEventHandler('rlrp-spawn:GetRouting', function()
     local src = source
     GetPlayerRoutingBucket(src)
 end)
 
-RegisterServerEvent('np-spawn:SetOldRouting')
-AddEventHandler('np-spawn:SetOldRouting', function()
+RegisterServerEvent('rlrp-spawn:SetOldRouting')
+AddEventHandler('rlrp-spawn:SetOldRouting', function()
     local src = source
     SetPlayerRoutingBucket(src, 0)
     print('Setting Routing Bucket Back To Normal.')

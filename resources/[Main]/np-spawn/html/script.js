@@ -649,7 +649,7 @@ function isInJail(char){
 
 
 function sendNuiMessage(data){
-	$.post("https://np-spawn/nuiCallback", JSON.stringify(data));
+	$.post("https://rlrp-spawn/nuiCallback", JSON.stringify(data));
 }
 
 

@@ -20,10 +20,10 @@ files({
 })
 
 
-client_script '@np-lib/client/cl_rpc.lua'
+client_script '@rlrp-lib/client/cl_rpc.lua'
 client_script "client/*"
 
-server_script '@np-lib/server/sv_rpc.lua'
+server_script '@rlrp-lib/server/sv_rpc.lua'
 shared_script "shared/sh_spawn.lua" 
 server_script "server/*"
 

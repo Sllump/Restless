@@ -202,7 +202,7 @@ function Login.NUICallback(data)
 
 	if data.action == "currentHover" then
 		local offset = vector2(data.x,data.y)
-		local coords = exports["np-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
+		local coords = exports["rlrp-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
 	    local pedCaught = LocationInWorld(coords,LoginSafe.Cam)
 	    local pedData = findCharPed(pedCaught,true)
 
@@ -215,7 +215,7 @@ function Login.NUICallback(data)
 
 	if data.action == "singleClick" or data.action == "doubleClick" then
 	    local offset = vector2(data.x,data.y)
-	    local coords = exports["np-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
+	    local coords = exports["rlrp-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
 	    local pedCaught = LocationInWorld(coords,LoginSafe.Cam)
 		print(pedCaught)
 	   	local pedData = nil
@@ -257,8 +257,8 @@ function Login.NUICallback(data)
 
 	if data.action == "deleteCharacter" then
 		Login.actionsBlocked = true
-		local events = exports["np-base"]:getModule("Events")
-		events:Trigger("np-base:deleteCharacter", data.actionData, function(deleted)
+		local events = exports["rlrp-base"]:getModule("Events")
+		events:Trigger("rlrp-base:deleteCharacter", data.actionData, function(deleted)
             Login.getCharacters(true)
         end)
 	end
@@ -266,7 +266,7 @@ function Login.NUICallback(data)
 	if data.action == "newCharacter" then
 		Login.actionsBlocked = true
 		local cData = data.actionData
-		local events = exports["np-base"]:getModule("Events")
+		local events = exports["rlrp-base"]:getModule("Events")
 		local gender = 0 
 		if cData.gender == "F" then gender = 1 end
 		local chardata = {
@@ -280,11 +280,11 @@ function Login.NUICallback(data)
 		else
 			pGender = "Female"
 		end
-		TriggerServerEvent('np-spawn:createCharacter:log', cData.first_name, cData.last_name, cData.dob, pGender)
+		TriggerServerEvent('rlrp-spawn:createCharacter:log', cData.first_name, cData.last_name, cData.dob, pGender)
 		
         if not chardata then return end
 
-		events:Trigger("np-base:createCharacter", chardata, function(created)
+		events:Trigger("rlrp-base:createCharacter", chardata, function(created)
             if not created then
 				TriggerEvent("DoLongHudText","There was an error while creating your character, value returned nil or false. Contact an administrator if this persists.",2) 
 				Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
@@ -346,8 +346,8 @@ AddEventHandler("onResourceStop", function()
 	Login.ClearSpawnedPeds()
 end)
 
-RegisterNetEvent("np-base:spawnInitialized")
-AddEventHandler("np-base:spawnInitialized", function()
+RegisterNetEvent("rlrp-base:spawnInitialized")
+AddEventHandler("rlrp-base:spawnInitialized", function()
 	Login.nativeStart()
 end)
 

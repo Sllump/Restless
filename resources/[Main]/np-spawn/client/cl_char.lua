@@ -35,8 +35,8 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
 
     Login.CurrentClothing = characterModelData
 
-    local events = exports["np-base"]:getModule("Events")
-    events:Trigger("np-base:fetchPlayerCharacters", nil, function(data)
+    local events = exports["rlrp-base"]:getModule("Events")
+    events:Trigger("rlrp-base:fetchPlayerCharacters", nil, function(data)
         if data.err then
             return
         end
@@ -178,24 +178,24 @@ AddEventHandler("login:CreatePlayerCharacterPeds", Login.CreatePlayerCharacterPe
 
 --[[
     Functions below: base attachment
-    Description: dealing with np-base functionality in order to set/get the correct information for chars
+    Description: dealing with rlrp-base functionality in order to set/get the correct information for chars
 ]]
 
 
 
 function Login.getCharacters(isReset)
-    local events = exports["np-base"]:getModule("Events")
+    local events = exports["rlrp-base"]:getModule("Events")
     
     if not isReset then
         TransitionFromBlurred(500)
-        events:Trigger("np-base:loginPlayer", nil, function(data)
+        events:Trigger("rlrp-base:loginPlayer", nil, function(data)
             if type(data) == "table" and data.err then
                 return
             end
         end)
     end
 
-    events:Trigger("np-base:fetchPlayerCharacters", nil, function(data)
+    events:Trigger("rlrp-base:fetchPlayerCharacters", nil, function(data)
         if data.err then
             print("Found error in getting player Char")
             return
@@ -223,12 +223,12 @@ function Login.SelectedChar(data)
 
 	Login.ClearSpawnedPeds()
 	TriggerEvent("character:PlayerSelectedCharacter")
-	local events = exports["np-base"]:getModule("Events")
-	events:Trigger("np-base:selectCharacter", data.actionData, function(returnData)
+	local events = exports["rlrp-base"]:getModule("Events")
+	events:Trigger("rlrp-base:selectCharacter", data.actionData, function(returnData)
        
         if not returnData.loggedin or not returnData.chardata then sendMessage({err = {err = true, msg = "There was a problem logging in as that character, if the problem persists, contact an administrator <br/> Cid: " .. tostring(data.selectcharacter)}}) return end
 
-        local LocalPlayer = exports["np-base"]:getModule("LocalPlayer")
+        local LocalPlayer = exports["rlrp-base"]:getModule("LocalPlayer")
         LocalPlayer:setCurrentCharacter(returnData.chardata)
        	
         if Login.CurrentClothing[data.actionData] == nil then
@@ -237,7 +237,7 @@ function Login.SelectedChar(data)
             deleteTrain()
             TriggerServerEvent("kGetWeather")
 	       -- SetPlayerInvincible(PlayerPedId(), true)
-	        TriggerEvent("np-base:firstSpawn")
+	        TriggerEvent("rlrp-base:firstSpawn")
 	    end
     end)
 end
@@ -273,7 +273,7 @@ function Login.setClothingForChar()
     end
 
     Login.Open = false
-    local LocalPlayer = exports["np-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["rlrp-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
 
     if gender ~= 0 then
@@ -282,7 +282,7 @@ function Login.setClothingForChar()
         SetSkin(GetHashKey("mp_m_freemode_01"), true)
     end
 
-    TriggerServerEvent('np-spawn:SetNewRouting', math.random(1, 999))
+    TriggerServerEvent('rlrp-spawn:SetNewRouting', math.random(1, 999))
     TriggerEvent("raid_clothes:openClothing")
     TriggerEvent("raid_clothes:inSpawn", true)
 
@@ -293,17 +293,17 @@ function Login.setClothingForChar()
     SetGameplayCamRelativePitch(4.0, 1.0)
 end
 
-RegisterNetEvent('np-spawn:justCreated')
-AddEventHandler('np-spawn:justCreated', function()
-    TriggerServerEvent("np-spawn:SetOldRouting")
+RegisterNetEvent('rlrp-spawn:justCreated')
+AddEventHandler('rlrp-spawn:justCreated', function()
+    TriggerServerEvent("rlrp-spawn:SetOldRouting")
     spawnChar()
-    TriggerServerEvent("np-spawn:licenses")
+    TriggerServerEvent("rlrp-spawn:licenses")
     Citizen.Wait(5000)
-    TriggerEvent('np-spawn:spawnCharacter')
+    TriggerEvent('rlrp-spawn:spawnCharacter')
 end)
 
-RegisterNetEvent("np-spawn:finishedClothing")
-AddEventHandler("np-spawn:finishedClothing", function(endType)
+RegisterNetEvent("rlrp-spawn:finishedClothing")
+AddEventHandler("rlrp-spawn:finishedClothing", function(endType)
     local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
     local pos = vector3(-3965.88,2014.55, 501.6)
@@ -316,10 +316,10 @@ AddEventHandler("np-spawn:finishedClothing", function(endType)
     if distance <= 10 then
         SetEntityVisible(PlayerPedId(), false)
     	if endType == "Finished" then
-            TriggerServerEvent("np-spawn:SetOldRouting")
+            TriggerServerEvent("rlrp-spawn:SetOldRouting")
             DoScreenFadeOut(2)
     		spawnChar()
-            TriggerServerEvent("np-spawn:licenses")
+            TriggerServerEvent("rlrp-spawn:licenses")
     	else
     		backToMenu()
     	end
@@ -337,9 +337,9 @@ end
 function spawnChar()
     Login.actionsBlocked = false
     deleteTrain()
-    TriggerEvent("np-weathersync:spawned")
+    TriggerEvent("rlrp-weathersync:spawned")
     -- SetPlayerInvincible(PlayerPedId(), true)
-    TriggerEvent("np-base:firstSpawn")
+    TriggerEvent("rlrp-base:firstSpawn")
 
     SendNUIMessage({
         default = true

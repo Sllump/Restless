@@ -4,7 +4,7 @@ const currentResource = GetCurrentResourceName();
 let isCfgReady = false;
 const pConfigMap = new Map();
 
-RPC.register("np-config:getClientConfig", () => {
+RPC.register("rlrp-config:getClientConfig", () => {
     return clientConfig;
 })
 

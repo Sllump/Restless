@@ -13,7 +13,7 @@ function getCfg(pId: string) {
 }
 
 const getGameData = (pGame: string) => {
-  const pGames = getCfg("np-games:games");
+  const pGames = getCfg("rlrp-games:games");
   return pGames["games"].find((game: any) => game['id'] == pGame);
 };
 

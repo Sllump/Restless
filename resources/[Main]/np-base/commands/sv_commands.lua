@@ -1,7 +1,7 @@
 NPX.Commands = NPX.Commands or {}
 NPX.Commands.Registered = NPX.Commands.Registered or {}
 
-AddEventHandler("np-base:exportsReady", function()
+AddEventHandler("rlrp-base:exportsReady", function()
     addModule("Commands", NPX.Commands)
 end)
 

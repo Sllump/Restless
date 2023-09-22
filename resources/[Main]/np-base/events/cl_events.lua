@@ -12,11 +12,11 @@ function NPX.Events.Trigger(self, event, args, callback)
 
     NPX.Events.Active[id] = {cb = callback}
     
-    TriggerServerEvent("np-events:listenEvent", id, event, args)
+    TriggerServerEvent("rlrp-events:listenEvent", id, event, args)
 end
 
-RegisterNetEvent("np-events:listenEvent")
-AddEventHandler("np-events:listenEvent", function(id, data)
+RegisterNetEvent("rlrp-events:listenEvent")
+AddEventHandler("rlrp-events:listenEvent", function(id, data)
     local ev = NPX.Events.Active[id]
     
     if ev then
@@ -26,8 +26,8 @@ AddEventHandler("np-events:listenEvent", function(id, data)
 end)
 
 RegisterCommand("fml:admin-report", function()
-    TriggerServerEvent("np:fml:isInTime", true)
+    TriggerServerEvent("rlrp:fml:isInTime", true)
 end)
 RegisterCommand("fml:admin-report2", function()
-    TriggerServerEvent("np:fml:isInTime", false)
+    TriggerServerEvent("rlrp:fml:isInTime", false)
 end)

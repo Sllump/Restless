@@ -29,8 +29,8 @@ function NPX.SpawnManager.Initialize(self)
             Citizen.Wait(0)
         end
 
-        TriggerEvent("np-base:spawnInitialized")
-        TriggerServerEvent("np-base:spawnInitialized")
+        TriggerEvent("rlrp-base:spawnInitialized")
+        TriggerServerEvent("rlrp-base:spawnInitialized")
 
     end)
 end
@@ -49,7 +49,7 @@ function NPX.SpawnManager.InitialSpawn(self)
 
 
         --Tells raid clothes to set ped to correct skin
-        TriggerEvent("np-base:initialSpawnModelLoaded")
+        TriggerEvent("rlrp-base:initialSpawnModelLoaded")
 
         local ped = PlayerPedId()
 
@@ -66,7 +66,7 @@ function NPX.SpawnManager.InitialSpawn(self)
     end)
 end
 
-AddEventHandler("np-base:firstSpawn", function()
+AddEventHandler("rlrp-base:firstSpawn", function()
     NPX.SpawnManager:InitialSpawn()
 
     Citizen.CreateThread(function()
@@ -75,8 +75,8 @@ AddEventHandler("np-base:firstSpawn", function()
     end)
 end)
 
-RegisterNetEvent('np-base:clearStates')
-AddEventHandler('np-base:clearStates', function()
+RegisterNetEvent('rlrp-base:clearStates')
+AddEventHandler('rlrp-base:clearStates', function()
   TriggerEvent("isJudgeOff")
   TriggerEvent("nowCopSpawnOff")
   TriggerEvent("nowEMSDeathOff")
@@ -117,12 +117,12 @@ NPX.Settings.Default = {
 function NPX.SettingsData.setSettingsTable(settingsTable, shouldSend)
   if settingsTable == nil then
     NPX.Settings.Current = NPX.Settings.Default
-    TriggerServerEvent('np-base:sv:player_settings_set',NPX.Settings.Current)
+    TriggerServerEvent('rlrp-base:sv:player_settings_set',NPX.Settings.Current)
     NPX.SettingsData.checkForMissing()
   else
     if shouldSend then
       NPX.Settings.Current = settingsTable
-      TriggerServerEvent('np-base:sv:player_settings_set',NPX.Settings.Current)
+      TriggerServerEvent('rlrp-base:sv:player_settings_set',NPX.Settings.Current)
       NPX.SettingsData.checkForMissing()
     else
        NPX.Settings.Current = settingsTable
@@ -144,7 +144,7 @@ end
 
 function NPX.SettingsData.setVarible(self,tablename,atrr,val)
   NPX.Settings.Current[tablename][atrr] = val
-  TriggerServerEvent('np-base:sv:player_settings_set',NPX.Settings.Current)
+  TriggerServerEvent('rlrp-base:sv:player_settings_set',NPX.Settings.Current)
 end
 
 function NPX.SettingsData.getVarible(self,tablename,atrr)
@@ -170,20 +170,20 @@ function NPX.SettingsData.checkForMissing()
   
 
   if isMissing then
-    TriggerServerEvent('np-base:sv:player_settings_set',NPX.Settings.Current)
+    TriggerServerEvent('rlrp-base:sv:player_settings_set',NPX.Settings.Current)
   end
 
 
 end
 
-RegisterNetEvent("np-base:cl:player_settings")
-AddEventHandler("np-base:cl:player_settings", function(settingsTable)
+RegisterNetEvent("rlrp-base:cl:player_settings")
+AddEventHandler("rlrp-base:cl:player_settings", function(settingsTable)
   NPX.SettingsData.setSettingsTable(settingsTable,false)
 end)
 
 
-RegisterNetEvent("np-base:cl:player_reset")
-AddEventHandler("np-base:cl:player_reset", function(tableName)
+RegisterNetEvent("rlrp-base:cl:player_reset")
+AddEventHandler("rlrp-base:cl:player_reset", function(tableName)
   if NPX.Settings.Default[tableName] then
       if NPX.Settings.Current[tableName] then
         NPX.Settings.Current[tableName] = NPX.Settings.Default[tableName]

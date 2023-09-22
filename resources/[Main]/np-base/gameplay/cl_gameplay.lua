@@ -92,7 +92,7 @@ end
 
 local gamePlayStarted = false
 
-AddEventHandler("np-base:playerSessionStarted", function()
+AddEventHandler("rlrp-base:playerSessionStarted", function()
     if gamePlayStarted then return end
     gamePlayStarted = true
     SetGamePlayVars()

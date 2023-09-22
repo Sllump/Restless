@@ -22,8 +22,8 @@ function NPX.SpawnManager.Initialize(self)
 
         SetEntityVisible(ped, false)
 
-        TriggerEvent("np-base:spawnInitialized")
-        TriggerServerEvent("np-base:spawnInitialized")
+        TriggerEvent("rlrp-base:spawnInitialized")
+        TriggerServerEvent("rlrp-base:spawnInitialized")
 
         DoScreenFadeIn(500)
 
@@ -71,7 +71,7 @@ function NPX.SpawnManager.InitialSpawn(self)
             SetPedDefaultComponentVariation(PlayerPedId())
         end
 
-        TriggerEvent("np-base:initialSpawnModelLoaded")
+        TriggerEvent("rlrp-base:initialSpawnModelLoaded")
 
         RequestCollisionAtCoord(spawn.x, spawn.y, spawn.z)
 
@@ -104,8 +104,8 @@ function NPX.SpawnManager.InitialSpawn(self)
         TransitionFromBlurred(500)
         EnableAllControlActions(0)
 
-        if new then TriggerEvent("np-base:newCharacterSpawned") DoScreenFadeIn(500) end
-        TriggerEvent("np-base:playerSpawned")
+        if new then TriggerEvent("rlrp-base:newCharacterSpawned") DoScreenFadeIn(500) end
+        TriggerEvent("rlrp-base:playerSpawned")
         TriggerEvent("playerSpawned")
         DoScreenFadeIn(500)
     end)
@@ -121,7 +121,7 @@ function NPX.SpawnManager.InitialSpawn(self)
         end
     
         --Tells raid clothes to set ped to correct skin
-        TriggerEvent("np-base:initialSpawnModelLoaded")
+        TriggerEvent("rlrp-base:initialSpawnModelLoaded")
     
         local ped = PlayerPedId()
     
@@ -141,15 +141,15 @@ end
 
 
 
--- RegisterNetEvent("np-base:newCharacterSpawned")
--- AddEventHandler('np-base:newCharacterSpawned', function()
+-- RegisterNetEvent("rlrp-base:newCharacterSpawned")
+-- AddEventHandler('rlrp-base:newCharacterSpawned', function()
 --     DestroyAllCams(true)
 --     TriggerEvent("raid_clothes:defaultReset")
 --     FreezeEntityPosition(PlayerPedId(), false)
 -- end)
 
-RegisterNetEvent("np-base:firstSpawn")
-AddEventHandler("np-base:firstSpawn", function()
+RegisterNetEvent("rlrp-base:firstSpawn")
+AddEventHandler("rlrp-base:firstSpawn", function()
     NPX.SpawnManager:InitialSpawn()
 
     Citizen.CreateThread(function()
@@ -158,8 +158,8 @@ AddEventHandler("np-base:firstSpawn", function()
     end)
 end)
 
-RegisterNetEvent('np-base:clearStates')
-AddEventHandler('np-base:clearStates', function()
+RegisterNetEvent('rlrp-base:clearStates')
+AddEventHandler('rlrp-base:clearStates', function()
 	TriggerEvent("isJudgeOff")
     TriggerEvent("nowCopSpawnOff")
     TriggerEvent("nowEMSDeathOff")
@@ -174,7 +174,7 @@ AddEventHandler('np-base:clearStates', function()
     TriggerServerEvent("judge:commandsoff")
     TriggerServerEvent("doctor:commandsoff")
     TriggerServerEvent("TokoVoip:removePlayerFromAllRadio",GetPlayerServerId(PlayerId()))
-    exports['np-voice']:removePlayerFromRadio()
-    exports["np-voice"]:setVoiceProperty("radioEnabled", false)
+    exports['rlrp-voice']:removePlayerFromRadio()
+    exports["rlrp-voice"]:setVoiceProperty("radioEnabled", false)
     TriggerEvent("wk:disableRadar")
 end)

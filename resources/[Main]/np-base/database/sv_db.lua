@@ -96,7 +96,7 @@ function NPX.DB.PlayerExistsDB(self, src, callback)
 end
 
 function NPX.DB.PhoneNumberExists(self, src, phone_number, callback)
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
 
     callback = callback and callback or function() return end
 
@@ -286,7 +286,7 @@ end
 
 function NPX.DB.UpdateControls(self, src, controlsTable, callback)
     callback = callback and callback or function() return end
-        local user = exports["np-base"]:getModule("Player"):GetUser(src)
+        local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
     
         local hexId = user:getVar("hexid")
@@ -308,7 +308,7 @@ end
 
 function NPX.DB.GetControls(self, src, callback)
     callback = callback and callback or function() return end
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
         Citizen.Wait(3000)
         if not user then callback(false, true) return end
 
@@ -329,7 +329,7 @@ end
     
 function NPX.DB.UpdateSettings(self, src, settingsTable, callback)
     callback = callback and callback or function() return end
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
     
         local hexId = user:getVar("hexid")
@@ -351,7 +351,7 @@ end
 
 function NPX.DB.GetSettings(self, src, callback)
     callback = callback and callback or function() return end
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     if not user then callback(false, true) return end
 
     local hexId = user:getVar("hexid")
@@ -372,7 +372,7 @@ end
 -- 3.0
 function NPX.DB.Something(self, src, callback)
     callback = callback or function() return end
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
 
     if not user then callback(false, true) return end
 

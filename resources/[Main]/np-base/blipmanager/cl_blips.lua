@@ -116,7 +116,7 @@ local circles = {
 
 local circleBlips = {}
 
-AddEventHandler("np-base:playerSessionStarted", function()
+AddEventHandler("rlrp-base:playerSessionStarted", function()
     Citizen.CreateThread(function()
         for k,v in ipairs(blips) do
             NPX.BlipManager:CreateBlip(v.id, v)
@@ -136,7 +136,7 @@ AddEventHandler("np-base:playerSessionStarted", function()
 
 end)
 
-AddEventHandler('np-island:hideBlips', function(pState)
+AddEventHandler('rlrp-island:hideBlips', function(pState)
     for k,v in ipairs(blips) do
         NPX.BlipManager:HideBlip(v.id, pState)
     end

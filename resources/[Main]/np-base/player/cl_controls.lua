@@ -317,13 +317,13 @@ function NPX.DataControls.setBindTable(controlTable,shouldSend)
 	if controlTable == nil then
 		NPX.Controls.Current  = NPX.DataControls.toUpper(NPX.Controls.Default) 
 		NPX.DataControls.setSecondaryBindTable(NPX.Controls.Current)
-		TriggerServerEvent('np-base:sv:player_control_set',NPX.Controls.Current)
+		TriggerServerEvent('rlrp-base:sv:player_control_set',NPX.Controls.Current)
 		NPX.DataControls.checkForMissing()
 	else
 		if shouldSend then 
 			NPX.Controls.Current = NPX.DataControls.toUpper(controlTable)
 			NPX.DataControls.setSecondaryBindTable(NPX.Controls.Current)
-			TriggerServerEvent('np-base:sv:player_control_set',NPX.Controls.Current)
+			TriggerServerEvent('rlrp-base:sv:player_control_set',NPX.Controls.Current)
 			NPX.DataControls.checkForMissing()
 		else
 			NPX.Controls.Current = NPX.DataControls.toUpper(controlTable)
@@ -435,7 +435,7 @@ function NPX.DataControls.checkForMissing()
 
 	if isMissing then
 		NPX.DataControls.setSecondaryBindTable(NPX.Controls.Current)
-		TriggerServerEvent('np-base:sv:player_control_set',NPX.Controls.Current)
+		TriggerServerEvent('rlrp-base:sv:player_control_set',NPX.Controls.Current)
 	end
 
 
@@ -623,8 +623,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent("np-base:cl:player_control")
-AddEventHandler("np-base:cl:player_control", function(controlTable)
+RegisterNetEvent("rlrp-base:cl:player_control")
+AddEventHandler("rlrp-base:cl:player_control", function(controlTable)
 	NPX.DataControls.setBindTable(controlTable,false)
 end)
 
@@ -640,7 +640,7 @@ Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118, ["INPUTAIM"] = 25
 }
 
-RegisterNetEvent('np-base:setcontrols')
-AddEventHandler('np-base:setcontrols', function()
-	TriggerServerEvent('np-base:sv:player_controls')
+RegisterNetEvent('rlrp-base:setcontrols')
+AddEventHandler('rlrp-base:setcontrols', function()
+	TriggerServerEvent('rlrp-base:sv:player_controls')
 end)

@@ -1,7 +1,7 @@
 NPX.Commands = NPX.Commands or {}
 
-RegisterNetEvent("np-commands:meCommand")
-AddEventHandler("np-commands:meCommand", function(user, msg)
+RegisterNetEvent("rlrp-commands:meCommand")
+AddEventHandler("rlrp-commands:meCommand", function(user, msg)
     if DoesPlayerExist(user) then
         local monid = PlayerId()
         local sonid = GetPlayerFromServerId(user)

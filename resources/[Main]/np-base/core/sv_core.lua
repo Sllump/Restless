@@ -9,12 +9,12 @@ function NPX.Core.ConsoleLog(self, msg, mod, ply)
 	print(pMsg)
 
 	if ply and tonumber(ply) then
-		TriggerClientEvent("np-base:consoleLog", ply, msg, mod)
+		TriggerClientEvent("rlrp-base:consoleLog", ply, msg, mod)
 	end
 end
 
 AddEventHandler("onResourceStart", function(resource)
-	TriggerClientEvent("np-base:waitForExports", -1)
+	TriggerClientEvent("rlrp-base:waitForExports", -1)
 
 	if not NPX.Core.ExportsReady then return end
 
@@ -22,7 +22,7 @@ AddEventHandler("onResourceStart", function(resource)
 		while true do 
 			Citizen.Wait(0)
 			if NPX.Core.ExportsReady then
-				TriggerEvent("np-base:exportsReady")
+				TriggerEvent("rlrp-base:exportsReady")
 				return
 			else
 			end
@@ -30,8 +30,8 @@ AddEventHandler("onResourceStart", function(resource)
 	end)
 end)
 
-RegisterNetEvent("np-base:playerSessionStarted")
-AddEventHandler("np-base:playerSessionStarted", function()
+RegisterNetEvent("rlrp-base:playerSessionStarted")
+AddEventHandler("rlrp-base:playerSessionStarted", function()
 	local src = source
 	local name = GetPlayerName(src)
 	local user = NPX.Player:GetUser(src)
@@ -41,7 +41,7 @@ AddEventHandler("np-base:playerSessionStarted", function()
 	end
 end)
 
-AddEventHandler("np-base:characterLoaded", function(user, char)
+AddEventHandler("rlrp-base:characterLoaded", function(user, char)
 	local src = source
 	local hexId = user:getVar("hexid")
 

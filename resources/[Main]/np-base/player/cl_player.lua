@@ -22,12 +22,12 @@ function NPX.LocalPlayer.getCurrentCharacter(self)
     return GetUser():getVar("character")
 end
 
-RegisterNetEvent("np-base:networkVar")
-AddEventHandler("np-base:networkVar", function(var, val)
+RegisterNetEvent("rlrp-base:networkVar")
+AddEventHandler("rlrp-base:networkVar", function(var, val)
     NPX.LocalPlayer:setVar(var, val)
 end)
 
 RegisterNetEvent('returnOldRouting')
 AddEventHandler('returnOldRouting', function()
-    TriggerServerEvent('np-spawn:SetOldRouting')
+    TriggerServerEvent('rlrp-spawn:SetOldRouting')
 end)

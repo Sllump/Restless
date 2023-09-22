@@ -10,8 +10,8 @@ function NPX.Core.ConsoleLog(self, msg, mod)
     print(pMsg)
 end
 
-RegisterNetEvent("np-base:consoleLog")
-AddEventHandler("np-base:consoleLog", function(msg, mod)
+RegisterNetEvent("rlrp-base:consoleLog")
+AddEventHandler("rlrp-base:consoleLog", function(msg, mod)
     NPX.Core:ConsoleLog(msg, mod)
 end)
 
@@ -31,8 +31,8 @@ function NPX.Core.WaitForExports(self)
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
-            if exports and exports["np-base"] then
-                TriggerEvent("np-base:exportsReady")
+            if exports and exports["rlrp-base"] then
+                TriggerEvent("rlrp-base:exportsReady")
                 NPX.Core.ExportsReady = true
                 return
             end

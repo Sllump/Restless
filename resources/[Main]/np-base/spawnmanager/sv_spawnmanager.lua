@@ -1,7 +1,7 @@
 NPX.SpawnManager = {}
 
-RegisterServerEvent('np-base:spawnInitialized')
-AddEventHandler('np-base:spawnInitialized', function()
+RegisterServerEvent('rlrp-base:spawnInitialized')
+AddEventHandler('rlrp-base:spawnInitialized', function()
     local src = source
-    TriggerClientEvent('np-base:spawnInitialized', src)
+    TriggerClientEvent('rlrp-base:spawnInitialized', src)
 end)

@@ -30,7 +30,7 @@ local function AddMethod(player)
     
     function player.networkVar(self, var, data)
         self:setVar(var, data)
-        TriggerClientEvent("np-base:networkVar", GetUser(self):getVar("source"), var, data)
+        TriggerClientEvent("rlrp-base:networkVar", GetUser(self):getVar("source"), var, data)
     end
 
     function player.getRank(self)
@@ -270,8 +270,8 @@ function NPX.Player.CreatePlayer(self, src, recrate)
     return CreatePlayer(src)
 end
 local pos = {}
-RegisterServerEvent('np-base:updatecoords')
-AddEventHandler('np-base:updateCoords', function(x,y,z)
+RegisterServerEvent('rlrp-base:updatecoords')
+AddEventHandler('rlrp-base:updateCoords', function(x,y,z)
     local src = source
     pos[src] = {x,y,z}
 end)
@@ -297,7 +297,7 @@ AddEventHandler("playerDropped", function(reason)
 
     NPX.Users[src] = nil
 
-    TriggerEvent('np-base:playerDropped', src, user)
+    TriggerEvent('rlrp-base:playerDropped', src, user)
 end)
 
 AddEventHandler('playerConnecting', function()
@@ -336,8 +336,8 @@ AddEventHandler("playerDropped", function(reason)
     -- Leave log
 end)
 
-RegisterServerEvent('np-base:logDeath')
-AddEventHandler('np-base:logDeath', function(killer, reason)
+RegisterServerEvent('rlrp-base:logDeath')
+AddEventHandler('rlrp-base:logDeath', function(killer, reason)
     local src = source
     local pName = GetPlayerName(src)
     local pName2 = GetPlayerName(killer)

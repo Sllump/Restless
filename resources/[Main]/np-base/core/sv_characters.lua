@@ -1,5 +1,5 @@
 function NPX.Core.LoginPlayer(self, args, src, callback)
-    TriggerEvent("np-base:playerAttemptLogin", src)
+    TriggerEvent("rlrp-base:playerAttemptLogin", src)
 
     local user = NPX.Player:CreatePlayer(src, false)
 
@@ -35,7 +35,7 @@ function NPX.Core.LoginPlayer(self, args, src, callback)
 
             callback(data)
 
-            if not err then TriggerEvent("np-base:playerLoggedIn", user) TriggerClientEvent("np-base:playerLoggedIn", src) end
+            if not err then TriggerEvent("rlrp-base:playerLoggedIn", user) TriggerClientEvent("rlrp-base:playerLoggedIn", src) end
         end)
     end
 
@@ -52,7 +52,7 @@ function NPX.Core.LoginPlayer(self, args, src, callback)
 					fetchData("Error creating new user, there is a problem with the database")
 					return
 				end
-				TriggerClientEvent('np-admin:InsertPrioCL', src)
+				TriggerClientEvent('rlrp-admin:InsertPrioCL', src)
 			
 				if created then fetchData() return end
 			end)
@@ -63,7 +63,7 @@ function NPX.Core.LoginPlayer(self, args, src, callback)
 		fetchData()
 	end)
 end
-NPX.Events:AddEvent(NPX.Core, NPX.Core.LoginPlayer, "np-base:loginPlayer")
+NPX.Events:AddEvent(NPX.Core, NPX.Core.LoginPlayer, "rlrp-base:loginPlayer")
 
 function NPX.Core.FetchPlayerCharacters(self, args, src, callback)
 	local user = NPX.Player:GetUser(src)
@@ -80,14 +80,14 @@ function NPX.Core.FetchPlayerCharacters(self, args, src, callback)
 			--print(json.encode(data))
 			user:setCharacters(data)
 			user:setVar("charactersLoaded", true)
-			TriggerEvent("np-base:charactersLoaded", user, data)
-			TriggerClientEvent("np-base:charactersLoaded", src, data)
+			TriggerEvent("rlrp-base:charactersLoaded", user, data)
+			TriggerClientEvent("rlrp-base:charactersLoaded", src, data)
 		end
 
 		callback(data)
 	end)
 end
-NPX.Events:AddEvent(NPX.Core, NPX.Core.FetchPlayerCharacters, "np-base:fetchPlayerCharacters")
+NPX.Events:AddEvent(NPX.Core, NPX.Core.FetchPlayerCharacters, "rlrp-base:fetchPlayerCharacters")
 
 function NPX.Core.CreatePhoneNumber(self, src, callback)
 	Citizen.CreateThread(function()
@@ -179,7 +179,7 @@ function NPX.Core.CreateCharacter(self, charData, src, callback)
 		end
 	end)
 end
-NPX.Events:AddEvent(NPX.Core, NPX.Core.CreateCharacter, "np-base:createCharacter")
+NPX.Events:AddEvent(NPX.Core, NPX.Core.CreateCharacter, "rlrp-base:createCharacter")
 
 function NPX.Core.DeleteCharacter(self, id, src, callback)
 	local user = NPX.Player:GetUser(src)
@@ -197,7 +197,7 @@ function NPX.Core.DeleteCharacter(self, id, src, callback)
 		callback(deleted)
 	end)
 end
-NPX.Events:AddEvent(NPX.Core, NPX.Core.DeleteCharacter, "np-base:deleteCharacter")
+NPX.Events:AddEvent(NPX.Core, NPX.Core.DeleteCharacter, "rlrp-base:deleteCharacter")
 
 function NPX.Core.SelectCharacter(self, id, src, callback)
 	local user = NPX.Player:GetUser(src)
@@ -219,12 +219,12 @@ function NPX.Core.SelectCharacter(self, id, src, callback)
 	TriggerClientEvent('updateNameClient', src, tostring(selectedCharacter.first_name), tostring(selectedCharacter.last_name))
 	TriggerClientEvent('banking:updateBalance', src, selectedCharacter.bank, true)
 	TriggerClientEvent('banking:updateCash', src, selectedCharacter.cash, true)
-	TriggerClientEvent('np-base:setcontrols', src)
+	TriggerClientEvent('rlrp-base:setcontrols', src)
 	TriggerClientEvent('updatepasses', src)
 
-	TriggerEvent("np-base:characterLoaded", user, selectedCharacter)
-	TriggerClientEvent("np-base:characterLoaded", src, selectedCharacter)
+	TriggerEvent("rlrp-base:characterLoaded", user, selectedCharacter)
+	TriggerClientEvent("rlrp-base:characterLoaded", src, selectedCharacter)
 
 	callback({loggedin = true, chardata = selectedCharacter})
 end
-NPX.Events:AddEvent(NPX.Core, NPX.Core.SelectCharacter, "np-base:selectCharacter")
+NPX.Events:AddEvent(NPX.Core, NPX.Core.SelectCharacter, "rlrp-base:selectCharacter")

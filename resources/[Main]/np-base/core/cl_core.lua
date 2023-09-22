@@ -5,8 +5,8 @@ function NPX.Core.Initialize(self)
     Citizen.CreateThread(function()
         while true do
             if NetworkIsSessionStarted() then
-                TriggerEvent("np-base:playerSessionStarted")
-                TriggerServerEvent("np-base:playerSessionStarted")
+                TriggerEvent("rlrp-base:playerSessionStarted")
+                TriggerServerEvent("rlrp-base:playerSessionStarted")
                 break
             end
         end
@@ -14,7 +14,7 @@ function NPX.Core.Initialize(self)
 end
 NPX.Core:Initialize()
 
-AddEventHandler("np-base:playerSessionStarted", function()
+AddEventHandler("rlrp-base:playerSessionStarted", function()
     while not NPX.Core.hasLoaded do
         Wait(100)
     end
@@ -22,14 +22,14 @@ AddEventHandler("np-base:playerSessionStarted", function()
     NPX.SpawnManager:Initialize()
 end)
 
-RegisterNetEvent("np-base:waitForExports")
-AddEventHandler("np-base:waitForExports", function()
+RegisterNetEvent("rlrp-base:waitForExports")
+AddEventHandler("rlrp-base:waitForExports", function()
     if not NPX.Core.ExportsReady then return end
 
     while true do
         Citizen.Wait(0)
-        if exports and exports["np-base"] then
-            TriggerEvent("np-base:exportsReady")
+        if exports and exports["rlrp-base"] then
+            TriggerEvent("rlrp-base:exportsReady")
             return
         end
     end

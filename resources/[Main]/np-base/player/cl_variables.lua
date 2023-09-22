@@ -70,14 +70,14 @@ exports("resetVars", resetVars)
 
 ]]
 
-RegisterNetEvent("np-base:setVar")
-AddEventHandler("np-base:setVar", setVar)
+RegisterNetEvent("rlrp-base:setVar")
+AddEventHandler("rlrp-base:setVar", setVar)
 
-RegisterNetEvent("np-base:setChar")
-AddEventHandler("np-base:setChar", setChar)
+RegisterNetEvent("rlrp-base:setChar")
+AddEventHandler("rlrp-base:setChar", setChar)
 
-RegisterNetEvent("np-base:resetVars")
-AddEventHandler("np-base:resetVars", resetVars)
+RegisterNetEvent("rlrp-base:resetVars")
+AddEventHandler("rlrp-base:resetVars", resetVars)
 
 --[[
 

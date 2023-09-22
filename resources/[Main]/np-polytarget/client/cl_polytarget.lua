@@ -8,18 +8,18 @@ function AddToComboZone(zone)
     if TargetComboZone ~= nil then
         TargetComboZone:AddZone(zone)
     else
-        TargetComboZone = ComboZone:Create({ zone }, { name = "np-polytarget" })
+        TargetComboZone = ComboZone:Create({ zone }, { name = "rlrp-polytarget" })
 
         TargetComboZone:onPointInOutExhaustive(function() return GetTargetCoords() end,function(isPointInside, point, insideZones, enteredZones, leftZones)
             if enteredZones ~= nil then
                 for _, zone in ipairs(enteredZones) do
-                    TriggerEvent("np-polyzone:enter", zone.name, zone.data, zone.center)
+                    TriggerEvent("rlrp-polyzone:enter", zone.name, zone.data, zone.center)
                 end
             end
 
             if leftZones ~= nil then
                 for _, zone in ipairs(leftZones) do
-                    TriggerEvent("np-polyzone:exit", zone.name, zone.data)
+                    TriggerEvent("rlrp-polyzone:exit", zone.name, zone.data)
                 end
             end
         end, 250)
@@ -114,7 +114,7 @@ local function toggleDebug(state)
 end
 
 if GetConvar("sv_environment", "prod") == "debug" then
-    RegisterCommand("np-polytarget:debug", function (src, args)
+    RegisterCommand("rlrp-polytarget:debug", function (src, args)
         toggleDebug(not debugEnabled)
     end)
 end

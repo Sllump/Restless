@@ -9,20 +9,20 @@ local function addToComboZone(zone)
     if comboZone ~= nil then
         comboZone:AddZone(zone)
     else
-        comboZone = ComboZone:Create({ zone }, { name = "np-polyzone" })
+        comboZone = ComboZone:Create({ zone }, { name = "rlrp-polyzone" })
         comboZone:onPlayerInOutExhaustive(function(isPointInside, point, insideZones, enteredZones, leftZones)
             if leftZones ~= nil then
               for i = 1, #leftZones do
                 local leftZone = leftZones[i]
                 currentlyInsideZones[leftZone.id] = nil
-                TriggerEvent("np-polyzone:exit", leftZone.name, leftZone.data)
+                TriggerEvent("rlrp-polyzone:exit", leftZone.name, leftZone.data)
               end
             end
             if enteredZones ~= nil then
               for i = 1, #enteredZones do
                 local enteredZone = enteredZones[i]
                 currentlyInsideZones[enteredZone.id] = enteredZone
-                TriggerEvent("np-polyzone:enter", enteredZone.name, enteredZone.data, enteredZone.center)
+                TriggerEvent("rlrp-polyzone:enter", enteredZone.name, enteredZone.data, enteredZone.center)
               end
             end
         end, 500)
@@ -96,8 +96,8 @@ exports("GetZones", function(point)
   return comboZone:getZones(point)
 end)
 
-RegisterNetEvent("np-polyzone:createCircleZone")
-AddEventHandler("np-polyzone:createCircleZone", function(name, ...)
+RegisterNetEvent("rlrp-polyzone:createCircleZone")
+AddEventHandler("rlrp-polyzone:createCircleZone", function(name, ...)
   addCircleZone(name, ...)
 end)
 
@@ -118,11 +118,11 @@ local function toggleDebug(state)
 end
 
 if GetConvar("sv_environment", "prod") == "debug" then
-  RegisterCommand("np-polyzone:debug", function (src, args)
+  RegisterCommand("rlrp-polyzone:debug", function (src, args)
     toggleDebug(not debugEnabled)
   end)
 
-  RegisterCommand("np-polyzone:insideZones", function ()
+  RegisterCommand("rlrp-polyzone:insideZones", function ()
     for k, zone in pairs(currentlyInsideZones) do
       local type = ""
       local str = "name: '" .. tostring(zone.name) .. "'"

@@ -46,7 +46,7 @@ function split(source, sep)
 end
 
 function readYTYPFile(name)
-    local fileLines = LoadResourceFile("np-ytypparser", name)
+    local fileLines = LoadResourceFile("rlrp-ytypparser", name)
     local fileObjects = {}
     local currentFileObj = 1
 

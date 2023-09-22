@@ -56,8 +56,8 @@ AddEventHandler('nowCopSpawnOff', function()
 end)
 
 
-RegisterNetEvent('np-items:SetAmmo')
-AddEventHandler('np-items:SetAmmo', function(sentammoTable)
+RegisterNetEvent('rlrp-items:SetAmmo')
+AddEventHandler('rlrp-items:SetAmmo', function(sentammoTable)
 	if sentammoTable ~= nil then
 		ammoTable = sentammoTable
 		GiveAmmoNow()
@@ -92,24 +92,24 @@ local reDelayed = false
 function actionBarDown()
 	if focusTaken or reDelayed then return end
 	TriggerEvent("inventory-bar", true)
-  exports["np-ui"]:sendAppEvent("hud", {
+  exports["rlrp-ui"]:sendAppEvent("hud", {
     displayAllForce = true,
     displayAllForceVehicle = GetVehiclePedIsIn(PlayerPedId()) ~= 0,
 	displayRadioChannel = true,
   })
-  TriggerServerEvent("np-financials:cash:get", GetPlayerServerId(PlayerId()))
+  TriggerServerEvent("rlrp-financials:cash:get", GetPlayerServerId(PlayerId()))
 end
 
 function actionBarUp()
   if focusTaken then return end
   reDelayed = true
   TriggerEvent("inventory-bar", false)
-  exports["np-ui"]:sendAppEvent("hud", {
+  exports["rlrp-ui"]:sendAppEvent("hud", {
     displayAllForce = false,
     displayAllForceVehicle = false,
   })
   Citizen.SetTimeout(5000, function()
-	exports["np-ui"]:sendAppEvent("hud", {
+	exports["rlrp-ui"]:sendAppEvent("hud", {
 		displayRadioChannel = false,
 	})
   end)
@@ -143,16 +143,16 @@ function passiveMode()
   end)
 end
 
-AddEventHandler('np-locales:localesReady', function ()
-	exports["np-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-actionbar", "Action Bar"), "+actionBar", "-actionBar", "TAB")
+AddEventHandler('rlrp-locales:localesReady', function ()
+	exports["rlrp-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-actionbar", "Action Bar"), "+actionBar", "-actionBar", "TAB")
 	RegisterCommand('+actionBar', actionBarDown, false)
 	RegisterCommand('-actionBar', actionBarUp, false)
 
-	exports["np-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-wink", "Wink"), "+playerWink", "-playerWink")
+	exports["rlrp-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-wink", "Wink"), "+playerWink", "-playerWink")
 	RegisterCommand('+playerWink', playerWink, false)
 	RegisterCommand('-playerWink', function() end, false)
 
-	exports["np-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-passive", "Passive Mode"), "+passiveMode", "-passiveMode")
+	exports["rlrp-keybinds"]:registerKeyMapping("", _L("keybinds-player", "Player"), _L("keybinds-passive", "Passive Mode"), "+passiveMode", "-passiveMode")
 	RegisterCommand('+passiveMode', passiveMode, false)
 	RegisterCommand('-passiveMode', function() end, false)
 end)
@@ -195,7 +195,7 @@ local function shotRecently()
 	end)
 end
 
-AddEventHandler('np-actionbar:hotreload', function()
+AddEventHandler('rlrp-actionbar:hotreload', function()
     ammoTable = RPC.execute("weapons:getAmmo")
 end)
 
@@ -228,16 +228,16 @@ Citizen.CreateThread( function()
 			end
 			local weapon = "".. hash ..""
       if weapon == "-37975472" then
-        TriggerEvent("np-weapons:threwSmokeGrenade")
+        TriggerEvent("rlrp-weapons:threwSmokeGrenade")
         if lastEquippedItemToRemove then
-          if exports["np-inventory"]:hasEnoughOfItem(lastEquippedItemToRemove,1,false) then
+          if exports["rlrp-inventory"]:hasEnoughOfItem(lastEquippedItemToRemove,1,false) then
             TriggerEvent("inventory:removeItem", lastEquippedItemToRemove, 1)
             Citizen.Wait(3000)
           end
         end
         lastEquippedItemToRemove = nil
       end
-			if throwableWeapons[weapon] and exports["np-inventory"]:hasEnoughOfItem(weapon,1,false) then
+			if throwableWeapons[weapon] and exports["rlrp-inventory"]:hasEnoughOfItem(weapon,1,false) then
 				TriggerEvent("inventory:removeItem", weapon, 1)
 				Citizen.Wait(3000)
 			end
@@ -272,7 +272,7 @@ Citizen.CreateThread( function()
 			end
 
 			if selectedWeapon ~= lastWeapon and (lastWeapon == 571920712) then
-				local hasItem = exports["np-inventory"]:hasEnoughOfItem("571920712", 1, false, true, lastEquippedInfo)
+				local hasItem = exports["rlrp-inventory"]:hasEnoughOfItem("571920712", 1, false, true, lastEquippedInfo)
 				if not hasItem then
 					lastEquippedInfo = {}
 				else
@@ -311,7 +311,7 @@ Citizen.CreateThread( function()
 		end
 
 		if IsPedPlantingBomb(ped) then
-			if exports["np-inventory"]:hasEnoughOfItem("741814745",1,false) then
+			if exports["rlrp-inventory"]:hasEnoughOfItem("741814745",1,false) then
 
 				TriggerEvent("inventory:removeItem", 741814745, 1)
 				Citizen.Wait(3000)
@@ -321,7 +321,7 @@ Citizen.CreateThread( function()
 	end
 end)
 
-AddEventHandler("np-voice:focus:set", function(pState)
+AddEventHandler("rlrp-voice:focus:set", function(pState)
   focusTaken = pState
 end)
 
@@ -336,7 +336,7 @@ local cannotPullWeaponInAnimation = false
 RegisterNetEvent('equipWeaponID')
 AddEventHandler('equipWeaponID', function(hash,newInformation,sqlID,itemToRemove)
 	--GiveAmmoNow()
-	if not exports["np-propattach"]:canPullWeaponHoldingEntity() then return end
+	if not exports["rlrp-propattach"]:canPullWeaponHoldingEntity() then return end
 	
 	if cannotPullWeaponInAnimation  then return end
 
@@ -393,8 +393,8 @@ AddEventHandler('equipWeaponID', function(hash,newInformation,sqlID,itemToRemove
 	SetPlayerCanDoDriveBy(PlayerId(),true)
 	SetWeaponsNoAutoswap(true)
 	
-	TriggerEvent("np-weapons:client:weaponEquiped", hash, newInformation, sqlID, itemToRemove, armed)
-	TriggerServerEvent("np-weapons:weaponEquiped", hash, newInformation, sqlID, itemToRemove, armed)
+	TriggerEvent("rlrp-weapons:client:weaponEquiped", hash, newInformation, sqlID, itemToRemove, armed)
+	TriggerServerEvent("rlrp-weapons:weaponEquiped", hash, newInformation, sqlID, itemToRemove, armed)
 
 end)
 
@@ -489,7 +489,7 @@ function updateAmmoTable(newammo,ammoType)
 		updateAmmo(true)
 		return
 	end
-	TriggerServerEvent("np-weapons:updateAmmo",newammo,ammoType,ammoTable)
+	TriggerServerEvent("rlrp-weapons:updateAmmo",newammo,ammoType,ammoTable)
 end
 
 RegisterNetEvent('armory:ammo')
@@ -549,7 +549,7 @@ function updateAmmo(isForced)
 		ammoTable["" .. ammoType .. ""]["ammo"] = newammo
 
 
-		TriggerServerEvent("np-weapons:updateAmmo",newammo,ammoType,ammoTable)
+		TriggerServerEvent("rlrp-weapons:updateAmmo",newammo,ammoType,ammoTable)
 
 	end
 
@@ -581,8 +581,8 @@ function getAmmo(hash)
 	return newammo
 end
 
-RegisterNetEvent('np-item:CheckClientAmmo')
-AddEventHandler('np-item:CheckClientAmmo', function(weapons)
+RegisterNetEvent('rlrp-item:CheckClientAmmo')
+AddEventHandler('rlrp-item:CheckClientAmmo', function(weapons)
 	local ped = PlayerPedId()
 	local ammoType = Citizen.InvokeNative(0x7FEAD38B326B9F74, ped, weapons)
 	local newammo = 0
@@ -724,7 +724,7 @@ function unholster1h(weaponHash, a, info)
 		return
 	end
 
-	local effect = exports['np-galleria']:GetEffect('WEAPON_PULL')
+	local effect = exports['rlrp-galleria']:GetEffect('WEAPON_PULL')
 	if not effect then
 		effect = {
 			level = 0
@@ -846,37 +846,37 @@ end
 
 function AttachmentCheck(weaponhash)
 
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_silencer_assault", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_silencer_assault", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP` )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP_02` )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x3164BAB )
 	end
 
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_silencer_pistol", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_silencer_pistol", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP_02` )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP` )	
 	end
 
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_oil_silencer", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_oil_silencer", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 1532150734 )
 	end
 
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_scope", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_scope", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MEDIUM` )	
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MACRO` )	
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_SMALL` )	
 	end
 
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_uzi_extended", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_uzi_extended", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xE40F1CD2 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_uzi_foldstock", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_uzi_foldstock", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x8FBBD54C )		
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_uzi_woodstock", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_uzi_woodstock", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x722C6CA6 )		
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_extended", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_extended", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x5E55CFFF )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x21AA4B5B )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xBA102E8A )
@@ -885,22 +885,22 @@ function AttachmentCheck(weaponhash)
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xD67B4F2D )
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x4C04F682 )
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_taser_banana", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_taser_banana", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x12359AF7 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_pickaxe", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_pickaxe", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xE648EB21 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("weapon_cutlass", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("weapon_cutlass", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x415B3660 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("red_saber", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("red_saber", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xF17E0A19 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("orange_saber", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("orange_saber", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0x5B27D3 )	
 	end
-	if exports["np-inventory"]:hasEnoughOfItem("red_t_saber", 1, false, true) then
+	if exports["rlrp-inventory"]:hasEnoughOfItem("red_t_saber", 1, false, true) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, 0xE24C366 )	
 	end
 end
@@ -1022,11 +1022,11 @@ exports('EnableStressReliefWhenShooting', function(pState)
 	enableStressReliefWhenShooting = pState
 end)
 
-RegisterNetEvent("np-weapons:hitPlayerWithCash", function(pTarget)
+RegisterNetEvent("rlrp-weapons:hitPlayerWithCash", function(pTarget)
   if not lastEquippedInfo.amount then
 	TriggerEvent('DoLongHudText', 'Cash could not be transferred', 2)
 	return
   end
 
-  TriggerServerEvent("np-weapons:processGiveCashAmount", pTarget, lastEquippedInfo.amount, lastEquippedInfo.id)
+  TriggerServerEvent("rlrp-weapons:processGiveCashAmount", pTarget, lastEquippedInfo.amount, lastEquippedInfo.id)
 end)

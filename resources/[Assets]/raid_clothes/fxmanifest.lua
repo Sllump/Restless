@@ -2,7 +2,7 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 --[[ dependencies {
-  "np-lib"
+  "rlrp-lib"
 } ]]--
 
 ui_page 'client/html/index.html'
@@ -20,20 +20,20 @@ files {
 }
 
 client_scripts {
-  '@np-errorlog/client/cl_errorlog.lua',
-  '@np-lib/client/cl_rpc.lua',
-  '@np-lib/client/cl_ui.lua',
+  '@rlrp-errorlog/client/cl_errorlog.lua',
+  '@rlrp-lib/client/cl_rpc.lua',
+  '@rlrp-lib/client/cl_ui.lua',
   'client/cl_tattooshop.lua',
   'client/cl_*.lua',
 }
 
 shared_script {
-  '@np-lib/shared/sh_util.lua',
+  '@rlrp-lib/shared/sh_util.lua',
   'shared/sh_*.*',
 }
 
 server_scripts {
-  '@np-lib/server/sv_rpc.lua',
+  '@rlrp-lib/server/sv_rpc.lua',
   'server/sv_*.lua',
 }
 

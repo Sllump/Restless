@@ -872,7 +872,7 @@ function Save(save, close)
             
             TriggerServerEvent("raid_clothes:insert_character_face", data)
             TriggerServerEvent("raid_clothes:set_tats", currentTats)
-            TriggerEvent("np-spawn:finishedClothing","Finished")
+            TriggerEvent("rlrp-spawn:finishedClothing","Finished")
         elseif not passedClothing then 
             passedClothing = true
             Wait(2000)
@@ -881,7 +881,7 @@ function Save(save, close)
         end
         
     else
-        TriggerEvent("np-spawn:finishedClothing","Old")
+        TriggerEvent("rlrp-spawn:finishedClothing","Old")
         LoadPed(oldPed)
     end
 
@@ -893,7 +893,7 @@ function Save(save, close)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('np-weapons:getAmmo')
+    TriggerEvent('rlrp-weapons:getAmmo')
     CustomCamera('torso',true)
     TriggerEvent("e-blips:updateAfterPedChange",exports["isPed"]:isPed("myjob"))
     startingMenu = false
@@ -953,16 +953,16 @@ function addBlips()
     TriggerEvent('hairDresser:ToggleHair')
 end
 
-AddEventHandler("np-base:initialSpawnModelLoaded", function()
+AddEventHandler("rlrp-base:initialSpawnModelLoaded", function()
     TriggerServerEvent("clothing:checkIfNew")
-    TriggerServerEvent('np-admin:AddPlayer')
+    TriggerServerEvent('rlrp-admin:AddPlayer')
     -- TriggerServerEvent('ABX-scoreboard:AddPlayer')
     TriggerEvent('house:keys')
     --TriggerServerEvent("police:getAnimData")
     --TriggerServerEvent("police:getEmoteData")
     TriggerServerEvent("police:SetMeta")
     TriggerServerEvent("stocks:retrieveclientstocks")
-    TriggerServerEvent("np-weapons:getAmmo")
+    TriggerServerEvent("rlrp-weapons:getAmmo")
     TriggerServerEvent("trucker:returnCurrentJobs")
     TriggerServerEvent("police:SetMeta")
     TriggerEvent("reviveFunction")
@@ -1020,7 +1020,7 @@ end)
 
 RegisterNetEvent("raid_clothes:defaultReset")
 AddEventHandler("raid_clothes:defaultReset", function()
-    local LocalPlayer = exports["np-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["rlrp-base"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     Citizen.Wait(1000)
     if gender ~= 0 then
@@ -1052,7 +1052,7 @@ function SaveDev(save, close, newFadeStyle)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('np-weapons:getAmmo')
+    TriggerEvent('rlrp-weapons:getAmmo')
     CustomCamera('torso',true)
     TriggerEvent("e-blips:updateAfterPedChange",exports["isPed"]:isPed("myjob"))
     startingMenu = false
@@ -1139,8 +1139,8 @@ AddEventHandler('raid_clothes:ListOutfits', function(skincheck)
             description = '',
             key = slot,
             children = {
-                { title = "Change Outfit", action = "np-ui:raid_clothes:changeOutfit", key = slot},
-                { title = "Delete Outfit", action = "np-ui:raid_clothes:deleteOutfit", key = slot},
+                { title = "Change Outfit", action = "rlrp-ui:raid_clothes:changeOutfit", key = slot},
+                { title = "Delete Outfit", action = "rlrp-ui:raid_clothes:deleteOutfit", key = slot},
             }
         }
     end
@@ -1157,10 +1157,10 @@ AddEventHandler('raid_clothes:ListOutfits', function(skincheck)
                 title = "Save Current Outfit",
                 description = '',
                 key = emptySlot,
-                action = "np-ui:raid_clothes:addOutfitPrompt"
+                action = "rlrp-ui:raid_clothes:addOutfitPrompt"
             }
         end
-        -- exports['np-ui']:showContextMenu(menuData)
+        -- exports['rlrp-ui']:showContextMenu(menuData)
     else
         TriggerEvent("DoLongHudText", "No saved outfits", 2)
     end
@@ -1174,7 +1174,7 @@ function SetCustomNuiFocus(hasKeyboard, hasMouse)
   SetNuiFocus(hasKeyboard, hasMouse)
   --SetNuiFocusKeepInput(HasNuiFocus)
 
-  -- TriggerEvent("np-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse)
+  -- TriggerEvent("rlrp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse)
 end
 
 
@@ -1239,20 +1239,20 @@ AddEventHandler('raid_clothes:openClothing', function(pDontShowBarber, pShouldCo
     passedClothing = pDontShowBarber or false
 end)
 
-AddEventHandler("np-polyzone:enter", function(zone, data)
+AddEventHandler("rlrp-polyzone:enter", function(zone, data)
     local currentZone = MenuData[zone]
     if currentZone then
-        -- exports['np-ui']:showInteraction(("[M] %s"):format(currentZone.text))
+        -- exports['rlrp-ui']:showInteraction(("[M] %s"):format(currentZone.text))
         listenForKeypress(zone, currentZone, ((data and data.isFree) and true or false))
 		inStore = true
     end
 end)
 
-AddEventHandler("np-polyzone:exit", function(zone)
+AddEventHandler("rlrp-polyzone:exit", function(zone)
     local currentZone = MenuData[zone]
     if currentZone then
         listening = false
-        -- exports['np-ui']:hideInteraction()
+        -- exports['rlrp-ui']:hideInteraction()
 		inStore = false
     end
 end)
@@ -1263,7 +1263,7 @@ local supportedModels = {
   [`mp_f_freemode_01`] = 4,
   [`mp_m_freemode_01`] = 2,
 }
-AddEventHandler("np-inventory:itemUsed", function(item)
+AddEventHandler("rlrp-inventory:itemUsed", function(item)
     if item ~= "hairtie" then return end
     local hairValue = supportedModels[GetEntityModel(PlayerPedId())]
     if hairValue == nil then return end
@@ -1335,8 +1335,8 @@ AddEventHandler("raid_clothes:bought_customs", function(id)
     RPC.execute("raid_clothes:bought_customs",id)
 end)
 
-RegisterNetEvent("np-context:closeglobal")
-AddEventHandler("np-context:closeglobal", function()
+RegisterNetEvent("rlrp-context:closeglobal")
+AddEventHandler("rlrp-context:closeglobal", function()
     if inmenucustom then
         inmenucustom = false
         TriggerServerEvent("raid_clothes:get_character_current_for_customs")
@@ -1350,11 +1350,11 @@ AddEventHandler("raid_clothes:save_customs", function()
             title = "Put Outfit For Sale",
             description = "",
             key = true,
-            action = "np-ui:raid_clothes:CustomaddOutfitPrompt"
+            action = "rlrp-ui:raid_clothes:CustomaddOutfitPrompt"
         },
     }
 
-    --exports["np-ui"]:showContextMenu(data)
+    --exports["rlrp-ui"]:showContextMenu(data)
 end)
 
 
@@ -1567,7 +1567,7 @@ end, false)
 --// Hat Commands
 
 RegisterCommand("h1", function(source, args, rawCommand)
-    if exports['np-inventory']:hasEnoughOfItem('hat', 1) then
+    if exports['rlrp-inventory']:hasEnoughOfItem('hat', 1) then
         TriggerEvent("facewear:adjust",6,false)
         TriggerEvent('inventory:removeItem', 'hat', 1)
     else
@@ -1576,7 +1576,7 @@ RegisterCommand("h1", function(source, args, rawCommand)
 end, false)
 
 RegisterCommand("h0", function(source, args, rawCommand)
-    if exports['np-inventory']:hasEnoughOfItem('hat', 1) then
+    if exports['rlrp-inventory']:hasEnoughOfItem('hat', 1) then
         TriggerEvent("facewear:adjust",6,true)
     else
         TriggerEvent('player:receiveItem', "hat", 1)
@@ -1587,7 +1587,7 @@ end, false)
 --// Mask Commands
 
 RegisterCommand("m1", function(source, args, rawCommand)
-    if exports['np-inventory']:hasEnoughOfItem('mask', 1) then
+    if exports['rlrp-inventory']:hasEnoughOfItem('mask', 1) then
         TriggerEvent("facewear:adjust",4,false)   
         TriggerEvent('inventory:removeItem', 'mask', 1)
     else
@@ -1596,7 +1596,7 @@ RegisterCommand("m1", function(source, args, rawCommand)
 end, false)
 
 RegisterCommand("m0", function(source, args, rawCommand)
-    if exports['np-inventory']:hasEnoughOfItem('mask', 1) then
+    if exports['rlrp-inventory']:hasEnoughOfItem('mask', 1) then
         TriggerEvent("facewear:adjust",4,true)
     else
         TriggerEvent('player:receiveItem', "mask", 1)
@@ -1629,7 +1629,7 @@ local chainModels = {
 local storedpItem = false
 local storedpInfo = false
 
-AddEventHandler("np-inventory:itemUsed", function(pItem, pInfo)
+AddEventHandler("rlrp-inventory:itemUsed", function(pItem, pInfo)
   storedpItem = pItem
   storedpInfo = pInfo
   local model = chainModels[pItem]

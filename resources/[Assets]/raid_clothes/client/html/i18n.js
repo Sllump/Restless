@@ -14,7 +14,7 @@ setTimeout(async () => {
   while (translationsObject === null) {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      const result = await (await fetch('https://np-ui/np-ui:i18n:getTranslations')).json();
+      const result = await (await fetch('https://rlrp-ui/rlrp-ui:i18n:getTranslations')).json();
       if (result.meta.ok) {
         translationsObject = result.data.translationsObject;
         langCode = result.data.langCode;
@@ -25,7 +25,7 @@ setTimeout(async () => {
   }
   setInterval(async () => {
     try {
-      const result = await (await fetch('https://np-ui/np-ui:i18n:getCurrentLangCode')).json();
+      const result = await (await fetch('https://rlrp-ui/rlrp-ui:i18n:getCurrentLangCode')).json();
       if (result.meta.ok) {
         langCode = result.data.langCode;
       }
@@ -47,7 +47,7 @@ setTimeout(async () => {
       if (strings.length === 0) {
         return;
       }
-      await fetch('https://np-ui/np-ui:i18n:addStringsForTranslation', {
+      await fetch('https://rlrp-ui/rlrp-ui:i18n:addStringsForTranslation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
         body: JSON.stringify({ strings }),

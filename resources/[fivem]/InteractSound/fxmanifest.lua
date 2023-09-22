@@ -10,13 +10,13 @@ games { 'gta5' }
 
 -- Client Scripts
 client_scripts {
-    '@np-lib/client/cl_rpc.lua',
+    '@rlrp-lib/client/cl_rpc.lua',
     'client/main.lua'
 }
 
 -- Server Scripts
 server_scripts {
-    '@np-lib/server/sv_rpc.lua',
+    '@rlrp-lib/server/sv_rpc.lua',
     'server/main.lua'
 }
 

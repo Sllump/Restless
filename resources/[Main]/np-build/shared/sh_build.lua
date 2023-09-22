@@ -59,7 +59,7 @@ Build.Plans = {
 		},
 		["peek"] = {
 			["model"] = -1388847408,
-			["event"] = "np-housing:alarmEnter",
+			["event"] = "rlrp-housing:alarmEnter",
 			["id"] = "housing_alarmEnter",
 			["icon"] = "hammer",
 			["label"] = "Disable",
@@ -171,8 +171,8 @@ Build.Plans = {
 		},
 		["peek"] = {
 			["model"] = -1388847408,
-			["event"] = "np-housing:alarmEnter",
-			["id"] = "np-housing:alarmEnter",
+			["event"] = "rlrp-housing:alarmEnter",
+			["id"] = "rlrp-housing:alarmEnter",
 			["icon"] = "hammer",
 			["label"] = "Disable",
 			["distance"] = {radius = 2.0},
@@ -388,7 +388,7 @@ Build.Plans = {
 		},
 		["peek"] = {
 			["model"] = -1388847408,
-			["event"] = "np-housing:alarmEnter",
+			["event"] = "rlrp-housing:alarmEnter",
 			["id"] = "housing_alarmEnter",
 			["icon"] = "hammer",
 			["label"] = "Disable",
@@ -516,7 +516,7 @@ Build.Plans = {
 		},
 		["peek"] = {
 			["model"] = -1388847408,
-			["event"] = "np-housing:alarmEnter",
+			["event"] = "rlrp-housing:alarmEnter",
 			["id"] = "housing_alarmEnter",
 			["icon"] = "hammer",
 			["label"] = "Disable",

@@ -162,7 +162,7 @@ function Build.func.buildRoom(planName,positionGen,isBackdoor,destroyedObjects,s
     local returnEntityList = {}
 
 
-    local buildingObject = exports["np-ytypparser"]:request(planName,plan.saveClient)
+    local buildingObject = exports["rlrp-ytypparser"]:request(planName,plan.saveClient)
     local mainPos = vector3(0.0,0.0,0.0)
     local objectSpawnCoords = vector3(0.0,0.0,0.0)
 
@@ -339,7 +339,7 @@ function Build.func.getRobLocationsForObjects(planName,positionGen,robinfo)
     end
 
 
-    local buildingObject = exports["np-ytypparser"]:request(planName,plan.saveClient)
+    local buildingObject = exports["rlrp-ytypparser"]:request(planName,plan.saveClient)
     local objectSpawnCoords = vector3(0.0,0.0,0.0)
 
 

@@ -29,8 +29,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('np-binds:keyEvent')
-AddEventHandler('np-binds:keyEvent', function(name,onDown)
+RegisterNetEvent('rlrp-binds:keyEvent')
+AddEventHandler('rlrp-binds:keyEvent', function(name,onDown)
     if not onDown then return end
 
 	if Build.CurrentRoomPlan ~= nil then
@@ -269,7 +269,7 @@ function Build.func.buildPeeking(plan)
 	end
 	if modelFound then return end
 
-	exports["np-interact"]:AddPeekEntryByModel({ peek.model }, {{
+	exports["rlrp-interact"]:AddPeekEntryByModel({ peek.model }, {{
 		event = peek.event,
 		id = peek.id,
 		icon = peek.icon,
@@ -278,7 +278,7 @@ function Build.func.buildPeeking(plan)
 	}}, {
 		distance = {radius = 5.0},
 		isEnabled = function(pEntity)
-		  	return exports["np-housing"]:isInRobbery()
+		  	return exports["rlrp-housing"]:isInRobbery()
 		end
 	})
 

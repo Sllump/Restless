@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
+.raffle-roller {
+	position: relative;
+	right: 20%;
+	top: -20%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+
+
+  }
+  
+.raffle-roller-container {
+	position: absolute;
+	top: 15%; /* Adjust the percentage as needed */
+	background: rgb(34, 40, 49) !important;
+	transition: all 8s cubic-bezier(0.08, 0.6, 0, 1);
+	width: 100000000000000px;
+}
+  
+.raffle-roller-holder:before {
+	content: "";
+	position: absolute;
+	border: none;
+	z-index: 12222225;
+	width: 3px;
+	height: 200px;
+	left: 50%; /* Use percentage for horizontal centering */
+	transform: translateX(-50%); /* Adjust the horizontal centering */
+}
+.line:before{
+	position: absolute;
+	top: 15%;
+	left: 70%;
+	transform: translate(-50%, 0%);
+	background: #fafa6f;
+}
+.item {
+	display: inline-block;
+	float: left;
+  width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	background: transparent;
+	background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.item-common{
+	display: inline-block;
+	float: left;
+	margin: 9px 0px 0.5px 15px;
+  width: 180px;
+	height: 180px;
+  float: left;
+	border-radius: 5px;
+}
+
+.right-holder{
+	width: 100%;
+	height: 200px;
+}
+.rare-level-1{
+	background: linear-gradient(135deg, rgba(33,57,88,1) 64%, rgba(96,96,107,1) 100%);
+}
+.rare-level-2{
+	background: linear-gradient(135deg, rgba(33,57,88,1) 64%, rgba(71,119,169,1) 100%);
+}
+.rare-level-3{
+	background: linear-gradient(135deg, rgba(33,57,88,1) 64%, rgba(117,224,22,1) 100%);
+}
+.rare-level-4{
+	background: linear-gradient(135deg, rgba(33,57,88,1) 64%, rgba(127,44,212,1) 100%);
+}
+.rare-level-5{
+	background: linear-gradient(135deg, rgba(33,57,88,1) 64%, rgba(224,197,23,1) 100%);
+}
+.item::after{
+	content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 30px 0;
+  border-color: transparent #608A32 transparent transparent;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+}
+.inventory {
+	margin: 0 auto;
+	width: 960px;
+	max-width: 953px;
+	padding: 10px 15px 6px;
+	height: auto;
+}
+.inventory > .item {
+	float: none;
+	cursor: pointer;
+	margin: 4px 2px 0.5px 2px;
+}
+.inventory > .item:hover {
+	background-size: 90%;
+}
+.inventory > .item:active {
+	height: 83px;
+	width: 80px;
+	position: relative;
+	top: -2px;
+	border: 2px solid #356d27;
+	border-bottom: 4px solid #356d27;
+}
+

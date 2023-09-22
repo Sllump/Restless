@@ -1,0 +1,916 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './index.css'
+import { useNuiEvent } from "../../../hooks/useNuiEvent";
+import useStyles from './index.styles';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { useRecoilState } from 'recoil';
+import { 
+    hudCircleTaskbarEnabled 
+} from '../../../../src/store';
+import { Console } from 'console';
+
+const TcgCard: React.FC = () => {
+    const classNamees = useStyles();
+
+    const [show, setShow]: any = useState(false)
+    const [cardNames, setcardNames] = useState([
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_allen-gory.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_bane-jax.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_benjamin-crane.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_calvin-reyas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_colt-mccoy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_david-theroux.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_david-watcher.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_gill-schultz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_james-anthony.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_karla-jax.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_lawrence-splainer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_meggie-right.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_murphy-braun.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_nicholas-hamilton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_norman-adams.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_reggie-might.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_robert-locksley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_rory-obanion.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_shannon-obanion.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_tidus-schwinghammer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/000_wayne-owens.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_billy-mang.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_elijah-martins.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_jason-ledson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_leah-strong.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_sam-mcentyre.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/001_sher-singh.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/002_ai-musari.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/002_petunia.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/002_sully.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_ash.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_jackie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_ken-sama.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_kevin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_oki-doki.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_reggie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_rob.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_sheldon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_shelly.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_sherry.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_steven.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/003_valentina.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/004_eddie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/004_mary.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/004_tommy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/004_wayne.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_cassie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_dean.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_gomer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_joe.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_marlo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/005_otto.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_chodie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_flop.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_frankie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_igor.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_jordan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_jose.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_lucas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_niles.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/006_pez.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_abdul.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_alford-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_allen.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_amadeus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_anna-swallows.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_apples.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_april-fooze.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_autumn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_babalu.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_bench-guy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_big-bertha.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_bill-ding.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_bogg.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_bruno-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_bryce.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_carmella.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_celine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_cindy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_copperpot.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_dawn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_derrick.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_dick-chiclets.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_dillon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_doug.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_dreah.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_edna.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_erin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_eve.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_father-tanner.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_genesis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_gillea.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_hal-apenyo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_hubcap-jones.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_hung-jaemin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_jacklyn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_jacob.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_james-marco.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_jazz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_johnny-silverhand.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_jordan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_judd.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_karen.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_karla.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_kelly.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_kiki.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_ladyofthelake.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_lana.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_leslie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_lil-cap-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_mari.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_matthew-payne.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_merlin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_merry-achi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_mick-flair.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_miles.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_molly.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_morgan-freeman.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_nancy-drew.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_orpheus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_party-hardy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_paul-blart.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_roland.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_roman-sionis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_ron-julio.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_ron.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_rose.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_sai.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_salem.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_sarah.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_sasuke.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_shadow.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_spencer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_stuart.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_sun-moon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_tobi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_tommy-t.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_tori.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_tupac.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_ursula.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_vinnie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_virgil-simpson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_willy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_windsong.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/007_zelda.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/008_james-arsenal.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/008_patrick-lincoln.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_bennys.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_burger-shot.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_dean-world.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_diamond-casino.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_harmony.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_hayes.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_koc.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_lsbn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_pdm.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_sionis-industries.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/civs/009_vanilla-unicorn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/000_promo-truck.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/001_abdul-alrahim.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/001_charlie-mcnamara.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/001_denzel-williams.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/001_nancy-ree.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/001_timothy-snapple.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/999_mystery.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/999_mystery.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/999_mystery.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/002_ottos-autos.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/003_fast-loans.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/004_corleone-steaks.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/005_vlc-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/005_vlc-2.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/005_vlc-3.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/005_vlc-4.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/005_vlc-5.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/006_cerberus-arena.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/007_abdul-alrahim-2.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/007_peach-chee.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/007_adam-prince.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/007_alfred-neuman.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/007_tidus-schwinghammer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/008_audi-r8.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/008_dodge-challenger.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/008_honda-integra-typer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/008_imponte-deluxo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/008_nissan-180sx.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/009_paleto-pets.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/009_diamondhotel-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/009_diamondhotel-2.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/009_diamondhotel-3.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/010_anna-swallows1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/010_anna-swallows2.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/010_marlo-stanfield1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/010_arthur-macnee.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/010_peachingle-dan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/011_pastels.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/012_save-white-widow.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/012_maldinis-pizza.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/012_uwu-cafe.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/013_bogans.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/013_cassandra-silverton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/013_pablo-lotto.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_emma-gaine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_ricardo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_windsong.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_kevin-ram.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_mary-mushkin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/014_timmy-youngman.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/015_nou-minus1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/015_nou-skip.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/015_pitchers.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/015_swole-creations.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/016_nou-reverse.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/016_nofans-cooper.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/promo/016_nofans-stacey.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/007_lil-cap.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/006_ro-block.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/001_buddha.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/003_john-mineo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/007_jacob-slate.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/000_gill-shultz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/003_alexs.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/007_alford.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/006_alexander-blake.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/misprint/007_bruno.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_aj-hunter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_fenton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_jackie-snow.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_kael-soze.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_olivia-copper.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/001_tony-andrews.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_aaron-byson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_anita-may.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_anthony-copleone.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_brittany-angel.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_clarence-williams.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_cletus-cornwood.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_daisy-dukakis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_dante-wolf.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_emma-dupont.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_francis-francer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_franky-dulio.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_henri-king.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_honathan-yolo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_jenny-hall.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_jerry-perkins.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_john-archer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_kevin-keyte.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_kyle-pred.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_lauren-forcer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_lenny-hawk.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_lorenzo-lezar.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_matt-rhodes.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_matthew-espinoz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_mike-bayo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_mina-price.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_peanut.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_perrie-lane.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_randy-wrangler.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_richard-dark.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_richard-richardson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_sam-baas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_tj-mack.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_tracy-martell.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_travis-tribble.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/002_vincent-glass.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_alex-casterman.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_ben-casanova.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_bob-smith.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_brenda-pancakes.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_brian-knight.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_chet-manley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_cody-sharp.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_crocodile-steve.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_dan-faily.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_darrel-mccormik.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_domenic-toretti.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_frank-williams.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_gage-draider.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_garry-berry.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_jack-davenport.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_jack-ripley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_jim-underwood.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_joel-garcia.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_john-mineo-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_john-spartan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_johnny-divine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_kareem-lyon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_lance-malton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_lily-pond.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_luka-kovacic.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_luka-kozlov.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_michael-murphy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_owen-svensen.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_rocko-columbo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_stephen-mcclane.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_thomas-metzger.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_tyme-reducer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_vladimir-raven.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/003_zero.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/004_conan-clarkson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/004_ellis-pinzon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/004_tessa-lamb.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/004_ziggy-buggs.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_alexis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_beck.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_bobbi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_jessica.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_joseph.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_nancy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_oliver.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_patricia.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_ramona.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_roy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/005_ruger.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_agnes-ranbough.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_alexander-blake-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_allen-beaste.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_annemarie-black.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_artorius-king.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_bailey-jade.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_benjamin-schildt.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_charlie-jannetty.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_clementine-carini.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_dai-jones.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_derek-shaw.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_emma-gaine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_granny-marigold.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_hedi-saurus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_jeff-kione.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_jenny-schildt.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_keith-harris.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_kyle-rogain.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_langston-carter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_laurence-nightingale.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_lei-sanya.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_leonardo-sand.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_maeve-omalley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_mila-smoak.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_misa-price.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_noah-drake.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_pixie-plum.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_ricky-minton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_rowan-hunter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_serge-cross.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_timothy-snapplejr.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_tsury-nanakaze.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_victoria-viale.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_william-thatch.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/006_zachary-kellogg.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_allison-thomas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_andi-jones.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_antigone-weston.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_buck-stanton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_coop-holliday.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_coyote-russell.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_dennis-labarre.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_elizabeth-devereaux.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_ferst-temple.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_jacob-slate-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_john-bailey.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_judge-holden.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_katya-zamalodchikova.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_paige-green.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_ray-montag.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_unity.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/007_wayne-ardson.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_dean-duncan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_edward-nygma.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_karen-haynes.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_lisa-adkins.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_michael-colt.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_shane-jones.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/008_wynona-fontaine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_barry-briddle.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_bayvon-barksdale.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_cassius-kennedy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_claire-everly.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_cletus-cornwood-cadet.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_derby-westbromwich.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_ensley-alton.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_jeffrey-bundy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_lenny-hawk-cadet.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_mackenzie-hayes.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_oscar-fitzpatrick.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_sexton-hardcastle.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_silas-grimmer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_theodore-tinker.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/009_william-gunner.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_amber-gold.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_amelia-frost.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_bennett-calhoun.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_dwayne-carter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_jack-sawyer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_jaryd-peak.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_john-charleston.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_johnny-dazzler.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_libby-reed.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_lydia-vale.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_marco-holliday.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_oliver-fury.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_patrick-downing.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_peter-rogers.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_pierre-paul.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_rob-banks.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_ryan-wright.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/010_selena-mendoza.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_bolingbroke.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_city-hall.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_court-room.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_meeting-room.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_mission-row.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_paleto-pd.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_parsons.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_pillbox-medical.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_sandy-shores.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_vespucci-pd.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/government/011_viceroy-medical.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_big-d.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_bobby.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_chawa.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_garrett.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_mr-k.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_ramee.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_randy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_taco.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_uchiha.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/000_vinny.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_lang.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_denzel.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_donnie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_ellie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_nino.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_saab.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_sven.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/001_tony.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_bjorn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_gloryon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_lando.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_leyla.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_meowfurryon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_stagdancer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/002_yeager.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_alex.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_aleks.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_blaine.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_claire.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_lexi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/003_violet.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/004_eugene.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/004_gladys.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/004_mel.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/004_yung-dab.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/005_guy-jones.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/005_jack.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/005_peanut.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/005_pilbis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_holdend-block.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_ike-block.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_mike-block.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_ray-ray.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_rhode-block.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/006_ro-block-1.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_cheddar.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_daryl.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_fat-siz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_fiona.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_hades.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_huck.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_jesus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_julio.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_kermy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_kian.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_kleb.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_kraytor.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_siz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/007_stanley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_al.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_cat.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_charlie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_dale.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_gary.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_gazz.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_holden.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_jp.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_lucy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_michael.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_negan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_nicholas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_paddy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_phoenix.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_reed.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_rudi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_ryan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/008_wade.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_carter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_d-money.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_debo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_devon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_dexx.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_dk.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_drew.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_lavante.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_lily.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_meatball.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/009_summer.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_arturo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_benji.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_carlitos.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_carlos.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_chino.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_cousin.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_jj.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_kj.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_raymundo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_santi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_speedy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/010_veronica.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/011_aj.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/011_mando.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/011_ott.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/012_barry.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/012_chip.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/012_dundee.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/012_riley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/013_black-mask.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/013_joker.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_betty.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_finn.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_floki.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_fug.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_honey.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_mason.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_mr-smiley.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/014_sassa.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_bovice.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_dash.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_jake.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_peter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_roxie.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/015_travers.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/016_ava.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/016_crow.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/016_dark-shadow.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/016_onyx.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_alabaster-slim.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_amon-gus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_angelo.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_anto.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_bernidette.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_boris.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_chase-clouter.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_clara.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_crops-gus.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_curtis.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_devon.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_fingle-dan.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_flippy.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_four-tee.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_gazpacho.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_grimoire.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_harry.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_hutch.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_jane-obamas.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_jay-que.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_leah.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_lenny.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_lil-erf.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_luka.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_maia.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_malakai.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_mari-posa.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_mario.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_mia.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_mickey.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_mother-midnight.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_olga.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_ray-mond.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_ray.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_razi.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_saint-jospeh.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_tom.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_trey.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_vasily.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_wayne.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_x.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/017_yuno.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_barrio.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_block-towers.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_forum-drive.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_grove-st-cul-de-sac.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_hoa-tavern.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_lost-clubhouse.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_paleto-bank.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_roosters-rest.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_the-vault.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_vultur-le-culture.webp",
+      "https://npgtav.b-cdn.net/tcg-sets/crews/018_wu-chang-records.webp"
+    ]);
+    const [open1, setopen1] = useState(false);
+    const [open2, setopen2] = useState(false);
+    const [open3, setopen3] = useState(false);
+    const [open4, setopen4] = useState(false);
+    const [open5, setopen5] = useState(false);
+    const [open6, setopen6] = useState(false);
+    const [clickedNumber, setClickedNumber] = useState(0)
+    const cardRef1 = useRef(null);
+    const cardRef2 = useRef(null);
+    const cardRef3 = useRef(null);
+    const cardRef4 = useRef(null);
+    const cardRef5 = useRef(null);
+    const cardRef6 = useRef(null);
+    const [cards, setCards] = useState([
+      {
+        id:'card-1',
+        anim:'first-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+      {
+        id:'card-2',
+        anim:'second-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+      {
+        id:'card-3',
+        anim:'third-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+      {
+        id:'card-4',
+        anim:'fourth-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+      {
+        id:'card-5',
+        anim:'fifth-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+      {
+        id:'card-6',
+        anim:'sixth-card',
+        holo:false,
+        image: cardNames[(Math.floor(Math.random() * cardNames.length) + 1)],
+      },
+    ]);
+    
+    const handleMouseMove = (e) => {
+      const id = e.currentTarget.id
+      let card = cardRef1.current
+      if(id == 'card-1'){
+        card = cardRef1.current;
+      }else if (id == 'card-2'){
+        card = cardRef2.current;
+      }else if (id == 'card-3'){
+        card = cardRef3.current;
+      }else if (id == 'card-4'){
+        card = cardRef4.current;
+      }else if (id == 'card-5'){
+        card = cardRef5.current;
+      }else if (id == 'card-6'){
+        card = cardRef6.current;
+      }
+  
+      const pos = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
+      e.preventDefault();
+  
+      if (e.type === 'touchmove') {
+        pos[0] = e.touches[0].clientX;
+        pos[1] = e.touches[0].clientY;
+      }
+      const l = pos[0];
+      const t = pos[1];
+      const h = card.offsetHeight;
+      const w = card.offsetWidth;
+      const px = Math.abs(Math.floor(100 / w * l)-100);
+      const py = Math.abs(Math.floor(100 / h * t)-100);
+      const pa = (50-px)+(50-py);
+      const lp = (50+(px - 50)/1.5);
+      const tp = (50+(py - 50)/1.5);
+      const px_spark = (50+(px - 50)/7);
+      const py_spark = (50+(py - 50)/7);
+      const ty = ((tp - 50)/2) * -1;
+      const tx = ((lp - 50)/1.5) * .5;
+
+      const sprk_pos = `background-position: ${px_spark}% ${py_spark}%;`;
+      const tf = `transform: rotateX(${ty}deg) rotateY(${tx}deg);`;
+  
+  
+      card.classList.remove('active');
+      card.style.transform = tf;
+      card.style.backgroundPosition = sprk_pos;
+      // card.style.opacity = p_opc / 100;
+      card.style.transform = `rotateX(${ty}deg) rotateY(${tx}deg)`;
+    };
+  
+    const handleMouseLeave = (e) => {
+      const id = e.currentTarget.id
+      let card = cardRef1.current
+      if(id == 'card-1'){
+        card = cardRef1.current;
+      }else if (id == 'card-2'){
+        card = cardRef2.current;
+      }else if (id == 'card-3'){
+        card = cardRef3.current;
+      }else if (id == 'card-4'){
+        card = cardRef4.current;
+      }else if (id == 'card-5'){
+        card = cardRef5.current;
+      }else if (id == 'card-6'){
+        card = cardRef6.current;
+      }
+  
+      card.style.transform = `none`;
+      card.classList.remove('active');
+    };
+    
+    const handleClick = (e: any) => {
+      const id = e.currentTarget.id
+      const cardMain: any = document.querySelector('#'+id);
+      const card: any = cardMain.querySelector('.card');
+      if (card.classList.contains('defaults')) {
+        cardMain.style.transform = 'scaleX(-1)';
+        
+        setTimeout(() => {
+          // card.classList.remove('defaults');
+          cardMain.style.transform = 'scaleX(1)';
+          cardMain.classList.remove('card-main');
+          cardMain.classList.add('card-second-main');
+          // playAudio();
+          // altButtons();
+          
+
+          if(id == 'card-1'){
+            setopen1(true)
+          }else if (id == 'card-2'){
+            setopen2(true)
+          }else if (id == 'card-3'){
+            setopen3(true)
+          }else if (id == 'card-4'){
+            setopen4(true)
+          }else if (id == 'card-5'){
+            setopen5(true)
+          }else if (id == 'card-6'){
+            setopen6(true)
+          }
+          setClickedNumber(clickedNumber + 1)
+        }, 80);
+      }
+
+    };
+
+    return (
+        <>
+          <div style={{display: show ? '' : 'none'}} className={classNamees.tcgCardContainer}>
+
+          {/* <audio id="audio">
+            <source src="assests/sound.mp3" type="audio/mpeg">
+          </audio> */}
+            <div className="cards">
+              {cards && cards.length > 0 ? (
+                cards.map((data) => (
+                  <div
+                    key={data.id}
+                    className={`card-main ${data.anim}`}
+                    id={data.id}
+                    onClick={handleClick}
+                  >
+                    {data.id === 'card-1' && (
+                      <div
+                        ref={cardRef1}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open1 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                    {data.id === 'card-2' && (
+                      <div
+                        ref={cardRef2}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open2 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                    {data.id === 'card-3' && (
+                      <div
+                        ref={cardRef3}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open3 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                    {data.id === 'card-4' && (
+                      <div
+                        ref={cardRef4}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open4 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                    {data.id === 'card-5' && (
+                      <div
+                        ref={cardRef5}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open5 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                    {data.id === 'card-6' && (
+                      <div
+                        ref={cardRef6}
+                        onMouseMove={handleMouseMove}
+                        onTouchMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchEnd={handleMouseLeave}
+                        onTouchCancel={handleMouseLeave}
+                        id={data.id}
+                        style={{
+                          backgroundImage: open6 === true ? `url(${data.image})` : 'url(https://media.discordapp.net/attachments/1024849761045581894/1139580002506133554/card.png)',
+                        }}
+                        className={data.holo ? 'defaults card holo' : 'defaults card'}
+                      ></div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <></>
+              )}
+            </div>
+            <div className="buttons">
+              <div className="main-button">
+                <div className="button">
+                  Open Another
+                </div>
+                <div className="button">
+                  Open Binder
+                </div>
+                <div className="button">
+                  Open Inventory
+                </div>
+                <div className="button">
+                  Close
+                </div>
+              </div>
+            </div>
+          {/* <audio className="cardAudio">
+            <source src="sound.mp3" type="audio/mpeg">
+          </audio> */}
+
+            <style className="hover"></style>
+
+        </div>
+
+      </>
+    );
+  }
+
+export default TcgCard;

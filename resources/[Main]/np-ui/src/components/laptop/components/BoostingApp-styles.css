@@ -1,0 +1,1414 @@
+body {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: hidden;
+  position: relative
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.BoostingContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;   
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;   
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-repeat: no-repeat;
+}
+
+.rectangule {
+  width: auto;
+  height: auto;
+  min-width: 85%;
+  max-width: 85%;
+  min-height: 85%;
+  max-height: 85%;
+  width: 85%;
+  border: 5px solid rgba(24, 24, 24, 0.6);
+  height: 85%;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+  animation: 250ms ease-in 0s 1 normal none running fadeIn;
+  border-radius: 5px;
+  /* backdrop-filter: blur(32px); */
+}
+
+.windows_apps {
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex: 1 1 auto;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+
+
+.windows_bar {
+  left: 0px;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  bottom: 0px;
+  height: 40px;
+  display: flex;
+  z-index: 10;
+  position: absolute;
+  background: rgba(24, 24, 24, 0.6);
+  padding-right: 0.6rem;
+  flex-direction: row;
+  backdrop-filter: blur(32px);
+}
+
+.fix_bar {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+}
+
+.browser1 {
+  position: absolute;
+  width: 70vw;
+  height: 73vh;
+  top: 0;
+  background-color: #17181e;
+  opacity: 1;
+  box-shadow: rgb(255 255 255 / 40%) 0px 1px 0px inset, rgb(0 0 0 / 60%) 0px 0px 60px;
+}
+
+.DodoApp {
+  position: absolute;
+  width: 70vw;
+  height: 73vh;
+  top: 0;
+  opacity: 1;
+  z-index: 3;
+  background-color: rgb(36, 49, 77);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px -1px 5px 4px;
+}
+
+.BennysApp {
+  position: absolute;
+  width: 70vw;
+  height: 73vh;
+  top: 0;
+  background-color: #101010;
+  opacity: 1;
+  z-index: 3;
+  box-shadow: rgb(255 255 255 / 40%) 0px 1px 0px inset, rgb(0 0 0 / 60%) 0px 0px 60px;
+}
+
+.GneFinance {
+  position: absolute;
+  width: 70vw;
+  height: 70vh;
+  background-color: rgb(197, 197, 197);
+  opacity: 1;
+  box-shadow: rgb(255 255 255 / 40%) 0px 1px 0px inset, rgb(0 0 0 / 60%) 0px 0px 60px;
+}
+
+.gholsi {
+  overflow-x: hidden;
+}
+
+
+.win_apps {
+  border: 1px solid transparent;
+  height: 75px;
+  display: flex;
+  padding: 10px;
+  max-width: 100px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.OpenedButton {
+  border: none;
+  background: none;
+  position: relative;
+  height: 100%;
+  width: 50px;
+  background-color: rgba(124, 124, 124, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color {
+  border: none;
+  background: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  justify-content: center;
+}
+
+.color:hover {
+  background-color: rgba(124, 124, 124, 0.2);
+}
+
+.color2 {
+  border: none;
+  background: none;
+  position: relative;
+  height: 95%;
+  width: 50px;
+  left: 80%;
+}
+
+.color3 {
+  border: none;
+  background: none;
+  position: relative;
+  height: 100%;
+  width: 50px;
+  left: 1px;
+}
+
+.color4 {
+  border: none;
+  background: none;
+  position: relative;
+  height: 100%;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color4:hover {
+  background-color: rgba(124, 124, 124, 0.2);
+}
+
+
+.emptyInbox {
+  position: relative;
+  left: 45%;
+}
+
+.closeContainer {
+  position: absolute;
+  width: 70px;
+  height: 30px;
+  top: -1850%;
+  left: 74.5%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.closeContainer2 {
+  position: absolute;
+  width: 70px;
+  height: 30px;
+  top: -1850%;
+  left: 100.5%;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.bennysItemsCart {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.btn {
+  width: 20px;
+  height: 15px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.btn:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #669d56;
+}
+
+.close-btn {
+  position: relative;
+  background: #FF5D5B;
+  border: none;
+  margin-right: 5px;
+}
+
+.min-btn {
+  position: relative;
+  background: #FFBB39;
+  border: none;
+  margin-right: 5px;
+}
+
+h1 {
+  font-size: 20px;
+  color: #fff;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+}
+
+.texto {
+  position: relative;
+  float: left;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 100%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  user-select: none;
+  font-weight: normal;
+}
+
+.boosting-text {
+  position: relative;
+  left: 1%;
+}
+
+.settings-text {
+  margin: 20px;
+  font-size: 140%;
+  color: white;
+}
+
+.notification-text {
+  margin: 20px;
+  font-size: 140%;
+  color: white;
+}
+
+.settings-config {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.boosting-close-container {
+
+  /* border: 5px solid rgba(24, 24, 24, 0.6); */
+  height: 85%;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  animation: 250ms ease-in 0s 1 normal none running fadeIn;
+  border-radius: 5px;
+  backdrop-filter: blur(32px);
+}
+
+
+.url_settings {
+  top: 100px;
+}
+
+.settingsContainer {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  width: 25%;
+  height: 85%;
+  background: rgba(24, 24, 24, 0.6);
+  border-radius: 10px;
+  backdrop-filter: blur(32px);
+  margin-left: 73%;
+  margin-top: 1%;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+.notificationContainer {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  width: 25%;
+  height: 85%;
+  background: rgba(24, 24, 24, 0.6);
+  border-radius: 10px;
+  backdrop-filter: blur(32px);
+  margin-left: 73%;
+  margin-top: 1%;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+}
+
+.fixsettingsanim {
+  position: relative;
+  top: -2350%;
+  left: -12.5%;
+}
+
+.filter-white {
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(207deg) brightness(102%) contrast(104%);
+}
+
+
+.fadeOut {
+  opacity: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+  visibility: hidden;
+
+}
+
+.fadeIn {
+  visibility: visible;
+  opacity: 100%;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+}
+
+.fadeOut2 {
+  visibility: hidden;
+
+}
+
+.fadeIn2 {
+  visibility: visible;
+}
+
+
+.textfix {
+  border-bottom: 2px solid #ffffff;
+  margin: 50px;
+}
+
+.submitfix {
+  position: relative;
+  width: 100%;
+  height: auto;
+  left: -15px;
+}
+
+.btnfix {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly;
+  margin-top: -15px;
+}
+
+.inputContainer {
+  position: relative;
+  width: 95%;
+  height: 10%;
+}
+
+.fixbtn2 {
+  left: 8%;
+}
+
+.checkboxFix {
+  position: relative;
+  top: 12px;
+  left: -8%;
+}
+
+
+.textohora {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.00938em;
+  display: flex;
+  font-size: 11px;
+  flex-basis: 63px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.PresetsContainer {
+  
+  left: 0px;
+  right: 0px;
+  width: 50%;
+  height: 85%;
+  display: flex;
+  padding: 20px;
+  z-index: 10;
+  position: absolute;
+  background: rgba(24, 24, 24, 0.6);
+  margin-top: -25%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  backdrop-filter: blur(32px);
+  flex-direction: column;
+}
+
+.bgPresetsContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.Presets {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+.bgButton {
+  border: none;
+  background: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 1vh;
+  cursor: pointer;
+}
+
+.bgcontainer {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(0, 250, 187, 0.5);
+  transition: all 150ms ease-in 0s;
+  border-radius: 5px;
+}
+
+.bgcontainer:hover {
+  transform: scale(1.04);
+  transition: all 150ms ease-out 0s;
+}
+
+
+
+/* yt*/
+.YoutubeContainer {
+  position: absolute;
+  width: 720px;
+  height: 520px;
+  top: -2000%;
+  left: 23%;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  backdrop-filter: blur(15px);
+}
+
+.yt_fix {
+  position: absolute;
+  left: 6%;
+  top: 14%;
+}
+
+
+.input_youtube {
+  position: relative;
+  left: 35%;
+  top: 10px;
+}
+
+.close2-btn {
+  background: #FF5D5B;
+  border: none;
+  left: 95.5%;
+  top: -9.5%;
+}
+
+.close2-btn:hover {
+  background: #69a74f;
+  border: none;
+  left: 95.5%;
+  top: -9.5%;
+}
+
+/* yt*/
+.proggresBoosting {
+  background-color: #262a34;
+  display: inline-block;
+  height: 0.4rem;
+  overflow: visible;
+  position: relative;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.proggresBoosting2 {
+  background-color: #262a34;
+  background: linear-gradient(to right, #ff2525a9, #29ffffb0 600px);
+  display: inline-block;
+  height: 0.4rem;
+  overflow: visible;
+  position: absolute;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+
+
+.butMycontracts {
+  position: relative;
+  background-color: #20212a;
+  color: #ffffff;
+  font-size: 0.7rem;
+  width: 10%;
+  height: 4vh;
+  border: none;
+  border-radius: 3px;
+  top: 3%;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.butMyqueue {
+  position: relative;
+  background-color: #20212a;
+  color: #ffffff;
+  font-size: 0.7rem;
+  width: 10%;
+  height: 4vh;
+  border: none;
+  border-radius: 3px;
+  top: 3%;
+  cursor: pointer;
+  margin: 10px;
+  transition: ease-out 0.3s;
+}
+
+
+.boostin-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boosting-b-buttons {
+  width: 100%;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #20212a;
+}
+
+.boosting-bb-buttons {
+  width: 100%;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #232121;
+}
+
+.boosting-dodo-buttons {
+  width: 100%;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(36, 49, 77);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px -1px 5px 4px;
+}
+
+
+.browser-b-buttons {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(222, 225, 230);
+}
+
+.input_browser {
+  height: 50px;
+  display: flex;
+  position: relative;
+  background: rgb(255, 255, 255);
+  align-items: center;
+}
+
+.inputStyles {
+  width: 100%;
+  border: none;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin: 10px;
+  border-radius: 50px;
+  background-color: rgb(224, 224, 224);
+  border: none;
+  outline: none;
+}
+
+.browser_tab {
+  width: 150px;
+  cursor: pointer;
+  height: 32px;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding-top: 0.2rem;
+  padding-left: 1rem;
+  padding-right: 0.4rem;
+  justify-content: space-between;
+  background-color: rgb(240, 240, 240);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.boostingBrowserContainer {
+  display: flex;
+  align-items: flex-start;
+}
+
+.CreditText {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  margin-right: auto;
+}
+
+.gne_tab {
+  width: 98%;
+  display: block;
+  overflow: hidden;
+  font-size: 12px;
+  white-space: nowrap;
+  color: rgb(69, 71, 73) !important;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+}
+
+.google {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.financePage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  height: 85%;
+  background-image: url('https://zebpay.com/wp-content/uploads/2021/05/e3ce11af-c9c6-4d6b-98cd-f17f65b7563a.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  width: 18vw;
+  min-width: 250px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background-color: #ffffff;
+}
+
+.design2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 40vh;
+  width: 18vw;
+  min-width: 250px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background-color: #3c3c3c;
+}
+
+.balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-right: auto;
+  font-size: 18px;
+  color: #505051;
+}
+
+.Buttons_browser {
+  position: relative;
+  width: 30vh;
+  height: 10vh;
+}
+
+.levelProggres1 {
+  position: relative;
+  color: #ffffff;
+  font-size: 1.0rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.levelProggres2 {
+  position: absolute;
+  color: #ffffff;
+  font-size: 1.0rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.boosting_p {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  top: 30px;
+  background-color: #ffffff;
+}
+
+.contractsContainers {
+  position: relative;
+  width: 90%;
+  height: 60vh;
+  overflow-y: scroll;
+  margin: none;
+}
+
+.centerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.ContractsInformationContainter {
+  background-color: #20212a;
+  border-radius: 3px;
+  float: left;
+  width: 184.3px;
+  height: 320px;
+  position: relative;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slot {
+  position: relative;
+  width: 200px;
+  height: 340px;
+  background-color: #2c2c32;
+  border-radius: 4px;
+  margin-top: 15px;
+  overflow: hidden;
+  border: 3px;
+  margin: 10px;
+}
+
+.buttonContractsInformationContainer {
+  position: relative;
+  margin-top: 10px;
+}
+
+.btnContractsInformation {
+  position: relative;
+  margin-left: 5px;
+  transition: ease-in-out 0.2s;
+}
+
+.btnContractsInformation:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #71b95c;
+}
+
+.AcceptContract {
+  background-color: #25be05;
+  color: white;
+  font-size: 0.65rem;
+  border: none;
+  border-radius: 15px;
+  width: 130px;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.TransferContract {
+  background-color: #248ef3;
+  color: white;
+  font-size: 0.65rem;
+  border: none;
+  border-radius: 15px;
+  width: 130px;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.CancelContract {
+  background-color: #fb4235;
+  color: white;
+  font-size: 0.65rem;
+  border: none;
+  border-radius: 15px;
+  width: 130px;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contracts_container {
+  overflow: hidden;
+}
+
+.infoContainer1 {
+  position: relative;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}
+
+.transferinfo {
+  position: relative;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  left: -10%;
+  top: -20px;
+}
+
+.infoContainer2 {
+  position: relative;
+  width: 300px;
+  height: 80px;
+  top: -45%;
+  left: 70%;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+}
+
+.setInputZone {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+.hiddenComponent {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  visibility: none;
+  z-index: -1;
+}
+
+.startContracZone {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.inLoad {
+  position: absolute;
+  left: 25%;
+}
+
+.nContainer {
+  position: absolute;
+  left: 4.2%;
+  top: 8%;
+  width: auto;
+  height: 90%;
+  overflow-y: hidden;
+  overflow-y: scroll;
+}
+
+.NotificationBack {
+  position: relative;
+  background: rgba(24, 24, 24, 0.4);
+  border-radius: 10px;
+  width: 19.5vw;
+  height: 10vh;
+  margin-bottom: 2%;
+  border-radius: 3px;
+
+}
+
+.NotiText {
+  position: absolute;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  left: 50px;
+  top: 6px;
+  overflow-wrap: break-word;
+}
+
+.NotiIcon {
+  position: inherit;
+  top: 20px;
+  left: 5px;
+}
+
+.ContractsButon {
+  position: relative;
+  background-color: #17181e;
+  width: 85%;
+  border: none;
+  color: white;
+  height: 40px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  left: 12px;
+  transition: ease-in-out 0.2s;
+}
+
+.ContractsButon:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #407c77;
+}
+
+.CancelButton {
+  position: relative;
+  background-color: #17181e;
+  width: 85%;
+  border: none;
+  color: white;
+  height: 40px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  left: 12px;
+  transition: ease-in-out 0.2s;
+}
+
+.CancelButton:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #a70000;
+}
+
+.DisabledButtons {
+  position: relative;
+  background-color: #3d3c45;
+  width: 85%;
+  border: none;
+  color: white;
+  height: 40px;
+  margin-bottom: 6px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  left: 12px;
+}
+
+
+.typeContainer {
+  position: relative;
+  background-color: #25252b;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid #1ef8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeremoveContainer{
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.closeRemove {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.bennysItems {
+  background-color: #212121;
+  border-radius: 3px;
+  float: left;
+  width: 135px;
+  height: 200px;
+  position: relative;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bennysContainer {
+  position: relative;
+  top: 40px;
+  left: 2%;
+  height: 58vh;
+  width: 95%;
+  overflow: hidden;
+  overflow: scroll;
+}
+
+.bennysItemContainer {
+  position: relative;
+  top: 40px;
+  left: 2%;
+  height: 500px;
+  width: 95%;
+  overflow: hidden;
+  overflow: scroll;
+}
+
+.bennysIcon {
+  position: relative;
+}
+
+.bennysItemIcon {
+  position: relative;
+  left: 2%;
+  top: 8px;
+}
+
+.CartItemText {
+  position: relative;
+  color: #848484;
+  font-family: 'Roboto', sans-serif;
+  top: -62%;
+  left: 8%;
+  font-size: 0.8rem;
+}
+
+.CheckoutText {
+  position: relative;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  left: 20%;
+  font-size: 0.8rem;
+  top: 6%;
+}
+
+.BennysText {
+  position: relative;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+  top: -10px;
+}
+
+.BennysAppButtons {
+  width: 100%;
+  height: 10%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.BennysAddCartBTN {
+  position: relative;
+  border: none;
+  font-size: 0.6rem;
+  width: 78px;
+  height: 25px;
+  background-color: #5e6afd;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+  top: -10px;
+  transition: ease-in-out 0.2s;
+}
+
+.BennysAddCartBTN:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #669d56;
+}
+
+.CounterBennys {
+  position: absolute;
+  border: none;
+  font-size: 0.6rem;
+  width: 25px;
+  height: 25px;
+  background-color: #5e6afd;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+  left: 80%;
+  top: 5px;
+}
+
+.CounterBennysItems {
+  position: absolute;
+  border: none;
+  font-size: 0.6rem;
+  width: 25px;
+  height: 25px;
+  background-color: #5e6afd;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 20px;
+  left: 70%;
+  top: -36px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.CarritoBennys {
+  position: relative;
+  border: none;
+  font-size: 70%;
+  width: 60px;
+  height: 40px;
+  background-color: #222222;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: ease-in-out 0.2s;
+}
+
+.CarritoBennys:hover {
+  transition: ease-in-out 0.2s;
+  background-color: #69a74f;
+}
+
+.auto {
+  position: relative;
+}
+
+.ButBennys {
+  position: relative;
+  background-color: #222222;
+  color: #aba9da;
+  font-size: 70%;
+  width: auto;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  top: 0%;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  transition: ease-in-out 0.2s;
+}
+
+.ButBennys2 {
+  position: relative;
+  background-color: #101010;
+  color: #575757;
+  font-size: 70%;
+  width: auto;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  top: 0%;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  transition: ease-in-out 0.2s;
+}
+
+.ButBennys2:hover {
+  background-color: #1d1d1d;
+  transition: ease-in-out 0.2s;
+}
+
+.ButBennysCart {
+  position: relative;
+  background-color: #e55452;
+  color: #ffffff;
+  font-size: 70%;
+  width: auto;
+  height: 50%;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  left: 40%;
+}
+
+.CheckOut {
+  position: relative;
+  background-color: #69a74f;
+  color: #ffffff;
+  font-size: 70%;
+  width: auto;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-family: 'Roboto', sans-serif;
+  left: 8%;
+  top: 7%;
+}
+
+.CartCheckout {
+  position: absolute;
+  left: 85%;
+}
+
+.InputBennys {
+  position: relative;
+  background-color: #212121;
+  color: #ffffff;
+  font-size: 12px;
+  width: auto;
+  height: 30px;
+  padding-left: 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: rgb(24, 24, 24);
+}
+
+.NotificationOutside {
+  position: relative;
+  background-color: rgba(20, 20, 20, 0.6);
+  width: 290px;
+  height: 75px;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  backdrop-filter: blur(32px);
+  left: 77%;
+  top: -350px;
+}
+
+.InputBennys:focus {
+  outline: none !important;
+}
+
+.BennysInput {
+  position: absolute;
+  left: 40.5%;
+  color: white;
+}
+
+.InputBennysText {
+  position: relative;
+  left: 40.5%;
+  color: white;
+}
+
+.nContainer2 {
+  position: absolute;
+  left: 74.5%;
+  top: -580px;
+  width: 300px;
+  height: 570px;
+}
+
+.remove {
+  top: -50px;
+  right: 3px;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column-reverse;
+  padding-bottom: 3.5rem;
+  pointer-events: none;
+}
+
+.NotificationBack2 {
+  position: relative;
+  background: rgba(20, 20, 20, 0.45);
+  border-radius: 10px;
+  backdrop-filter: saturate(180%) blur(10px);
+  width: 100%;
+  min-height: 10%;
+  margin-bottom: 1%;
+  border-radius: 3px;
+}
+
+
+.GNE {
+  position: absolute;
+  color: white;
+  font-size: 80%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  top: 93%;
+  left: 2%;
+}

@@ -46,13 +46,13 @@ end
 
 function polyHelperExit(apartmentLocNumber,apartmentNumber)
     listening = false
-    -- exports["np-ui"]:hideInteraction()
+    -- exports["rlrp-ui"]:hideInteraction()
 end
 
 function polyHelperEnter(apartmentLocNumber,apartmentNumber)
     if listening then return end
     listening = true
-    -- exports["np-ui"]:showInteraction(getInteractionMessage(apartmentLocNumber,apartmentNumber))
+    -- exports["rlrp-ui"]:showInteraction(getInteractionMessage(apartmentLocNumber,apartmentNumber))
     listen(apartmentLocNumber,apartmentNumber)
 end
 
@@ -125,7 +125,7 @@ local function showApartmentMenu(apartmentLocNumber,apartmentNumber)
 
     for k,v in pairs(Apart.currentRoomLocks[apartmentLocNumber]) do
         if v == false then
-            unlockedApartments[#unlockedApartments + 1] = { title = "Apartment # "..k, action = "np-ui:apartmentsContext", key = {"EnterUnlocked",apartmentLocNumber,k} }
+            unlockedApartments[#unlockedApartments + 1] = { title = "Apartment # "..k, action = "rlrp-ui:apartmentsContext", key = {"EnterUnlocked",apartmentLocNumber,k} }
         end 
     end
     
@@ -136,7 +136,7 @@ local function showApartmentMenu(apartmentLocNumber,apartmentNumber)
             title = Text,
             description = "Lock / Unlock Your apartment.",
             key = {"locks",apartmentLocNumber,apartmentNumber},
-            action = "np-ui:apartmentsContext"
+            action = "rlrp-ui:apartmentsContext"
         }
     end
 
@@ -164,7 +164,7 @@ local function showApartmentMenu(apartmentLocNumber,apartmentNumber)
                 title = Locktext,
                 description = "Lockdown a Given Apartment.",
                 key = {"lockdown",apartmentLocNumber,k},
-                action = "np-ui:apartmentsContext"
+                action = "rlrp-ui:apartmentsContext"
             }
         end
         
@@ -179,14 +179,14 @@ local function showApartmentMenu(apartmentLocNumber,apartmentNumber)
             title = "Lockdown-CID",
             description = "Lockdown a Given Apartment using CID.",
             key = {"lockdownCid",apartmentLocNumber,0},
-            action = "np-ui:apartmentsContext"
+            action = "rlrp-ui:apartmentsContext"
         }
     end
 
-    -- exports["np-ui"]:showContextMenu(data)
+    -- exports["rlrp-ui"]:showContextMenu(data)
 end
 
--- RegisterInterfaceCallback("np-ui:apartmentsContext", function(data, cb)
+-- RegisterInterfaceCallback("rlrp-ui:apartmentsContext", function(data, cb)
 --     cb({ data = {}, meta = { ok = true, message = '' } })
 --     local keyData = data.key
 --     local action = keyData[1]
@@ -195,7 +195,7 @@ end
 
 --     if action == "locks" then
 --         Apart.locksMotel(loc,room)
---         exports["np-ui"]:showInteraction(getInteractionMessage(globalLocNumber,globalNumber))
+--         exports["rlrp-ui"]:showInteraction(getInteractionMessage(globalLocNumber,globalNumber))
 --     end
 
 --     if action == "EnterUnlocked" then
@@ -204,18 +204,18 @@ end
 
 --     if action == "lockdown" then
 --         TriggerServerEvent("apartment:serverLockdown",room,loc)
---         exports["np-ui"]:showInteraction(getInteractionMessage(globalLocNumber,globalNumber))
+--         exports["rlrp-ui"]:showInteraction(getInteractionMessage(globalLocNumber,globalNumber))
 --     end
 
 --     if action == "lockdownCid" then
         
---         exports["np-ui"]:hideInteraction()
+--         exports["rlrp-ui"]:hideInteraction()
 --         Wait(10)
 --         local elements = {
 --             { name = "cid", label = "Player CID", icon = "scroll" }
 --         }
     
---         local prompt = exports['np-ui']:OpenInputMenu(elements, function(values)
+--         local prompt = exports['rlrp-ui']:OpenInputMenu(elements, function(values)
 --             return type(tonumber(values.cid)) == 'number' and tonumber(values.cid) >= 1000
 --         end)
 
@@ -228,20 +228,20 @@ end
 --     end
 -- end)
 
-RegisterNetEvent('np-binds:keyEvent')
-AddEventHandler('np-binds:keyEvent', function(name,onDown)
+RegisterNetEvent('rlrp-binds:keyEvent')
+AddEventHandler('rlrp-binds:keyEvent', function(name,onDown)
     if onDown then return end
     if not listening then return end
 
     if name == "housingSecondary" then
-        -- exports["np-ui"]:hideInteraction()
+        -- exports["rlrp-ui"]:hideInteraction()
         showApartmentMenu(globalLocNumber,globalNumber)
     end
     
     if name == "housingMain" then
         if Apart.defaultInfo[1] == globalLocNumber then
             listening = false
-            -- exports["np-ui"]:hideInteraction()
+            -- exports["rlrp-ui"]:hideInteraction()
             TriggerEvent("apartments:enterMotel",apartmentNumber, apartmentLocNumber)
         end
     end

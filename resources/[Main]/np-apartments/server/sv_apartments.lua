@@ -23,7 +23,7 @@ end)
 RegisterServerEvent("apartment:serverApartmentSpawn")
 AddEventHandler("apartment:serverApartmentSpawn",function(roomType, isNew, instance, isSpawn)
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
     exports.oxmysql:execute("SELECT * FROM character_motel WHERE cid = @cid", {
@@ -111,7 +111,7 @@ end)
 RegisterServerEvent("apartment:upgradeApartment2")
 AddEventHandler("apartment:upgradeApartment2",function(price)
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     if user:getCash() >= price then
         user:removeMoney(price)
@@ -127,7 +127,7 @@ end)
 RegisterServerEvent("apartment:upgradeApartment3")
 AddEventHandler("apartment:upgradeApartment3",function(price)
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     if user:getCash() >= price then
         user:removeMoney(price)

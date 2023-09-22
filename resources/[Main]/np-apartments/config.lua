@@ -6,8 +6,8 @@ MenuData = {
       description = "Forclose Apartment",
       key = "judge",
       children = {
-          { title = "Yes", action = "np-apartments:handler", key = { forclose = true} },
-          { title = "No", action = "np-apartments:handler", key = { forclose = false } },
+          { title = "Yes", action = "rlrp-apartments:handler", key = { forclose = true} },
+          { title = "No", action = "rlrp-apartments:handler", key = { forclose = false } },
       }
     }
   }

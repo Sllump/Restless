@@ -45,7 +45,7 @@ function Draw3DText(x,y,z, text)
 end
 
 function getMyCurrentApartment()
-    local apt = RPC.execute("np-apartments:getCurrentApartment")
+    local apt = RPC.execute("rlrp-apartments:getCurrentApartment")
     return apt
 end
 

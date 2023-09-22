@@ -11,8 +11,8 @@ dependencies {
   "PolyZone"
 }
 
-client_script "@np-lib/client/cl_ui.lua"
-client_script "@np-lib/client/cl_interface.lua"
+client_script "@rlrp-lib/client/cl_ui.lua"
+client_script "@rlrp-lib/client/cl_interface.lua"
 client_script "config.lua"
 
 client_scripts {
@@ -21,8 +21,8 @@ client_scripts {
   "@PolyZone/CircleZone.lua",
   "@PolyZone/ComboZone.lua",
   "@PolyZone/EntityZone.lua",
-  '@np-errorlog/client/cl_errorlog.lua',
-  '@np-lib/client/cl_rpc.lua',
+  '@rlrp-errorlog/client/cl_errorlog.lua',
+  '@rlrp-lib/client/cl_rpc.lua',
   'client/cl_*.lua'
 }
 
@@ -30,8 +30,8 @@ client_scripts {
 shared_script 'shared/sh_*.*'
 
 server_scripts {
-    '@np-lib/server/sv_rpc.lua',
-    '@np-lib/server/sv_sql.lua',
+    '@rlrp-lib/server/sv_rpc.lua',
+    '@rlrp-lib/server/sv_sql.lua',
     'server/sv_*.lua',
 }
 

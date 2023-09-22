@@ -89,8 +89,8 @@ function Apart.displayMarkers(isDisplaying)
     end)
 end
 
-RegisterNetEvent('np-binds:keyEvent')
-AddEventHandler('np-binds:keyEvent', function(name,onDown)
+RegisterNetEvent('rlrp-binds:keyEvent')
+AddEventHandler('rlrp-binds:keyEvent', function(name,onDown)
     if name ~= "PlayerList" then return end
     Apart.displayMarkers(onDown)
 end)
@@ -189,7 +189,7 @@ function Apart.processBuildType(numMultiplier,roomType,isSpawn)
     local name = ""
     name = Apart.FindCurrentRoom(roomType)
 
-    local isBuiltCoords = exports["np-build"]:getModule("func").buildRoom(name,numMultiplier,false)
+    local isBuiltCoords = exports["rlrp-build"]:getModule("func").buildRoom(name,numMultiplier,false)
 
     if isBuiltCoords then
 
@@ -202,7 +202,7 @@ function Apart.processBuildType(numMultiplier,roomType,isSpawn)
 
             Apart.WakeFromBed()
 
-            TriggerEvent("np-spawn:characterSpawned", cid)
+            TriggerEvent("rlrp-spawn:characterSpawned", cid)
         else
             TriggerEvent('InteractSound_CL:PlayOnOne','DoorClose', 0.7)
         end
@@ -216,13 +216,13 @@ function Apart.leaveApartment()
     Wait(330)
 
     if Apart.exitPoint[Apart.currentRoomType] == nil then
-        exports["np-build"]:getModule("func").exitCurrentRoom(Apart.Locations[Apart.currentRoomType][Apart.currentRoomNumber])
+        exports["rlrp-build"]:getModule("func").exitCurrentRoom(Apart.Locations[Apart.currentRoomType][Apart.currentRoomNumber])
     else
         if type(Apart.exitPoint[Apart.currentRoomType]) == typeVector then
-            exports["np-build"]:getModule("func").exitCurrentRoom(Apart.exitPoint[Apart.currentRoomType])
+            exports["rlrp-build"]:getModule("func").exitCurrentRoom(Apart.exitPoint[Apart.currentRoomType])
         else
             local rnd = math.random(1,#Apart.exitPoint[Apart.currentRoomType])
-            exports["np-build"]:getModule("func").exitCurrentRoom(Apart.exitPoint[Apart.currentRoomType][rnd])
+            exports["rlrp-build"]:getModule("func").exitCurrentRoom(Apart.exitPoint[Apart.currentRoomType][rnd])
         end
     end
 
@@ -255,15 +255,15 @@ function Apart.logout()
     DoScreenFadeOut(500)
     Citizen.Wait(1000)
     TriggerServerEvent("jobssystem:jobs", "unemployed")
-    exports["np-build"]:getModule("func").CleanUpArea()
+    exports["rlrp-build"]:getModule("func").CleanUpArea()
     TriggerEvent("inhotel", false)
     local cid = exports["isPed"]:isPed("cid")
-    TriggerServerEvent("np-jobmanager:onCharSwap", cid)
+    TriggerServerEvent("rlrp-jobmanager:onCharSwap", cid)
     Citizen.Wait(1000)
-    TriggerEvent("np-base:clearStates")
-    exports["np-ui"]:sendAppEvent("hud", { display = false })
+    TriggerEvent("rlrp-base:clearStates")
+    exports["rlrp-ui"]:sendAppEvent("hud", { display = false })
     TriggerServerEvent("apartments:cleanUpRoom")
-    exports["np-base"]:getModule("SpawnManager"):Initialize()
+    exports["rlrp-base"]:getModule("SpawnManager"):Initialize()
 
     Citizen.Wait(1000)
 end
@@ -293,7 +293,7 @@ RegisterNetEvent("apartments:stash");
 AddEventHandler("apartments:stash", Apart.openHotelStash);
 
 function Apart.OpenStash()
-    if not exports['np-taskbar']:pInInv() then
+    if not exports['rlrp-taskbar']:pInInv() then
         local cid = exports["isPed"]:isPed("cid")
         TriggerEvent('InteractSound_CL:PlayOnOne','StashOpen', 0.6)
         --TriggerEvent("server-inventory-open", "1", "motel-"..Apart.currentRoomType.."-"..Apart.currentHotelInformation.cid)
@@ -308,7 +308,7 @@ function leaveToGarage()
     TriggerEvent('InteractSound_CL:PlayOnOne','DoorOpen', 0.7)
     Wait(330)
 
-    exports["np-build"]:getModule("func").CleanUpArea()
+    exports["rlrp-build"]:getModule("func").CleanUpArea()
     DoScreenFadeOut(1)
 
     Apart.currentGarageNumber = Apart.currentRoomNumber
@@ -320,7 +320,7 @@ RegisterNetEvent("apartments:garage");
 AddEventHandler("apartments:garage", leaveToGarage);
 
 function garageToHouse()
-    exports["np-build"]:getModule("func").CleanUpArea()
+    exports["rlrp-build"]:getModule("func").CleanUpArea()
     Apart.processBuildType(Apart.currentGarageNumber,3)
     Apart.currentGarageNumber = 0
 
@@ -332,7 +332,7 @@ RegisterNetEvent("apartments:garageToHouse");
 AddEventHandler("apartments:garageToHouse", garageToHouse);
 
 function garageToWorld()
-    exports["np-build"]:getModule("func").exitCurrentRoom(vector3(4.67, -724.85, 32.18))
+    exports["rlrp-build"]:getModule("func").exitCurrentRoom(vector3(4.67, -724.85, 32.18))
     Apart.currentRoomNumber = Apart.defaultInfo[2]
     Apart.currentRoomType = Apart.defaultInfo[1]
     Apart.currentHotelInformation = nil
@@ -344,7 +344,7 @@ RegisterNetEvent("apartments:garageToWorld");
 AddEventHandler("apartments:garageToWorld", garageToWorld);
 
 function Apart.WakeFromBed()
-    local bedOffset = exports["np-build"]:getModule("func").getCurrentBed()
+    local bedOffset = exports["rlrp-build"]:getModule("func").getCurrentBed()
 
     if bedOffset ~= false then
         SetEntityCoords(PlayerPedId(),bedOffset.x,bedOffset.y,bedOffset.z-0.9)
@@ -427,7 +427,7 @@ local cidsForAnywhere = { -- some people are invisible, let them swap anywhere
 
 function nearClothing()
 
-    local isNear = exports["np-build"]:getModule("func").isNearCurrentInteract(1,5.5)
+    local isNear = exports["rlrp-build"]:getModule("func").isNearCurrentInteract(1,5.5)
     if isNear then
         return true
     end
@@ -488,7 +488,7 @@ end)
 RegisterNetEvent('apartment:removeFromBuilding')
 AddEventHandler('apartment:removeFromBuilding', function(roomNumber,buildType)
     if Apart.currentRoomType == buildType and Apart.currentRoomNumber == roomNumber then
-        if exports["np-build"]:getModule("func").isInBuilding() then
+        if exports["rlrp-build"]:getModule("func").isInBuilding() then
             Apart.leaveApartment()
         end
     end
@@ -512,7 +512,7 @@ AddEventHandler('apartment:attemptEntry', function(roomNumberSent)
 
 end)
 
-RegisterInterfaceCallback("np-apartments:handler", function(data, cb)
+RegisterInterfaceCallback("rlrp-apartments:handler", function(data, cb)
     cb({ data = {}, meta = { ok = true, message = '' } })
     local eventData = data.key
     if eventData.forclose then
@@ -528,7 +528,7 @@ AddEventHandler('apartments:menuAction', function(action)
     elseif action == "checkOwner" then
         Apart.func.getOwner()
     elseif action == "forfeit" then
-        -- exports["np-ui"]:showContextMenu(MenuData["apartment_check"])
+        -- exports["rlrp-ui"]:showContextMenu(MenuData["apartment_check"])
     end
 end)
 
@@ -678,7 +678,7 @@ end)
 
 RegisterNetEvent('apartment:upgrades')
 AddEventHandler('apartment:upgrades', function()
-    TriggerEvent('np-context:sendMenu', {
+    TriggerEvent('rlrp-context:sendMenu', {
         {
             id = 1,
             header = "Base Apartment Upgrades",

@@ -1,6 +1,6 @@
 -- Key binds:
 -- Usage:
--- exports["np-keybinds"]:registerKeyMapping(category, description, onKeyDownCommand, onKeyUpCommand, defaultKey)
+-- exports["rlrp-keybinds"]:registerKeyMapping(category, description, onKeyDownCommand, onKeyUpCommand, defaultKey)
 -- category - which category is this? e.g.: Voice, Vehicle, Police, etc REQUIRED
 -- description - SHORT description of the action REQUIRED
 -- onKeyDownCommand - see native RegisterKeyMapping / RegisterCommand REQUIRED
@@ -19,7 +19,7 @@
 -- RegisterCommand('-toggleSeatbelt', function() end, false)
 
 local shouldExecuteBind = true
-AddEventHandler("np-binds:should-execute", function(shouldExecute)
+AddEventHandler("rlrp-binds:should-execute", function(shouldExecute)
   shouldExecuteBind = shouldExecute
 end)
 
@@ -44,12 +44,12 @@ exports('registerKeyMapping', function(name, category, description, onKeyDownCom
     cmdStringUp = "-cmd_wrapper__" .. onKeyDownCommand
     RegisterCommand(cmdStringDown, function()
       if not shouldExecuteBind then return end
-      if event then TriggerEvent("np-binds:keyEvent", name, true) end
+      if event then TriggerEvent("rlrp-binds:keyEvent", name, true) end
       ExecuteCommand(onKeyDownCommand)
     end, false)
     RegisterCommand(cmdStringUp, function()
       if not shouldExecuteBind then return end
-      if event then TriggerEvent("np-binds:keyEvent", name, false) end
+      if event then TriggerEvent("rlrp-binds:keyEvent", name, false) end
       ExecuteCommand(onKeyUpCommand)
     end, false)
     RegisterKeyMapping(cmdStringDown, desc, type, default)

@@ -5,7 +5,7 @@ local function TaskBar(pLength, pName, pRunCheck, pHidden)
 
     Citizen.CreateThread(function ()
         if pName then
-            exports['np-taskbar']:taskBar(pLength, pName, pRunCheck, true, nil, false, function (result)
+            exports['rlrp-taskbar']:taskBar(pLength, pName, pRunCheck, true, nil, false, function (result)
                 p:resolve(result)
             end)
         else
@@ -96,6 +96,6 @@ function AnimationTask:abort()
     if not self.text then
         self.task:resolve(0)
     else
-        exports['np-taskbar']:taskCancel();
+        exports['rlrp-taskbar']:taskCancel();
     end
 end

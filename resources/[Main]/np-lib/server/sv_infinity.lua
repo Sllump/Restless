@@ -4,8 +4,8 @@ function DoesSourceExist(pPlayerId)
     return ActivePlayers[pPlayerId]
 end
 
-RegisterServerEvent("np-base:spawnInitialized")
-AddEventHandler("np-base:spawnInitialized",function()
+RegisterServerEvent("rlrp-base:spawnInitialized")
+AddEventHandler("rlrp-base:spawnInitialized",function()
     local src = source
     ActivePlayers[src] = true
 end)

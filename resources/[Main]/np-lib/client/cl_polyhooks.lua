@@ -15,7 +15,7 @@ function PolyZoneInteraction(pZone, pText, pKey, pAction)
 
             ActiveInteractions[pZone] = true
 
-            -- exports['np-ui']:showInteraction(pText);
+            -- exports['rlrp-ui']:showInteraction(pText);
 
             Citizen.CreateThread(function ()
                 local keys = type(pKey) == 'table' and pKey or { pKey }
@@ -31,20 +31,20 @@ function PolyZoneInteraction(pZone, pText, pKey, pAction)
             end)
         end,
         exit = function()
-            exports['np-ui'].hideInteraction();
+            exports['rlrp-ui'].hideInteraction();
 
             ActiveInteractions[pZone] = false
         end
     })
 end
 
-AddEventHandler('np-polyzone:enter', function(zone, data)
+AddEventHandler('rlrp-polyzone:enter', function(zone, data)
     if not PolyZoneHooks[zone] then return end
 
     PolyZoneHooks[zone]['enter'](data)
 end)
 
-AddEventHandler('np-polyzone:exit', function(zone, data)
+AddEventHandler('rlrp-polyzone:exit', function(zone, data)
     if not PolyZoneHooks[zone] then return end
 
     PolyZoneHooks[zone]['exit']()

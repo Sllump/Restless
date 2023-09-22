@@ -47,13 +47,13 @@ function GetEntityContext(pEntity, pEntityType, pEntityModel)
     context.distance = #(playerCoords - entityCoords)
 
     if context.type == 1 then
-        context.flags = exports["np-flags"]:GetPedFlags(pEntity)
+        context.flags = exports["rlrp-flags"]:GetPedFlags(pEntity)
         context.flags["isPlayer"] = IsPedAPlayer(pEntity)
         if context.flags["isNPC"] then GetPedContext(pEntity, context) end
     elseif context.type == 2 then
-        context.flags = exports["np-flags"]:GetVehicleFlags(pEntity)
+        context.flags = exports["rlrp-flags"]:GetVehicleFlags(pEntity)
     elseif context.type == 3 then
-        context.flags = exports["np-flags"]:GetObjectFlags(pEntity)
+        context.flags = exports["rlrp-flags"]:GetObjectFlags(pEntity)
     end
 
     if ModelFlags[context.model] then
@@ -69,22 +69,22 @@ function GetPedContext(pEntity, pContext)
     local npcId = DecorGetInt(pEntity, "NPC_ID")
 
     if pContext.flags["isJobEmployer"] then
-        pContext.job = exports["np-jobs"]:GetNPCJobData(npcId)
+        pContext.job = exports["rlrp-jobs"]:GetNPCJobData(npcId)
     end
 end
 
 --[[function isDisabled()
-    return exports["np-base"]:getVar("dead") or
-        exports["np-base"]:getVar("handcuffed")
+    return exports["rlrp-base"]:getVar("dead") or
+        exports["rlrp-base"]:getVar("handcuffed")
 end]]
 
 function hasPhone()
-    return exports["np-inventory"]:hasEnoughOfItem("mobilephone", 1, false) or
-        exports["np-inventory"]:hasEnoughOfItem("stoleniphone", 1, false) or
-        exports["np-inventory"]:hasEnoughOfItem("stolens8", 1, false) or
-        exports["np-inventory"]:hasEnoughOfItem("stolennokia", 1, false) or
-        exports["np-inventory"]:hasEnoughOfItem("stolenpixel3", 1, false) or
-        exports["np-inventory"]:hasEnoughOfItem("boomerphone", 1, false)
+    return exports["rlrp-inventory"]:hasEnoughOfItem("mobilephone", 1, false) or
+        exports["rlrp-inventory"]:hasEnoughOfItem("stoleniphone", 1, false) or
+        exports["rlrp-inventory"]:hasEnoughOfItem("stolens8", 1, false) or
+        exports["rlrp-inventory"]:hasEnoughOfItem("stolennokia", 1, false) or
+        exports["rlrp-inventory"]:hasEnoughOfItem("stolenpixel3", 1, false) or
+        exports["rlrp-inventory"]:hasEnoughOfItem("boomerphone", 1, false)
 end
 
 function GetBoneDistance(pEntity, pType, pBone)
@@ -231,7 +231,7 @@ end
 function hasKeys(pEntity)
     if HasKeysCache[pEntity] then return HasKeysCache[pEntity] end
 
-    local hasKeys = exports["np-vehicles"]:HasVehicleKey(pEntity)
+    local hasKeys = exports["rlrp-vehicles"]:HasVehicleKey(pEntity)
 
     HasKeysCache[pEntity] = hasKeys
 
@@ -247,7 +247,7 @@ function hasRepairItems(type)
     end
 
     for i, v in pairs(items) do
-        if exports["np-inventory"]:hasEnoughOfItem(v, 1, false) then
+        if exports["rlrp-inventory"]:hasEnoughOfItem(v, 1, false) then
             return true
         end
     end
@@ -261,8 +261,8 @@ end
 
 ]]
 
-AddEventHandler("np-polyzone:enter", function(zone, data)
-    if zone == "np-jobs:impound:dropOff" then IsImpoundDropOff = true end
+AddEventHandler("rlrp-polyzone:enter", function(zone, data)
+    if zone == "rlrp-jobs:impound:dropOff" then IsImpoundDropOff = true end
     if zone == "vanilla_unicorn_stage" then polyChecks.vanillaUnicorn = { isInside = true, polyData = data } end
     if zone == "gas_station" then polyChecks.gasStation = { isInside = true, polyData = data } end
     if zone == "bennys" then
@@ -281,7 +281,7 @@ AddEventHandler("np-polyzone:enter", function(zone, data)
     if zone == "prison" then polyChecks.prison = { isInside = true, polyData = nil } end
 end)
 
-AddEventHandler("np-polyzone:exit", function(zone)
+AddEventHandler("rlrp-polyzone:exit", function(zone)
     if zone == "vanilla_unicorn_stage" then polyChecks.vanillaUnicorn = { isInside = false, polyData = nil } end
     if zone == "gas_station" then polyChecks.gasStation = { isInside = false, polyData = nil } end
     if zone == "bennys" then polyChecks.bennys = { isInside = false, polyData = nil } end
@@ -289,8 +289,8 @@ AddEventHandler("np-polyzone:exit", function(zone)
     if zone == "prison" then polyChecks.prison = { isInside = false, polyData = nil } end
 end)
 
-RegisterNetEvent("np-jobs:jobChanged")
-AddEventHandler("np-jobs:jobChanged", function(pJobId)
+RegisterNetEvent("rlrp-jobs:jobChanged")
+AddEventHandler("rlrp-jobs:jobChanged", function(pJobId)
     CurrentJob = pJobId
 
     HasKeysCache = {}

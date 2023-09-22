@@ -10,7 +10,7 @@ const __AddLibEvent = (pEvent, pCallback) => {
     }
 };
 
-__AddLibEvent('np-dev:enableDebug', (pEnabled, pResource) => {
+__AddLibEvent('rlrp-dev:enableDebug', (pEnabled, pResource) => {
     if (pResource !== undefined && pResource !== ResourceName) return;
 
     IsDebugEnabled = pEnabled;

@@ -7,44 +7,44 @@ if not IsDuplicityVersion() then
         SetNuiFocus(hasKeyboard, hasMouse)
         SetNuiFocusKeepInput(HasNuiFocus)
         
-        TriggerEvent("np-base:focus", HasNuiFocus, hasKeyboard, hasMouse)
+        TriggerEvent("rlrp-base:focus", HasNuiFocus, hasKeyboard, hasMouse)
     end
     
     function TaskItem(item, animDict, animName, typeAnim, speed, prop, message, timer, movement, weapon, remove)
         if not LocalPlayer.state.doge then
-            TriggerEvent('np-lib:forceAnimation', animDict, animName, typeAnim, speed, prop)
+            TriggerEvent('rlrp-lib:forceAnimation', animDict, animName, typeAnim, speed, prop)
         end
-        local finished = exports["np-taskbar"]:TaskBar(message, timer, movement, weapon)
+        local finished = exports["rlrp-taskbar"]:TaskBar(message, timer, movement, weapon)
         if finished == 100 then
-            if exports["np-inventory"]:HasItem(item) then
+            if exports["rlrp-inventory"]:HasItem(item) then
                 if remove then
                     TriggerEvent("inventory:destroy", item)
                 end
-                TriggerEvent('np-lib:forceAnimation')
+                TriggerEvent('rlrp-lib:forceAnimation')
                 return true
             else
                 TriggerEvent('ShortText', 'You don\'t have this item', 3)
             end
         end
-        TriggerEvent('np-lib:forceAnimation')
+        TriggerEvent('rlrp-lib:forceAnimation')
         return false
     end
     
     function TaskItemSkill(item, animDict, animName, typeAnim, speed, prop, timer, remove)
-        TriggerEvent('np-lib:forceAnimation', animDict, animName, typeAnim, speed, prop)
+        TriggerEvent('rlrp-lib:forceAnimation', animDict, animName, typeAnim, speed, prop)
         local finished = SkillCircleLooped(timer)
         if finished then
-            if exports["np-inventory"]:HasItem(item) then
+            if exports["rlrp-inventory"]:HasItem(item) then
                 if remove then
                     TriggerEvent("inventory:destroy", item)
                 end
-                TriggerEvent('np-lib:forceAnimation')
+                TriggerEvent('rlrp-lib:forceAnimation')
                 return true
             else
                 TriggerEvent('ShortText', 'You don\'t have this item', 3)
             end
         end
-        TriggerEvent('np-lib:forceAnimation')
+        TriggerEvent('rlrp-lib:forceAnimation')
         return false
     end
     
@@ -194,7 +194,7 @@ if not IsDuplicityVersion() then
         local NearbyPeds = {}
         if tonumber(X) and tonumber(Y) and tonumber(Z) then
             if tonumber(Radius) then
-                for Ped in exports["np-admin"]:EnumeratePeds() do
+                for Ped in exports["rlrp-admin"]:EnumeratePeds() do
                     if DoesEntityExist(Ped) and not IsPedAPlayer(Ped) then
                         local PedPosition = GetEntityCoords(Ped, false)
                         if Vdist(X, Y, Z, PedPosition.x, PedPosition.y, PedPosition.z) <= Radius then
@@ -608,7 +608,7 @@ if not IsDuplicityVersion() then
         local loop = 0
         while loop < count do
             loop = loop + 1
-            local finished = exports["np-skillcircle"]:SkillCircle(math.random(13, 60))
+            local finished = exports["rlrp-skillcircle"]:SkillCircle(math.random(13, 60))
             if not finished then
                 return false
             end
@@ -618,7 +618,7 @@ if not IsDuplicityVersion() then
     end
     
     function SpeedSkillCircle()
-        local finished = exports["np-skillcircle"]:SkillCircle(math.random(4, 7))
+        local finished = exports["rlrp-skillcircle"]:SkillCircle(math.random(4, 7))
         if not finished then
             return false
         end
@@ -633,7 +633,7 @@ if not IsDuplicityVersion() then
             table.insert(speeds, math.random(7, 12))
         end
         for i = 1, #speeds do
-            local finished = exports["np-skillcircle"]:SkillCircle(speeds[i])
+            local finished = exports["rlrp-skillcircle"]:SkillCircle(speeds[i])
             if not finished then
                 return false
             end
@@ -665,7 +665,7 @@ if not IsDuplicityVersion() then
         while (not DoesEntityExist(_vehicle)) do Wait(0) end
         SetVehicleOnGroundProperly(_vehicle)
         
-        TriggerEvent('np-vmod:addKeys', _vehicle)
+        TriggerEvent('rlrp-vmod:addKeys', _vehicle)
         
         return _vehicle
     end
@@ -862,13 +862,13 @@ end
 
 function encodeAccountId(plain)
     if type(plain) == 'number' then
-        return math.floor(exports["np-financials"]:EncodeId(plain))
+        return math.floor(exports["rlrp-financials"]:EncodeId(plain))
     end
 end
 
 function decodeAccountId(encoded)
     if type(encoded) == 'number' then
-        return exports["np-financials"]:DecodeId(encoded)
+        return exports["rlrp-financials"]:DecodeId(encoded)
     end
 end
 

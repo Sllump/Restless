@@ -15,7 +15,7 @@ games {'gta5'}
     "PolyZone"
 } ]]--
 
-client_script "@np-errorlog/client/cl_errorlog.lua"
+client_script "@rlrp-errorlog/client/cl_errorlog.lua"
 client_script "@PolyZone/client.lua"
 
 ui_page 'nui/ui.html'
@@ -38,13 +38,13 @@ files {
 }
 
 shared_script 'shared_list.js'
-shared_script '@np-lib/shared/sh_cacheable.js'
+shared_script '@rlrp-lib/shared/sh_cacheable.js'
 
 client_scripts {
-  "@np-sync/client/lib.lua",
-  "@np-lib/client/cl_ui.lua",
-  "@np-lib/client/cl_rpc.js",
-  "@np-lib/client/cl_rpc.lua",
+  "@rlrp-sync/client/lib.lua",
+  "@rlrp-lib/client/cl_ui.lua",
+  "@rlrp-lib/client/cl_rpc.js",
+  "@rlrp-lib/client/cl_rpc.lua",
   'client.js',
   'functions.lua',
   'cl_vehicleweights.js',
@@ -53,9 +53,9 @@ client_scripts {
 }
 
 server_scripts {
-  '@np-lib/server/sv_asyncExports.js',
-  "@np-lib/server/sv_npx.js",
-  "@np-lib/server/sv_rpc.js",
+  '@rlrp-lib/server/sv_asyncExports.js',
+  "@rlrp-lib/server/sv_npx.js",
+  "@rlrp-lib/server/sv_rpc.js",
   "sv_config.js",
   "sv_clean.js",
   'server_degradation.js',
@@ -77,4 +77,4 @@ exports{
   'getFullItemList',
 }
 
--- dependency 'np-lib'
+-- dependency 'rlrp-lib'

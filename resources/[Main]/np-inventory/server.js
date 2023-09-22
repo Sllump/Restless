@@ -369,8 +369,8 @@ function GenerateInformation(src, player, itemid, itemdata, returnData = '{}') {
 }
 
 
-RegisterServerEvent("np-inventory:exploiterKick")
-onNet("np-inventory:exploiterKick", async() => {
+RegisterServerEvent("rlrp-inventory:exploiterKick")
+onNet("rlrp-inventory:exploiterKick", async() => {
     DropPlayer(source, "You have officially been caught in 4k trying to drop items on the floor whilst using them, thanks - Aspect...#0999")
 });
 
@@ -915,7 +915,7 @@ onNet("server-jail-item", async(player, isSentToJail) => {
 });
 
 function removecash(src, amount) {
-    emit('np-inventory:cash:remove', src, amount)
+    emit('rlrp-inventory:cash:remove', src, amount)
 }
 
 

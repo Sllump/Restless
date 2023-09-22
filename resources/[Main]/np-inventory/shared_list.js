@@ -17483,7 +17483,7 @@ itemList['petaccessory'] = {
   weight: 1,
   nonStack: true,
   model: '',
-  image: 'np-petcollar.png',
+  image: 'rlrp-petcollar.png',
   information: "",
 };
 
@@ -19864,7 +19864,7 @@ itemList['currytoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-dogshitcurry.png',
+  image: 'rlrp-dogshitcurry.png',
   information: 'NBA Finals GSW.',
   deg: false,
 };
@@ -19878,7 +19878,7 @@ itemList['klaytoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-klay.png',
+  image: 'rlrp-klay.png',
   information: 'NBA Finals GSW.',
   deg: false,
 };
@@ -19892,7 +19892,7 @@ itemList['tatumtoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-jastatum.png',
+  image: 'rlrp-jastatum.png',
   information: 'NBA Finals BOS.',
   deg: false,
 };
@@ -19906,7 +19906,7 @@ itemList['larrybirdtoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-larrybird.png',
+  image: 'rlrp-larrybird.png',
   information: 'Boston Throwback.',
   deg: false,
 };
@@ -19920,7 +19920,7 @@ itemList['supermantoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-superman.png',
+  image: 'rlrp-superman.png',
   information: 'Kryptonite is my weakness',
   deg: false,
 };
@@ -19934,7 +19934,7 @@ itemList['captoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-captainamerica.png',
+  image: 'rlrp-captainamerica.png',
   information: 'Best Superhero ~ nicx',
   deg: false,
 };
@@ -19948,7 +19948,7 @@ itemList['strangetoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-docstrange.png',
+  image: 'rlrp-docstrange.png',
   information: 'Third Eye.',
   deg: false,
 };
@@ -19962,7 +19962,7 @@ itemList['woodytoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-woody.png',
+  image: 'rlrp-woody.png',
   information: 'HES ALIVE.',
   deg: false,
 };
@@ -19976,7 +19976,7 @@ itemList['joinwicktoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-johnwick.png',
+  image: 'rlrp-johnwick.png',
   information: 'Will kill you with pencil.',
   deg: false,
 };
@@ -19990,7 +19990,7 @@ itemList['eletoy'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-eleven.png',
+  image: 'rlrp-eleven.png',
   information: 'Stranger Things Special Edition',
   deg: false,
 };
@@ -20040,7 +20040,7 @@ itemList['icecreamcone'] = {
   weight: 1,
   nonStack: false,
   model: '',
-  image: 'np-ice_cream_cone.png',
+  image: 'rlrp-ice_cream_cone.png',
   information: '',
 };
 

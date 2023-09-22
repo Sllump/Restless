@@ -239,15 +239,15 @@ local function has_value (tab, val)
 end
 
 local function processStressBlock()
-    TriggerEvent("np-buffs:applyBuff", "joints", { { buff = "stressblock", percent = 1.0 } })
+    TriggerEvent("rlrp-buffs:applyBuff", "joints", { { buff = "stressblock", percent = 1.0 } })
 end
 
-RegisterNetEvent("np-jobmanager:playerBecameJob")
-AddEventHandler("np-jobmanager:playerBecameJob", function(job)
+RegisterNetEvent("rlrp-jobmanager:playerBecameJob")
+AddEventHandler("rlrp-jobmanager:playerBecameJob", function(job)
   myJob = job
 end)
 
-AddEventHandler("np-katana:removeEquippedKatana", function()
+AddEventHandler("rlrp-katana:removeEquippedKatana", function()
     isKatanaEquipped = false
 end)
 
@@ -405,13 +405,13 @@ function RegisterItemCallback(itemName, cb)
 end
 
 RegisterCommand('+useKeyFob', function()
-    if Throttled("np-doorss:doorKeyFob", 1000) then return end
-    TriggerEvent("np-doors:doorKeyFob")
+    if Throttled("rlrp-doorss:doorKeyFob", 1000) then return end
+    TriggerEvent("rlrp-doors:doorKeyFob")
 end, false)
 RegisterCommand('-useKeyFob', function() end, false)
 
 Citizen.CreateThread(function()
-    exports["np-keybinds"]:registerKeyMapping("", "Vehicle", "Door Keyfob", "+useKeyFob", "-useKeyFob", "Y")
+    exports["rlrp-keybinds"]:registerKeyMapping("", "Vehicle", "Door Keyfob", "+useKeyFob", "-useKeyFob", "Y")
     TriggerServerEvent("inv:playerSpawned")
     TriggerEvent("closeInventoryGui")
 end)
@@ -570,12 +570,12 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         lastCounter = 0
         Wait(1500)
         TriggerEvent("AttachWeapons")
-        TriggerEvent('np-hud:armed', 100)
+        TriggerEvent('rlrp-hud:armed', 100)
         return
     end
 
     if itemid == "murdermeal" then
-        local finished = exports['np-taskbar']:taskBar(1000, 'Unwrapping')
+        local finished = exports['rlrp-taskbar']:taskBar(1000, 'Unwrapping')
         local cid = exports["isPed"]:isPed("cid")
         TriggerEvent("InteractSound_CL:PlayOnOne","unwrap",1.0)
         if finished == 100 then
@@ -584,7 +584,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "bentobox" then
-        local finished = exports['np-taskbar']:taskBar(1000, 'Unwrapping')
+        local finished = exports['rlrp-taskbar']:taskBar(1000, 'Unwrapping')
         local cid = exports["isPed"]:isPed("cid")
         TriggerEvent("InteractSound_CL:PlayOnOne","unwrap",1.0)
         if finished == 100 then
@@ -593,7 +593,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "bstoy" then
-        TriggerEvent('np-burgershot:gettoy')
+        TriggerEvent('rlrp-burgershot:gettoy')
         TriggerEvent('inventory:removeItem', 'bstoy', 1)
     end
 
@@ -614,8 +614,8 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
                 isKatanaEquipped = true
                 Citizen.CreateThread(function()
                     Citizen.Wait(1000)
-                    TriggerServerEvent("np-katana:cursedKatanaEquip", GetEntityCoords(PlayerPedId()))
-                    TriggerEvent("np-katana:cursedKatanaEquipC")
+                    TriggerServerEvent("rlrp-katana:cursedKatanaEquip", GetEntityCoords(PlayerPedId()))
+                    TriggerEvent("rlrp-katana:cursedKatanaEquipC")
                 end)
               else
                 isKatanaEquipped = false
@@ -713,7 +713,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         buddhaMedalion()
     end
 
-    if stolenItems[itemid] and exports["np-npcs"]:isCloseToPawnPed() then
+    if stolenItems[itemid] and exports["rlrp-npcs"]:isCloseToPawnPed() then
         print("You should do stuff")
         justUsed = false
         retardCounter = 0
@@ -847,15 +847,15 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "key1" then
-        TriggerEvent('np-doors:unlockContainer1')
+        TriggerEvent('rlrp-doors:unlockContainer1')
     end
 
     if itemid == "key2" then
-        TriggerEvent('np-doors:unlockContainer2')
+        TriggerEvent('rlrp-doors:unlockContainer2')
     end
 
     if (itemid == "pdbadge") then
-        TriggerEvent("np-badge:client:showbadge")
+        TriggerEvent("rlrp-badge:client:showbadge")
     end
 
     if (itemid == "joint" or itemid == "weed5oz" or itemid == "weedq" or itemid == "beer" or itemid == "vodka" or itemid == "whiskey" or itemid == "lsdtab" or itemid == 'winemilkshake' or itemid == 'honestwineglass' or itemid == "customjointitem") then
@@ -907,11 +907,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "heistlaptop3") then
-        TriggerEvent('np-robbery:usb')
+        TriggerEvent('rlrp-robbery:usb')
     end 
 
     if (itemid == "heistlaptop2") then
-        TriggerEvent('np-paleto:UseBlueLapTop')
+        TriggerEvent('rlrp-paleto:UseBlueLapTop')
     end
     
     if(itemid == "evidencebag") then
@@ -932,7 +932,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "lsdtab" or itemid == "badlsdtab") then
         TriggerEvent("animation:PlayAnimation","pill")
-        local finished = exports["np-taskbar"]:taskBar(3000,"Placing LSD Strip on 👅",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(3000,"Placing LSD Strip on 👅",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("Evidence:StateSet",2,1200)
             TriggerEvent("Evidence:StateSet",24,1200)
@@ -943,21 +943,21 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "decryptersess" or itemid == "decrypterfv2" or itemid == "decrypterenzo") then
       if (#(GetEntityCoords(player) - vector3( 1275.49, -1710.39, 54.78)) < 3.0) then
-          local finished = exports["np-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if (finished == 100) then
             TriggerEvent("phone:crypto:use", 1, 3, "robbery:decrypt", true)
           end
       end
 
       if #(GetEntityCoords(player) - vector3( 2328.94, 2571.4, 46.71)) < 3.0 then
-          local finished = exports["np-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if finished == 100 then
             TriggerEvent("phone:crypto:use", 1, 3, "robbery:decrypt2", true)
           end
       end
 
       if #(GetEntityCoords(player) - vector3( 1208.73,-3115.29, 5.55)) < 3.0 then
-          local finished = exports["np-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if finished == 100 then
             TriggerEvent("phone:crypto:use", 1, 3,"robbery:decrypt3", true)
           end
@@ -967,7 +967,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "pix1") then
       if (#(GetEntityCoords(player) - vector3( 1275.49, -1710.39, 54.78)) < 3.0) then
-          local finished = exports["np-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if (finished == 100) then
             TriggerEvent("phone:crypto:add", 1, math.random(1,2))
             remove = true
@@ -977,7 +977,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "pix2") then
       if (#(GetEntityCoords(player) - vector3( 1275.49, -1710.39, 54.78)) < 3.0) then
-          local finished = exports["np-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(25000,"Decrypting Data",false,false,playerVeh)
           if (finished == 100) then
             TriggerEvent("phone:crypto:add", 1, math.random(5,12))
             remove = true
@@ -989,28 +989,28 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     if (itemid == "femaleseed") then
         TriggerEvent("Evidence:StateSet",4,1600)
         --TriggerEvent("weed:startcrop","female")
-        TriggerEvent("np-weed:plantSeed", itemid)
+        TriggerEvent("rlrp-weed:plantSeed", itemid)
      end
  
      if (itemid == "maleseed") then
         TriggerEvent("Evidence:StateSet",4,1600)
-        TriggerEvent("np-weed:plantSeed", itemid)
+        TriggerEvent("rlrp-weed:plantSeed", itemid)
      end
  
      if (itemid == "highgrademaleseed") then
          TriggerEvent("Evidence:StateSet",4,1600)
-         TriggerEvent("np-weed:plantSeed", itemid)
+         TriggerEvent("rlrp-weed:plantSeed", itemid)
      end
 
     if ( itemid == "smallbud" and hasEnoughOfItem("qualityscales",1,false) ) then
-        local finished = exports["np-taskbar"]:taskBar(1000,"Packing Joint",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(1000,"Packing Joint",false,false,playerVeh)
         if (finished == 100) then
             CreateCraftOption("joint2", 80, true)
         end
     end
 
     if (itemid == "weedq") then
-        local finished = exports["np-taskbar"]:taskBar(1000,"Rolling Joints",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(1000,"Rolling Joints",false,false,playerVeh)
         if (finished == 100) then
             CreateCraftOption("joint", 80, true)
         end
@@ -1025,39 +1025,39 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "qtakis") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating Takis","changehunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "qspam") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating Spam","changehunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "qbloodstew") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating Blood Stew","changehunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "qdrpepper") then
         AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,6000,"Drinking Dr Pepper","changethirst",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 30)
+        TriggerEvent('rlrp-hud:ChangeThirst', 30)
     end
 
     if (itemid == "qfruity") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating Fruity Pebbles","changehunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "lighter") then
         TriggerEvent("animation:PlayAnimation","lighter")
-          local finished = exports["np-taskbar"]:taskBar(2000,"Starting Fire",false,false,playerVeh)
+          local finished = exports["rlrp-taskbar"]:taskBar(2000,"Starting Fire",false,false,playerVeh)
         if (finished == 100) then
 
         end
     end
 
     if (itemid == "joint" or itemid == "joint2" or itemid == "customjointitem") then
-        local finished = exports["np-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(2000,"Smoking Joint",false,false,playerVeh)
         if (finished == 100) then
             remove = true
             smoking = true
@@ -1101,7 +1101,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if itemid == "clotion" or itemid == "cabsinthe" then
         remove = true
-        local finished = exports['np-taskbar']:taskBar(2500, 'Consuming Lotion')
+        local finished = exports['rlrp-taskbar']:taskBar(2500, 'Consuming Lotion')
         if finished == 100 then
             SetPlayerMaxArmour(PlayerPedId(), 100)
             SetPedArmour(PlayerPedId(), 100)
@@ -1218,7 +1218,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "churro" or itemid == "hotdog" or itemid == "chocobar") then
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","food:Condiment",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "greencow" or itemid == "franksmonster") then
@@ -1247,7 +1247,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
 
     if (itemid == "Gruppe6Card") then
-        TriggerEvent('np-heists:banktruck:cl')
+        TriggerEvent('rlrp-heists:banktruck:cl')
     end
  
 
@@ -1258,7 +1258,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     -- end
 
     if (itemid == "heavyammo") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1788949567,50,true)
             remove = true
@@ -1266,7 +1266,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "pistolammo") then
-        local finished = exports["np-taskbar"]:taskBar(2500,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(2500,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1950175060,50,true)
             remove = true
@@ -1274,7 +1274,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "pistolammoPD") then
-        local finished = exports["np-taskbar"]:taskBar(2500,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(2500,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1950175060,50,true)
             remove = true
@@ -1282,7 +1282,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "rifleammoPD") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",218444191,50,true)
             remove = true
@@ -1290,7 +1290,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "shotgunammoPD") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",218444191,50,true)
             remove = true
@@ -1298,7 +1298,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "subammoPD") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1820140472,50,true)
             remove = true
@@ -1306,7 +1306,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "flamethrowerammo") then
-        local finished = exports["np-taskbar"]:taskBar(20000,"Reloading flamethrower",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(20000,"Reloading flamethrower",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1970280428,15000,true)
             remove = true
@@ -1314,7 +1314,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "rifleammo") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",218444191,50,true)
             remove = true
@@ -1322,7 +1322,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "sniperammo") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1285032059,25,true)
             remove = true
@@ -1330,21 +1330,21 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "huntingammo") then
-        local finished = exports["np-taskbar"]:taskBar(10000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(10000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1285032059,10,true)
             remove = true
         end
     end
     if (itemid == "widowmakerammo") then
-        local finished = exports["np-taskbar"]:taskBar(10000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(10000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo", -1614428030, 15000,true)
             remove = true
         end
     end
     if (itemid == "rpgammo") then
-        local finished = exports["np-taskbar"]:taskBar(25000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(25000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1742569970,1,true)
             remove = true
@@ -1353,7 +1353,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     
 
     if (itemid == "shotgunammo") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",-1878508229,50,true)
             remove = true
@@ -1361,7 +1361,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "subammo") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1820140472,50,true)
             remove = true
@@ -1369,7 +1369,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "nails") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",965225813,50,true)
             remove = true
@@ -1377,7 +1377,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "paintballs") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1916856719,100,true)
             remove = true
@@ -1385,7 +1385,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "rubberslugs") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",1517835987,10,true)
             remove = true
@@ -1393,7 +1393,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "taserammo") then
-        local finished = exports["np-taskbar"]:taskBar(2000,"Reloading",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(2000,"Reloading",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",-1575030772,3,true)
             remove = true
@@ -1401,7 +1401,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "empammo") then
-        local finished = exports["np-taskbar"]:taskBar(30000,"Recharging EMP",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(30000,"Recharging EMP",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("actionbar:ammo",2034517757,2,true)
             remove = true
@@ -1409,7 +1409,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "armor" or itemid == "pdarmor") then
-        local finished = exports["np-taskbar"]:taskBar(4500,"Putting on Armor",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(4500,"Putting on Armor",true,false,playerVeh)
         if (finished == 100) then
             StopAnimTask(PlayerPedId(), 'clothingshirt', 'try_shirt_positive_d', 1.0)
             SetPlayerMaxArmour(PlayerId(), 100)
@@ -1421,7 +1421,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "cbrownie" or itemid == "cgummies") then
         TriggerEvent("animation:PlayAnimation","pill")
-        local finished = exports["np-taskbar"]:taskBar(3000,"Consuming edibles 😉",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(3000,"Consuming edibles 😉",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("Evidence:StateSet",3,1200)
             TriggerEvent("Evidence:StateSet",7,1200)
@@ -1431,7 +1431,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "bodybag") then
-        local finished = exports["np-taskbar"]:taskBar(10000,"Opening bag",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(10000,"Opening bag",true,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerEvent( "player:receiveItem", "humanhead", 1 )
@@ -1442,7 +1442,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "bodygarbagebag") then
-            local finished = exports["np-taskbar"]:taskBar(10000,"Opening trash bag",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(10000,"Opening trash bag",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerServerEvent('loot:useItem', itemid)
@@ -1450,7 +1450,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "newaccountbox") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Opening present",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening present",false,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerServerEvent("newaccountbox:give:items")
@@ -1459,7 +1459,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "foodsupplycrate") then
         TriggerEvent("DoLongHudText","Make sure you have a ton of space in your inventory! 100 or more.",2)
-        local finished = exports["np-taskbar"]:taskBar(20000,"Opening the crate (ESC to Cancel)",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(20000,"Opening the crate (ESC to Cancel)",false,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerEvent( "player:receiveItem", "heartstopper", 10 )
@@ -1471,7 +1471,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "fishingtacklebox") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Opening",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening",true,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerServerEvent('loot:useItem', itemid)
@@ -1482,7 +1482,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         if not hasEnoughOfItem("heavydutydrill", 1, false) then
             TriggerEvent("DoLongHudText", "Seems like you need something to get into this...", 2)
         else
-            local finished = exports["np-taskbar"]:taskBar(30000, "Cracking Safe...", true, false)
+            local finished = exports["rlrp-taskbar"]:taskBar(30000, "Cracking Safe...", true, false)
             if (finished == 100) then
                 remove = true
                 TriggerServerEvent('loot:useItem', itemid)
@@ -1492,7 +1492,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "fishingchest") then
-        local finished = exports["np-taskbar"]:taskBar(5000, "Opening Chest", true, false)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000, "Opening Chest", true, false)
         if (finished == 100) then
             remove = true
             TriggerServerEvent('loot:useItem', itemid)
@@ -1500,7 +1500,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "repcrate") then
-        local finished = exports["np-taskbar"]:taskBar(30000, "Opening...", true, false)
+        local finished = exports["rlrp-taskbar"]:taskBar(30000, "Opening...", true, false)
         if (finished == 100) then
             remove = true
             TriggerServerEvent('loot:useItem', itemid)
@@ -1508,7 +1508,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "babyoil") then
-        local finished = exports["np-taskbar"]:taskBar(10000,"Applying baby oil to dome",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(10000,"Applying baby oil to dome",true,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerEvent("DoLongHudText","Your dome is now shiny AF!",5)
@@ -1516,7 +1516,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "fishinglockbox") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Opening",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening",true,false,playerVeh)
         if (finished == 100) then
             --remove = true
             --TriggerServerEvent('loot:useItem', itemid)
@@ -1525,7 +1525,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "organcooler") then
-        local finished = exports["np-taskbar"]:taskBar(5000,"Opening cooler",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening cooler",true,false,playerVeh)
         if (finished == 100) then
             remove = true
             TriggerEvent( "player:receiveItem", "humanheart", 1 )
@@ -1590,7 +1590,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
 
     if (itemid == "pixellaptop")  then
-        TriggerEvent("np-boosting:open:boostingApp")
+        TriggerEvent("rlrp-boosting:open:boostingApp")
     end    
 
     if (itemid == "trackerdisabler")  then
@@ -1598,50 +1598,50 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end  
 
     if (itemid == "huntingbait")  then
-        TriggerEvent("np-hunting:usedBait")
+        TriggerEvent("rlrp-hunting:usedBait")
     end
 
 
     if (itemid == "huntingknife")  then
-        TriggerEvent("np-hunting:skinAnimal")
+        TriggerEvent("rlrp-hunting:skinAnimal")
     end
 
     if (itemid == "miningpickaxe")  then
-        TriggerEvent("np-start-mining")
+        TriggerEvent("rlrp-start-mining")
     end
 
     if itemid == "inkedmoneybag" then
         TriggerEvent('inventory:removeItem', 'inkedmoneybag', 1)
-        TriggerServerEvent('np-inventory:addCashInkset', math.random(10000, 15000))
+        TriggerServerEvent('rlrp-inventory:addCashInkset', math.random(10000, 15000))
     end
 
     if itemid == "cryptostick4" then
         TriggerEvent('inventory:removeItem', 'cryptostick4', 1)
-        TriggerServerEvent('np-boosting:giveGNE', 10)
+        TriggerServerEvent('rlrp-boosting:giveGNE', 10)
     end
 
     if itemid == "cryptostick5" then
         TriggerEvent('inventory:removeItem', 'cryptostick5', 1)
-        TriggerServerEvent('np-boosting:giveGNE', 25)
+        TriggerServerEvent('rlrp-boosting:giveGNE', 25)
     end
 
     if itemid == "cryptostick1" then
         TriggerEvent('inventory:removeItem', 'cryptostick1', 1)
-        TriggerServerEvent('np-boosting:giveGNE', 50)
+        TriggerServerEvent('rlrp-boosting:giveGNE', 50)
     end
 
     if itemid == "cryptostick2" then
         TriggerEvent('inventory:removeItem', 'cryptostick2', 1)
-        TriggerServerEvent('np-boosting:giveGNE', 100)
+        TriggerServerEvent('rlrp-boosting:giveGNE', 100)
     end
 
     if itemid == "cryptostick3" then
         TriggerEvent('inventory:removeItem', 'cryptostick3', 1)
-        TriggerServerEvent('np-boosting:giveGNE', 250)
+        TriggerServerEvent('rlrp-boosting:giveGNE', 250)
     end
     
     if (itemid == "detcord") then
-        TriggerEvent('np-doors:detCoord')
+        TriggerEvent('rlrp-doors:detCoord')
     end
 
     if (itemid == "misfit") then
@@ -1652,7 +1652,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Bankbox") then
         if (hasEnoughOfItem("locksystem",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(10000,"Opening bank box.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(10000,"Opening bank box.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","locksystem", 1)
@@ -1666,7 +1666,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Securebriefcase") then
         if (hasEnoughOfItem("Bankboxkey",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(5000,"Opening briefcase.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening briefcase.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","Bankboxkey", 1)
@@ -1680,7 +1680,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Largesupplycrate") then
         if (hasEnoughOfItem("2227010557",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","2227010557", 1)
@@ -1693,7 +1693,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "xmasgiftcoal") then
-        local finished = exports["np-taskbar"]:taskBar(15000, "Opening Gift", false, false, playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(15000, "Opening Gift", false, false, playerVeh)
         if (finished == 100) then
             remove = true
             TriggerServerEvent('loot:useItem', itemid)
@@ -1702,7 +1702,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Smallsupplycrate") then
         if (hasEnoughOfItem("2227010557",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","2227010557", 1)
@@ -1716,7 +1716,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Smallsupplycrate2") then
         if (hasEnoughOfItem("2227010557",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","2227010557", 1)
@@ -1730,7 +1730,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "Mediumsupplycrate") then
         if (hasEnoughOfItem("2227010557",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(15000,"Opening supply crate.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent("inventory:removeItem","2227010557", 1)
@@ -1744,7 +1744,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "emptyballoon") then
         if (hasEnoughOfItem("nitrous",1,false)) then
-            local finished = exports["np-taskbar"]:taskBar(5000,"Filling Balloon.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(5000,"Filling Balloon.",false,false,playerVeh)
             if (finished == 100) then
                 remove = true
                 TriggerEvent( "player:receiveItem","nosballoon",1)
@@ -1779,7 +1779,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             Citizen.Wait(50000)
             preventspam = 0
         end)
-        local finished = exports["np-taskbar"]:taskBar(10000, "Peeing in cup.", false, false, playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(10000, "Peeing in cup.", false, false, playerVeh)
         if (finished == 100) then
             remove = true
             TriggerEvent( "player:receiveItem","Peecup_full",1)
@@ -1809,7 +1809,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "megaphone") then
-      TriggerEvent("np-usableprops:megaphone")
+      TriggerEvent("rlrp-usableprops:megaphone")
     end
 
     if (itemid == "radio") then
@@ -1847,14 +1847,14 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
                 while finished ~= 100 and not cancelNos do
                     Citizen.Wait(100)
                     if GetEntitySpeed(GetVehiclePedIsIn(player, false)) > 11 then
-                        exports["np-taskbar"]:closeGuiFail()
+                        exports["rlrp-taskbar"]:closeGuiFail()
                         cancelNos = true
                     end
                 end
             end)
-            finished = exports["np-taskbar"]:taskBar(20000,"Nitrous")
+            finished = exports["rlrp-taskbar"]:taskBar(20000,"Nitrous")
             if (finished == 100 and not cancelNos) then
-                TriggerServerEvent('np-vehicles:ApplyNitrous')
+                TriggerServerEvent('rlrp-vehicles:ApplyNitrous')
                 remove = true
             else
                 TriggerEvent("DoLongHudText","You can't drive and hook up nos at the same time.",2)
@@ -1902,7 +1902,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "ciggy") then
-        local finished = exports["np-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("animation:PlayAnimation","smoke")
         end
@@ -1929,7 +1929,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
     
     if (itemid == "cigar") then
-        local finished = exports["np-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(1000,"Lighting Up",false,false,playerVeh)
         if (finished == 100) then
             Wait(300)
             TriggerEvent("animation:PlayAnimation","cigar")
@@ -1937,7 +1937,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "oxygentank") then
-        local finished = exports["np-taskbar"]:taskBar(30000,"Oxygen Tank",true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(30000,"Oxygen Tank",true,false,playerVeh)
         if (finished == 100) then
             TriggerEvent("UseOxygenTank")
             remove = true
@@ -2131,23 +2131,23 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "sandwich" or itemid == "hamburger") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,4500,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if itemid == "rice_balls" then
         TriggerEvent('animation:PlayAnimation', 'eat')
-        local finished = exports['np-taskbar']:taskBar(2500, 'Eating...')
+        local finished = exports['rlrp-taskbar']:taskBar(2500, 'Eating...')
         if finished == 100 then
-            TriggerEvent('np-hud:ChangeHunger', 50)
+            TriggerEvent('rlrp-hud:ChangeHunger', 50)
             TriggerEvent('inventory:removeItem', 'rice_balls', 1)
         end
     end
 
     if itemid == "chicken_noodle_soup" then
         TriggerEvent('animation:PlayAnimation', 'eat')
-        local finished = exports['np-taskbar']:taskBar(5000, 'Slurping Soup...')
+        local finished = exports['rlrp-taskbar']:taskBar(5000, 'Slurping Soup...')
         if finished == 100 then
-            TriggerEvent('np-hud:ChangeHunger', 80)
+            TriggerEvent('rlrp-hud:ChangeHunger', 80)
             TriggerEvent('aspect-buffs:strength_buff')
             TriggerEvent('inventory:removeItem', 'chicken_noodle_soup', 1)
         end
@@ -2155,9 +2155,9 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if itemid == "doki_doki_pancakes" then
         TriggerEvent('animation:PlayAnimation', 'eat')
-        local finished = exports['np-taskbar']:taskBar(5000, 'Eating Pancakes...')
+        local finished = exports['rlrp-taskbar']:taskBar(5000, 'Eating Pancakes...')
         if finished == 100 then
-            TriggerEvent('np-hud:ChangeHunger', 50)
+            TriggerEvent('rlrp-hud:ChangeHunger', 50)
             TriggerEvent('aspect-buffs:money_boost_buff')
             TriggerEvent('inventory:removeItem', 'doki_doki_pancakes', 1)
         end
@@ -2165,25 +2165,25 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if itemid == "chocolate_cake" then
         TriggerEvent('animation:PlayAnimation', 'eat')
-        local finished = exports['np-taskbar']:taskBar(5000, 'Eating Cake...')
+        local finished = exports['rlrp-taskbar']:taskBar(5000, 'Eating Cake...')
         if finished == 100 then
-            TriggerEvent('np-hud:ChangeHunger', 25)
+            TriggerEvent('rlrp-hud:ChangeHunger', 25)
             TriggerEvent('inventory:removeItem', 'chocolate_cake', 1)
         end
     end
 
     if itemid == "strawberry_shortcake" then
         TriggerEvent('animation:PlayAnimation', 'eat')
-        local finished = exports['np-taskbar']:taskBar(5000, 'Eating Cake...')
+        local finished = exports['rlrp-taskbar']:taskBar(5000, 'Eating Cake...')
         if finished == 100 then
-            TriggerEvent('np-hud:ChangeHunger', 45)
+            TriggerEvent('rlrp-hud:ChangeHunger', 45)
             TriggerEvent('inventory:removeItem', 'strawberry_shortcake', 1)
         end
     end
 
     if (itemid == "bubbletea") then
         AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,6000,"Drinking","inv:wellfed",true,itemid,playerVeh)    
-        TriggerEvent('np-hud:ChangeThirst', 30)
+        TriggerEvent('rlrp-hud:ChangeThirst', 30)
         TriggerEvent('aspect-buffs:bulb_buff')
     end
 
@@ -2191,7 +2191,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         --attachPropsToAnimation(itemid, 6000)
         --TaskItem("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,6000,"Drink","changethirst",true,itemid)
         AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,4500,"Drink","ChangeThirst",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 30)
+        TriggerEvent('rlrp-hud:ChangeThirst', 30)
         TriggerEvent('thirstbuff')
     end
 
@@ -2199,59 +2199,59 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if (itemid == "baconcheeseburger") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
         TriggerEvent('aspect-buffs:bulb_buff')
     end
 
     if (itemid == "cheesepizza") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 50)
+        TriggerEvent('rlrp-hud:ChangeHunger', 50)
     end
 
     if (itemid == "chocicecream") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 15)
+        TriggerEvent('rlrp-hud:ChangeHunger', 15)
     end
 
     if (itemid == "chocolatechipcookie") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 50)
+        TriggerEvent('rlrp-hud:ChangeHunger', 50)
     end
 
     if (itemid == "chocolatechipcookie") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 25)
+        TriggerEvent('rlrp-hud:ChangeHunger', 25)
     end
 
     if (itemid == "gofueldonut") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 25)
+        TriggerEvent('rlrp-hud:ChangeHunger', 25)
     end
     
     if (itemid == "gofuelhotdog") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 45)
+        TriggerEvent('rlrp-hud:ChangeHunger', 45)
     end
 
     if (itemid == "pepperonipizza") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeHunger', 65)
+        TriggerEvent('rlrp-hud:ChangeHunger', 65)
     end
     
     if (itemid == "lemonade") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Drinking","ChangeThirst",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 50)
+        TriggerEvent('rlrp-hud:ChangeThirst', 50)
         TriggerEvent('aspect-buffs:money_boost_buff')
     end
 
     if (itemid == "spongepop") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 35)
+        TriggerEvent('rlrp-hud:ChangeThirst', 35)
     end
 
     if (itemid == "blueberrylemonade") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Drinking","ChangeThirst",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 50)
+        TriggerEvent('rlrp-hud:ChangeThirst', 50)
         TriggerEvent('aspect-buffs:money_boost_buff')
     end
 
@@ -2259,7 +2259,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         --attachPropsToAnimation(itemid, 6000)
         --TaskItem("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,6000,"Drink","changethirst",true,itemid)
         AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49,6000,"Drink","ChangeThirst",true,itemid,playerVeh)
-        TriggerEvent('np-hud:ChangeThirst', 69)
+        TriggerEvent('rlrp-hud:ChangeThirst', 69)
         TriggerEvent('thirstbuff')
     end
 
@@ -2267,7 +2267,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
         TriggerEvent('aspect-buffs:swim_buff')
     end
 
@@ -2275,7 +2275,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 15)
+        TriggerEvent('rlrp-hud:ChangeHunger', 15)
         TriggerEvent('aspect-buffs:bulb_buff')
     end
 
@@ -2283,7 +2283,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 69)
+        TriggerEvent('rlrp-hud:ChangeHunger', 69)
         TriggerEvent('aspect-buffs:money_boost_buff')
     end
 
@@ -2291,14 +2291,14 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 69)
+        TriggerEvent('rlrp-hud:ChangeHunger', 69)
     end
 
     if (itemid == "jailfood" or itemid == "bleederburger" or itemid == "heartstopper") then
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 69)
+        TriggerEvent('rlrp-hud:ChangeHunger', 69)
         TriggerEvent('aspect-buffs:strength_buff')
     end
 
@@ -2306,7 +2306,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 50)
+        TriggerEvent('rlrp-hud:ChangeHunger', 50)
         TriggerEvent('aspect-buffs:strength_buff')
     end
 
@@ -2314,7 +2314,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
         TriggerEvent('aspect-buffs:money_boost_buff')
     end
 
@@ -2322,7 +2322,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 60)
+        TriggerEvent('rlrp-hud:ChangeHunger', 60)
         TriggerEvent('aspect-buffs:money_boost_buff')
     end
 
@@ -2330,7 +2330,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         AttachPropAndPlayAnimation("mp_player_inteat@burger", "mp_player_int_eat_burger", 49,6000,"Eating","ChangeHunger",true,itemid,playerVeh)
         --attachPropsToAnimation(itemid, 6000)
         TaskItem("mp_player_inteat@burger", "mp_player_int_eat_burger", 49, 6000, "Eating", "inv:wellfed", true,itemid)
-        TriggerEvent('np-hud:ChangeHunger', 30)
+        TriggerEvent('rlrp-hud:ChangeHunger', 30)
     end
 
     if (itemid == "oxy") then
@@ -2363,7 +2363,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     or itemid == "experiment_08"
     or itemid == "experiment_09") then
         TriggerEvent("animation:PlayAnimation","pill")
-        local finished = exports["np-taskbar"]:taskBar(3000,"Downing content of bottle. 💊",false,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(3000,"Downing content of bottle. 💊",false,false,playerVeh)
         if (finished == 100) then
             if math.random() < 0.20 then
                 TriggerServerEvent("fx:puke")
@@ -2381,7 +2381,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "pillbox") then
-        local finished = exports["np-taskbar"]:taskBar(5000, "Opening pill box", false, false, playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(5000, "Opening pill box", false, false, playerVeh)
         if (finished == 100) then
             TriggerEvent( "player:receiveItem", "experiment_01", 5 )
             TriggerEvent( "player:receiveItem", "experiment_02", 5 )
@@ -2396,7 +2396,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "skateboard") then
-        TriggerEvent('np-longboard:PlaceDown')
+        TriggerEvent('rlrp-longboard:PlaceDown')
     end
 
     if itemid == "frankstruth" then
@@ -2427,7 +2427,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "customfooditem" then
-        TriggerEvent("np-hud:ChangeHunger", 100)
+        TriggerEvent("rlrp-hud:ChangeHunger", 100)
     end
 
     if deanworldFood[itemid] then
@@ -2467,7 +2467,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
           49,
           6000,
           "Drink",
-          "np-katana:transformKFromDrink",
+          "rlrp-katana:transformKFromDrink",
           true,
           itemid,
           playerVeh
@@ -2523,7 +2523,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if (itemid == "methlabproduct") then
-        local finished = exports["np-ui"]:taskBarSkill(2400, math.random(12, 18))
+        local finished = exports["rlrp-ui"]:taskBarSkill(2400, math.random(12, 18))
         if finished == 100 then
             TriggerEvent("attachItemObjectnoanim","crackpipe01")
             TriggerEvent("Evidence:StateSet",2,1200)
@@ -2547,7 +2547,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "ketamine" then
-        local finished = exports["np-ui"]:taskBarSkill(2000, math.random(10, 15))
+        local finished = exports["rlrp-ui"]:taskBarSkill(2000, math.random(10, 15))
         if finished == 100 then
             TriggerEvent("attachItemObjectnoanim","drugpackage01")
             TriggerEvent("Evidence:StateSet",2,1200)
@@ -2576,7 +2576,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     if (itemid == "shitlockpick") then
         lockpicking = true
         TriggerEvent("animation:lockpickinvtestoutside")
-        local finished = exports["np-ui"]:taskBarSkill(1000, math.random(7, 12))
+        local finished = exports["rlrp-ui"]:taskBarSkill(1000, math.random(7, 12))
         if (finished == 100) then
             TriggerEvent("police:uncuffMenu")
         end
@@ -2617,7 +2617,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "roostertea" then
-        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","np-roostersrest:drinkTea",true,itemid,playerVeh)
+        AttachPropAndPlayAnimation("amb@world_human_drinking@coffee@male@idle_a", "idle_c", 49,15000,"Drink","rlrp-roostersrest:drinkTea",true,itemid,playerVeh)
     end
  
     if itemid == "fries" or itemid == "chips" then
@@ -2649,7 +2649,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "franksflute" then
-      TriggerServerEvent("np-inventory:franksFlute", GetEntityCoords(PlayerPedId()))
+      TriggerServerEvent("rlrp-inventory:franksFlute", GetEntityCoords(PlayerPedId()))
       franksFluteCount = franksFluteCount + 1
       if franksFluteCount == 3 then
         franksFluteCount = 0
@@ -2662,11 +2662,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
     end
 
     if itemid == "tattooremover" then
-        local target = exports['np-target']:GetCurrentEntity()
+        local target = exports['rlrp-target']:GetCurrentEntity()
         --local target = PlayerPedId()
         if IsEntityAPed(target) and IsPedAPlayer(target) then
             TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_WELDING", 0, true)
-            local finished = exports["np-taskbar"]:taskBar(60000, "Removing tattoos")
+            local finished = exports["rlrp-taskbar"]:taskBar(60000, "Removing tattoos")
             ClearPedTasks(PlayerPedId())
             if finished == 100 then
                 local plyCoords = GetEntityCoords(PlayerPedId())
@@ -2688,7 +2688,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if itemid == "buddhaletter" then
         if GetEntityModel(PlayerPedId()) == `ig_buddha` or GetEntityModel(PlayerPedId()) == `g_m_m_buddha` then
-            local finished = exports["np-taskbar"]:taskBar(5000,"Opening letter.",false,false,playerVeh)
+            local finished = exports["rlrp-taskbar"]:taskBar(5000,"Opening letter.",false,false,playerVeh)
             if finished == 100 then
                 TriggerEvent("DoLongHudText","As you open the letter something falls to the ground. You pick it up.",10)
                 remove = true
@@ -2703,7 +2703,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
             if hasEnoughOfItem("buddhamedalion",1,false) then
                 local playerPos = GetEntityCoords(PlayerPedId())
                 if #(playerPos - vector3(-172.54, 319.13, 87.35)) < 10 then
-                    local finished = exports["np-taskbar"]:taskBar(30000,"Putting sword together.",false,false,playerVeh)
+                    local finished = exports["rlrp-taskbar"]:taskBar(30000,"Putting sword together.",false,false,playerVeh)
                     if (finished == 100) then
                         TriggerEvent("inventory:removeItem","buddhablade", 1)
                         TriggerEvent("inventory:removeItem","buddhaguard", 1)
@@ -2726,7 +2726,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         if #(playerPos - vector3(-1911.78, 1388.1, 219.35)) < 10 then
             if BuddhaIsItemFound1 == false then
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
-                local finished = exports["np-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
+                local finished = exports["rlrp-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
                 ClearPedTasks(PlayerPedId())
                 if finished == 100 then
                     BuddhaIsItemFound1 = true
@@ -2736,7 +2736,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         elseif #(playerPos - vector3(-1717.48, 5649.55, -119.6)) < 5 then
             if BuddhaIsItemFound2 == false then
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
-                local finished = exports["np-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
+                local finished = exports["rlrp-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
                 ClearPedTasks(PlayerPedId())
                 if finished == 100 then
                     BuddhaIsItemFound2 = true
@@ -2746,7 +2746,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         elseif #(playerPos - vector3(3647.61, 3121.15, 1.31)) < 10 then
             if BuddhaIsItemFound3 == false then
                 TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
-                local finished = exports["np-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
+                local finished = exports["rlrp-taskbar"]:taskBar(15000, "Digging for something.", false, true, false, false, nil, 5.0, PlayerPedId())
                 ClearPedTasks(PlayerPedId())
                 if finished == 100 then
                     BuddhaIsItemFound3 = true
@@ -2770,7 +2770,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
 
     if itemid == "racingusb1" then
         if (passedItemInfo == "{}") then
-            local valid = exports["np-keyboard"]:KeyboardInput({
+            local valid = exports["rlrp-keyboard"]:KeyboardInput({
                 header = "Racing USB",
                 rows = {
                     {
@@ -2788,8 +2788,8 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon, pa
         end
     end
 
-    TriggerEvent("np-inventory:itemUsed", itemid, passedItemInfo, inventoryName, slot)
-    TriggerServerEvent("np-inventory:itemUsed", itemid, passedItemInfo, inventoryName, slot)
+    TriggerEvent("rlrp-inventory:itemUsed", itemid, passedItemInfo, inventoryName, slot)
+    TriggerServerEvent("rlrp-inventory:itemUsed", itemid, passedItemInfo, inventoryName, slot)
 
     if remove then
         local info = json.decode(passedItemInfo)
@@ -2845,7 +2845,7 @@ function AttachPropAndPlayAnimation(dictionary,animation,typeAnim,timer,message,
     return success
 end
 
-AddEventHandler("np-inventory:attachPropPlayAnim", function(pType)
+AddEventHandler("rlrp-inventory:attachPropPlayAnim", function(pType)
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     local success = false
     if pType == "sandwich" then
@@ -2913,7 +2913,7 @@ AddEventHandler("np-inventory:attachPropPlayAnim", function(pType)
             vehicle
         )
     end
-    TriggerEvent("np-buffs:itemUsedSuccess", success)
+    TriggerEvent("rlrp-buffs:itemUsedSuccess", success)
 end)
 
 RegisterNetEvent('randPickupAnim')
@@ -3003,14 +3003,14 @@ function CreateCraftOption(id, add, craft)
 end
 
 
-RegisterNetEvent('np-business:repairItem')
-AddEventHandler('np-business:repairItem', function()
+RegisterNetEvent('rlrp-business:repairItem')
+AddEventHandler('rlrp-business:repairItem', function()
     
     local info = GetItemInfo(1)
     local Quality = info.quality
     local QualityCheck = (Quality < 80 and Quality or false)
     local PercentRepair = 80 - Quality
-    local itemListInfo = json.decode(exports["np-inventory"]:itemListInfo(info.item_id))
+    local itemListInfo = json.decode(exports["rlrp-inventory"]:itemListInfo(info.item_id))
     local allowed = true  
 
     itemListInfo = itemListInfo.craft ~= nil and itemListInfo.craft or false
@@ -3044,14 +3044,14 @@ AddEventHandler('np-business:repairItem', function()
 
 end)
 
-RegisterNetEvent('np-business:examineItem')
-AddEventHandler('np-business:examineItem', function()
+RegisterNetEvent('rlrp-business:examineItem')
+AddEventHandler('rlrp-business:examineItem', function()
 
     local info = GetItemInfo(1)
     local Quality = info.quality
     local PercentRepair = 80 - Quality
     local QualityCheck = (Quality < 80 and Quality or false)
-    local itemListInfo = json.decode(exports["np-inventory"]:itemListInfo(info.item_id))
+    local itemListInfo = json.decode(exports["rlrp-inventory"]:itemListInfo(info.item_id))
 
     itemListInfo = itemListInfo.craft ~= nil and itemListInfo.craft or false
 
@@ -3088,7 +3088,7 @@ function TaskItem(dictionary,animation,typeAnim,timer,message,func,remove,itemid
     TaskPlayAnim( PlayerPedId(), dictionary, animation, 8.0, 1.0, -1, typeAnim, 0, 0, 0, 0 )
     local timer = tonumber(timer)
     if timer > 0 then
-        local finished = exports["np-taskbar"]:taskBar(timer,message,true,false,playerVeh)
+        local finished = exports["rlrp-taskbar"]:taskBar(timer,message,true,false,playerVeh)
         if finished == 100 or timer == 0 then
             TriggerEvent(func, quality and quality or -1, itemid)
             if remove then
@@ -3297,10 +3297,10 @@ function checkForItems()
 
         if hasItem and not PreviousItemCheck[item] then
             PreviousItemCheck[item] = true
-            TriggerEvent('np-inventory:itemCheck', item, true, quantity)
+            TriggerEvent('rlrp-inventory:itemCheck', item, true, quantity)
         elseif not hasItem and PreviousItemCheck[item] then
             PreviousItemCheck[item] = false
-            TriggerEvent('np-inventory:itemCheck', item, false, quantity)
+            TriggerEvent('rlrp-inventory:itemCheck', item, false, quantity)
         end
     end
 end
@@ -3619,14 +3619,14 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
             TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'lockpick', 0.4)
 
 
-            local finished = exports["np-ui"]:taskBarSkill(15000,3)
+            local finished = exports["rlrp-ui"]:taskBarSkill(15000,3)
 
             if finished ~= 100 then
                 lockpicking = false
                 return
             end
 
-            local finished = exports["np-ui"]:taskBarSkill(2200,4)
+            local finished = exports["rlrp-ui"]:taskBarSkill(2200,4)
 
             if finished ~= 100 then
                  lockpicking = false
@@ -3682,21 +3682,21 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
                 carTimer = 4000
             end
 
-            local finished = exports["np-ui"]:taskBarSkill(math.random(5000,10000),math.random(10,15))
+            local finished = exports["rlrp-ui"]:taskBarSkill(math.random(5000,10000),math.random(10,15))
             if finished ~= 100 then
                  lockpicking = false
                 return
             end
             
-            TriggerEvent('np-dispatch:stolenCar', GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId(), false)))
+            TriggerEvent('rlrp-dispatch:stolenCar', GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId(), false)))
  
-            local finished = exports["np-ui"]:taskBarSkill(math.random(5000,10000),math.random(10,15))
+            local finished = exports["rlrp-ui"]:taskBarSkill(math.random(5000,10000),math.random(10,15))
             if finished ~= 100 then
                  lockpicking = false
                 return
             end
 
-            local finished = exports["np-ui"]:taskBarSkill(1500,math.random(5,10))
+            local finished = exports["rlrp-ui"]:taskBarSkill(1500,math.random(5,10))
             if finished ~= 100 then
                 TriggerEvent("DoLongHudText", "The lockpick bent out of shape.",2)
                 TriggerEvent("inventory:removeItem","lockpick", 1)                
@@ -3809,7 +3809,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
 
 
 
-            local finished = exports["np-ui"]:taskBarSkill(15000,math.random(10,20))
+            local finished = exports["rlrp-ui"]:taskBarSkill(15000,math.random(10,20))
             if finished ~= 100 then
                 fixingvehicle = false
                 reapiring = false
@@ -3854,7 +3854,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
                         if timer < 2000 then
                             timer = 2000
                         end
-                        local finished = exports["np-ui"]:taskBarSkill(timer,math.random(4,7))
+                        local finished = exports["rlrp-ui"]:taskBarSkill(timer,math.random(4,7))
                         if finished ~= 100 then
                             fixingvehicle = false
                             reapiring = false
@@ -3935,12 +3935,12 @@ local nvgItems = {
   }
   
   local myJob = "unemployed"
-  RegisterNetEvent("np-jobmanager:playerBecameJob")
-  AddEventHandler("np-jobmanager:playerBecameJob", function(job)
+  RegisterNetEvent("rlrp-jobmanager:playerBecameJob")
+  AddEventHandler("rlrp-jobmanager:playerBecameJob", function(job)
       myJob = job
   end)
   
-  AddEventHandler("np-inventory:itemUsed", function(item)
+  AddEventHandler("rlrp-inventory:itemUsed", function(item)
     if not nvgItems[item] then return end
     local sm = supportedModels[GetEntityModel(PlayerPedId())]
     if sm then
@@ -4003,7 +4003,7 @@ if (itemid == "repairkit") then
 
 
 function getInformationFromFirstItem(itemToFind)
-  local foundItem = exports["np-inventory"]:GetInfoForFirstItemOfName(itemToFind)
+  local foundItem = exports["rlrp-inventory"]:GetInfoForFirstItemOfName(itemToFind)
   return foundItem and json.decode(foundItem.information or '{}') or nil
 end
 exports("getInformationFromFirstItem", getInformationFromFirstItem)
@@ -4018,7 +4018,7 @@ local poisonedThings = {
   ["poisonedsandwich"] = true,
   ["poisonedwater"] = true,
 }
-AddEventHandler("np-inventory:itemUsed", function(name, info)
+AddEventHandler("rlrp-inventory:itemUsed", function(name, info)
   if not info then return end
   local info = json.decode(info)
   if not info then return end
@@ -4060,7 +4060,7 @@ AddEventHandler("np-inventory:itemUsed", function(name, info)
 end)
 
 
-AddEventHandler("np-inventory:openGolfStore", function(name, info)
+AddEventHandler("rlrp-inventory:openGolfStore", function(name, info)
   TriggerEvent("server-inventory-open", "42086", "Shop");
 end)
 
@@ -4068,7 +4068,7 @@ function openBurner(info)
     loadAnimDict("cellphone@")
     TaskPlayAnim(PlayerPedId(), "cellphone@", "cellphone_text_read_base", 2.0, 3.0, -1, 49, 0, 0, 0, 0)
     TriggerEvent("attachItemPhone", "phone01")
-    exports["np-ui"]:openApplication("burner", info)
+    exports["rlrp-ui"]:openApplication("burner", info)
 end
 
 AddEventHandler("ammonium_bicarbonate:insert", function(pOriginInventory, pTargetInventory, pOriginSlot, pTargetSlot, pOriginItemId, pTargetItemId, pOriginItemInfo, pTargetItemInfo)
@@ -4088,7 +4088,7 @@ AddEventHandler("ammonium_bicarbonate:insert", function(pOriginInventory, pTarge
     
     TriggerEvent("closeInventoryGui")
     
-    local finished = exports["np-taskbar"]:taskBar(5000 * quantity, "Breaking down into baggies...", false, false)
+    local finished = exports["rlrp-taskbar"]:taskBar(5000 * quantity, "Breaking down into baggies...", false, false)
     if finished ~= 100 then return end
   
     -- Remove 10g bags
@@ -4101,7 +4101,7 @@ AddEventHandler("ammonium_bicarbonate:insert", function(pOriginInventory, pTarge
   end)
 
 function notepadUsed()
-    exports["np-ui"]:openApplication("notepad", {
+    exports["rlrp-ui"]:openApplication("notepad", {
         canSave = true
     })
     TriggerEvent("animation:PlayAnimation", "notepad")
@@ -4110,7 +4110,7 @@ end
 
 function notepadPageUsed(itemInfo)
     local json = json.decode(itemInfo)
-    exports["np-ui"]:openApplication("notepad", {
+    exports["rlrp-ui"]:openApplication("notepad", {
         canSave = false,
         content = json.content
     })

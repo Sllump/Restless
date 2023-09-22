@@ -158,8 +158,8 @@ on('watch-inventory', (src, cash, name) => {
     emit('chatMessage', 'SEARCH ', 2, "Player had cash in the amount of: " + cash, 5000);
 });
 
-RegisterNetEvent('np-base:playerSpawned');
-on('np-base:playerSpawned', async (broughtData) => {
+RegisterNetEvent('rlrp-base:playerSpawned');
+on('rlrp-base:playerSpawned', async (broughtData) => {
     emitNet('server-request-update', cid);
     SendNuiMessage(JSON.stringify({ response: 'SendItemList', list: await itemListWithTax() }));
     //Send updated settings
@@ -381,7 +381,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
     cb({});
 });
 
-//  $.post("http://np-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
+//  $.post("http://rlrp-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
 let recentused = [];
 RegisterNuiCallbackType('SlotJustUsed');
 on('__cfx_nui:SlotJustUsed', (data, cb) => {
@@ -479,7 +479,7 @@ on('police:currentHandCuffedState', (pIsHandcuffed, pIsHandcuffedAndWalking) => 
 
 RegisterNetEvent('inventory:open_hidden');
 on('inventory:open_hidden', (penis, vehicleFound) => {
-    let vehId = exports['np-vehicles'].GetVehicleIdentifier(vehicleFound)
+    let vehId = exports['rlrp-vehicles'].GetVehicleIdentifier(vehicleFound)
     emitNet('server-inventory-open', GetEntityCoords(PlayerPedId()), cid, '1', `hidden-container|${vehId}`);
     TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'lockpick', 2.0)
     TriggerEvent('DoLongHudText', 'It rattles, it clanks, and now opens a hidden compartment.', 2);
@@ -509,7 +509,7 @@ on('inventory-open-request', async () => {
     let nearTarget = false;
     let BinFound = ScanContainers();
     let JailBinFound = ScanJailContainers();
-  //  const apartmentFloor = exports["np-apartments"].getModule("func").getApartment()
+  //  const apartmentFloor = exports["rlrp-apartments"].getModule("func").getApartment()
     let targetid = 0;
     cid = exports.isPed.isPed("cid");
 
@@ -517,7 +517,7 @@ on('inventory-open-request', async () => {
 
     emit('randPickupAnim');
 
-    const currentTarget = exports['np-target'].GetCurrentEntity()
+    const currentTarget = exports['rlrp-target'].GetCurrentEntity()
 
     let vehicleFound = IsModelAVehicle(GetEntityModel(currentTarget)) ? currentTarget : 0
 
@@ -545,7 +545,7 @@ on('inventory-open-request', async () => {
     } else if (BinFound) {
         let x = parseInt(BinFound[0]);
         let y = parseInt(BinFound[1]);
-       // let serverCode = exports["np-config"].GetServerCode();
+       // let serverCode = exports["rlrp-config"].GetServerCode();
        let container = "hidden-container|" + x + "|" + y;
         emitNet('server-inventory-open', startPosition, cid, '1', container);
   //  } else if (apartmentFloor != null) {
@@ -762,8 +762,8 @@ function Scan(row) {
     return distancea < checkDistance;
 }
 
-RegisterNetEvent('np-items:SetAmmo');
-on('np-items:SetAmmo', (sentammoTable) => {
+RegisterNetEvent('rlrp-items:SetAmmo');
+on('rlrp-items:SetAmmo', (sentammoTable) => {
     if (sentammoTable) {
         ammoTable = sentammoTable;
     }
@@ -877,7 +877,7 @@ on('__cfx_nui:ServerCloseInventory', (data, cb) => {
     if (data.name != 'none') {
         emitNet('server-inventory-close', cid, data.name);
         emitNet("server-inventory-refresh", cid);
-        emit('np-inventory:closed', data.name);
+        emit('rlrp-inventory:closed', data.name);
     }
     cb({});
 });
@@ -897,8 +897,8 @@ on('__cfx_nui:removeCraftItems', (data, cb) => {
 RegisterNuiCallbackType('craftProgression');
 on('__cfx_nui:craftProgression', (data, cb) => {
     cb("ok");
-    emit("np-inventory:craftProgression", data);
-    emitNet("np-inventory:craftProgression", data);
+    emit("rlrp-inventory:craftProgression", data);
+    emitNet("rlrp-inventory:craftProgression", data);
 });
 
 RegisterNuiCallbackType('stack');
@@ -909,9 +909,9 @@ on('__cfx_nui:stack', (data, cb) => {
 
 RegisterNuiCallbackType('move');
 on('__cfx_nui:move', (data, cb) => {
-    if (global.exports['np-taskbar'].pInInv()) {
+    if (global.exports['rlrp-taskbar'].pInInv()) {
         emit('DoLongHudText', 'Nice try exploiting mate.', 2)
-        emitNet('np-inventory:exploiterKick')
+        emitNet('rlrp-inventory:exploiterKick')
     } else {
         emitNet('server-inventory-move', cid, data, GetEntityCoords(PlayerPedId()));
         cb({});
@@ -920,9 +920,9 @@ on('__cfx_nui:move', (data, cb) => {
 
 RegisterNuiCallbackType('swap');
 on('__cfx_nui:swap', (data, cb) => {
-    if (global.exports['np-taskbar'].pInInv()) {
+    if (global.exports['rlrp-taskbar'].pInInv()) {
         emit('DoLongHudText', 'Nice try exploiting mate, you just got logged.', 2)
-        emitNet('np-inventory:exploiterKick')
+        emitNet('rlrp-inventory:exploiterKick')
     } else {
         emitNet('server-inventory-swap', cid, data, GetEntityCoords(PlayerPedId()));
         cb({});
@@ -1369,9 +1369,9 @@ function SetCustomNuiFocus(hasKeyboard, hasMouse) {
     // SetNuiFocusKeepInput(HasNuiFocus);
 
     //   if (HasNuiFocus === true) {
-    //   	emit("np-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse);
+    //   	emit("rlrp-voice:focus:set", HasNuiFocus, hasKeyboard, hasMouse);
     //   } else {
-    // 	  setTimeout(() => {if (HasNuiFocus !== true) emit("np-voice:focus:set", false, false, false);}, 1000)
+    // 	  setTimeout(() => {if (HasNuiFocus !== true) emit("rlrp-voice:focus:set", false, false, false);}, 1000)
     //   }
 }
 
@@ -1380,7 +1380,7 @@ const Delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
 exports('setPlayerWeight', (cid, weight) => {
     maxPlayerWeight = weight;
-    emitNet('np-inventory:server:weightChange', cid, weight);
+    emitNet('rlrp-inventory:server:weightChange', cid, weight);
     SendNuiMessage(JSON.stringify({ response: 'playerWeight', personalMaxWeight: weight }));
 });
 

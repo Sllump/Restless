@@ -38,7 +38,7 @@ AddEventHandler("inv:itemUsed", function(pItemId, slot, inventory)
     if pItemId == 'bankbox' then
         if hasEnoughOfItem(src, 'bankboxkey', 1, true) then
             removeItem(src, 'bankboxkey', 1)
-            TriggerEvent('np:loot:system:draw', src, pItemId)
+            TriggerEvent('rlrp:loot:system:draw', src, pItemId)
             remove = true
         end
     end
@@ -53,7 +53,7 @@ function GetDecayDate(pItemId)
 end
 
 function getQuantity(pServerId, pItemId)
-    local user, amount = exports["np-base"]:getModule("Player"):GetUser(pServerId), 0
+    local user, amount = exports["rlrp-base"]:getModule("Player"):GetUser(pServerId), 0
 
     if user then
         local invId = ('ply-%s'):format(user.character.id)
@@ -63,7 +63,7 @@ function getQuantity(pServerId, pItemId)
         local decayDate
 
         if checkQuality then
-            decayDate = exports['np-inventory']:GetDecayDate(pItemId)
+            decayDate = exports['rlrp-inventory']:GetDecayDate(pItemId)
 
             if decayDate then
                 query = query .. ' AND @decayDate < creationDate'
@@ -83,7 +83,7 @@ end
 exports('getQuantity', getQuantity)
 
 function removeItem(pServerId, pItemId, pAmount, pShouldNotify)
-    local user = exports["np-base"]:getModule("Player"):GetUser(pServerId)
+    local user = exports["rlrp-base"]:getModule("Player"):GetUser(pServerId)
 
     if user then
         local notify = pShouldNotify == nil and true or pShouldNotify

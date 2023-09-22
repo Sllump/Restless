@@ -228,7 +228,7 @@ $(document).ready(function() {
 
         //Send post message with new settings
         $.post(
-            'https://np-inventory/UpdateSettings',
+            'https://rlrp-inventory/UpdateSettings',
             JSON.stringify({
                 holdToDrag: holdToDrag,
                 closeOnClick: closeOnClick,
@@ -447,7 +447,7 @@ $(document).ready(function() {
         } else if (item.response == 'GiveItemChecks') {
             if (itemList[item.id]) {
                 $.post(
-                    'https://np-inventory/GiveItem',
+                    'https://rlrp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -460,7 +460,7 @@ $(document).ready(function() {
                 );
             } else {
                 $.post(
-                    'https://np-inventory/GiveItem',
+                    'https://rlrp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -764,7 +764,7 @@ function invStack(
         PlayerStore,
         amountRemaining,
     ];
-    $.post('https://np-inventory/stack', JSON.stringify(arr));
+    $.post('https://rlrp-inventory/stack', JSON.stringify(arr));
 }
 
 function invMove(
@@ -792,18 +792,18 @@ function invMove(
         weapon,
         PlayerStore,
     ];
-    $.post('https://np-inventory/move', JSON.stringify(arr));
+    $.post('https://rlrp-inventory/move', JSON.stringify(arr));
 }
 
 function invSwap(targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2) {
     let arr = [targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2];
-    $.post('https://np-inventory/swap', JSON.stringify(arr));
+    $.post('https://rlrp-inventory/swap', JSON.stringify(arr));
 }
 
 function removeCraftItems(itemid, moveAmount, CraftArrayID) {
     let arr = itemList[itemid].craft[CraftArrayID];
     let amount = moveAmount;
-    $.post('https://np-inventory/removeCraftItems', JSON.stringify([arr, amount]));
+    $.post('https://rlrp-inventory/removeCraftItems', JSON.stringify([arr, amount]));
 }
 
 function CreateEmptyPersonalSlot(slotLimit) {
@@ -1171,7 +1171,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
 
 function BuildDrop(brokenSlots) {
     $.post(
-        'https://np-inventory/dropIncorrectItems',
+        'https://rlrp-inventory/dropIncorrectItems',
         JSON.stringify({
             slots: brokenSlots,
         }),
@@ -1691,7 +1691,7 @@ function UpdateSetWeights(secondaryName) {
     }
 
     $.post(
-        'https://np-inventory/Weight',
+        'https://rlrp-inventory/Weight',
         JSON.stringify({
             weight: personalWeight.toFixed(2),
         }),
@@ -1818,7 +1818,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
             isDragging = true;
             draggingid = fromSlot;
 
-            // $.post('https://np-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://rlrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
 
             let draggedItemHtml = document.getElementById(draggingid).innerHTML;
             document.getElementById('draggedItem').innerHTML = draggedItemHtml;
@@ -1860,7 +1860,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
         }
 
         if (!occupiedslot && isDragging) {
-            // $.post('https://np-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            // $.post('https://rlrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
             /* Here we are droping an item to an open slot - I guess we should check waits etc to confirm this is allowed before doing so. */
             AttemptDropInEmptySlot(fromSlot, false);
         }
@@ -1906,7 +1906,7 @@ function FindNextSlotAndMove(half) {
         //Stack items
         AttemptDropInFilledSlot(stackSlot);
     } else if (firstEmpty) {
-        // $.post('https://np-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+        // $.post('https://rlrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
         AttemptDropInEmptySlot(firstEmpty, false, half);
     }
 }
@@ -2022,7 +2022,7 @@ function DropItem(slot, amountDropped) {
 
     //InventoryLog("Dropped: " + name + " x(" + amountDropped + ") from slot " + slotusing + " of " + inventoryUsedNameText)
 
-    // $.post('https://np-inventory/dropitem', JSON.stringify({
+    // $.post('https://rlrp-inventory/dropitem', JSON.stringify({
     //  currentInventory: currentInventory,
     //  weight: weight,
     //  amount: amount,
@@ -2035,11 +2035,11 @@ function DropItem(slot, amountDropped) {
 }
 
 function ErrorMove() {
-    // $.post('https://np-inventory/move:fail', JSON.stringify({}));
+    // $.post('https://rlrp-inventory/move:fail', JSON.stringify({}));
 }
 
 function SuccessMove() {
-    // $.post('https://np-inventory/move:success', JSON.stringify({}));
+    // $.post('https://rlrp-inventory/move:success', JSON.stringify({}));
 }
 
 // we are splitting items from inv2,slot2,amount2 over to inv1,slot1,amount1
@@ -2075,7 +2075,7 @@ function CompileStacks(
     }
 
     $.post(
-        'https://np-inventory/SlotJustUsed',
+        'https://rlrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2132,7 +2132,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
     }
 
     $.post(
-        'https://np-inventory/SlotJustUsed',
+        'https://rlrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2172,7 +2172,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
 
 // slot2 is the object being moved originally, slot 1 is the item it is replacing with.
 function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation1, itemid2, metainformation2) {
-    // $.post('https://np-inventory/swapstack', JSON.stringify({
+    // $.post('https://rlrp-inventory/swapstack', JSON.stringify({
     //   slot1: slot1,
     //   slot2: slot2,
     //   inv1: inv1,
@@ -2195,7 +2195,7 @@ function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation
 
     RequestItemData();
     $.post(
-        'https://np-inventory/SlotJustUsed',
+        'https://rlrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2228,7 +2228,7 @@ function InsertItem(targetSlot, originSlot, inv1, inv2, itemid1, iteminfo1, item
     }
 
     $.post(
-        'https://np-inventory/insert-item',
+        'https://rlrp-inventory/insert-item',
         JSON.stringify({
             originInventory,
             targetInventory,
@@ -2249,7 +2249,7 @@ function closeInv(pIsItemUsed = false) {
     if (isDragging) EndDrag(draggingid);
 
     $.post(
-        'https://np-inventory/ServerCloseInventory',
+        'https://rlrp-inventory/ServerCloseInventory',
         JSON.stringify({
             name: TargetInventoryName,
         }),
@@ -2257,7 +2257,7 @@ function closeInv(pIsItemUsed = false) {
     TargetInventoryName = 'none';
 
     $.post(
-        'https://np-inventory/Close',
+        'https://rlrp-inventory/Close',
         JSON.stringify({
             isItemUsed: pIsItemUsed,
         }),
@@ -2332,7 +2332,7 @@ function CheckCraftFail(itemid, moveAmount) {
             MyInventory = JSON.stringify(sqlInventory);
             MyItemCount = sqlInventory.length;
 
-            $.post('https://np-inventory/craftProgression', JSON.stringify({
+            $.post('https://rlrp-inventory/craftProgression', JSON.stringify({
                 "inventory": TargetInventoryName,
                 "item": itemid,
                 "amount": moveAmount,
@@ -3209,7 +3209,7 @@ function useitem() {
     if (currentInventory == 1) {
         inventoryUsedName = PlayerInventoryName;
         let arr = [inventoryUsedName, itemid, slotusing, isWeapon, itemusinginfo];
-        $.post('https://np-inventory/invuse', JSON.stringify(arr));
+        $.post('https://rlrp-inventory/invuse', JSON.stringify(arr));
         //InventoryLog("Using item: " + name + "(" + amount + ") from " + inventoryUsedName + " | slot " + slotusing)
     }
     EndDrag(slotusing);

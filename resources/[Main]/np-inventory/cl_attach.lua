@@ -107,7 +107,7 @@ AddEventHandler("AttachWeapons", function()
 	local sheathed = false
 	DeleteAttached()
 	for i = 1, #w do
-		if exports["np-inventory"]:getQuantity(w[i]["id"]) > 0 then
+		if exports["rlrp-inventory"]:getQuantity(w[i]["id"]) > 0 then
 			local mdl = GetHashKey(w[i]["model"])
 			loadmodel(mdl)
 			if w[i]["type"] == 1 and #ag < gunLimit and curw ~= tonumber(w[i]["id"]) and not isSkinOf(w[i], curw) then
@@ -127,7 +127,7 @@ AddEventHandler("AttachWeapons", function()
 					attachAndDisableCollisions(am[#am], ped, bone, w[i]["z"]-0.4, -0.135, -0.15, w[i]["rx"], w[i]["ry"], w[i]["rz"])
 				end
 			elseif w[i]["type"] == 4 and not sheathed then
-				TriggerEvent("np-inventory:attachmentsToggle", true, w[i]["id"])
+				TriggerEvent("rlrp-inventory:attachmentsToggle", true, w[i]["id"])
 				sheathed = true
 				local bone = GetPedBoneIndex(ped, (w[i]["pedBone"] or 24817))
 				am[#am+1] = CreateObject(mdl, 1.0 ,1.0 ,1.0, 1, 1, 0)
@@ -169,7 +169,7 @@ function loadmodel(mdl)
 end
 
 function DeleteAttached()
-	TriggerEvent("np-inventory:attachmentsToggle", false)
+	TriggerEvent("rlrp-inventory:attachmentsToggle", false)
 	for i = 1, #ag do
 		DeleteEntity(ag[i])
 	end

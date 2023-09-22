@@ -1,11 +1,11 @@
 const Zones = new Set();
 const ZoneHandlers = new Map();
 
-on("np-polyzone:enter", (zone: string, data?: any) => {
+on("rlrp-polyzone:enter", (zone: string, data?: any) => {
     Zones.add(zone);
 });
 
-on("np-polyzone:exit", (zone: string, data?: any) => {
+on("rlrp-polyzone:exit", (zone: string, data?: any) => {
     Zones.delete(zone);
 });
 
@@ -14,7 +14,7 @@ const HasActiveZone = (zone: string, data?: any) => {
 }
 
 const AddOnEnterHandler = (pZone: string, cb: Function) => {
-    on("np-polyzone:enter", (zone: string, data?: any) => {
+    on("rlrp-polyzone:enter", (zone: string, data?: any) => {
         if(zone === pZone){
             cb(data)
         }
@@ -22,7 +22,7 @@ const AddOnEnterHandler = (pZone: string, cb: Function) => {
 }
 
 const AddOnExitHandler = (pZone: string, cb: Function) => {
-    on("np-polyzone:exit", (zone: string, data?: any) => {
+    on("rlrp-polyzone:exit", (zone: string, data?: any) => {
         if(zone === pZone){
             cb(data)
         }
@@ -34,7 +34,7 @@ const AddBoxZone = (id: string, zone: string, vectors: Vector3, length: number, 
 
     opt.data['id'] = id;
 
-    global.exports["np-polyzone"].AddBoxZone(zone, vectors, length, width, opt);
+    global.exports["rlrp-polyzone"].AddBoxZone(zone, vectors, length, width, opt);
 }
 
 const AddBoxTarget = (id: string, zone: string, vectors: Vector3, length: number, width: number, options: any, data = {}): void => {
@@ -42,7 +42,7 @@ const AddBoxTarget = (id: string, zone: string, vectors: Vector3, length: number
 
     opt.data['id'] = id;
 
-    global.exports["np-polytarget"].AddBoxZone(zone, vectors, length, width, opt);
+    global.exports["rlrp-polytarget"].AddBoxZone(zone, vectors, length, width, opt);
 }
 
 export default {

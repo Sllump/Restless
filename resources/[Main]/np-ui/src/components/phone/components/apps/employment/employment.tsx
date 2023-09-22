@@ -17,7 +17,7 @@ const EmploymentApp: React.FC = () => {
   const [CurrentApp, SetCurrentApp]: any = useRecoilState(phoneCurrentApp)
   const [businessId, setBusinessId]: any = useRecoilState(phoneEmploymentBusinessId)
   useEffect(() => {
-    fetchNui('np-ui:getEmploymentData', {}).then(resData => {
+    fetchNui('rlrp-ui:getEmploymentData', {}).then(resData => {
       setEmploymentData(resData.data)
       setFilteredEmploymentData(resData.data)
     })

@@ -65,7 +65,7 @@
         
         const QueueFunction = (bool) => {
             SetIsInQueue(bool)
-            fetchNui('arp-boosting:JoinQueue', {queue: bool})
+            fetchNui('rlrp-boosting:JoinQueue', {queue: bool})
         }
 
         return (

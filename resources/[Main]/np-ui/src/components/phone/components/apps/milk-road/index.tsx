@@ -36,7 +36,7 @@ const JobCenterApp: React.FC = () => {
 
 
   async function fetchData() {
-    const result = await fetchNui('np-ui:getJobData', {});
+    const result = await fetchNui('rlrp-ui:getJobData', {});
     setItems(result.data)
   }
   

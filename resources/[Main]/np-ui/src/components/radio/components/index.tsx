@@ -19,14 +19,14 @@ const Radio: React.FC = () => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && showRadio) {
           setShowRadio(false)
-          fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+          fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
             if(true === firstdata.meta.ok){
-              fetchNui('np-ui:applicationClosed', {
+              fetchNui('rlrp-ui:applicationClosed', {
                 name: 'radio',
                 fromEscape: true,
               }).then(function (data) {
                 if(true === data.meta.ok){
-                  fetchNui('np-ui:setRadioChannel', {channel: value})
+                  fetchNui('rlrp-ui:setRadioChannel', {channel: value})
                   setShowRadio(false) 
                 }
               })
@@ -83,10 +83,10 @@ const Radio: React.FC = () => {
               
                 if (keyPressed === 'Enter' && radioChannelValue !== '') {
                   try {
-                    const result = await fetchNui('np-ui:setRadioChannel', { channel: Number(radioChannelValue) });
+                    const result = await fetchNui('rlrp-ui:setRadioChannel', { channel: Number(radioChannelValue) });
                     if (result?.data) {
                       setShowRadio(false);
-                      fetchNui('np-ui:closeApp');
+                      fetchNui('rlrp-ui:closeApp');
                       setValue(radioChannelValue);
                     }
                   } catch (error) {
@@ -102,18 +102,18 @@ const Radio: React.FC = () => {
           <Tooltip sx={{backgroundColor: 'rgba(97, 97, 97, 0.9)', fontSize: '1em', maxWdith: '1000px'}} arrow placement="left" title={powered ? 'Switch Off' : 'Switch On'}>
             <div onClick={function(){
               setValue(0)
-              fetchNui(powered ? 'np-ui:toggleRadioOn' : 'np-ui:toggleRadioOff')
+              fetchNui(powered ? 'rlrp-ui:toggleRadioOn' : 'rlrp-ui:toggleRadioOff')
               setPowered(!powered)
             }} className='on-off-wrapper'></div>
           </Tooltip>
           <Tooltip sx={{backgroundColor: 'rgba(97, 97, 97, 0.9)', fontSize: '1em', maxWdith: '1000px'}} arrow placement="left" title="Volume Up">
             <div onClick={function(){
-              fetchNui('np-ui:radioVolumeUp')
+              fetchNui('rlrp-ui:radioVolumeUp')
             }} className='vol-up-wrapper'></div>
           </Tooltip>
           <Tooltip sx={{backgroundColor: 'rgba(97, 97, 97, 0.9)', fontSize: '1em', maxWdith: '1000px'}} arrow placement="left" title="Volume Down">
             <div onClick={function(){
-              fetchNui('np-ui:radioVolumeDown')
+              fetchNui('rlrp-ui:radioVolumeDown')
             }} className='vol-down-wrapper'></div>
           </Tooltip>
           <div className='nopixel-tag'>

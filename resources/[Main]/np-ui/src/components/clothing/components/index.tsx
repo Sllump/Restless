@@ -125,7 +125,7 @@ function ClothingMenu() {
 
   const getShop = (shop) => {
     setMenus([]);
-    fetchNui("np-clothing:getMenus", shop).then((data) => {
+    fetchNui("rlrp-clothing:getMenus", shop).then((data) => {
     //  console.log(data);
       setMenus(data ?? []);
     });
@@ -405,7 +405,7 @@ function Item({ _data }) {
 
     useEffect(() => {
       if (changed) {
-        fetchNui("np-clothing:ui:onChange", {
+        fetchNui("rlrp-clothing:ui:onChange", {
           ...data,
           currentIndex: currentIndex,
           currentTextureIndex: currentTextureIndex,
@@ -604,7 +604,7 @@ function Item({ _data }) {
       if (active){
         
       }
-        fetchNui("np-clothing:ui:onChange", { ...data, currentIndex: currentIndex });
+        fetchNui("rlrp-clothing:ui:onChange", { ...data, currentIndex: currentIndex });
     }, [currentIndex]);
 
     return (
@@ -633,7 +633,7 @@ function Item({ _data }) {
         if (active){
 
         }
-          fetchNui("np-clothing:ui:onChange", { ...item, currentIndex: currentIndex });
+          fetchNui("rlrp-clothing:ui:onChange", { ...item, currentIndex: currentIndex });
       }, [currentIndex]);
 
       return (

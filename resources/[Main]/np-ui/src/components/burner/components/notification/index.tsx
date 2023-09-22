@@ -179,7 +179,7 @@ function Notifications({notification, deleteNotification}: MyComponentProps) {
   })
 
   var Mo = function () {
-    fetchNui('np-ui:callEnd', { callId: calls.callId }).then(function (Mn) {})
+    fetchNui('rlrp-ui:callEnd', { callId: calls.callId }).then(function (Mn) {})
   }
 
   return (

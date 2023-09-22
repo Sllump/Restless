@@ -41,7 +41,7 @@ const CallsApp: React.FC = () => {
 
   if(!LoadeContacts){
     setLoadeContacts(true)
-    fetchNui('np-ui:getContacts', {}).then(function (result) {
+    fetchNui('rlrp-ui:getContacts', {}).then(function (result) {
       setContacts(result.data)
     }).catch(function(error){
       return <DveXAlert AlertText='Error occurred in app: Phone - restarting...' AlertType='error' />
@@ -210,12 +210,12 @@ const CallsApp: React.FC = () => {
       
           <div>
               <Button onClick={async function(){
-                const resultChar = await fetchNui('np-ui:getCharacter', {});
+                const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
                 setShowAddCallModel(false) 
                 setshowAddCallLoader(false) 
                 setshowAddCallSuccess(false) 
                 setHideinputs(false)      
-                fetchNui('np-ui:callStart', {
+                fetchNui('rlrp-ui:callStart', {
                   character: resultChar.data,
                   number: NumberInput,
                 }).then(function (result) {

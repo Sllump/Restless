@@ -41,10 +41,10 @@ const Mdw: React.FC = () => {
   useEffect(() => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && ShowMdw) {
-            fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+            fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                 if(true === firstdata.meta.ok){
                   setShowMdw(false)
-                  fetchNui('np-ui:applicationClosed', {
+                  fetchNui('rlrp-ui:applicationClosed', {
                       name: 'mdt',
                       fromEscape: true,
                   }).then(function (data) {

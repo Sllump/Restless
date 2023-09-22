@@ -63,10 +63,10 @@ const HousingApp: React.FC = () => {
   ])
   if(!loaded){
     setLoaded(true)
-    fetchNui('np-ui:getCurrentApartment', {}).then(function(data){
+    fetchNui('rlrp-ui:getCurrentApartment', {}).then(function(data){
       setCurrentApartment(data.data)
     })
-    fetchNui('np-ui:getProperties', {}).then(function(data){
+    fetchNui('rlrp-ui:getProperties', {}).then(function(data){
       setProperties(data.data)
     })
   }
@@ -161,7 +161,7 @@ const HousingApp: React.FC = () => {
                     setShowFoundHousingModel(false) 
                     setshowHousingLoader(true) 
                     setshowHousingSuccess(false) 
-                    fetchNui('np-ui:housingCurrentLocationPurchase', {name: foundData.housingName}).then(function(data){
+                    fetchNui('rlrp-ui:housingCurrentLocationPurchase', {name: foundData.housingName}).then(function(data){
                       if(data.meta.ok){
                         setshowHousingLoader(true) 
                         setFoundData({
@@ -267,7 +267,7 @@ const HousingApp: React.FC = () => {
               </div>
               <div style={{display: 1 === tab ? '' : 'none'}} className={classes.housingButtons}>
                 <Button style={{display: !inEditMod ? '' : 'none'}} color='success' size='small' variant="contained" onClick={function(){
-                  fetchNui('np-ui:housingCheckCurrentLocation', {}).then(function(data){
+                  fetchNui('rlrp-ui:housingCheckCurrentLocation', {}).then(function(data){
                     if(data.meta.ok && !data.data.isOwned){
                       setFoundData(data.data)
                       setShowFoundHousingModel(true)
@@ -301,27 +301,27 @@ const HousingApp: React.FC = () => {
               </div>
               <div style={{display: 1 === tab && inEditMod ? 'flex' : 'none', width: '100%', marginBottom:'90px', flexDirection: 'column'}}>
                 <div style={{display: editData.garage ? 'flex' : 'none', justifyContent: 'center', marginBottom: '1vh'}}>
-                  <Button onClick={function(){fetchNui('np-ui:housingEditPropertyConfig', {type:'garage'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
+                  <Button onClick={function(){fetchNui('rlrp-ui:housingEditPropertyConfig', {type:'garage'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
                     Place Garage Here
                   </Button>
                 </div>
                 <div style={{display: editData.stash ? 'flex' : 'none', justifyContent: 'center', marginBottom: '1vh'}}>
-                  <Button onClick={function(){fetchNui('np-ui:housingEditPropertyConfig', {type:'inventory'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
+                  <Button onClick={function(){fetchNui('rlrp-ui:housingEditPropertyConfig', {type:'inventory'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
                     Place Stash Here
                   </Button>
                 </div>
                 <div style={{display: editData.backdoor ? 'flex' : 'none', justifyContent: 'center', marginBottom: '1vh'}}>
-                  <Button onClick={function(){fetchNui('np-ui:housingEditPropertyConfig', {type:'backdoor'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
+                  <Button onClick={function(){fetchNui('rlrp-ui:housingEditPropertyConfig', {type:'backdoor'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
                     Place Backdoor Here
                   </Button>
                 </div>
                 <div style={{display: editData.wardrobe ? 'flex' : 'none', justifyContent: 'center', marginBottom: '1vh'}}>
-                  <Button onClick={function(){fetchNui('np-ui:housingEditPropertyConfig', {type:'char-changer'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
+                  <Button onClick={function(){fetchNui('rlrp-ui:housingEditPropertyConfig', {type:'char-changer'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
                     Place Wardrobe Here
                   </Button>
                 </div>
                 <div style={{display: editData.furniture ? 'flex' : 'none', justifyContent: 'center', marginBottom: '1vh'}}>
-                  <Button onClick={function(){fetchNui('np-ui:housingEditPropertyConfig', {type:'furniture'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
+                  <Button onClick={function(){fetchNui('rlrp-ui:housingEditPropertyConfig', {type:'furniture'})}} style={{display: inEditMod ? '' : 'none'}} color='success' size='small' variant="contained">
                     Open Furniture
                   </Button>
                 </div>

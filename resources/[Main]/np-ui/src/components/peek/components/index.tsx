@@ -25,9 +25,9 @@ const Peek: React.FC = () => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && ShowPeek && Active) {
             setShowPeek(false)
-            fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+            fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                 if(true === firstdata.meta.ok){
-                fetchNui('np-ui:applicationClosed', {
+                fetchNui('rlrp-ui:applicationClosed', {
                     name: 'atm',
                     fromEscape: true,
                 }).then(function (data) {
@@ -148,7 +148,7 @@ const Peek: React.FC = () => {
                           setInteract(false)
                           setchangecolor('')
                           seteyeinteract([])                  
-                          fetchNui('np-ui:targetSelectOption',
+                          fetchNui('rlrp-ui:targetSelectOption',
                             {
                               entity: Entity,
                               option: {

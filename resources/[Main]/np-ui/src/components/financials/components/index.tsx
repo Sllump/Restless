@@ -57,9 +57,9 @@ const Financials: React.FC = () => {
     useEffect(() => {
         const handleEscapeKey = (event : any) => {
             if (event.code === 'Escape' && ShowFinancials) {
-                fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+                fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                     if(true === firstdata.meta.ok){
-                    fetchNui('np-ui:applicationClosed', {
+                    fetchNui('rlrp-ui:applicationClosed', {
                         name: 'atm',
                         fromEscape: true,
                     }).then(function (data) {
@@ -92,10 +92,10 @@ const Financials: React.FC = () => {
                 setShowFinancialsLoader(true)
                 
                 
-                fetchNui('np-ui:getCash', {}).then(function (data) {
+                fetchNui('rlrp-ui:getCash', {}).then(function (data) {
                     SetMyCash(data)
                 });
-                fetchNui('np-ui:getAccounts', {}).then(function (data) {
+                fetchNui('rlrp-ui:getAccounts', {}).then(function (data) {
                     setShowFinancialsLoader(false)
                     SetAccount(data.data.accounts)
                 });
@@ -103,7 +103,7 @@ const Financials: React.FC = () => {
                 SetAtm(false)
                 setShowFinancialsLoader(true)
                 
-                fetchNui('np-ui:getAccounts', {}).then(function (data) {
+                fetchNui('rlrp-ui:getAccounts', {}).then(function (data) {
                     setShowFinancialsLoader(false)
                     SetAccount(data.data.accounts)
                 });
@@ -152,7 +152,7 @@ const Financials: React.FC = () => {
                                             <div id={data.id} onClick={function() {
                                                 SetCurrentAccountId(data.id)
                                                 SetCurrentAccountType(data.type)
-                                                fetchNui('np-ui:getAccountTransactions', {
+                                                fetchNui('rlrp-ui:getAccountTransactions', {
                                                     account_id: data.id
                                                 }).then(function (data) {
                                                     SetTransactions(data.data)
@@ -625,7 +625,7 @@ const Financials: React.FC = () => {
                                     <Button
                                         onClick={function() {
                                             setShowModalLoader(true)
-                                            fetchNui('np-ui:accountWithdraw', {
+                                            fetchNui('rlrp-ui:accountWithdraw', {
                                                 account_id: CurrentAccountId,
                                                 amount: Amount,
                                                 comment: Comment,
@@ -634,12 +634,12 @@ const Financials: React.FC = () => {
                                                     setShowModalLoader(false)
                                                     setShowModal(false)
                                                     setTypeBtn('')
-                                                    fetchNui('np-ui:getAccountTransactions', {
+                                                    fetchNui('rlrp-ui:getAccountTransactions', {
                                                         account_id: CurrentAccountId
                                                     }).then(function (data) {
                                                         SetTransactions(data.data)
                                                     })
-                                                    fetchNui('np-ui:getAccounts', {}).then(function (data) {
+                                                    fetchNui('rlrp-ui:getAccounts', {}).then(function (data) {
                                                         SetAccount(data.data.accounts)
                                                     });
                                                 }else{
@@ -675,7 +675,7 @@ const Financials: React.FC = () => {
                                     <Button
                                         onClick={function() {
                                             setShowModalLoader(true)
-                                            fetchNui('np-ui:accountDeposit', {
+                                            fetchNui('rlrp-ui:accountDeposit', {
                                                 account_id: CurrentAccountId,
                                                 amount: Amount,
                                                 comment: Comment,
@@ -684,12 +684,12 @@ const Financials: React.FC = () => {
                                                     setShowModalLoader(false)
                                                     setShowModal(false)
                                                     setTypeBtn('')
-                                                    fetchNui('np-ui:getAccountTransactions', {
+                                                    fetchNui('rlrp-ui:getAccountTransactions', {
                                                         account_id: CurrentAccountId
                                                     }).then(function (data) {
                                                         SetTransactions(data.data)
                                                     })
-                                                    fetchNui('np-ui:getAccounts', {}).then(function (data) {
+                                                    fetchNui('rlrp-ui:getAccounts', {}).then(function (data) {
                                                         SetAccount(data.data.accounts)
                                                     });
                                                 }else{
@@ -725,7 +725,7 @@ const Financials: React.FC = () => {
                                     <Button
                                         onClick={function() {
                                             setShowModalLoader(true)
-                                            fetchNui('np-ui:accountTransfer', {
+                                            fetchNui('rlrp-ui:accountTransfer', {
                                                 account_id: CurrentAccountId,
                                                 target_account_id: AccountID,
                                                 target_state_id: StateId,
@@ -736,12 +736,12 @@ const Financials: React.FC = () => {
                                                     setShowModalLoader(false)
                                                     setShowModal(false)
                                                     setTypeBtn('')
-                                                    fetchNui('np-ui:getAccountTransactions', {
+                                                    fetchNui('rlrp-ui:getAccountTransactions', {
                                                         account_id: CurrentAccountId
                                                     }).then(function (data) {
                                                         SetTransactions(data.data)
                                                     })
-                                                    fetchNui('np-ui:getAccounts', {}).then(function (data) {
+                                                    fetchNui('rlrp-ui:getAccounts', {}).then(function (data) {
                                                         SetAccount(data.data.accounts)
                                                     });
                                                 }else{

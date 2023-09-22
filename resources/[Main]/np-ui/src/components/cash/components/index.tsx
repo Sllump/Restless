@@ -17,7 +17,7 @@ const Cash: React.FC = () => {
   useNuiEvent('uiMessage', (data) => {
     var dvexdata = data.data
     if ('cash' === data.app) {
-      if ('np-nui' === data.source) {
+      if ('rlrp-nui' === data.source) {
         SetCash(dvexdata.cash) 
         SetAmountAdjustment(dvexdata.amountAdjustment)
         setShowCash(true)

@@ -24,9 +24,9 @@ const TextBox: React.FC = () => {
       const handleEscapeKey = (event : any) => {
           if (event.code === 'Escape' && ShowTextBox) {
             setShowTextBox(false)
-            fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+            fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
               if(true === firstdata.meta.ok){
-                fetchNui('np-ui:applicationClosed', {
+                fetchNui('rlrp-ui:applicationClosed', {
                   name: 'textbox',
                   fromEscape: true,
                 }).then(function (data) {
@@ -271,14 +271,14 @@ const TextBox: React.FC = () => {
                   <div>
                     <Button 
                       onClick={function () {
-                        fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+                        fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                           if(true === firstdata.meta.ok){
                             fetchNui(CallbackUrl, {
                               key: Key,
                               values: values,
                             }).then(function (data) {
                               if(true === data.meta.ok) {
-                                fetchNui('np-ui:applicationClosed', {
+                                fetchNui('rlrp-ui:applicationClosed', {
                                   name: 'textbox',
                                   fromEscape: false,
                                 }).then(function (dvexdata) {

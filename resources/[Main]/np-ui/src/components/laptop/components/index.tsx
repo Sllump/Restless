@@ -67,7 +67,7 @@ function BoostingTablet() {
   //   function handleEscapeKey(event) {
   //     if (event.code === 'Escape') {
   //       setshowBoosting({visible: false})
-  //       fetchNui('arp-boosting:closeBoostingApp', {})
+  //       fetchNui('rlrp-boosting:closeBoostingApp', {})
   //     }
   //   }
   

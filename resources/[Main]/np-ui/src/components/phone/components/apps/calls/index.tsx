@@ -76,7 +76,7 @@ const CallsApp: React.FC = () => {
   }
 
   const handleCallNumber = () => {
-    fetchNui('cool-ui:callStart', { number: callNumber }).then(resData => {
+    fetchNui('rlrp-ui:callStart', { number: callNumber }).then(resData => {
       setCallNumberModal(false)
       //setCallsData(resData)
       //setFilteredCalls(resData)
@@ -84,7 +84,7 @@ const CallsApp: React.FC = () => {
   }
 
   const handleLogCallNumber = (name, number) => {
-    fetchNui('cool-ui:callStart', { number: number }).then(resData => {
+    fetchNui('rlrp-ui:callStart', { number: number }).then(resData => {
       //setCallsData(resData)
       //setFilteredCalls(resData)
 

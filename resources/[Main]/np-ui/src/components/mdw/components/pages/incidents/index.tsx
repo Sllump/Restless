@@ -43,7 +43,7 @@ function IncidentsPage({showLoading, setShowAssignEvidence, CurrentIncidentID, e
 
   if(!Loadedincidents){
     setLoadedincidents(true)
-    fetchNui('np-ui:mdtAction', {action:'incidents', data:'incidents'}).then(function(data) {
+    fetchNui('rlrp-ui:mdtAction', {action:'incidents', data:'incidents'}).then(function(data) {
       setincidents(data.data)
       setincidentsList(data.data)
     })
@@ -151,7 +151,7 @@ function IncidentsPage({showLoading, setShowAssignEvidence, CurrentIncidentID, e
                     onClick={() => {
                       let id = data.id;
                       showLoading(true);
-                      fetchNui('np-ui:mdtAction', {
+                      fetchNui('rlrp-ui:mdtAction', {
                         action: 'incidents',
                         data: {
                           name: 'incident',

@@ -22,10 +22,10 @@ const Context: React.FC = () => {
     useEffect(() => {
       const handleEscapeKey = (event : any) => {
           if (event.code === 'Escape' && show) {
-              fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+              fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                   if(true === firstdata.meta.ok){
                     setShow(false) 
-                    fetchNui('np-ui:applicationClosed', {
+                    fetchNui('rlrp-ui:applicationClosed', {
                         name: 'contextmenu',
                         fromEscape: true,
                     }).then(function (data) {
@@ -69,11 +69,11 @@ const Context: React.FC = () => {
       }
       if (action) {
         if (!disabled) {
-          fetchNui('np-ui:closeApp', {}).then(function (cb) {
+          fetchNui('rlrp-ui:closeApp', {}).then(function (cb) {
             if (true === cb.meta.ok) {
               fetchNui(action, { key: key }).then(function (cH) {
                 if (true === cH.meta.ok) {
-                  fetchNui('np-ui:applicationClosed', {
+                  fetchNui('rlrp-ui:applicationClosed', {
                     name: 'contextmenu',
                     fromEscape: false,
                   }).then(function (data) {

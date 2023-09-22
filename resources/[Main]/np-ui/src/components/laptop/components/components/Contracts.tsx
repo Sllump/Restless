@@ -20,13 +20,13 @@ const Contracts = (props) => {
     const [freezetimer, setfreezetimer] = useState(false);
 
     const sendExpireEvent = () => {
-        fetchNui('arp-boosting:DeclineContract', { props, IsInProgress })
+        fetchNui('rlrp-boosting:DeclineContract', { props, IsInProgress })
         setRemove(false);
     }
 
     const updateTimer = (updates) => {
         clearInterval(updates);
-        fetchNui('arp-boosting:updateTime', { props, counter })
+        fetchNui('rlrp-boosting:updateTime', { props, counter })
     }
 
     useEffect(() => {
@@ -58,12 +58,12 @@ const Contracts = (props) => {
 
 
     const cancelContract = () => {
-        fetchNui('arp-boosting:cancelContract', { props, IsInProgress })
+        fetchNui('rlrp-boosting:cancelContract', { props, IsInProgress })
         setRemove(false);
     }
 
     const DeclineContract = () => {
-        fetchNui('arp-boosting:DeclineContract', { props, IsInProgress })
+        fetchNui('rlrp-boosting:DeclineContract', { props, IsInProgress })
         setRemove(false);
     }
 
@@ -88,7 +88,7 @@ const Contracts = (props) => {
         setTimeout(() => {
             setstep(false)
             setStart(false);
-            fetchNui('arp-boosting:startContract', {
+            fetchNui('rlrp-boosting:startContract', {
                 props, IsVin
             }).then((resp) => {
                 if (resp.Contract) {
@@ -111,7 +111,7 @@ const Contracts = (props) => {
         if (imputValue.trim().length > 0) {
             setTransfer(false);
             setRemove(false);
-            fetchNui('arp-boosting:transferContract', { props, imputValue })
+            fetchNui('rlrp-boosting:transferContract', { props, imputValue })
         }
     }
 

@@ -34,7 +34,7 @@ const BuyApp = ({counter, setCounter}) => {
   const handleSubmit = () => {
     if (imputValue !== "") {
       if (GlobalGne > imputValue || Gne === imputValue) {
-        fetchNui('arp-purchaseGNE', {imputValue})
+        fetchNui('rlrp-purchaseGNE', {imputValue})
         setimputValue('')
       }
     }

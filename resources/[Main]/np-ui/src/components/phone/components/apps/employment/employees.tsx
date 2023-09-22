@@ -74,7 +74,7 @@ const EmployeesApp: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchNui('np-ui:getEmployeesData', { id: businessId }).then(resData => {
+    fetchNui('rlrp-ui:getEmployeesData', { id: businessId }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -199,7 +199,7 @@ const EmployeesApp: React.FC = () => {
 
   const updateEditRoleRole = (e: any) => {
     setEmployeeNewRole(e.target.value)
-    fetchNui('np-ui:getRolePermission', { businessid: businessId, role: e.target.value }).then(resData => {
+    fetchNui('rlrp-ui:getRolePermission', { businessid: businessId, role: e.target.value }).then(resData => {
       setHireAccess(resData.canHire)
       setFireAccess(resData.canFire)
       setChangeRoleAccess(resData.roleManage)
@@ -226,7 +226,7 @@ const EmployeesApp: React.FC = () => {
   }
 
   const handleRemoveEmployee = (e: any) => {
-    fetchNui('np-ui:removeEmployee', { id: e.currentTarget.id, businessid: businessId }).then(resData => {
+    fetchNui('rlrp-ui:removeEmployee', { id: e.currentTarget.id, businessid: businessId }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -245,7 +245,7 @@ const EmployeesApp: React.FC = () => {
   const handleDeleteRole = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:deleteRole', { businessid: businessId, role: employeeNewRole }).then(resData => {
+    fetchNui('rlrp-ui:deleteRole', { businessid: businessId, role: employeeNewRole }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -263,7 +263,7 @@ const EmployeesApp: React.FC = () => {
   const handleCreateRole = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:createRole', { businessid: businessId, role: createRoleName, permissions: { hire: hireAccess, fire: fireAccess, changeRole: changeRoleAccess, payEmployee: payEmployeeAccess, payExternal: payExternalAccess, chargeExternal: chargeExternalAccess, propertyKeys: propertyKeysAccess, stash: stashAccess, craft: craftAccess, bank: bankAccess } }).then(resData => {
+    fetchNui('rlrp-ui:createRole', { businessid: businessId, role: createRoleName, permissions: { hire: hireAccess, fire: fireAccess, changeRole: changeRoleAccess, payEmployee: payEmployeeAccess, payExternal: payExternalAccess, chargeExternal: chargeExternalAccess, propertyKeys: propertyKeysAccess, stash: stashAccess, craft: craftAccess, bank: bankAccess } }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -292,7 +292,7 @@ const EmployeesApp: React.FC = () => {
   const handleEditRole = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:editRole', { businessid: businessId, role: employeeNewRole, permissions: { hire: hireAccess, fire: fireAccess, changeRole: changeRoleAccess, payEmployee: payEmployeeAccess, payExternal: payExternalAccess, chargeExternal: chargeExternalAccess, propertyKeys: propertyKeysAccess, stash: stashAccess, craft: craftAccess, bank: bankAccess } }).then(resData => {
+    fetchNui('rlrp-ui:editRole', { businessid: businessId, role: employeeNewRole, permissions: { hire: hireAccess, fire: fireAccess, changeRole: changeRoleAccess, payEmployee: payEmployeeAccess, payExternal: payExternalAccess, chargeExternal: chargeExternalAccess, propertyKeys: propertyKeysAccess, stash: stashAccess, craft: craftAccess, bank: bankAccess } }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -311,7 +311,7 @@ const EmployeesApp: React.FC = () => {
   const handleEmployeeRoleEdit = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:editEmployee', { id: currentEmployeeStateID, businessid: businessId, role: employeeNewRole }).then(resData => {
+    fetchNui('rlrp-ui:editEmployee', { id: currentEmployeeStateID, businessid: businessId, role: employeeNewRole }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -329,7 +329,7 @@ const EmployeesApp: React.FC = () => {
   const handleEmployeeHire = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:hireEmployee', { id: hireEmployeeStateID, businessid: businessId, role: employeeNewRole }).then(resData => {
+    fetchNui('rlrp-ui:hireEmployee', { id: hireEmployeeStateID, businessid: businessId, role: employeeNewRole }).then(resData => {
       setEmployeeData(resData.employees)
       setFilteredEmployeeData(resData.employees)
       setEmployeeRoles(resData.roles)
@@ -347,7 +347,7 @@ const EmployeesApp: React.FC = () => {
   const handleChargeCustomer = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:chargeCustomer', { id: chargeCustomerStateID, businessid: businessId, amount: chargeCustomerAmount, comment: chargeCustomerComment }).then(resData => {
+    fetchNui('rlrp-ui:chargeCustomer', { id: chargeCustomerStateID, businessid: businessId, amount: chargeCustomerAmount, comment: chargeCustomerComment }).then(resData => {
       setLoading(false)
       setCheckmark(true)
       setChargeCustomerStateID(0)

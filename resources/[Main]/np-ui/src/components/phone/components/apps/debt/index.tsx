@@ -141,7 +141,7 @@ const DebtApp: React.FC = () => {
               <Button onClick={function(){
                 setshowAddDebtLoader(true) 
                 setHideinputs(true)
-                fetchNui('np-ui:smsSend', {
+                fetchNui('rlrp-ui:smsSend', {
                   number: number,
                   debt: debt,
                 }).then(function (result) {

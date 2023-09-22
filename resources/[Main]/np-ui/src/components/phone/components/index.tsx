@@ -101,9 +101,9 @@ const Phone: React.FC = () => {
               setShowApp(true) 
               setShow(false) 
               setSwitchOrientation(false)
-              fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+              fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                   if(true === firstdata.meta.ok){
-                  fetchNui('np-ui:applicationClosed', {
+                  fetchNui('rlrp-ui:applicationClosed', {
                       name: 'phone',
                       fromEscape: true,
                   }).then(function (data) {

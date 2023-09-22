@@ -23,9 +23,9 @@ const RangePicker: React.FC = () => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && Show) {
           setShow(true)
-          fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+          fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
             if(true === firstdata.meta.ok){
-              fetchNui('np-ui:applicationClosed', {
+              fetchNui('rlrp-ui:applicationClosed', {
                 name: 'range-picker',
                 fromEscape: true,
               }).then(function (data) {
@@ -47,10 +47,10 @@ const RangePicker: React.FC = () => {
   }, [Show, setShow])
 
   const SubmitButton = () => {
-    fetchNui('np-ui:closeApp', {}).then(function (firstData) {
+    fetchNui('rlrp-ui:closeApp', {}).then(function (firstData) {
       if(true === firstData.meta.ok) {
         setShow(false);
-        fetchNui('np-ui:applicationClosed', {
+        fetchNui('rlrp-ui:applicationClosed', {
           name: 'range-picker',
           fromEscape: false,
         }).then(function (data) {

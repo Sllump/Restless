@@ -8,7 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 function MinigameNumbers(){
     const classes = useStyles();
     const [show, setShow] = useState(false);
-    const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('np-ui:heistsMinigameNumbersEndpoint');
+    const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('rlrp-ui:heistsMinigameNumbersEndpoint');
     const [gameFinished, setGameFinished] = useState(false);
     const [gameTimeoutDuration, setGameTimeoutDuration] = useState(20000);
     const [gameWon, setGameWon] = useState(false);

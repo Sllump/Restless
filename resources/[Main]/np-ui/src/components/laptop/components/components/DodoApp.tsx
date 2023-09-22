@@ -123,8 +123,8 @@ const DodoApp = React.memo(({counter, setCounter}: any) => {
         });
     }
     const tryBuyItem = () => {
-        //fetchNui('arp-boosting:BennysItem', CartItems)
-        fetchNui('arp-boosting:BennysItem', {
+        //fetchNui('rlrp-boosting:BennysItem', CartItems)
+        fetchNui('rlrp-boosting:BennysItem', {
             CartItems, ToPay
         }).then((resp) => {
             if (resp.Continue) {

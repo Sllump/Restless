@@ -48,8 +48,8 @@ const VehiclesApp: React.FC = () => {
   };
 
   async function fetchData() {
-    const resultChar = await fetchNui('np-ui:getCharacter', {});
-    const result = await fetchNui('np-ui:getCars', {character: resultChar.data});
+    const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
+    const result = await fetchNui('rlrp-ui:getCars', {character: resultChar.data});
     setVehicles(result.data);
     setVehiclesList(result.data);
   }
@@ -172,11 +172,11 @@ const VehiclesApp: React.FC = () => {
       
           <div>
               <Button onClick={async function(){
-                const resultChar = await fetchNui('np-ui:getCharacter', {});
+                const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
 
                 setshowAddVehiclesLoader(true) 
                 setHideVehiclesinputs(true)
-                fetchNui('np-ui:addVehiclessEntry', {
+                fetchNui('rlrp-ui:addVehiclessEntry', {
                   character: resultChar.data,
                   text: Vehicles,
                 }).then(function (result) {

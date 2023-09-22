@@ -11,7 +11,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 function MinigameUntangle(){
     const classes = useStyles();
     const [show, setShow] = useState(false);
-    const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('np-ui:untangleMinigameResult');
+    const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('rlrp-ui:untangleMinigameResult');
     const [gameFinished, setGameFinished] = useState(false);
     const [gameTimeoutDuration, setGameTimeoutDuration] = useState(20000);
     const [gameWon, setGameWon] = useState(false);

@@ -29,7 +29,7 @@ export function RestartAlert() {
   useNuiEvent('uiMessage', (data) => {
     var dvexdata = data.data
     if ('main' === data.app) {
-      if ('np-nui' === data.source) {
+      if ('rlrp-nui' === data.source) {
         if ('restart' === data.action) {
           setShowAlert(true)
         }

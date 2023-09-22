@@ -38,7 +38,7 @@ const CryptoApp: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
-    fetchNui('np-ui:getCryptos', {}).then(resData => {
+    fetchNui('rlrp-ui:getCryptos', {}).then(resData => {
       if(resData.meta.ok === true){
         setCryptoData(resData.data)
         setFilteredCryptos(resData.data)
@@ -88,9 +88,9 @@ const CryptoApp: React.FC = () => {
 
     setLoading(true)
     setPreparing(true)
-    const resultChar = await fetchNui('np-ui:getCharacter', {});
+    const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
 
-    fetchNui('np-ui:cryptoPurchase', { character: resultChar.data, id: cryptoExchangeId, amount: cryptoBuyAmount }).then(resData => {
+    fetchNui('rlrp-ui:cryptoPurchase', { character: resultChar.data, id: cryptoExchangeId, amount: cryptoBuyAmount }).then(resData => {
       if (resData.meta.ok === true) {
         setCryptoBuyAmount("")
         setCryptoData(resData.data)

@@ -39,7 +39,7 @@ const DetailsApp: React.FC = () => {
 
   if(!LoadeData){
     setLoadeData(true)
-    fetchNui('np-ui:getCharacterDetails', {}).then(function (result) {
+    fetchNui('rlrp-ui:getCharacterDetails', {}).then(function (result) {
       setdata(result.data)
     }).catch(function(error){
       return <DveXAlert AlertText='Error occurred in app: Phone - restarting...' AlertType='error' />

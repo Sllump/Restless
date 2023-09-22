@@ -189,13 +189,13 @@ export default (props: INotificationItem) => {//maye hook NUI event here, that c
   }
 
   const handleCallAnswer = () => {
-    fetchNui('np-ui:callAccept', { callId: calls.callId }).then(resData => {
+    fetchNui('rlrp-ui:callAccept', { callId: calls.callId }).then(resData => {
     })
   }
 
   const handleCallHangup = () => {//make it so, it toggles disconnected state if it matches receiver end?
     //fetchNui(confirmation.onReject, {action: 'reject', _data: {confirmationId: confirmation.id}})
-    fetchNui('np-ui:callEnd', { callId: calls.callId }).then(resData => {
+    fetchNui('rlrp-ui:callEnd', { callId: calls.callId }).then(resData => {
       //setDisconnected(true)
       //setContentState("Disconnected!") //dont do this at all, just dismiss the noti fully for both parties
       //setTimeout(() => {
@@ -210,7 +210,7 @@ export default (props: INotificationItem) => {//maye hook NUI event here, that c
 
   const handleCancelActivity = () => {
     //should close notify for all group members
-    fetchNui('np-ui:jobs:cancelActivity', { id: groupId })
+    fetchNui('rlrp-ui:jobs:cancelActivity', { id: groupId })
   }
 
   return (

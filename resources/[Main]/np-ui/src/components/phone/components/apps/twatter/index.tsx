@@ -38,7 +38,7 @@ useEffect(() => {
   }
 }, [Tweets]);
   // useEffect(function(){
-  //   fetchNui('np-ui:getCharacterDetails', {}).then(function (result) {
+  //   fetchNui('rlrp-ui:getCharacterDetails', {}).then(function (result) {
   //     setdata({
   //       cid: result.cid,
 	// 			bankid: result.bankid,
@@ -66,7 +66,7 @@ useEffect(() => {
   };
 
   async function fetchData() {
-    const result = await fetchNui('np-ui:getTwats', {});
+    const result = await fetchNui('rlrp-ui:getTwats', {});
     setTweets(result.data);
     setTweetsList(result.data);
   }
@@ -189,11 +189,11 @@ useEffect(() => {
       
           <div>
               <Button onClick={async function(){
-                const resultChar = await fetchNui('np-ui:getCharacter', {});
+                const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
 
                 setshowAddTwatLoader(true) 
                 setHideTwatinputs(true)
-                fetchNui('np-ui:twatSend', {
+                fetchNui('rlrp-ui:twatSend', {
                   character: resultChar.data,
                   text: twat,
                 }).then(function (result) {

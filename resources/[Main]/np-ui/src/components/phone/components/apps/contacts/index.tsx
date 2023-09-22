@@ -36,7 +36,7 @@ const ContactsApp: React.FC = () => {
   const [messageMessage, setMessageMessage] = useState("")
 
   useEffect(() => {
-    fetchNui('np-ui:getContacts', {}).then(res => {
+    fetchNui('rlrp-ui:getContacts', {}).then(res => {
       setContactsData(res.data)
       setFilteredContacts(res.data)
     })
@@ -110,7 +110,7 @@ const ContactsApp: React.FC = () => {
   const handleSendMessage = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:smsSend', { number: messageNumber, message: messageMessage }).then(resData => {
+    fetchNui('rlrp-ui:smsSend', { number: messageNumber, message: messageMessage }).then(resData => {
       setMessageNumber("")
       setMessageMessage("")
       setLoading(false)
@@ -126,7 +126,7 @@ const ContactsApp: React.FC = () => {
   const handleAddContact = () => {
     setLoading(true)
     setPreparing(true)
-    fetchNui('np-ui:addContact', { number: contactNumber, name: contactName }).then(resData => {
+    fetchNui('rlrp-ui:addContact', { number: contactNumber, name: contactName }).then(resData => {
       if (resData.meta.ok) {
         let array = {
           id: genNumbers(10),
@@ -154,7 +154,7 @@ const ContactsApp: React.FC = () => {
 
   const handleContactRemove = (e: any) => {
     const number = e.currentTarget.id
-    fetchNui('np-ui:deleteContact', { id: e.currentTarget.id }).then(resData => {
+    fetchNui('rlrp-ui:deleteContact', { id: e.currentTarget.id }).then(resData => {
       if (resData.meta.ok) {
         let arr = filteredContacts
         let newArr = arr.filter(item => item.number.toString() !== number)
@@ -164,7 +164,7 @@ const ContactsApp: React.FC = () => {
   }
 
   const handleCallContact = (name, number) => {
-    fetchNui('np-ui:callStart', {
+    fetchNui('rlrp-ui:callStart', {
       number: number
     })
 

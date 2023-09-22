@@ -24,10 +24,10 @@ const NewsPaper: React.FC = () => {
   useEffect(() => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && show) {
-            fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+            fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                 if(true === firstdata.meta.ok){
                   setShow(false)
-                  fetchNui('np-ui:applicationClosed', {
+                  fetchNui('rlrp-ui:applicationClosed', {
                       name: 'newspaper',
                       fromEscape: true,
                   }).then(function (data) {

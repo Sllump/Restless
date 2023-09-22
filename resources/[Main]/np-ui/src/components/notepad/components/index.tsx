@@ -46,9 +46,9 @@ const Notepad: React.FC = () => {
     const handleEscapeKey = (event : any) => {
         if (event.code === 'Escape' && show) {
             setShow(false)
-            fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+            fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                 if(true === firstdata.meta.ok){
-                fetchNui('np-ui:applicationClosed', {
+                fetchNui('rlrp-ui:applicationClosed', {
                     name: 'notepad',
                     fromEscape: true,
                 }).then(function (data) {
@@ -72,7 +72,7 @@ const Notepad: React.FC = () => {
   }
 
   const handleClicked = () => {
-    fetchNui('np-ui:createNotepadNote', {content: content})
+    fetchNui('rlrp-ui:createNotepadNote', {content: content})
   }
 
   return (

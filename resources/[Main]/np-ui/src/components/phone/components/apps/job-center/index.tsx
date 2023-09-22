@@ -47,7 +47,7 @@ const JobCenterApp: React.FC = () => {
 
 
   async function fetchData() {
-    const result = await fetchNui('np-ui:getJobData', {});
+    const result = await fetchNui('rlrp-ui:getJobData', {});
     setMySrc(result.data.src)
     if(result.data.signedin){
       if(result.data.ingroup){
@@ -114,7 +114,7 @@ const JobCenterApp: React.FC = () => {
         }
       }
       if('updateGroups'){
-        const result = await fetchNui('np-ui:getJobData', {});
+        const result = await fetchNui('rlrp-ui:getJobData', {});
         setMySrc(result.data.src)
         if(result.data.signedin){
           if(result.data.ingroup){
@@ -199,10 +199,10 @@ const JobCenterApp: React.FC = () => {
           <Typography style={{color: '#fff', wordBreak: 'break-word'}} variant="body1" gutterBottom>Join an idle group or browse groups currently busy</Typography>
           <Stack style={{marginTop:'10px'}} direction="row" spacing={4.6}>
             <Button onClick={async function(){
-              const resultChar = await fetchNui('np-ui:getCharacter', {});
-              fetchNui('np-ui:createGroup', {character:resultChar.data})
+              const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
+              fetchNui('rlrp-ui:createGroup', {character:resultChar.data})
               }} size='small' color='success' variant="contained">Create Group</Button>
-            <Button onClick={function(){fetchNui('np-ui:checkOut', {})}} size='small' color='warning' variant="contained">Check Out</Button>
+            <Button onClick={function(){fetchNui('rlrp-ui:checkOut', {})}} size='small' color='warning' variant="contained">Check Out</Button>
           </Stack>
           <Divider variant='middle' style={{ borderColor: '#aeb0b2', marginTop: '5%', marginLeft: '0%', marginRight: '0%' }} />
         </div>
@@ -290,7 +290,7 @@ const JobCenterApp: React.FC = () => {
                       </div>
                       <div style={{display: Number(mySrc) === Number(leaderSrc) ? '' : 'none'}} className={MembersListHover.toString() === data.src.toString() ? 'actions actions-show' : 'actions'}>
                         <Tooltip title='Kick Member' placement='top' arrow>
-                          <div style={{display: Number(data.src) === Number(leaderSrc) ? 'none' : ''}}><i onClick={function(){fetchNui('np-ui:kickMember', {id: groupID, src: Number(data.src)})}} className='fas fa-user-times fa-w-16 fa-fw fa-lg'></i></div>
+                          <div style={{display: Number(data.src) === Number(leaderSrc) ? 'none' : ''}}><i onClick={function(){fetchNui('rlrp-ui:kickMember', {id: groupID, src: Number(data.src)})}} className='fas fa-user-times fa-w-16 fa-fw fa-lg'></i></div>
                         </Tooltip>
                         <Typography style={{display: Number(data.src) === Number(leaderSrc) ? '' : 'none', color: '#fff', wordBreak: 'break-word'}} variant="body2" gutterBottom>This is You</Typography>
                       </div>
@@ -306,11 +306,11 @@ const JobCenterApp: React.FC = () => {
         </div>
         <div style={{display: ChackIn && GroupScrenn && !TaskScreen ? '' : 'none'}} className={classes.jobsInGroupButtons}>
           <Stack style={{display: Number(mySrc) === Number(leaderSrc) ? '' : 'none', whiteSpace:'nowrap'}} direction="column" spacing={2}>
-            <Button onClick={function(){fetchNui('np-ui:readyGroup', {id: groupID, boolean: !ready})}} size='small' color='success' variant="contained">{ready ? 'Unready for Jobs' : 'Ready for Jobs'}</Button>
-            <Button onClick={function(){fetchNui('np-ui:disbandGroup', {id: groupID})}} size='small' color='success' variant="contained">Disband Group</Button>
+            <Button onClick={function(){fetchNui('rlrp-ui:readyGroup', {id: groupID, boolean: !ready})}} size='small' color='success' variant="contained">{ready ? 'Unready for Jobs' : 'Ready for Jobs'}</Button>
+            <Button onClick={function(){fetchNui('rlrp-ui:disbandGroup', {id: groupID})}} size='small' color='success' variant="contained">Disband Group</Button>
           </Stack>
           <Stack style={{display: Number(mySrc) !== Number(leaderSrc) ? '' : 'none', marginTop: '42%'}} direction="column" spacing={2}>
-            <Button onClick={function(){fetchNui('np-ui:leaveGroup', {id: groupID})}} size='small' color='success' variant="contained">Leave Group</Button>
+            <Button onClick={function(){fetchNui('rlrp-ui:leaveGroup', {id: groupID})}} size='small' color='success' variant="contained">Leave Group</Button>
           </Stack>
         </div>
         <div style={{display: ChackIn && GroupScrenn && TaskScreen ? '' : 'none'}} className='activity-container'>

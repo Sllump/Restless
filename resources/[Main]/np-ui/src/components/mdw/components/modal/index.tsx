@@ -343,7 +343,7 @@ function ModalContainer({showAssignEvidence, setShowAssignEvidence, CurrentIncid
                 <div>
                   <Button onClick={function(){
                     setShowAssignEvidenceLoading(true)
-                    fetchNui('np-ui:mdtAction', {
+                    fetchNui('rlrp-ui:mdtAction', {
                       action:'incidents', 
                       data:{
                         name:'updateIncident',
@@ -359,7 +359,7 @@ function ModalContainer({showAssignEvidence, setShowAssignEvidence, CurrentIncid
                       }
                     }).then(function(data) {
                       setShowAssignEvidenceLoading(false)
-                      fetchNui('np-ui:mdtAction', {
+                      fetchNui('rlrp-ui:mdtAction', {
                         action: 'incidents',
                         data: {
                           name: 'incident',

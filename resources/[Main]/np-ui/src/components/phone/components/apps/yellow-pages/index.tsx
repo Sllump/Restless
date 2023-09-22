@@ -30,7 +30,7 @@ const YellowPagesApp: React.FC = () => {
   const [hasAd, setHasAd] = useState(false)
 
   useEffect(() => {
-    fetchNui('np-ui:getYellowPages', {}).then(res => {
+    fetchNui('rlrp-ui:getYellowPages', {}).then(res => {
       setAdData(res.data)
       setFilteredAds(res.data)
       // setHasAd(res.hasAd)
@@ -63,8 +63,8 @@ const YellowPagesApp: React.FC = () => {
   const handleAdPost = async () => {
     setLoading(true)
     setPreparing(true)
-    const resultChar = await fetchNui('np-ui:getCharacter', {});
-    fetchNui('np-ui:addYellowPagesEntry', { character: resultChar.data, text: adMessage }).then(res => {
+    const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
+    fetchNui('rlrp-ui:addYellowPagesEntry', { character: resultChar.data, text: adMessage }).then(res => {
       if (res.meta.ok) {
         setAdMessage("")
         setAdData(res.data)
@@ -86,7 +86,7 @@ const YellowPagesApp: React.FC = () => {
   }
 
   const handleCallNumber = (number) => {
-    fetchNui('np-ui:callStart', {
+    fetchNui('rlrp-ui:callStart', {
       number: number
     })
 

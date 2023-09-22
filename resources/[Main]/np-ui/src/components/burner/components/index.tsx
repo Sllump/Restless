@@ -60,13 +60,13 @@ const Burner: React.FC = () => {
     useEffect(() => {
       const handleEscapeKey = (event : any) => {
           if (event.code === 'Escape' && ShowPhone) {
-              fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+              fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                   if(true === firstdata.meta.ok){
                     SetCurrentApp('home')
                     setShowApp(true) 
                     setShowPhone(false) 
                     setSwitchOrientation(false)        
-                    fetchNui('np-ui:applicationClosed', {
+                    fetchNui('rlrp-ui:applicationClosed', {
                         name: 'burner',
                         fromEscape: true,
                     }).then(function (data) {

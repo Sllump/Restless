@@ -49,7 +49,7 @@ const MessagesApp: React.FC = () => {
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13 && messagetextbox.trim() !== '') {
-      fetchNui('np-ui:smsSend', {
+      fetchNui('rlrp-ui:smsSend', {
         number: targetNumber,
         message: messagetextbox.trim(),
       }).then((result) => {
@@ -71,9 +71,9 @@ const MessagesApp: React.FC = () => {
     }
   };
   async function fetchData() {
-    const resultChar = await fetchNui('np-ui:getCharacter', {});
+    const resultChar = await fetchNui('rlrp-ui:getCharacter', {});
     setchracterData(resultChar.data);
-    const result = await fetchNui('np-ui:getConversations', {});
+    const result = await fetchNui('rlrp-ui:getConversations', {});
     setdata(result.data);
     setlist(result.data);
   }
@@ -84,7 +84,7 @@ const MessagesApp: React.FC = () => {
   }
   // useEffect(function(){
   //   inchat === true &&
-  //     fetchNui('np-ui:getMessages', {
+  //     fetchNui('rlrp-ui:getMessages', {
   //       target_number: targetNumber
   //     }).then(function (result) {
   //       setmessagesData(result.data)
@@ -284,7 +284,7 @@ const MessagesApp: React.FC = () => {
               <Button onClick={function(){
                 setshowAddMessageLoader(true) 
                 setHideinputs(true)
-                fetchNui('np-ui:smsSend', {
+                fetchNui('rlrp-ui:smsSend', {
                   number: number,
                   message: message,
                 }).then(function (result) {
@@ -383,7 +383,7 @@ const MessagesApp: React.FC = () => {
               <div onClick={function() {
                     settargetNumber(chracterData.phone_number === action.number_from ? action.number_to : action.number_from)
                     setDisplayname(action.displayName)
-                    fetchNui('np-ui:getMessages', {
+                    fetchNui('rlrp-ui:getMessages', {
                       target_number: chracterData.phone_number === action.number_from ? action.number_to : action.number_from
                     }).then(function (result) {
                       setmessagesData(result.data)

@@ -95,7 +95,7 @@ const Preferences: React.FC = () => {
 
 
     const saveHudSettings = () => {
-        fetchNui('np-ui:hudSetPreferences', {
+        fetchNui('rlrp-ui:hudSetPreferences', {
             "hud.misc.circle.taskbar.enabled": circleTaskbarEnabled,
             "hud.status.health.enabled": showHealth,
             "hud.status.armor.enabled": showArmor,
@@ -120,8 +120,8 @@ const Preferences: React.FC = () => {
             "hud.blackbars.enabled": blackbarsEnabled,
             "hud.blackbars.value": blackbarsValue,
         })
-        fetchNui('np-ui:setKVPValue', {
-            key: "np-preferences",
+        fetchNui('rlrp-ui:setKVPValue', {
+            key: "rlrp-preferences",
             value: {
                 "hud.misc.circle.taskbar.enabled": circleTaskbarEnabled,
                 "hud.status.health.enabled": showHealth,
@@ -594,9 +594,9 @@ const Preferences: React.FC = () => {
         const handleEscapeKey = (event : any) => {
             if (event.code === 'Escape' && showSettings) {
                 setShowSettings(false)
-                fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+                fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
                     if(true === firstdata.meta.ok){
-                    fetchNui('np-ui:applicationClosed', {
+                    fetchNui('rlrp-ui:applicationClosed', {
                         name: 'preferences',
                         fromEscape: true,
                     }).then(function (data) {

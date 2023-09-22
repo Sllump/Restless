@@ -19,7 +19,7 @@ const MemoryGame: React.FC = () => {
   const [coloredSquares, setColoredSquares] = useState(16);
   const [clicksTotal, setClicksTotal] = useState(0);
   const [clicksFailed, setClicksFailed] = useState(0);
-  const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('np-ui:heistsThermiteMinigameResult');
+  const [gameFinishedEndpoint, setGameFinishedEndpoint] = useState('rlrp-ui:heistsThermiteMinigameResult');
   const [gameFinished, setGameFinished] = useState(false);
   const [gameTimeoutDuration, setGameTimeoutDuration] = useState(20000);
   const [gameWon, setGameWon] = useState(false);
@@ -97,10 +97,10 @@ const MemoryGame: React.FC = () => {
       setGameFinished(true)
       setGameWon(true)
       setTimeout(()=>{
-        fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+        fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
           if(true === firstdata.meta.ok){
             setShow(false)
-            fetchNui('np-ui:applicationClosed', {
+            fetchNui('rlrp-ui:applicationClosed', {
               name: 'memory-game',
               fromEscape: false,
             }).then(function (data) {
@@ -129,10 +129,10 @@ const MemoryGame: React.FC = () => {
         setGameWon(false)
         setTimeout(()=>{
           setShow(false)
-          fetchNui('np-ui:closeApp', {}).then(function (firstdata) {
+          fetchNui('rlrp-ui:closeApp', {}).then(function (firstdata) {
             if(true === firstdata.meta.ok){
               setShow(false)
-              fetchNui('np-ui:applicationClosed', {
+              fetchNui('rlrp-ui:applicationClosed', {
                 name: 'memory-game',
                 fromEscape: false,
               }).then(function (data) {

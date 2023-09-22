@@ -362,7 +362,7 @@ end)
 RegisterNetEvent("ped:intrunk")
 AddEventHandler("ped:intrunk", function(trunksent)
   intrunk = trunksent
-  exports['np-flags']:SetPedFlag(PlayerPedId(), 'isInTrunk', intrunk)
+  exports['rlrp-flags']:SetPedFlag(PlayerPedId(), 'isInTrunk', intrunk)
 end)
 
 
@@ -436,7 +436,7 @@ end)
 RegisterNetEvent('robbing')
 AddEventHandler("robbing",function(passedR)
     robbing = passedR
-    exports['np-flags']:SetPedFlag(PlayerPedId(), 'isRobbing', intrunk)
+    exports['rlrp-flags']:SetPedFlag(PlayerPedId(), 'isRobbing', intrunk)
 end)
 
 RegisterNetEvent("SecondaryJobUpdate")
@@ -475,19 +475,19 @@ end)
 RegisterNetEvent('pd:deathcheck')
 AddEventHandler('pd:deathcheck', function()
   dead = not dead
-  exports['np-flags']:SetPedFlag(PlayerPedId(), 'isDead', dead)
+  exports['rlrp-flags']:SetPedFlag(PlayerPedId(), 'isDead', dead)
 end)
 
 -- local handcuffed = exports["isPed"]:isPed("handcuffed")
-RegisterNetEvent('np-police:cuffs:state')
-AddEventHandler('np-police:cuffs:state', function(handCuffed,handCuffedWalking)
+RegisterNetEvent('rlrp-police:cuffs:state')
+AddEventHandler('rlrp-police:cuffs:state', function(handCuffed,handCuffedWalking)
 	handcuffed = handCuffed
     handcuffedwalking = handCuffedWalking
-    exports['np-flags']:SetPedFlag(PlayerPedId(), 'isCuffed', handCuffed or handCuffedWalking)
+    exports['rlrp-flags']:SetPedFlag(PlayerPedId(), 'isCuffed', handCuffed or handCuffedWalking)
 end)
 
-RegisterNetEvent('np-police:cuffs:recentlyAttempted')
-AddEventHandler('np-police:cuffs:recentlyAttempted', function(lastTimeCuffedSent)
+RegisterNetEvent('rlrp-police:cuffs:recentlyAttempted')
+AddEventHandler('rlrp-police:cuffs:recentlyAttempted', function(lastTimeCuffedSent)
   lastTimeCuffed = lastTimeCuffedSent
 end)
 
@@ -498,8 +498,8 @@ AddEventHandler('pagerStatus', function(PassedPagerStatus)
 end)
 
 --local myJob = exports["isPed"]:isPed("myJob")
-RegisterNetEvent("np-jobmanager:playerBecameJob")
-AddEventHandler("np-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+RegisterNetEvent("rlrp-jobmanager:playerBecameJob")
+AddEventHandler("rlrp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"

@@ -87,13 +87,13 @@ end
 local function ShowUI()
   SendNUIMessage({action = "show"})
   KeyListener()
-  TriggerEvent("np-police:blockInput", true)
+  TriggerEvent("rlrp-police:blockInput", true)
 end
 
 local function HideUI()
   SendNUIMessage({action = "hide"})
   listeningForKeys = false
-  TriggerEvent("np-police:blockInput", false)
+  TriggerEvent("rlrp-police:blockInput", false)
 end
 
 local function AddPlayer(pData)
@@ -114,28 +114,28 @@ local function AddAllPlayers(pData, pRecentData)
   RecentPlayers = pRecentData
 end
 
-RegisterNetEvent('np-binds:keyEvent')
-AddEventHandler('np-binds:keyEvent', function(name,onDown)
+RegisterNetEvent('rlrp-binds:keyEvent')
+AddEventHandler('rlrp-binds:keyEvent', function(name,onDown)
     if name ~= "PlayerList" then return end
     if onDown then ShowUI() else HideUI() end
 end)
 
-RegisterNetEvent("np-playerlist:AddPlayer")
-AddEventHandler("np-playerlist:AddPlayer", function(pData)
+RegisterNetEvent("rlrp-playerlist:AddPlayer")
+AddEventHandler("rlrp-playerlist:AddPlayer", function(pData)
     AddPlayer(pData)
 end)
 
-RegisterNetEvent("np-playerlist:RemovePlayer")
-AddEventHandler("np-playerlist:RemovePlayer", function(pData)
+RegisterNetEvent("rlrp-playerlist:RemovePlayer")
+AddEventHandler("rlrp-playerlist:RemovePlayer", function(pData)
     RemovePlayer(pData)
 end)
 
-RegisterNetEvent("np-playerlist:RemoveRecent")
-AddEventHandler("np-playerlist:RemoveRecent", function(pSrc)
+RegisterNetEvent("rlrp-playerlist:RemoveRecent")
+AddEventHandler("rlrp-playerlist:RemoveRecent", function(pSrc)
     RemoveRecent(pSrc)
 end)
 
-RegisterNetEvent("np-playerlist:AddAllPlayers")
-AddEventHandler("np-playerlist:AddAllPlayers", function(pData, pRecentData)
+RegisterNetEvent("rlrp-playerlist:AddAllPlayers")
+AddEventHandler("rlrp-playerlist:AddAllPlayers", function(pData, pRecentData)
     AddAllPlayers(pData, pRecentData)
 end)
